@@ -430,7 +430,7 @@ position = Vector2(-160, -128)
 position = Vector2(80, -64)
 
 [node name="Token15" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-32, 16)
+position = Vector2(-16, 16)
 
 [node name="Token38" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(112, 80)
