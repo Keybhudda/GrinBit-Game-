@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://wripf5ftdf07"]
+
+[ext_resource type="Script" uid="uid://sort2fkqphvp" path="res://scripts/gameover.gd" id="1_mt7yr"]
+[ext_resource type="Texture2D" uid="uid://dqoogeeunbvs3" path="res://assets/Black screen.png" id="1_ncp31"]
+[ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="2_2mkfd"]
+[ext_resource type="Script" uid="uid://vekk67qa0vri" path="res://scripts/mainmenubutton.gd" id="2_dy3ie"]
+[ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="4_h8i2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mt7yr"]
+bg_color = Color(0.27, 0.27, 0.27, 0.45882353)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.053634934, 0.13554458, 0.031477414, 0.4392157)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwp2v"]
+bg_color = Color(0.37, 0.37, 0.37, 0.5019608)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.22800004, 0.72, 0, 0.3372549)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gj0k"]
+bg_color = Color(0.24477637, 0.2447764, 0.24477637, 0.41568628)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.08, 0.021599999, 0.021599999, 0.61960787)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke020"]
+bg_color = Color(0.2, 0.2, 0.2, 0.60784316)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.35, 0.07700001, 0.07700001, 0.5058824)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mt7yr")
+
+[node name="blkscreen" type="Sprite2D" parent="."]
+position = Vector2(529.813, 325.313)
+scale = Vector2(3.88698, 3.23376)
+texture = ExtResource("1_ncp31")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 40.0
+offset_right = 596.0
+offset_bottom = 295.0
+scale = Vector2(1.875, 1.875)
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game Over !"
+horizontal_alignment = 1
+
+[node name="endscore" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Score : x"
+horizontal_alignment = 1
+
+[node name="startmenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
+theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_mt7yr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qwp2v")
+text = "Main Menu"
+icon = ExtResource("2_2mkfd")
+icon_alignment = 2
+script = ExtResource("2_dy3ie")
+
+[node name="quitbutton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.45, 0.058499996, 0.058499996, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.28800002, 0.28800002, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_3gj0k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ke020")
+text = "Exit Game"
+script = ExtResource("4_h8i2o")
+
+[connection signal="pressed" from="VBoxContainer/startmenu" to="VBoxContainer/startmenu" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitbutton" to="VBoxContainer/quitbutton" method="_on_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5je6cod5plyj"]
+
+[ext_resource type="Texture2D" uid="uid://dqoogeeunbvs3" path="res://assets/Black screen.png" id="1_ncp31"]
+
+[node name="gameover" type="Node2D"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.52588e-05, -11)
+scale = Vector2(2.30246, 1.71161)
+texture = ExtResource("1_ncp31")
+
+[node name="donegame" type="Label" parent="."]
+offset_left = -48.0
+offset_top = -13.0
+offset_right = 48.0
+offset_bottom = 10.0
+text = "Game Over !"

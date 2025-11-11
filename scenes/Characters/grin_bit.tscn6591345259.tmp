@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1vnwequen04s"]
+
+[ext_resource type="Script" uid="uid://v5is7smufnuj" path="res://scripts/player(grin_bit).gd" id="1_7gdbq"]
+[ext_resource type="Texture2D" uid="uid://de4sx3grbbl04" path="res://assets/characters/Characters.png" id="2_oxj5r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gdbq"]
+radius = 7.0
+
+[node name="Grinbit" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_7gdbq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oxj5r")
+offset = Vector2(8, -8)
+region_enabled = true
+region_rect = Rect2(16, 480, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -8)
+shape = SubResource("CircleShape2D_7gdbq")
+
+[node name="Ray_Down" type="RayCast2D" parent="."]
+position = Vector2(8, -8)
+target_position = Vector2(0, 13)
+
+[node name="Ray_Right" type="RayCast2D" parent="."]
+position = Vector2(8, -8)
+target_position = Vector2(13, 0)
+
+[node name="Ray_Left" type="RayCast2D" parent="."]
+position = Vector2(8, -8)
+target_position = Vector2(-13, 0)
+
+[node name="Ray_Up" type="RayCast2D" parent="."]
+position = Vector2(8, -8)
+target_position = Vector2(0, -13)

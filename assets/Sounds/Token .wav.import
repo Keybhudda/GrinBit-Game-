@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddjy3i5s0qpgb"
+path="res://.godot/imported/Token .wav-f213902952214fc6b7eefd5a932090ef.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/Token .wav"
+dest_files=["res://.godot/imported/Token .wav-f213902952214fc6b7eefd5a932090ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

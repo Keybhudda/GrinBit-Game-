@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://5g4ufdx14egl"]
+
+[ext_resource type="Script" uid="uid://dril3r5wsv4gt" path="res://scripts/orange.gd" id="1_24ymx"]
+[ext_resource type="Texture2D" uid="uid://c3m46ql686kj" path="res://assets/Fruits/Orange.png" id="1_bou5x"]
+[ext_resource type="AudioStream" uid="uid://bi4utg6yif7qq" path="res://assets/Sounds/Game_Grinbit_Fruit_SFX.mp3" id="3_xnr1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24ymx"]
+size = Vector2(19.999996, 18.773834)
+
+[sub_resource type="Animation" id="Animation_02iu2"]
+resource_name = "pickup"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pickupsound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.35000008,
+"start_offset": 0.0,
+"stream": ExtResource("3_xnr1h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06666666),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1nt56"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phyu"]
+_data = {
+&"RESET": SubResource("Animation_1nt56"),
+&"pickup": SubResource("Animation_02iu2")
+}
+
+[node name="Orange" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_24ymx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bou5x")
+offset = Vector2(8, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -7.94436)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_24ymx")
+
+[node name="Pickupsound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1phyu")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
