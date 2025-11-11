@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GrinBit"
+config/name="GrinBit(Connected To Github)"
 run/main_scene="uid://c1uulnctcvunt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
