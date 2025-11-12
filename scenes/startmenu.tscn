@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://qojtnvgumkc"]
+[gd_scene load_steps=15 format=3 uid="uid://qojtnvgumkc"]
 
+[ext_resource type="Script" uid="uid://df0dxq33d0pmf" path="res://scripts/startmenu.gd" id="1_ag814"]
 [ext_resource type="Texture2D" uid="uid://cmmf3g4xhgnmc" path="res://assets/Grin bit start menu pic draft.png" id="1_ids67"]
 [ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="2_poymh"]
 [ext_resource type="Texture2D" uid="uid://cf54uj8l1m3x4" path="res://assets/characters/Fire Enemy (Simple Game).png" id="3_cy0qo"]
 [ext_resource type="Script" uid="uid://cwh2e4alsblcm" path="res://scripts/startbutton.gd" id="3_poymh"]
 [ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="5_cy0qo"]
+[ext_resource type="PackedScene" uid="uid://r4jspoqxew56" path="res://scenes/volume_slider.tscn" id="7_fndww"]
+[ext_resource type="AudioStream" uid="uid://c6ili5txxuru0" path="res://assets/Sounds/Music/Grin_Theme_2.mp3" id="7_lqn8n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy0qo"]
 bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.6039216)
@@ -65,6 +68,19 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qj7i"]
+bg_color = Color(0.08, 0.08, 0.08, 0.5058824)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.04959999, 0.40134662, 0.62, 0.34117648)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="startmenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -76,6 +92,7 @@ offset_right = -12.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ag814")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -99,6 +116,11 @@ horizontal_alignment = 1
 
 [node name="startbutton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.47563165, 0.772539, 1.1551381e-06, 1)
+theme_override_colors/font_pressed_color = Color(0.26192242, 0.4403051, 4.813075e-07, 1)
+theme_override_colors/font_hover_color = Color(0.81383, 0.97, 0.5626001, 1)
+theme_override_colors/font_outline_color = Color(0.023329308, 0.2540322, 7.219613e-08, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 theme_override_icons/icon = ExtResource("2_poymh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ihhoq")
@@ -109,12 +131,54 @@ script = ExtResource("3_poymh")
 
 [node name="quitbutton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.8352941)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 0.45490196)
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 20
 theme_override_icons/icon = ExtResource("3_cy0qo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ag814")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fndww")
 text = "Quit"
 script = ExtResource("5_cy0qo")
+
+[node name="options" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2qj7i")
+
+[node name="Contents" type="VBoxContainer" parent="VBoxContainer/options"]
+layout_mode = 2
+
+[node name="master_label" type="Label" parent="VBoxContainer/options/Contents"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6039216, 0.7607843, 0.87058824, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 17
+text = "Master Volume"
+
+[node name="Master" parent="VBoxContainer/options/Contents" instance=ExtResource("7_fndww")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="music_label" type="Label" parent="VBoxContainer/options/Contents"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99999994, 0.45994014, 0.2198484, 0.63529414)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 17
+text = "Music"
+
+[node name="Music" parent="VBoxContainer/options/Contents" instance=ExtResource("7_fndww")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_lqn8n")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/startbutton" to="VBoxContainer/startbutton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/quitbutton" to="VBoxContainer/quitbutton" method="_on_pressed"]

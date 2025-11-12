@@ -50,7 +50,8 @@ func _ready() -> void:
 	
 func _on_level_complete():
 	print("Level Complete!")
-
+#add a timer to give time to play game beat music and then send to game over screen for now until we make more levels 
+#where when a level is complete it send you to the next level. 
 
 
 

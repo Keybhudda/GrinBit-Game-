@@ -6,8 +6,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33wcd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x3ub"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_33wcd"]
+radius = 48.0
 
 [sub_resource type="Animation" id="Animation_6hij7"]
 resource_name = "Death"
@@ -69,7 +69,7 @@ scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_33wcd")
 
 [node name="CombatZone" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_3x3ub")
+shape = SubResource("CircleShape2D_33wcd")
 disabled = true
 debug_color = Color(0.903055, 0.290926, 0.266897, 0.42)
 

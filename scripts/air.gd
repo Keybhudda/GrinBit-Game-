@@ -22,7 +22,7 @@ var current_mode: Mode = Mode.CHASE
 @export_node_path("CharacterBody2D") var player_path : NodePath
 #The Speed A Which This Character Chases (GrinBit)
 var player: CharacterBody2D = null
-var speed := 3
+var speed := 4
 const GRID_SIZE = 16
 
 
@@ -90,6 +90,8 @@ func update_look(new_mode: Mode) -> void:
 func _physics_process(_delta: float) -> void:
 	decision_timer -= _delta
 	
+	if player == null or mode == Mode.SHUFFLE:
+		set_mode(Mode.SHUFFLE)
 	
 	if decision_timer <= 0.0:
 		decision_timer = decision_interval
@@ -106,21 +108,6 @@ func _physics_process(_delta: float) -> void:
 			killable(_delta)
 		Mode.DEAD:
 			_dead(_delta)
-
-
-func update_mode():
-	if player == null or not player.is_inside_tree():
-		set_mode(Mode.SHUFFLE)
-	else:
-		set_mode(default_mode)
-
-
-func start_move(dir: Vector2):
-	direction = dir
-	@warning_ignore("integer_division")
-	target_pos = (position + direction * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
-	moving = true
-
 #here is where this character moves either tracking Grinbit or just moving randonmly Manging chase mode and stuff like that. 
 
 func chase_player(_delta: float) -> void:
@@ -271,12 +258,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func on_enter_run_mode():
 	#Called when chase mode starts
 	set_mode(Mode.RUN)
-	speed = 2
+	speed = 3
 
 func on_exit_run_mode():
 	#Called when chase mode ends
 	set_mode(default_mode)
-	speed = 3
+	speed = 4
 	reset_state()
 
 

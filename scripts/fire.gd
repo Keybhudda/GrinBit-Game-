@@ -107,18 +107,6 @@ func _physics_process(_delta: float) -> void:
 		Mode.DEAD:
 			_dead(_delta)
 
-func update_mode():
-	if player == null or not player.is_inside_tree():
-		set_mode(Mode.SHUFFLE)
-		print(name, "Can't Find Player")
-	else:
-		set_mode(default_mode)
-
-func start_move(dir: Vector2):
-	direction = dir
-	@warning_ignore("integer_division")
-	target_pos = (position + direction * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
-	moving = true
 
 #here is where this character moves either tracking Grinbit or just moving randonmly. 
 
