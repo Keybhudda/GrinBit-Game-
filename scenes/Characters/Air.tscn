@@ -53,6 +53,11 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3gwmn")
 
+[node name="Dead" type="Sprite2D" parent="."]
+texture = ExtResource("1_70815")
+region_enabled = true
+region_rect = Rect2(144, 416, 16, 16)
+
 [node name="RUN" type="Sprite2D" parent="."]
 texture = ExtResource("1_70815")
 region_enabled = true
@@ -75,8 +80,8 @@ shape = SubResource("RectangleShape2D_08fxp")
 disabled = true
 debug_color = Color(1, 0, 0.09803922, 0.14901961)
 
-[node name="DeathTimer" type="Timer" parent="."]
-process_mode = 2
+[node name="MindTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_08fxp")
@@ -87,3 +92,4 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="MindTimer" to="." method="_on_mind_timer_timeout"]

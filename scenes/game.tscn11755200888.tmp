@@ -1,16 +1,14 @@
-[gd_scene load_steps=29 format=4 uid="uid://c1uulnctcvunt"]
+[gd_scene load_steps=27 format=4 uid="uid://c1uulnctcvunt"]
 
 [ext_resource type="Script" uid="uid://lhyc51keicw6" path="res://scripts/game_state.gd" id="1_264po"]
 [ext_resource type="Script" uid="uid://wiviwyofiw3k" path="res://scripts/game_manager.gd" id="1_bt5mj"]
 [ext_resource type="Script" uid="uid://yeydmco8rub2" path="res://scripts/player_lives.gd" id="1_e1j6l"]
 [ext_resource type="Texture2D" uid="uid://c64ftnvcwlbd0" path="res://assets/Map Stuff/Tile Map V-2.png" id="1_qouja"]
 [ext_resource type="PackedScene" uid="uid://c1vnwequen04s" path="res://scenes/Characters/grin_bit.tscn" id="1_uwrxv"]
-[ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="3_264po"]
 [ext_resource type="AudioStream" uid="uid://cp2rp4sq5ip8b" path="res://assets/Sounds/Game_Grinbit_SFX(PlayerDeath).mp3" id="3_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bdqsih0y850lp" path="res://scenes/Point Items/apple.tscn" id="4_264po"]
 [ext_resource type="Texture2D" uid="uid://f7rgphkjw2nn" path="res://assets/Map Stuff/Border&Barriers.png" id="4_kvuet"]
 [ext_resource type="PackedScene" uid="uid://xmly785p82v3" path="res://scenes/Characters/Fire.tscn" id="4_ssvqc"]
-[ext_resource type="AudioStream" uid="uid://b6l5lkskuhsec" path="res://assets/Sounds/Music/GrinBit_Game_background music.mp3" id="5_1kice"]
 [ext_resource type="Script" uid="uid://cqdgwl0qppodb" path="res://scripts/map.gd" id="5_trtic"]
 [ext_resource type="Script" uid="uid://b3fpgqqcj7gao" path="res://scripts/tunnel.gd" id="7_ir15t"]
 [ext_resource type="Script" uid="uid://chtciv4simcjy" path="res://scripts/tunnel2.gd" id="8_ca42v"]
@@ -245,39 +243,28 @@ autostart = true
 process_mode = 2
 one_shot = true
 
-[node name="SwitchTimer" type="Timer" parent="GameManager" groups=["SwitchTimer"]]
-process_mode = 2
-one_shot = true
-
-[node name="GoTimer" type="Timer" parent="GameManager" groups=["GoTimer"]]
-process_mode = 2
-one_shot = true
-
 [node name="score_label" type="Label" parent="GameManager" groups=["Score"]]
 z_index = 2
-offset_left = -205.86002
-offset_top = -163.14848
-offset_right = -13.860214
-offset_bottom = -140.14848
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_264po")
-text = "Score: 0"
+offset_left = -204.927
+offset_top = -164.548
+offset_right = -12.9272
+offset_bottom = -141.548
+text = "Score: x"
 vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="lives_label" type="Label" parent="GameManager"]
+z_index = 1
+offset_left = -14.489777
+offset_top = -165.61008
+offset_right = 46.510223
+offset_bottom = -142.61008
+text = "Lives : x"
+
 [node name="PlayerDeath" type="AudioStreamPlayer2D" parent="GameManager"]
 process_mode = 2
 stream = ExtResource("3_ssvqc")
-bus = &"Sound Effects"
-
-[node name="Backgroundmusic" type="AudioStreamPlayer2D" parent="GameManager"]
-stream = ExtResource("5_1kice")
-volume_db = -25.0
-autoplay = true
-bus = &"Music"
-parameters/looping = true
 
 [node name="Player_Lives" type="Node" parent="."]
 unique_name_in_owner = true
@@ -285,8 +272,8 @@ script = ExtResource("1_e1j6l")
 
 [node name="deathscreen" parent="." groups=["deathscreen"] instance=ExtResource("25_pl11u")]
 unique_name_in_owner = true
-z_index = 5
-position = Vector2(-32, -16)
+z_index = 1
+position = Vector2(-11, -24)
 
 [node name="Level_1" type="Node2D" parent="."]
 
@@ -329,30 +316,25 @@ shape = SubResource("RectangleShape2D_trtic")
 debug_color = Color(0, 0.7764706, 0.22745098, 0.41960785)
 
 [node name="Grinbit" parent="Level_1" node_paths=PackedStringArray("map") groups=["Player"] instance=ExtResource("1_uwrxv")]
-z_index = 2
 position = Vector2(7.8246, 55.98811)
 map = NodePath("../Map")
 
 [node name="Pryo" parent="Level_1" node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("4_ssvqc")]
-z_index = 2
 position = Vector2(-167.23225, -71.53996)
 map = NodePath("../Map")
 player_path = NodePath("../Grinbit")
 
 [node name="Grumbl" parent="Level_1" node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("23_e1j6l")]
-z_index = 2
 position = Vector2(199.8949, -56.11161)
 map = NodePath("../Map")
 player_path = NodePath("../Grinbit")
 
 [node name="Whispr" parent="Level_1" node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("11_ca42v")]
-z_index = 2
 position = Vector2(247.59544, 87.84643)
 map = NodePath("../Map")
 player_path = NodePath("../Grinbit")
 
 [node name="Drizzl" parent="Level_1" node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("13_rysoc")]
-z_index = 2
 position = Vector2(-216.56299, 86.2446)
 map = NodePath("../Map")
 player_path = NodePath("../Grinbit")
@@ -415,53 +397,11 @@ position = Vector2(48, -96)
 [node name="Token45" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-128, 0)
 
-[node name="Token212" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-112, 0)
-
-[node name="Token213" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-128, 16)
-
-[node name="Token214" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-160, 16)
-
-[node name="Token215" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-176, 0)
-
-[node name="Token216" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-176, -32)
-
-[node name="Token217" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-160, -48)
-
-[node name="Token218" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-128, -48)
-
-[node name="Token219" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-96, -48)
-
 [node name="Token47" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-224, -80)
 
-[node name="Token182" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-224, -64)
-
-[node name="Token153" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-240, -16)
-
-[node name="Token154" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, -16)
-
-[node name="Token155" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-256, -16)
-
 [node name="Token53" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(144, 80)
-
-[node name="Token203" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(176, 144)
-
-[node name="Token204" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(176, 144)
+position = Vector2(192, 144)
 
 [node name="Token54" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-128, -112)
@@ -488,19 +428,7 @@ position = Vector2(-144, 144)
 position = Vector2(-112, -112)
 
 [node name="Token13" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-64, -48)
-
-[node name="Token32" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-32, -48)
-
-[node name="Token118" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, -32)
-
-[node name="Token178" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, -48)
-
-[node name="Token119" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, 112)
+position = Vector2(-48, -48)
 
 [node name="Token9" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-16, -96)
@@ -511,9 +439,6 @@ position = Vector2(64, -128)
 [node name="Token11" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-32, -128)
 
-[node name="Token33" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-48, -128)
-
 [node name="Token16" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-192, -128)
 
@@ -523,83 +448,11 @@ position = Vector2(-160, -128)
 [node name="Token14" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(80, -64)
 
-[node name="Token176" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(64, -64)
-
 [node name="Token15" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-16, 16)
 
 [node name="Token38" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(192, 144)
-
-[node name="Token68" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(144, 96)
-
-[node name="Token57" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(176, 64)
-
-[node name="Token193" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(176, 64)
-
-[node name="Token194" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(176, 80)
-
-[node name="Token195" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(176, 96)
-
-[node name="Token196" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, 80)
-
-[node name="Token197" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, 144)
-
-[node name="Token198" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(240, 144)
-
-[node name="Token199" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(224, 128)
-
-[node name="Token205" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(224, 112)
-
-[node name="Token206" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(240, 112)
-
-[node name="Token207" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(224, 80)
-
-[node name="Token208" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(208, 80)
-
-[node name="Token209" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, 96)
-
-[node name="Token210" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(208, 96)
-
-[node name="Token211" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(224, 96)
-
-[node name="Token200" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, 128)
-
-[node name="Token201" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, 112)
-
-[node name="Token202" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, 96)
-
-[node name="Token58" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(192, 64)
-
-[node name="Token59" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(208, 64)
-
-[node name="Token60" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(224, 64)
-
-[node name="Token61" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(240, 64)
+position = Vector2(112, 80)
 
 [node name="Token39" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(80, -96)
@@ -613,35 +466,8 @@ position = Vector2(-176, -128)
 [node name="Token18" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-160, -32)
 
-[node name="Token20" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-112, -32)
-
-[node name="Token21" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-160, 0)
-
 [node name="Token35" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(32, -16)
-
-[node name="Token228" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(32, -48)
-
-[node name="Token229" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-48, 32)
-
-[node name="Token230" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(48, 32)
-
-[node name="Token238" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, -16)
-
-[node name="Token239" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, 16)
-
-[node name="Token232" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, 16)
-
-[node name="Token233" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, -16)
 
 [node name="Token41" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(32, 80)
@@ -655,65 +481,8 @@ position = Vector2(-144, -128)
 [node name="Token19" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(16, 48)
 
-[node name="Token180" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(16, 16)
-
-[node name="Token181" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-16, 48)
-
 [node name="Token49" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(256, 64)
-
-[node name="Token124" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(192, 32)
-
-[node name="Token125" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(208, 32)
-
-[node name="Token126" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(224, 32)
-
-[node name="Token127" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(240, 32)
-
-[node name="Token128" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, 16)
-
-[node name="Token129" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, -16)
-
-[node name="Token62" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, 48)
-
-[node name="Token179" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, 32)
-
-[node name="Token120" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, 32)
-
-[node name="Token121" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(128, 32)
-
-[node name="Token122" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(160, 32)
-
-[node name="Token123" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(144, 32)
-
-[node name="Token63" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, 64)
-
-[node name="Token64" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(96, 64)
-
-[node name="Token65" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, 64)
-
-[node name="Token66" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(128, 64)
-
-[node name="Token67" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(144, 64)
 
 [node name="Token50" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-112, -128)
@@ -721,340 +490,25 @@ position = Vector2(-112, -128)
 [node name="Token51" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(176, 32)
 
-[node name="Token130" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(192, -128)
-
-[node name="Token131" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(208, -128)
-
-[node name="Token132" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(224, -128)
-
-[node name="Token133" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(240, -128)
-
-[node name="Token134" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, -128)
-
-[node name="Token135" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, -128)
-
-[node name="Token140" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, -112)
-
-[node name="Token141" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, -64)
-
-[node name="Token186" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, -48)
-
-[node name="Token187" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(112, -32)
-
-[node name="Token192" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(128, -96)
-
-[node name="Token188" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(128, -64)
-
-[node name="Token145" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(144, -64)
-
-[node name="Token146" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(160, -80)
-
-[node name="Token147" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(208, -80)
-
-[node name="Token148" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(224, -64)
-
-[node name="Token189" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(240, -64)
-
-[node name="Token190" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, -48)
-
-[node name="Token191" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, -32)
-
-[node name="Token149" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, -64)
-
-[node name="Token150" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, -96)
-
-[node name="Token142" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(240, -96)
-
-[node name="Token143" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, -112)
-
-[node name="Token144" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(256, -112)
-
-[node name="Token136" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(128, -128)
-
-[node name="Token137" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(160, -128)
-
-[node name="Token138" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(144, -128)
-
-[node name="Token139" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(176, -128)
-
 [node name="Token52" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
 position = Vector2(-272, 16)
-
-[node name="Token69" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-240, 16)
-
-[node name="Token70" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-256, 16)
-
-[node name="Token71" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, 32)
-
-[node name="Token72" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, 48)
-
-[node name="Token73" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, 64)
-
-[node name="Token74" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, 80)
-
-[node name="Token75" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, 96)
-
-[node name="Token156" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, -128)
-
-[node name="Token157" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, -112)
-
-[node name="Token158" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, -96)
-
-[node name="Token159" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, -80)
-
-[node name="Token160" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, -64)
-
-[node name="Token161" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, -48)
-
-[node name="Token76" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, 112)
-
-[node name="Token112" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, 128)
-
-[node name="Token77" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-256, 128)
-
-[node name="Token78" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-256, 144)
-
-[node name="Token79" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-240, 144)
-
-[node name="Token80" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-224, 144)
-
-[node name="Token225" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-224, 128)
-
-[node name="Token226" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-256, 96)
-
-[node name="Token81" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-208, 144)
-
-[node name="Token82" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-208, 48)
-
-[node name="Token84" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-208, 0)
-
-[node name="Token85" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-208, -16)
-
-[node name="Token151" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-240, -112)
-
-[node name="Token163" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-224, -112)
-
-[node name="Token152" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-240, -80)
-
-[node name="Token167" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-176, -80)
-
-[node name="Token168" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-192, -80)
-
-[node name="Token183" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-192, -64)
-
-[node name="Token169" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-112, -80)
-
-[node name="Token184" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-112, -64)
-
-[node name="Token185" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-80, -64)
-
-[node name="Token170" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-128, -80)
-
-[node name="Token171" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-64, -80)
-
-[node name="Token175" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(16, -64)
-
-[node name="Token172" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-80, -80)
-
-[node name="Token173" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(0, -48)
-
-[node name="Token174" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-16, -64)
-
-[node name="Token162" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-272, -32)
-
-[node name="Token86" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-208, 16)
-
-[node name="Token87" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-208, 80)
-
-[node name="Token88" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-176, 80)
-
-[node name="Token89" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-176, 48)
-
-[node name="Token164" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-128, 64)
-
-[node name="Token165" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-96, 64)
-
-[node name="Token166" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-96, 64)
-
-[node name="Token90" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-112, 144)
-
-[node name="Token91" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-96, 144)
-
-[node name="Token92" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-80, 144)
-
-[node name="Token93" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-64, 144)
-
-[node name="Token94" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-48, 144)
-
-[node name="Token31" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-128, 96)
-
-[node name="Token83" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-144, 112)
-
-[node name="Token110" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-176, 112)
-
-[node name="Token116" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-128, 128)
-
-[node name="Token117" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(96, 128)
-
-[node name="Token111" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-96, 96)
-
-[node name="Token113" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-64, 96)
-
-[node name="Token114" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-112, 112)
-
-[node name="Token95" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-16, 144)
-
-[node name="Token96" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(0, 144)
-
-[node name="Token97" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(16, 144)
-
-[node name="Token98" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(32, 144)
-
-[node name="Token99" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(48, 144)
-
-[node name="Token100" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(64, 144)
-
-[node name="Token104" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-48, 112)
-
-[node name="Token115" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-80, 112)
-
-[node name="Token105" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(-16, 112)
-
-[node name="Token106" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(16, 112)
-
-[node name="Token107" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(0, 96)
-
-[node name="Token108" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(48, 112)
-
-[node name="Token109" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(192, 128)
-
-[node name="Token101" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(80, 144)
-
-[node name="Token102" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(96, 112)
-
-[node name="Token103" parent="Level_1/Pickups/Tokens" instance=ExtResource("20_1kice")]
-position = Vector2(192, 112)
 
 [node name="K Tokes" type="Node2D" parent="Level_1/Pickups"]
 
 [node name="Kill Token5" parent="Level_1/Pickups/K Tokes" instance=ExtResource("21_5newe")]
 position = Vector2(112, -96)
 
+[node name="Kill Token7" parent="Level_1/Pickups/K Tokes" instance=ExtResource("21_5newe")]
+position = Vector2(-48, -128)
+
 [node name="Kill Token4" parent="Level_1/Pickups/K Tokes" instance=ExtResource("21_5newe")]
-position = Vector2(256, 32)
+position = Vector2(256, -96)
 
 [node name="Kill Token2" parent="Level_1/Pickups/K Tokes" instance=ExtResource("21_5newe")]
 position = Vector2(-192, -112)
 
 [node name="Kill Token" parent="Level_1/Pickups/K Tokes" instance=ExtResource("21_5newe")]
 position = Vector2(-272, 144)
-
-[node name="Kill Token8" parent="Level_1/Pickups/K Tokes" instance=ExtResource("21_5newe")]
-position = Vector2(-32, 144)
 
 [node name="Kill Token3" parent="Level_1/Pickups/K Tokes" instance=ExtResource("21_5newe")]
 position = Vector2(224, 144)
@@ -1075,5 +529,3 @@ position = Vector2(-768, -640)
 [connection signal="timeout" from="GameManager/ChaseTimer" to="GameManager" method="_on_chase_timer_timeout"]
 [connection signal="timeout" from="GameManager/DeathTimer" to="GameManager" method="_on_death_timer_timeout"]
 [connection signal="timeout" from="GameManager/ReadyTimer" to="GameManager" method="_on_ready_timer_timeout"]
-[connection signal="timeout" from="GameManager/SwitchTimer" to="GameManager" method="_on_switch_timer_timeout"]
-[connection signal="timeout" from="GameManager/GoTimer" to="GameManager" method="_on_go_timer_timeout"]

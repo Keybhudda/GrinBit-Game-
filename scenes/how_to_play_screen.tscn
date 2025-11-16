@@ -1,0 +1,297 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1wtxm0dbrh7x"]
+
+[ext_resource type="Texture2D" uid="uid://dqoogeeunbvs3" path="res://assets/Black screen.png" id="1_4mb7w"]
+[ext_resource type="Texture2D" uid="uid://c1p48ajsh6yos" path="res://assets/Fruits/Apple.png" id="1_6vcj7"]
+[ext_resource type="Texture2D" uid="uid://uq8xsncvume4" path="res://assets/Picture for game explaination.png" id="1_v1fyb"]
+[ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="4_pcm25"]
+[ext_resource type="Script" uid="uid://vekk67qa0vri" path="res://scripts/mainmenubutton.gd" id="5_hap1o"]
+[ext_resource type="Texture2D" uid="uid://bybbosc3qt2r0" path="res://assets/Kill point Token.png" id="6_hap1o"]
+[ext_resource type="Texture2D" uid="uid://bexqp6kabiukb" path="res://assets/Token Point.png" id="7_hl6b5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl6b5"]
+bg_color = Color(0.27, 0.27, 0.27, 0.45882353)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.053634934, 0.13554458, 0.031477414, 0.4392157)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj0qs"]
+bg_color = Color(0.37, 0.37, 0.37, 0.5019608)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.22800004, 0.72, 0, 0.3372549)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="HowToPlayScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 467.0
+offset_top = 24.0
+offset_right = 738.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0.30999985, 0, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "HOW TO PLAY"
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="startmenu" type="Button" parent="Buttons"]
+offset_left = 528.0
+offset_top = 153.0
+offset_right = 704.0
+offset_bottom = 222.0
+theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
+theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_hl6b5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jj0qs")
+text = "Main Menu"
+icon = ExtResource("4_pcm25")
+icon_alignment = 2
+script = ExtResource("5_hap1o")
+
+[node name="Controls" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 459.0
+offset_top = 450.0
+offset_right = 829.0
+offset_bottom = 506.0
+theme_override_colors/default_color = Color(2.1658839e-06, 0.7565583, 0.39203075, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 20
+text = "	    					W	
+Move With:	A  S  D  OR : Arrow Keys    
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Food2" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 520.0
+offset_top = 282.0
+offset_right = 890.0
+offset_bottom = 338.0
+theme_override_colors/default_color = Color(1, 0.47058824, 0.8627451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.69803923)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 14
+text = "Food Items Give Extra Points"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Teleporting" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 819.0
+offset_top = 504.0
+offset_right = 1189.0
+offset_bottom = 604.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.99215686)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 14
+text = "	 See This Opening Below? 
+  You can use It To escape 
+		 	When Needed
+	You'll End Up Coming Out 
+			The Other Side!"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Teleporting2" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 24.0
+offset_top = 28.0
+offset_right = 394.0
+offset_bottom = 128.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.99215686)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 14
+text = "	 See This Opening Above? 
+  You can use It To escape 
+		 	When Needed
+	You'll End Up Coming Out 
+			The Other Side!"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Chasemode" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 238.0
+offset_top = 328.0
+offset_right = 468.0
+offset_bottom = 448.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.98039216, 0.8666667, 0, 0.56078434)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 12
+text = "	Collecting The Token With K
+  		   Starts ChaseMode 
+				(8 seconds)
+ Which Gives Grin Bit The Power 
+						To 
+	Consume The Elements!"
+fit_content = true
+autowrap_mode = 0
+
+[node name="OBJ" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 172.0
+offset_top = 251.0
+offset_right = 542.0
+offset_bottom = 307.0
+theme_override_colors/default_color = Color(0.87370825, 0.7764323, 1.1551381e-06, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 20
+text = "		Collect All Tokens To Win!
+							&"
+fit_content = true
+autowrap_mode = 0
+
+[node name="KillPointToken" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(369, 300)
+scale = Vector2(3, 3)
+texture = ExtResource("6_hap1o")
+
+[node name="TokenPoint" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(279, 303)
+scale = Vector2(3, 3)
+texture = ExtResource("7_hl6b5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 2
+position = Vector2(592, 321)
+
+[node name="BlackScreen" type="Sprite2D" parent="."]
+position = Vector2(593, 320)
+scale = Vector2(3.1502593, 2.7086613)
+texture = ExtResource("1_4mb7w")
+
+[node name="Screen shot of game" type="Sprite2D" parent="."]
+position = Vector2(592, 320)
+texture = ExtResource("1_v1fyb")
+region_rect = Rect2(0, 0, 1152, 650)
+
+[node name="Apple" type="Sprite2D" parent="."]
+position = Vector2(615, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("1_6vcj7")
+
+[node name="Food" type="Label" parent="."]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 224.0
+offset_right = 771.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(0, 0.8, 0.7866667, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.69803923)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "This Is An Apple (food item)
+"
+
+[node name="Ready?" type="Label" parent="."]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 125.0
+offset_right = 801.0
+offset_bottom = 184.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "Ready To Play? Got Back & Click Start!
+"
+
+[node name="Charcters" type="Node" parent="."]
+
+[node name="Chracter_label5" type="Label" parent="Charcters"]
+offset_left = 503.0
+offset_top = 351.0
+offset_right = 737.0
+offset_bottom = 410.0
+theme_override_colors/font_color = Color(0, 0.75686276, 0.39215687, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 20
+text = "This Is Grin-Bit (aka you)
+"
+
+[node name="Chracter_label4" type="Label" parent="Charcters"]
+offset_left = 891.0
+offset_top = 161.0
+offset_right = 1030.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(0.290762, 0.14416969, 0.0009354693, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "This is Grumbl
+"
+
+[node name="Chracter_label2" type="Label" parent="Charcters"]
+offset_left = 176.0
+offset_top = 446.0
+offset_right = 295.0
+offset_bottom = 505.0
+theme_override_colors/font_color = Color(0.39773837, 0.5281638, 0.7945007, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "This is Drizzl
+"
+
+[node name="Chracter_label" type="Label" parent="Charcters"]
+offset_left = 215.0
+offset_top = 127.0
+offset_right = 324.0
+offset_bottom = 186.0
+theme_override_colors/font_color = Color(1, 0.100000024, 0.11499977, 0.62352943)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.6509804)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "This is Pyro
+"
+
+[node name="Chracter_label3" type="Label" parent="Charcters"]
+offset_left = 961.0
+offset_top = 445.0
+offset_right = 1095.0
+offset_bottom = 504.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+text = "This is Whispr
+"
+
+[connection signal="pressed" from="Buttons/startmenu" to="Buttons/startmenu" method="_on_pressed"]

@@ -5,3 +5,9 @@ extends Node2D
 
 func death():
 	youdied.text = "\nYou Were Caught!\nLives Left " + str(Player_Lives.Player_Lives)
+
+func restarting():
+	youdied.text = "\n Ready?"
+
+func start():
+	youdied.text = "\n Go!"

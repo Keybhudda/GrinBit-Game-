@@ -1,0 +1,249 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxusgrkfbvels"]
+
+[ext_resource type="Script" uid="uid://db1b21n3xaeob" path="res://game_won_screen.gd" id="1_pf3d3"]
+[ext_resource type="Texture2D" uid="uid://dlunhnfjhm5rw" path="res://assets/Golden Grinbit CutOut.png" id="2_6jbjv"]
+[ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="2_wupp1"]
+[ext_resource type="Texture2D" uid="uid://cmmf3g4xhgnmc" path="res://assets/Grin bit start menu pic draft.png" id="3_6jbjv"]
+[ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="3_fgjvg"]
+[ext_resource type="Script" uid="uid://vekk67qa0vri" path="res://scripts/mainmenubutton.gd" id="3_pf3d3"]
+[ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="4_fgjvg"]
+[ext_resource type="AudioStream" uid="uid://bf0yo0ifhi4rf" path="res://assets/Sounds/Music/GrinBit_Game_won_music(yippy).mp3" id="7_itah0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itah0"]
+bg_color = Color(0.27, 0.27, 0.27, 0.45882353)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.053634934, 0.13554458, 0.031477414, 0.4392157)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jbjv"]
+bg_color = Color(0.37, 0.37, 0.37, 0.5019608)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.22800004, 0.72, 0, 0.3372549)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mex30"]
+bg_color = Color(0.24477637, 0.2447764, 0.24477637, 0.41568628)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.08, 0.021599999, 0.021599999, 0.61960787)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxr8n"]
+bg_color = Color(0.2, 0.2, 0.2, 0.60784316)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.35, 0.07700001, 0.07700001, 0.5058824)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="GameWonScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pf3d3")
+
+[node name="G-Grin" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-403, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6jbjv")
+region_enabled = true
+region_rect = Rect2(257, 132, 257, 354)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 0.5)
+scale = Vector2(5, 5)
+texture = ExtResource("3_6jbjv")
+
+[node name="youwon" type="Label" parent="."]
+layout_mode = 0
+offset_left = -224.0
+offset_top = -240.0
+offset_right = 209.0
+offset_bottom = -69.0
+theme_override_colors/font_color = Color(0.05490196, 0.70980394, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_fgjvg")
+theme_override_font_sizes/font_size = 40
+text = "CONGRATS YOU WON!! "
+
+[node name="finalscore" type="Label" parent="."]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -160.0
+offset_right = 1.0
+offset_bottom = -118.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_fgjvg")
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+
+[node name="props" type="Label" parent="."]
+layout_mode = 0
+offset_left = -224.0
+offset_top = -103.0
+offset_right = 238.0
+offset_bottom = -69.0
+theme_override_colors/font_color = Color(0.05490196, 0.70980394, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_fgjvg")
+theme_override_font_sizes/font_size = 24
+text = "You Rock! What A Gamer You Are! "
+
+[node name="Gratitude" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -594.00006
+offset_top = 243.0
+offset_right = 75.99994
+offset_bottom = 2290.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/default_color = Color(0.053325593, 0.7095097, 3.85046e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("3_fgjvg")
+theme_override_font_sizes/normal_font_size = 18
+text = "			Thank You For Playing My Game 
+
+	I Am Forever GrateFul For You Taking Time To Play !!
+	
+			And Win At That Good Stuff !!
+	
+
+"
+
+[node name="Info" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -594.0
+offset_top = -335.0
+offset_right = 76.0
+offset_bottom = 1712.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("3_fgjvg")
+theme_override_font_sizes/normal_font_size = 18
+text = "
+
+	All Art Made By Keybhudda
+	
+
+	SFX's Generated by ChatGPT But  edited By Keybhudda
+
+
+	Music Created By Keybhudda"
+
+[node name="Gratitude2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 151.0
+offset_top = -965.0
+offset_right = 821.0
+offset_bottom = 1082.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("3_fgjvg")
+theme_override_font_sizes/normal_font_size = 18
+text = "		 This Is My First Project Ever
+
+						And 
+
+			 I'm Proud To Offically
+
+				 Consider My Self 
+
+			    	A Game Dev!!
+	
+		  Give Me A Rating & Feedback On 
+					
+				  Your Experience.
+
+		   My Ears Are Forever Open To It.
+
+
+	   Once Again Thank YOU For Your Time!
+
+
+		    I Am Frover GRATEFUL For You 
+
+
+   Cant Wait To Continue To Build On This!
+"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -176.0
+offset_top = -48.0
+offset_right = -15.0
+offset_bottom = 18.0
+scale = Vector2(2, 2)
+
+[node name="startmenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
+theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_itah0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6jbjv")
+text = "Main Menu"
+icon = ExtResource("2_wupp1")
+icon_alignment = 2
+script = ExtResource("3_pf3d3")
+
+[node name="quitbutton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.45, 0.058499996, 0.058499996, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.28800002, 0.28800002, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_mex30")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxr8n")
+text = "Exit Game"
+script = ExtResource("4_fgjvg")
+
+[node name="winning_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_itah0")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/startmenu" to="VBoxContainer/startmenu" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitbutton" to="VBoxContainer/quitbutton" method="_on_pressed"]

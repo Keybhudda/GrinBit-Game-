@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://cmbd8npeejcen" path="res://scripts/water.gd" id="1_71sxn"]
 [ext_resource type="AudioStream" uid="uid://cafosjb5sedru" path="res://assets/Sounds/Game_Grinbit_SFX(Enemy Death).mp3" id="3_hjk4s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_71sxn"]
-size = Vector2(16, 17.879326)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjk4s"]
+radius = 8.166933
+height = 18.75823
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjk4s"]
 size = Vector2(16, 16)
@@ -52,6 +53,12 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_71sxn")
 
+[node name="Dead" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_1pclw")
+region_enabled = true
+region_rect = Rect2(81, 412, 14, 20)
+
 [node name="RUN" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 texture = ExtResource("1_1pclw")
@@ -62,7 +69,7 @@ region_rect = Rect2(81, 444, 14, 20)
 position = Vector2(0, -1)
 texture = ExtResource("1_1pclw")
 region_enabled = true
-region_rect = Rect2(81, 476, 14.229698, 20.11789)
+region_rect = Rect2(81, 476, 14, 20)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3
@@ -70,10 +77,10 @@ collision_mask = 3
 [node name="C_Body" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.8456962)
 scale = Vector2(0.8, 0.9)
-shape = SubResource("RectangleShape2D_71sxn")
+shape = SubResource("CapsuleShape2D_hjk4s")
 
-[node name="DeathTimer" type="Timer" parent="."]
-process_mode = 2
+[node name="MindTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CombatZone" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 1.2)
@@ -90,3 +97,4 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="MindTimer" to="." method="_on_mind_timer_timeout"]

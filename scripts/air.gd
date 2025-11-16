@@ -1,22 +1,25 @@
 extends CharacterBody2D
+#----------------------Scene and Other Node Connections ------------------------
 @onready var game_state: Node2D = %GameState
 @onready var game_manager: Node2D = %GameManager
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-#Based Variables 
 @onready var area_2d: Area2D = $Area2D
-@onready var death_timer: Timer = $DeathTimer
+@onready var mind_timer: Timer = $MindTimer
 @onready var deathscreen: Node2D = %deathscreen
 
 @onready var norm: Sprite2D = $Norm
+@onready var run: Sprite2D = $RUN
 
 @export var map: TileMapLayer
-@export var default_mode: Mode = Mode.CHASE
-enum Mode { CHASE, SHUFFLE, RUN, DEAD }
-var mode: Mode = Mode.CHASE#Default,mode can change depending on character personality.
+#----------------------Based Variables & Modes----------------------------------
+@export var default_mode: Mode = Mode.BASE
+enum Mode { BASE, CHASE, SHUFFLE, RUN, DEAD }
+#Default,mode can change depending on character personality.
+var mode: Mode = Mode.BASE
 
-var current_mode: Mode = Mode.CHASE
+var current_mode: Mode = Mode.BASE
 
 #Finding (GrinBit)
 @export_node_path("CharacterBody2D") var player_path : NodePath
@@ -46,6 +49,7 @@ var start_pos: Vector2
 
 var has_printed_mode_killable := false
 
+#----------------------Start Code ----------------------------------------------
 #Finds Where Grinbit is to track
 func _ready():
 	# Get the player node from the exported path
@@ -58,9 +62,10 @@ func _ready():
 		emit_signal("Start_Position", name, start_pos)
 	map.setup_astar_grid()
 	set_mode(default_mode)
-
+#This function when called resets the character to a state usually its BASE State
 func reset_state():
-	visible = true
+	norm.visible = true
+	run.visible = true
 	if get_node("Area2D/C_Body").disabled == true:
 		get_node("Area2D/C_Body").disabled = false
 	has_printed_mode_DEAD = false
@@ -74,7 +79,7 @@ func reset_state():
 	decision_timer = decision_interval
 	set_mode(default_mode)
 	print(name, " has been reset.")
-
+#This function changes the characters look according to certain modes.
 func update_look(new_mode: Mode) -> void:
 	match new_mode:
 		default_mode:
@@ -84,8 +89,10 @@ func update_look(new_mode: Mode) -> void:
 		Mode.RUN:
 			norm.visible = false
 		Mode.DEAD:
-			norm.visible = true
-			
+			norm.visible = false
+			run.visible = false
+
+#----------------------MOVEMENT CODE--------------------------------------------
 #Movement Of Character
 func _physics_process(_delta: float) -> void:
 	decision_timer -= _delta
@@ -99,8 +106,10 @@ func _physics_process(_delta: float) -> void:
 			path = map.get_astar_path(position, player.position)
 			path_index = 0
 	match mode:
+		Mode.BASE:
+			character_mind()
 		Mode.CHASE:
-			chase_player(_delta)
+			intercept_player(_delta)
 		Mode.SHUFFLE:
 			wander_around(_delta)
 		#---Kill Mode---
@@ -108,8 +117,54 @@ func _physics_process(_delta: float) -> void:
 			killable(_delta)
 		Mode.DEAD:
 			_dead(_delta)
-#here is where this character moves either tracking Grinbit or just moving randonmly Manging chase mode and stuff like that. 
 
+#This Function if a timer timeout which just tells the character what to do when the timer's time runs out.
+func _on_mind_timer_timeout() -> void:
+	print(name, " has Came to Mind!")
+	if mode == Mode.RUN or mode == Mode.DEAD:
+		return
+	else:
+		set_mode(Mode.BASE)
+
+#This is this characters mindset
+func character_mind() -> void:
+	print(name, " is thinking. . .")
+	# 50/50 of either going into Chase mode or Shuffle.
+	if randi() % 2 == 0:
+		set_mode(Mode.SHUFFLE)
+		mind_timer.start(10.0)
+		print(name, " is Scared and is wandering")
+	else:
+		set_mode(Mode.CHASE)
+		mind_timer.start(5.0)
+		print(name, "is trying to cut off Player!")
+#This Function is a unique function only for this character when They try to cut the player off. 
+var intercept_distance := GRID_SIZE * 10 # x grid cells ahead
+func intercept_player(_delta: float) -> void:
+	if player == null:
+		print(name, " cant find player!")
+		return
+	
+	var predicted_pos = player.position + (player.direction * intercept_distance) 
+	
+	predicted_pos = map.map_to_local(map.local_to_map(predicted_pos))
+	
+	if path.is_empty():
+		path = map.get_astar_path(position, player.position)
+		path_index = 0
+		return
+		
+	if path_index >= path.size():
+		path.clear()
+		return
+	
+	target_pos = path[path_index]
+	position = position.move_toward(target_pos, speed * _delta * GRID_SIZE)
+	
+	if position.distance_to(target_pos) < 0.5:
+		path_index += 1
+
+#This Function Makes the character Chase the player.
 func chase_player(_delta: float) -> void:
 	if path.is_empty():
 		path = map.get_astar_path(position, player.position)
@@ -126,7 +181,7 @@ func chase_player(_delta: float) -> void:
 	
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
-
+#This Function makes the charcter wander the map.
 func wander_around(_delta: float) -> void:
 	var random_cell = map.walkable_cells.pick_random()
 	var random_target = map.map_to_local(random_cell)
@@ -147,6 +202,7 @@ func wander_around(_delta: float) -> void:
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
 
+#This Functions Makes this character Killable How They Should While In This State
 func killable(_delta: float) -> void:
 	if not has_printed_mode_killable:
 		print(name, " is Killable!")
@@ -168,11 +224,12 @@ func killable(_delta: float) -> void:
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
 
-var  has_printed_mode_DEAD := false
 
+#Function for when the charcter is cauptured by the player while in RUN Mode
+var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
 	var start_position = start_pos
-	visible = false
+	visible = true
 	get_node("Area2D/C_Body").disabled = true
 	if not has_printed_mode_DEAD:
 		print(name, " is DEAD!")
@@ -193,14 +250,14 @@ func _dead(_delta: float) -> void:
 		
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
-
+#function that sets mode of character
 func set_mode(new_mode: Mode):
 	if current_mode != new_mode:
 		current_mode = new_mode
 		mode = new_mode
 		print(name, "mode switched to:", new_mode)
 		update_look(new_mode)
-
+#Standby function
 func can_move(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")
 	var test_pos = (position + dir * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
@@ -216,7 +273,7 @@ func can_move(dir: Vector2) -> bool:
 			continue
 		return false
 	return true
-
+#Standby function
 func can_move_to(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")
 	var test_pos = (position + dir * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
@@ -233,6 +290,8 @@ func can_move_to(dir: Vector2) -> bool:
 		return false
 	return true
 
+#----------------------Combat Code----------------------------------------------
+#When this character is caught while in RUN mode.
 func _caught():
 	print(name, " was caught!")
 	path.clear()
@@ -254,7 +313,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			emit_signal("player_caught")
 	#Later Feature If body = enemy -> Fight 
 
-
+#Functions for when the Game manager sets to CHASE mode this is what this charcter does 
 func on_enter_run_mode():
 	#Called when chase mode starts
 	set_mode(Mode.RUN)

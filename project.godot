@@ -10,16 +10,21 @@ config_version=5
 
 [application]
 
-config/name="GrinBit(Connected To Github)"
+config/name="Grin-Bit"
+config/description="This Is Grin-Bit Indie Game Made By Humble Knight Games (HKG) Founded By KeyBhudda "
 run/main_scene="uid://qojtnvgumkc"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://c5ymtve60lch6"
 
 [autoload]
 
-Player_Lives="*res://scripts/player_lives.gd"
 GameState="*res://scripts/game_state.gd"
 GlobalData="*res://scripts/GlobalData.gd"
+Player_Lives="*res://scripts/player_lives.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [global_group]
 
@@ -31,6 +36,7 @@ K-Tokens="all K-Tokens"
 DeathTimer=""
 foods="All Fruits and other food items"
 ChaseTimer=""
+SwitchTimer=""
 
 [input]
 

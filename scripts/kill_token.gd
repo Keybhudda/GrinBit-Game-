@@ -42,6 +42,7 @@ func _on_body_entered(_body) -> void:
 		game_manager._on_chase_mode_activated()
 		emit_signal("Activate_Chase") #Trigger Chase mode
 	game_manager.add_point1()
+	game_manager.Check_timer()
 	game_state.collect_item(ktoken_id, "ktoken")# register collection
 	
 	

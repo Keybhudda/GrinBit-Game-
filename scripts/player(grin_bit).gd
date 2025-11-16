@@ -1,5 +1,10 @@
 extends CharacterBody2D
-#Grin Bit Code Below
+#----------------------Scene and Other Node Connections ------------------------
+
+@onready var norm: Sprite2D = $Norm
+@onready var eat_mode: Sprite2D = $EatMode
+@export var map: TileMapLayer
+#----------------------Based Variables & Modes----------------------------------
 const GRID_SIZE = 16
 var speed = 4.5
 var direction = Vector2.ZERO
@@ -14,13 +19,8 @@ var mode: Mode = Mode.NORM
 
 var current_mode: Mode = Mode.NORM
 
-@onready var norm: Sprite2D = $Norm
-@onready var eat_mode: Sprite2D = $EatMode
 
-
-
-@export var map: TileMapLayer
-
+#----------------------Start Code ----------------------------------------------
 signal Start_Position(entity_name: String, position: Vector2)
 
 func _ready(): 
@@ -33,7 +33,7 @@ func _ready():
 		set_mode(Mode.NORM)
 		emit_signal("Start_Position", name, position)
 
-
+#Funtion Stops player movment to prevent going off grid
 func stop_movement() -> void:
 	velocity = Vector2.ZERO
 	moving = false
@@ -41,7 +41,7 @@ func stop_movement() -> void:
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
 	print(name, " Has Stopped All Movement.")
 
-#For chaning and setting Modes for this character
+#function that sets mode of character
 func set_mode(new_mode: Mode):
 	if current_mode != new_mode:
 		current_mode = new_mode
@@ -49,7 +49,7 @@ func set_mode(new_mode: Mode):
 		print(name, "mode switched to:", new_mode)
 		update_look(new_mode)
 
-
+#This function changes the characters look according to certain modes.
 func update_look(new_mode: Mode) -> void:
 	match new_mode:
 		Mode.NORM:
@@ -57,6 +57,8 @@ func update_look(new_mode: Mode) -> void:
 		Mode.EAT:
 			norm.visible = false
 
+#----------------------MOVEMENT CODE--------------------------------------------
+#Movement Of Character
 func _physics_process(_delta):
 	
 	handle_input()
@@ -86,7 +88,7 @@ func _physics_process(_delta):
 	
 	#check if wall is hitting 
 
-#How The Player Move Grinbit
+#How The Player Moves Grinbit
 func handle_input():
 	if Input.is_action_pressed("ui_up"):
 		next_direction = Vector2.UP
@@ -124,8 +126,9 @@ func can_move(dir: Vector2) -> bool:
 	
 	
 	return space_state.intersect_point(params).is_empty()
-#need to improve collideing when in EAT Mode for smoother enemy collection.
 
+
+#Functions for when the Game manager sets to CHASE mode this is what this charcter does 
 func on_enter_run_mode():
 	#Called when chase mode starts
 	set_mode(Mode.EAT)

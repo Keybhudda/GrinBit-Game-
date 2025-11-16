@@ -2,33 +2,45 @@ extends Node
 #This Is used to also keep track of game progress but also to be used to call game functions like the start menu, game over menu, and more. 
 #Could Add The Chase Mode Event fuction in here.
 # will mostlikely have to make the score save by its self.
-
+#-----------------------Modes---------------------------------------------------
 enum StateOfGame {RUNNING, DEAD, RESETTING, READY }
 enum ModeOfGame {NORM, CHASE}
 
 var current_state: StateOfGame = StateOfGame.RUNNING
 var game_mode: ModeOfGame = ModeOfGame.NORM
 
+#-----------------------Node Connections----------------------------------------
 @onready var game_state: Node2D = %GameState
+
 @onready var score_label: Label = $score_label
+
+
 @onready var deathscreen: Node2D = get_tree().get_first_node_in_group("deathscreen")
 @onready var player_lives = get_node("/root/Player_Lives")
 @export var map: TileMapLayer
+#-----------------------Music and Sounds----------------------------------------
+@onready var player_death: AudioStreamPlayer2D = $PlayerDeath
+@onready var backgroundmusic: AudioStreamPlayer2D = $Backgroundmusic
 
+#-----------------------Timers--------------------------------------------------
 @onready var death_timer: Timer = get_tree().get_first_node_in_group("DeathTimer")
 @onready var ready_timer: Timer = get_tree().get_first_node_in_group("ReadyTimer")
 @onready var chase_timer: Timer = get_tree().get_first_node_in_group("ChaseTimer")
+@onready var switch_timer: Timer = get_tree().get_first_node_in_group("SwitchTimer")
+@onready var go_timer: Timer = get_tree().get_first_node_in_group("GoTimer")
 
+#-----------------------Characters Ref------------------------------------------
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemies = get_tree().get_nodes_in_group("Element")
 
-
+#-----------------------Base Variables------------------------------------------
 var score = 0
 var total_score = score
 var player_start_position: Vector2
 var enemy_start_position = {}
 
 
+#----------------------------Start Code-----------------------------------------
 func _ready() -> void:
 	game_mode = ModeOfGame.NORM
 	print("GameManager instance:", self.get_path())
@@ -46,14 +58,19 @@ func _ready() -> void:
 	game_state.connect("all_items_collected", Callable(self, "_on_level_complete"))
 	
 	current_state = StateOfGame.RUNNING
-	
-	
+
+#add a timer to give time to play game beat music and then send to game over screen for now until we make more levels
+func _on_switch_timer_timeout() -> void:
+	pass
 func _on_level_complete():
+	GlobalData.total_score = score
 	print("Level Complete!")
-#add a timer to give time to play game beat music and then send to game over screen for now until we make more levels 
+	call_deferred("game_won")
 #where when a level is complete it send you to the next level. 
 
-
+func game_won():
+	get_tree().change_scene_to_file("res://scenes/game_won_screen.tscn")
+	Player_Lives.reset()
 
 func _on_Start_Position(entity_name: String, position: Vector2):
 	if entity_name == "Grinbit":
@@ -79,7 +96,16 @@ func set_game_mode(new_mode: ModeOfGame):
 			for enemy in enemies:
 				if enemy and enemy.is_inside_tree():
 					enemy.on_enter_run_mode()
-			chase_timer.start(10.0)
+			chase_timer.start(8.0)
+
+func Check_timer():
+	if game_mode == ModeOfGame.CHASE:
+		print("extending Chase mode Time")
+		chase_timer.stop()
+		chase_timer.start(8.0)
+	else:
+		if game_mode == ModeOfGame.NORM:
+			print("Chase mode now activated.")
 
 
 #Scoring System
@@ -89,6 +115,8 @@ func add_point():
 	_update_score_label()
 func add_point1():
 	score += 75
+
+
 
 	_update_score_label()
 func add_pointf1():
@@ -118,16 +146,17 @@ func _on_player_caught():
 	if current_state != StateOfGame.RUNNING:
 		return
 	
-	
 	print("player caught!")
 	current_state = StateOfGame.DEAD
 	if current_state == StateOfGame.DEAD:
 		get_tree().paused = true
+		player_death.play()
 	Player_Lives.lose_life()#Function to subtract lives after each death.
 	
 	if Player_Lives.Player_Lives > 0:
 		deathscreen.visible = true
 		deathscreen.death()
+		
 		death_timer.start(2.0) #Starts Timer to display death 
 	else:
 		print("GAME OVER! OUT OF LIVES")
@@ -169,13 +198,20 @@ func reset_round():
 func start_game():
 	current_state = StateOfGame.READY
 	get_tree().paused = true
+	deathscreen.visible = true
+	deathscreen.restarting()
 	ready_timer.start(3.0)
 	print("Ready?")
 
 
 func _on_ready_timer_timeout() -> void:
+	deathscreen.start()
+	go_timer.start(0.5)
+
+func _on_go_timer_timeout() -> void:
 	get_tree().paused = false
 	print("Go!")
+	deathscreen.visible = false
 	current_state = StateOfGame.RUNNING
 
 func _on_chase_mode_activated():
