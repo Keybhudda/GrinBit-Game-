@@ -274,7 +274,7 @@ bus = &"Sound Effects"
 
 [node name="Backgroundmusic" type="AudioStreamPlayer2D" parent="GameManager"]
 stream = ExtResource("5_1kice")
-volume_db = -25.0
+volume_db = -20.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true

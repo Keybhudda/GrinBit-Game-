@@ -120,7 +120,7 @@ func add_point1():
 
 	_update_score_label()
 func add_pointf1():
-	score += 200
+	score += 400
 
 	_update_score_label()
 func add_pointf2():
@@ -128,7 +128,7 @@ func add_pointf2():
 
 	_update_score_label()
 func add_pointf3():
-	score += 500
+	score += 600
 
 	_update_score_label()
 	#This is the new add point function for when the player collides with an enemy earning them points

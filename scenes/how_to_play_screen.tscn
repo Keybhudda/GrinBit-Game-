@@ -227,6 +227,7 @@ offset_left = 438.0
 offset_top = 125.0
 offset_right = 801.0
 offset_bottom = 184.0
+theme_override_colors/font_color = Color(0.2605133, 0.92731005, 3.85046e-07, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 18
