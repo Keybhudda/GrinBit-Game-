@@ -1,19 +1,22 @@
 extends TileMapLayer
-
+#----------------------Scene and Other Node Connections ------------------------
 @export var map_size: Vector2i = Vector2i(35, 20)
 @export var obstacle_terrain_id: int = 3 # Tile ID or custon data flag for walls
 @export var debug_draw: bool = true
 
+#----------------------Based Variables------------------------------------------
 var astar_grid: AStarGrid2D
 var cell_size: Vector2 = Vector2i(16, 16)
 
 var walkable_cells: Array[Vector2i] = []
 
+#--------------------------Start Code-------------------------------------------
 func _ready() -> void:
 	cell_size = tile_set.tile_size
 	setup_astar_grid()
 	print("Navigation grid built with AstarGrid2D", astar_grid.region)
 
+#Sets Up The Map For Whom Ever Calls it.
 func setup_astar_grid():
 	var used_rect = get_used_rect()
 	
@@ -52,6 +55,7 @@ func setup_astar_grid():
 	print("AStarGrid built. Region:", astar_grid.region)
 	print("Walkable cells count:", walkable_cells.size())
 
+#Enemies Call This To Move Accordingly to the map and their destination.
 func get_astar_path(world_start: Vector2, world_end: Vector2) -> Array:
 	if astar_grid == null:
 		push_error("AstarGrid not built yet! Call setup_astar_grid() first.")
@@ -80,6 +84,7 @@ func get_astar_path(world_start: Vector2, world_end: Vector2) -> Array:
 		
 	return world_path
 	
+#Debugger Visuals To Confirm Made Creation
 func _draw() -> void:
 	if not debug_draw or astar_grid == null:
 		return

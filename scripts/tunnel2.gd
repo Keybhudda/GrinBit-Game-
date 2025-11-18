@@ -1,15 +1,17 @@
 extends Area2D
+#Tunnel Code Gives The Player The Ability To Go Through This Area and Come Out the other side of a connected Area.
 
-
+#--------------------------Based Variables & Connections------------------------
 @export var tunnel_id: String = "B"
 @export var linked_tunnel: NodePath
 @export var exit_offset: Vector2 = Vector2(0, 16)
 const GRID_SIZE = 16
-# Called when the node enters the scene tree for the first time.
+
+#----------------------Start Code ----------------------------------------------
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
-
+#----------------------Action Code----------------------------------------------
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if linked_tunnel:

@@ -1,7 +1,6 @@
 extends Node
-#This Is used to also keep track of game progress but also to be used to call game functions like the start menu, game over menu, and more. 
-#Could Add The Chase Mode Event fuction in here.
-# will mostlikely have to make the score save by its self.
+#This Is used to Manage & keep track of game progress Basically Controls The Game. 
+
 #-----------------------Modes---------------------------------------------------
 enum StateOfGame {RUNNING, DEAD, RESETTING, READY }
 enum ModeOfGame {NORM, CHASE}
@@ -59,19 +58,20 @@ func _ready() -> void:
 	
 	current_state = StateOfGame.RUNNING
 
-#add a timer to give time to play game beat music and then send to game over screen for now until we make more levels
+#A timer to give time to play game beat music and then send to game over screen for now until we make more levels
 func _on_switch_timer_timeout() -> void:
 	pass
+#where when a level is complete it send you to the next level. 
 func _on_level_complete():
 	GlobalData.total_score = score
 	print("Level Complete!")
 	call_deferred("game_won")
-#where when a level is complete it send you to the next level. 
 
+#Sends Player to Game won screen for now Will send them to next level later
 func game_won():
-	get_tree().change_scene_to_file("res://scenes/game_won_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menus & Pop Ups/game_won_screen.tscn")
 	Player_Lives.reset()
-
+#Gets the starting points for all characters to use later for reload.
 func _on_Start_Position(entity_name: String, position: Vector2):
 	if entity_name == "Grinbit":
 		player_start_position = position
@@ -79,7 +79,7 @@ func _on_Start_Position(entity_name: String, position: Vector2):
 		enemy_start_position[entity_name] = position
 	print("Position Set ", entity_name, " at", position)
 
-
+#Sets Game mode to then set Enemies and player to their according modes 
 func set_game_mode(new_mode: ModeOfGame):
 	if game_mode == new_mode:
 		return
@@ -98,6 +98,7 @@ func set_game_mode(new_mode: ModeOfGame):
 					enemy.on_enter_run_mode()
 			chase_timer.start(8.0)
 
+#Adds Time to Chase Timer If a additional k token is collected while chase mode is still active.
 func Check_timer():
 	if game_mode == ModeOfGame.CHASE:
 		print("extending Chase mode Time")
@@ -136,12 +137,12 @@ func add_pointC():
 	score += 600
 	
 	_update_score_label()
-
+#function That updates score
 func _update_score_label():
 	score_label.text = "Score: " + str(score)
 	
 
-
+#function that is called when a signal is emitted from a player and enemy collision
 func _on_player_caught():
 	if current_state != StateOfGame.RUNNING:
 		return
@@ -163,15 +164,17 @@ func _on_player_caught():
 		get_tree().paused = false
 		call_deferred("out_of_lives")
 
+#Function for when the player runs out of lives
 func out_of_lives():
 	GlobalData.total_score = score
-	get_tree().change_scene_to_file("res://scenes/gameover.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menus & Pop Ups/gameover.tscn")
 	Player_Lives.reset()
-
+#Function For when to init reset of the game. to then continue
 func _on_death_timer_timeout() -> void:
 	deathscreen.visible = false
 	reset_round()
 
+#reset the scene 
 func reset_round():
 	print("resetting round. . .")
 	current_state = StateOfGame.RESETTING
@@ -191,10 +194,6 @@ func reset_round():
 		print("Positions reset!")
 		start_game()
 
-
-
-
-
 func start_game():
 	current_state = StateOfGame.READY
 	get_tree().paused = true
@@ -203,7 +202,7 @@ func start_game():
 	ready_timer.start(3.0)
 	print("Ready?")
 
-
+#Visual reset functions to help player know whats going on
 func _on_ready_timer_timeout() -> void:
 	deathscreen.start()
 	go_timer.start(0.5)
@@ -214,6 +213,7 @@ func _on_go_timer_timeout() -> void:
 	deathscreen.visible = false
 	current_state = StateOfGame.RUNNING
 
+#Chase Mode Function 
 func _on_chase_mode_activated():
 	print("CHASE MODE ACTIVATED!")
 	player.on_enter_run_mode()

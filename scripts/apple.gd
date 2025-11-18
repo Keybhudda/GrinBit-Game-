@@ -1,15 +1,17 @@
 extends Area2D
+#----------------------Scene and Other Node Connections ------------------------
 @onready var game_manager: Node = %GameManager
 @onready var game_state: Node = %GameState
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-@onready var available_timer: Timer = $AvailableTimer
-
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
+#--------------------------Timers-----------------------------------------------
+@onready var available_timer: Timer = $AvailableTimer
+
+#----------------------Based Variables------------------------------------------
 @export var food_id: String = ""
 var collected := false
-
+#----------------------Start Code ----------------------------------------------
 func _ready() -> void:
 	#Assign a consistent ID if not set manually
 	if food_id == "":
@@ -29,7 +31,7 @@ func _ready() -> void:
 	collision_shape_2d.disabled = true
 	available_timer.start(10.0)
 	
-#When Collected by player 
+#----------------------Action Code----------------------------------------------
 func _on_body_entered(_body) -> void:
 	if collected:
 		return #prevent Duplicated pickup

@@ -1,13 +1,13 @@
 extends Node
-#This Script is used to keep tract of game progress and items
+#This Script is used to keep tract of Game Data
 #This Script Goes Hand & Hand With GameManger(GM) ->
 # Where There is A Function That Saves all Game data when a death event happens to then resume from what is saved.
 
 
-
+#----------------------Signals--------------------------------------------------
 signal all_items_collected
 signal k_tokens_ready(tokens: Array)
-
+#-----------------------Base Variables------------------------------------------
 var coins := 0
 var kcoins := 0
 var foods := 0
@@ -15,12 +15,11 @@ var collected_items: Dictionary = {}
 
 var total_items := 0 #Total number of collectibles in the scene
 
-
 var player_position: Vector2
 var enemy_position: Dictionary = {}
 
 
-
+#----------------------------Start Code-----------------------------------------
 #game registering items that are collectable.
 func register_item(id: String) -> void:
 	#Called by tokens/foods in _ready() to register themselves.
@@ -50,6 +49,7 @@ func collect_item(id: String, type: String) -> void:
 	
 	print("Collected:", id, "| Type:", type)
 	check_all_items_collected()
+
 #checks if all items are collected if true will move to next level 
 func check_all_items_collected() -> void:
 	if collected_items.values().all(func(v): return v):

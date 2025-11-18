@@ -1,12 +1,16 @@
 extends Area2D
-
+#----------------------Scene and Other Node Connections ------------------------
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var game_state: Node2D = %GameState
 @onready var game_manager: Node2D = %GameManager
 
+#--------------------------Timers-----------------------------------------------
+
+#----------------------Based Variables------------------------------------------
 @export var food_id: String = ""
 var collected := false
 
+#----------------------Start Code ----------------------------------------------
 func _ready() -> void:
 	#Assign a consistent ID if not set manually
 	if food_id == "":
@@ -22,6 +26,7 @@ func _ready() -> void:
 		collected = false
 		print("food_item", food_id, " ready and registered.")
 
+#----------------------Action Code----------------------------------------------
 func _on_body_entered(_body) -> void:
 	if collected:
 		return #prevent Duplicated pickup

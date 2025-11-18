@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cxusgrkfbvels"]
 
-[ext_resource type="Script" uid="uid://db1b21n3xaeob" path="res://game_won_screen.gd" id="1_pf3d3"]
+[ext_resource type="Script" uid="uid://db1b21n3xaeob" path="res://scripts/game_won_screen.gd" id="1_pf3d3"]
 [ext_resource type="Texture2D" uid="uid://dlunhnfjhm5rw" path="res://assets/Golden Grinbit CutOut.png" id="2_6jbjv"]
 [ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="2_wupp1"]
 [ext_resource type="Texture2D" uid="uid://cmmf3g4xhgnmc" path="res://assets/Grin bit start menu pic draft.png" id="3_6jbjv"]

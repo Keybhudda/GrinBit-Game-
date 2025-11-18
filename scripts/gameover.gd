@@ -1,5 +1,5 @@
 extends Control
-
+#This Is The Game Over Screen Script
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var endscore: Label = $VBoxContainer/endscore

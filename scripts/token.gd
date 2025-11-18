@@ -1,14 +1,15 @@
 class_name Token 
 extends Area2D
-
+#----------------------Scene and Other Node Connections ------------------------
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var game_manager: Node2D = %GameManager
 @onready var game_state: Node2D = %GameState
 
+#--------------------------Based Variables--------------------------------------
 @export var token_id: String = ""
 var collected := false
 
-
+#----------------------Start Code ----------------------------------------------
 func _ready() -> void:
 	#Assign a consistent ID if not set manually
 	if token_id == "":
@@ -27,6 +28,7 @@ func _ready() -> void:
 		print("Token", token_id, " ready and registered.")
 		
 
+#----------------------Action Code----------------------------------------------
 func _on_body_entered(_body) -> void:
 	if collected:
 		return #prevent Duplicate pickup

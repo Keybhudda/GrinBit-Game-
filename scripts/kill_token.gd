@@ -1,17 +1,20 @@
 class_name kill_token 
 extends Area2D
+#The Chase Mode Activator
 #This Token Will Give Bonus Points But also Change The Game Mode From The Player(GrinBit) Being Chased to The Player chasing the enemies for a short period of time.
 # Which during that time the player comes in contact with an enemies they shall get points and have the enemy have to rest themselves before returning back to normal mode.
+#----------------------Scene and Other Node Connections ------------------------
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var game_state: Node2D = %GameState
 @onready var game_manager: Node2D = %GameManager
 
+#--------------------------Based Variables & Signals----------------------------
 @export var ktoken_id: String = ""
 var collected := false
 
 
 signal Activate_Chase
-
+#----------------------Start Code ----------------------------------------------
 func _ready() -> void:
 	#Assign a consistent ID if not set manually
 	if ktoken_id == "":
@@ -29,7 +32,7 @@ func _ready() -> void:
 		collected = false
 		print("k-token", ktoken_id, " ready and registered.")
 
-
+#----------------------Action Code----------------------------------------------
 func _on_body_entered(_body) -> void:
 	if collected:
 		return #prevent Duplicated pickup
