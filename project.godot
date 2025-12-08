@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Grin-Bit"
 config/description="This Is Grin-Bit Indie Game Made By Humble Knight Games (HKG) Founded By KeyBhudda "
-run/main_scene="uid://qojtnvgumkc"
+run/main_scene="uid://c1uulnctcvunt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://c5ymtve60lch6"
 

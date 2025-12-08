@@ -86,7 +86,6 @@ func _physics_process(_delta):
 		elif  direction != Vector2.ZERO and can_move(direction):
 			start_move(direction)
 	
-	#check if wall is hitting 
 
 #How The Player Moves Grinbit
 func handle_input():
