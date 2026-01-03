@@ -131,15 +131,19 @@ func character_mind() -> void:
 	print(name, " is thinking. . .")
 	# 50/50 of either going into Chase mode or Shuffle.
 	if randi() % 2 == 0:
-		set_mode(Mode.SHUFFLE)
-		mind_timer.start(10.0)
+		set_mode(Mode.CHASE)
+		mind_timer.start(8.0)
 		print(name, " is Scared and is wandering")
 	else:
 		set_mode(Mode.CHASE)
-		mind_timer.start(5.0)
+		mind_timer.start(8.0)
 		print(name, "is trying to cut off Player!")
+
 #This Function is a unique function only for this character when They try to cut the player off. 
-var intercept_distance := GRID_SIZE * 10 # x grid cells ahead
+
+var intercept_distance := GRID_SIZE * 10 # x grid cells ahead\
+
+#For Intecpt code Use Wander code varibles to think of a way to make the intercept code scan the map to then use it to find the next avaible cut off point.
 func intercept_player(_delta: float) -> void:
 	if player == null:
 		print(name, " cant find player!")
@@ -231,6 +235,7 @@ func _dead(_delta: float) -> void:
 	var start_position = start_pos
 	visible = true
 	get_node("Area2D/C_Body").disabled = true
+	get_node("ZT").disabled = true
 	if not has_printed_mode_DEAD:
 		print(name, " is DEAD!")
 		has_printed_mode_DEAD = true
@@ -295,9 +300,6 @@ func can_move_to(dir: Vector2) -> bool:
 func _caught():
 	print(name, " was caught!")
 	path.clear()
-	path_index = 0
-	position = start_pos
-	moving = false
 
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:

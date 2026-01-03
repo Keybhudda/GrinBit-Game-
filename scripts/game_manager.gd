@@ -27,6 +27,8 @@ var game_mode: ModeOfGame = ModeOfGame.NORM
 @onready var chase_timer: Timer = get_tree().get_first_node_in_group("ChaseTimer")
 @onready var switch_timer: Timer = get_tree().get_first_node_in_group("SwitchTimer")
 @onready var go_timer: Timer = get_tree().get_first_node_in_group("GoTimer")
+@onready var fight_timer: Timer = get_tree().get_first_node_in_group("FightTimer")
+@onready var recover_timer: Timer = get_tree().get_first_node_in_group("RecoverTimer")
 
 #-----------------------Characters Ref------------------------------------------
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -41,6 +43,7 @@ var enemy_start_position = {}
 
 #----------------------------Start Code-----------------------------------------
 func _ready() -> void:
+	start_game()
 	game_mode = ModeOfGame.NORM
 	print("GameManager instance:", self.get_path())
 	game_state.debug_print_items()
@@ -53,10 +56,36 @@ func _ready() -> void:
 		print("Connecting enemy:", enemy.name)
 		enemy.connect("player_caught", Callable(self, "_on_player_caught"))
 		enemy.connect("Start_Position", Callable(self, "_on_Start_Position"))
+		
 	
 	game_state.connect("all_items_collected", Callable(self, "_on_level_complete"))
 	
 	current_state = StateOfGame.RUNNING
+	
+func _on_element_clash(body):
+	print(body.name, "Has Clashed With Another Element")
+	if game_mode == ModeOfGame.CHASE:
+		return
+	else :
+		for enemy in enemies:
+			if enemy.clashed == true:
+				print(enemy.name, " Is Fighting.")
+				fight_timer.start(5.0)
+
+func _on_fight_timer_timeout() -> void:
+	for enemy in enemies:
+		if enemy.clashed == true:
+			print(enemy.name, " Is Done Fighting.")
+			recover_timer.start(5.0)
+			enemy.recovering = true
+
+
+func _on_recover_timer_timeout() -> void:
+	for enemy in enemies:
+		if enemy.recovering == true:
+			print(enemy.name, " Is Recovering")
+
+
 
 #A timer to give time to play game beat music and then send to game over screen for now until we make more levels
 func _on_switch_timer_timeout() -> void:

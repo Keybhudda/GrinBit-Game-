@@ -18,7 +18,7 @@ extends CharacterBody2D
 @export var default_mode: Mode = Mode.SHUFFLE
 enum Mode { BASE, CHASE, SHUFFLE, RUN, DEAD }
 #Default,mode can change depending on character personality.
-var mode: Mode = Mode.SHUFFLE 
+var mode: Mode = Mode.SHUFFLE
 
 var current_mode: Mode = Mode.SHUFFLE
 
@@ -53,7 +53,7 @@ var has_printed_mode_killable := false
 #----------------------Start Code ----------------------------------------------
 #Finds Where Grinbit is to track
 func _ready():
-	# Get the player node from the exported path
+# Get the player node from the exported path
 	player = get_node(player_path)
 	@warning_ignore("integer_division")
 	position = map.map_to_local(map.local_to_map(position)).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
@@ -61,8 +61,8 @@ func _ready():
 	if position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)):
 		start_pos = position
 		emit_signal("Start_Position", name, start_pos)
-	map.setup_astar_grid()
-	set_mode(default_mode)
+		map.setup_astar_grid()
+		set_mode(default_mode)
 #This function when called resets the character to a state usually its BASE State
 func reset_state():
 	norm.visible = true
@@ -96,16 +96,16 @@ func update_look(new_mode: Mode) -> void:
 #Movement Of Character
 func _physics_process(_delta: float) -> void:
 	decision_timer -= _delta
-	
+
 	if player == null or mode == Mode.SHUFFLE:
-		set_mode(Mode.SHUFFLE)
-		
-	
+			set_mode(Mode.SHUFFLE)
+
+
 	if decision_timer <= 0.0:
 		decision_timer = decision_interval
-		if mode == Mode.CHASE and player:
-			path = map.get_astar_path(position, player.position)
-			path_index = 0
+	if mode == Mode.CHASE and player:
+		path = map.get_astar_path(position, player.position)
+		path_index = 0
 	match mode:
 		Mode.BASE:
 			character_mind()
@@ -118,11 +118,11 @@ func _physics_process(_delta: float) -> void:
 			killable(_delta)
 		Mode.DEAD:
 			_dead(_delta)
-#Territory area function
+	#Territory area function
 func _on_t_area_body_exited(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-		
+	
 	if mode == Mode.RUN or mode == Mode.DEAD:
 		return
 	else:
@@ -134,7 +134,7 @@ func _on_t_area_body_exited(body: Node2D) -> void:
 func _on_t_area_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-		
+
 	if mode == Mode.RUN or mode == Mode.DEAD:
 		return
 	else:
@@ -151,35 +151,35 @@ func chase_player(_delta: float) -> void:
 		path = map.get_astar_path(position, player.position)
 		path_index = 0
 		return
-	
+
 	if path_index >= path.size():
 		path.clear()
 		return
-	
+
 	target_pos = path[path_index]
-	
+
 	position = position.move_toward(target_pos, speed * _delta * GRID_SIZE)
-	
+
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
-#This Function makes the charcter wander the map.
+	#This Function makes the character wander the map.
 func wander_around(_delta: float) -> void:
 	var random_cell = map.walkable_cells.pick_random()
 	var random_target = map.map_to_local(random_cell)
-	
+
 	if path.is_empty():
 		path = map.get_astar_path(position, random_target)
 		path_index = 0
 		return
-		
+
 	if path_index >= path.size():
 		path.clear()
 		return
-	
+
 	target_pos = path[path_index]
-	
+
 	position = position.move_toward(target_pos, speed * _delta * GRID_SIZE)
-	
+
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
 #This Functions Makes this character Killable How They Should While In This State
@@ -193,14 +193,14 @@ func killable(_delta: float) -> void:
 		path = map.get_astar_path(position, start_position)
 		path_index = 0
 		return
-		
+
 	if path_index >= path.size():
 		path.clear()
 		return
-		
+
 	target_pos = path[path_index]
 	position = position.move_toward(target_pos, speed * _delta * GRID_SIZE)
-		
+
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
 
@@ -210,6 +210,7 @@ func _dead(_delta: float) -> void:
 	var start_position = start_pos
 	visible = true
 	get_node("Area2D/C_Body").disabled = true
+	get_node("ZT").disabled = true
 	if not has_printed_mode_DEAD:
 		print(name, " is DEAD!")
 		has_printed_mode_DEAD = true
@@ -245,7 +246,7 @@ func can_move(dir: Vector2) -> bool:
 	params.position = test_pos
 	params.collide_with_areas = true
 	params.collide_with_bodies = true
-	
+
 	var result = space_state.intersect_point(params)
 	for r in result:
 		if r.collider.is_in_group("Player"):
@@ -261,7 +262,7 @@ func can_move_to(dir: Vector2) -> bool:
 	params.position = test_pos
 	params.collide_with_areas = true
 	params.collide_with_bodies = true
-	
+
 	var result = space_state.intersect_point(params)
 	for r in result:
 		if r.collider.is_in_group("Player"):
@@ -274,9 +275,6 @@ func can_move_to(dir: Vector2) -> bool:
 func _caught():
 	print(name, " was caught!")
 	path.clear()
-	path_index = 0
-	position = start_pos
-	moving = false
 
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -290,12 +288,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			return
 		else:
 			emit_signal("player_caught")
-	else:
-		if body.is_in_group("Element"):
-			print(name, " has crossed paths with ", body.name)
-	#Later Feature If body = enemy -> Fight 
+		
+	if body.is_in_group("Element"):
+		print(name, " has crossed paths with ", body.name)
+	#Later Feature If body = enemy -> Fight
 
-#Functions for when the Game manager sets to CHASE mode this is what this charcter does 
+#Functions for when the Game manager sets to CHASE mode this is what this charcter does
 func on_enter_run_mode():
 	#Called when chase mode starts
 	set_mode(Mode.RUN)

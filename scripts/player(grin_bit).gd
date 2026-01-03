@@ -19,7 +19,7 @@ var mode: Mode = Mode.NORM
 
 var current_mode: Mode = Mode.NORM
 
-
+const TURN_EARLY_DISTANCE := 16.0
 #----------------------Start Code ----------------------------------------------
 signal Start_Position(entity_name: String, position: Vector2)
 
@@ -69,35 +69,34 @@ func _physics_process(_delta):
 		
 		#stop moving when reach target tile
 		if position.distance_to(target_pos) < 0.1:
-			@warning_ignore("integer_division")
-			position = target_pos.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+			position = target_pos
 			moving = false
 			
 			
 			#Check if we can change direction while moving
-			if next_direction != Vector2.ZERO and can_move(next_direction):
-				start_move(next_direction)
+			if next_direction != Vector2.ZERO:
+				var dist = position.distance_to(target_pos)
+				if dist <= TURN_EARLY_DISTANCE and can_move(next_direction):
+					start_move(next_direction)
+					return
 			elif can_move(direction):
 				start_move(direction)
 	else: 
 		#If not moving, try next direction if possible
 		if next_direction != Vector2.ZERO and can_move(next_direction):
 			start_move(next_direction)
-		elif  direction != Vector2.ZERO and can_move(direction):
-			start_move(direction)
 	
 
 #How The Player Moves Grinbit
 func handle_input():
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up"):
 		next_direction = Vector2.UP
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_just_pressed("ui_down"):
 		next_direction = Vector2.DOWN
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_just_pressed("ui_left"):
 		next_direction = Vector2.LEFT
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_just_pressed("ui_right"):
 		next_direction = Vector2.RIGHT
-
 
 func start_move(dir: Vector2):
 	direction = dir

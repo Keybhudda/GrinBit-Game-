@@ -37,6 +37,9 @@ DeathTimer=""
 foods="All Fruits and other food items"
 ChaseTimer=""
 SwitchTimer=""
+Element=""
+FightTimer=""
+RecoverTimer=""
 
 [input]
 

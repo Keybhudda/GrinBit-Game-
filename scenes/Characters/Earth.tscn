@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="2_3x3ub"]
 [ext_resource type="AudioStream" uid="uid://cafosjb5sedru" path="res://assets/Sounds/Game_Grinbit_SFX(Enemy Death).mp3" id="3_33wcd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_33wcd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hij7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_33wcd"]
+radius = 11.675297
 
 [sub_resource type="Animation" id="Animation_6hij7"]
 resource_name = "Death"
@@ -46,8 +45,12 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvfuw"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6hij7"]
+radius = 11.68
+
 [node name="Grumbl" type="CharacterBody2D"]
-collision_mask = 3
+collision_layer = 32
+collision_mask = 211
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3x3ub")
@@ -68,16 +71,12 @@ region_enabled = true
 region_rect = Rect2(112, 480, 16, 16)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 3
+collision_layer = 32
+collision_mask = 211
 
 [node name="C_Body" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.7, 0.7)
-shape = SubResource("RectangleShape2D_33wcd")
-
-[node name="CombatZone" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6hij7")
-disabled = true
-debug_color = Color(0.99, 0.9978333, 1, 0.23137255)
+shape = SubResource("CircleShape2D_33wcd")
 
 [node name="MindTimer" type="Timer" parent="."]
 process_mode = 2
@@ -99,7 +98,12 @@ collision_mask = 3
 [node name="T-Range" type="CollisionShape2D" parent="T-Area"]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_kvfuw")
-debug_color = Color(0.9019608, 0.2901961, 0.26666668, 0.41960785)
+debug_color = Color(0.17079999, 0.61, 0.61, 0.14117648)
+
+[node name="ZT" type="CollisionShape2D" parent="."]
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CircleShape2D_6hij7")
+debug_color = Color(0.56134766, 0.5350854, 0, 0.28627452)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="T-Area" to="." method="_on_t_area_body_entered"]

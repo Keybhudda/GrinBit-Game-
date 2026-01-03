@@ -8,6 +8,7 @@ visible = false
 script = ExtResource("1_ylnw1")
 
 [node name="youdied" type="Label" parent="."]
+unique_name_in_owner = true
 offset_left = -32.0
 offset_top = -12.0
 offset_right = 42.0

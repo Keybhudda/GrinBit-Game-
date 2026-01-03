@@ -4,11 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="1_70815"]
 [ext_resource type="AudioStream" uid="uid://cafosjb5sedru" path="res://assets/Sounds/Game_Grinbit_SFX(Enemy Death).mp3" id="3_08fxp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gwmn"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3a2q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_08fxp"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_08fxp"]
 
 [sub_resource type="Animation" id="Animation_6hij7"]
 resource_name = "Death"
@@ -48,10 +46,16 @@ _data = {
 
 [node name="Whispr" type="CharacterBody2D"]
 texture_filter = 1
-collision_mask = 3
+collision_layer = 64
+collision_mask = 179
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3gwmn")
+
+[node name="ZT" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_j3a2q")
+debug_color = Color(0.48868084, 0.5855922, 1.92523e-07, 0.54901963)
 
 [node name="Dead" type="Sprite2D" parent="."]
 texture = ExtResource("1_70815")
@@ -69,16 +73,12 @@ region_enabled = true
 region_rect = Rect2(144, 480, 16, 16)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 3
+collision_layer = 16
+collision_mask = 19
 
 [node name="C_Body" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.8, 0.8)
-shape = SubResource("RectangleShape2D_3gwmn")
-
-[node name="CombatZone" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_08fxp")
-disabled = true
-debug_color = Color(1, 0, 0.09803922, 0.14901961)
+shape = SubResource("CircleShape2D_08fxp")
 
 [node name="MindTimer" type="Timer" parent="."]
 one_shot = true

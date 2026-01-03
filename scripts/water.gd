@@ -210,6 +210,7 @@ func _dead(_delta: float) -> void:
 	var start_position = start_pos
 	visible = true
 	get_node("Area2D/C_Body").disabled = true
+	get_node("ZT").disabled = true
 	if not has_printed_mode_DEAD:
 		print(name, " is DEAD!")
 		has_printed_mode_DEAD = true
@@ -274,9 +275,6 @@ func can_move_to(dir: Vector2) -> bool:
 func _caught():
 	print(name, " was caught!")
 	path.clear()
-	path_index = 0
-	position = start_pos
-	moving = false
 	
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:

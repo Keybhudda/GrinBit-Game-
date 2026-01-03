@@ -1,14 +1,14 @@
 extends Node2D
 #This Script Is Called When The Player Collides With An Enemy.
 #----------------------Base Vars----------------------------------------------
-@onready var youdied: Label = $youdied
+@onready var youdied: Label = %youdied
 
 #----------------------Action Code----------------------------------------------
 func death():
-	youdied.text = "\nYou Were Caught!\nLives Left " + str(Player_Lives.Player_Lives)
+	%youdied.text = "\nYou Were Caught!\nLives Left " + str(Player_Lives.Player_Lives)
 
 func restarting():
-	youdied.text = "\n Ready?"
+	%youdied.text = "\n Ready?"
 
 func start():
-	youdied.text = "\n Go!"
+	%youdied.text = "\n Go!"
