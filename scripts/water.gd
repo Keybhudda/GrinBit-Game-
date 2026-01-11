@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var game_state: Node2D = %GameState
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var recover_timer: Timer = $RecoverTimer
 @onready var area_2d: Area2D = $Area2D
 @onready var mind_timer: Timer = $MindTimer
 @onready var deathscreen: Node2D = %deathscreen
@@ -13,7 +14,7 @@ extends CharacterBody2D
 @export var map: TileMapLayer
 #----------------------Based Variables & Modes----------------------------------
 @export var default_mode: Mode = Mode.BASE
-enum Mode { BASE, CHASE, SHUFFLE, RUN, DEAD }
+enum Mode { BASE, CHASE, SHUFFLE, RUN, FIGHT, DEAD }
 #Default,mode can change depending on character personality.
 var mode: Mode = Mode.BASE
 
@@ -24,7 +25,7 @@ var current_mode: Mode = Mode.BASE
 @export_node_path("CharacterBody2D") var player_path : NodePath
 #The Speed A Which This Character Chases (GrinBit)
 var player: CharacterBody2D = null
-var speed := 4
+var speed := 3
 const GRID_SIZE = 16
 
 var direction = Vector2.ZERO
@@ -33,7 +34,7 @@ var target_pos = Vector2.ZERO
 
 
 var decision_timer := 0.0
-var decision_interval := 0.5
+var decision_interval := 1
 
 var path: Array[Vector2] = []
 var path_index := 0
@@ -45,6 +46,8 @@ signal Start_Position(entity_name: String, position: Vector2)
 var start_pos: Vector2
 
 var has_printed_mode_killable := false
+
+signal element_clash()
 
 #----------------------Start Code ----------------------------------------------
 #Finds Where Grinbit is to track
@@ -66,6 +69,8 @@ func reset_state():
 	run.visible = true
 	if get_node("Area2D/C_Body").disabled == true:
 		get_node("Area2D/C_Body").disabled = false
+	if get_node("ZT").disabled ==  true:
+		get_node("ZT").disabled = false
 	has_printed_mode_DEAD = false
 	has_printed_mode_killable = false
 	path.clear()
@@ -75,6 +80,8 @@ func reset_state():
 	target_pos = position
 	velocity = Vector2.ZERO
 	decision_timer = decision_interval
+	clashed = false
+	recovering = false
 	set_mode(default_mode)
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
@@ -87,10 +94,13 @@ func update_look(new_mode: Mode) -> void:
 			norm.visible = true
 		Mode.RUN:
 			norm.visible = false
+			run.visible = true
 		Mode.DEAD:
 			norm.visible = false
 			run.visible = false
-	
+		Mode.FIGHT:
+			norm.visible = false
+			run.visible = false
 
 #----------------------MOVEMENT CODE--------------------------------------------
 var last_behavior: Mode = Mode.CHASE#Variable To Store For Mode Swapping
@@ -120,18 +130,22 @@ func _physics_process(_delta: float) -> void:
 			killable(_delta)
 		Mode.DEAD:
 			_dead(_delta)
+		Mode.FIGHT:
+			fight(_delta)
 
 
 #This Function if a timer timeout which just tells the character what to do when the timer's time runs out.
 func _on_mind_timer_timeout() -> void:
 	print(name, " is done thinking!")
 	print(name, " current_mode: ", current_mode)
-	if mode == Mode.RUN or mode == Mode.DEAD:
+	if mode == Mode.RUN or mode == Mode.DEAD or mode == Mode.FIGHT:
 		return
 	else:
 		set_mode(Mode.BASE)
 #This is this characters mindset
 func character_mind() -> void:
+	if mode == Mode.FIGHT:
+		return
 	#this timer is for a change of character movement where the character changes their mode.
 	mind_timer.start(10.0)
 	print(name, " starts to think. . .")
@@ -187,6 +201,12 @@ func killable(_delta: float) -> void:
 		print(name, " is Killable!")
 		has_printed_mode_killable = true
 	var start_position = start_pos
+	
+	if recovering == true and clashed == true:
+		call_deferred("enable_collison")
+	if clashed == true:
+		call_deferred("enable_collison")
+		
 	if path.is_empty():
 		@warning_ignore("integer_division")
 		path = map.get_astar_path(position, start_position)
@@ -241,7 +261,7 @@ func set_mode(new_mode: Mode):
 #Standby function
 func can_move(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")
-	var test_pos = (position + dir * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	var test_pos = (position + dir * GRID_SIZE)
 	var space_state = get_world_2d().direct_space_state
 	var params = PhysicsPointQueryParameters2D.new()
 	params.position = test_pos
@@ -257,7 +277,7 @@ func can_move(dir: Vector2) -> bool:
 #Standby function
 func can_move_to(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")
-	var test_pos = (position + dir * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	var test_pos = (position + dir * GRID_SIZE)
 	var space_state = get_world_2d().direct_space_state
 	var params = PhysicsPointQueryParameters2D.new()
 	params.position = test_pos
@@ -275,7 +295,9 @@ func can_move_to(dir: Vector2) -> bool:
 func _caught():
 	print(name, " was caught!")
 	path.clear()
-	
+
+var clashed := false
+var recovering := false
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#If player enters area = death scene and or If player eneters area and mode == RUN then add points and eventually enemy back to stary pos
@@ -288,22 +310,75 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			return
 		else:
 			emit_signal("player_caught")
-	else:
-		if body.is_in_group("Element"):
-			print(name, " has crossed paths with ", body.name)
+	if body.is_in_group("Element"):
+		var opponent := body
+		clashed = true
+		emit_signal("element_clash", body, opponent)
 	#Later Feature If body = enemy -> Fight 
+
+func fight(_delta: float) -> void:
+	if mode == Mode.RUN:
+		return
+	get_node("ZT").disabled = true
+	path.clear()
+	@warning_ignore("integer_division")
+	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	if recovering == true and clashed == true:
+		set_mode(Mode.DEAD)
+		
+	if mode == Mode.RUN and clashed == true:
+		set_mode(Mode.RUN)
+		get_node("ZT").disabled = false
+		get_node("Area2D/C_Body").disabled = false
 
 #Functions for when the Game manager sets to CHASE mode this is what this charcter does 
 func on_enter_run_mode():
 	#Called when chase mode starts
-	set_mode(Mode.RUN)
-	speed = 2
+	if not mode == Mode.RUN:
+		set_mode(Mode.RUN)
+		speed = 2
 
 func on_exit_run_mode():
 	#Called when chase mode ends
 	set_mode(default_mode)
-	speed = 4
+	speed = 3
 	reset_state()
 
+func on_enter_fight_mode():
+	path.clear()
+	set_mode(Mode.FIGHT)
+	call_deferred("disable_collison")
+
+func on_exit_fight_mode():
+	if mode == Mode.RUN:
+		set_mode(Mode.RUN)
+		call_deferred("enable_collison")
+	else :
+		recover_timer.start(5)
+		set_mode(Mode.DEAD)
+
+
+func on_exit_recovery_mode():
+	if mode == Mode.RUN:
+		call_deferred("enable_collison")
+	else :
+		if recovering == true and position == start_pos:
+			reset_state()
+
+func disable_collison():
+	get_node("ZT").disabled = true
+	get_node("Area2D/C_Body").disabled = true
+
+func enable_collison():
+	get_node("ZT").disabled = false
+	get_node("Area2D/C_Body").disabled = false
 
 #--------------------------------Character Personality = Aggressive But Absent Minded --------------------------------
+func _on_recover_timer_timeout() -> void:
+	if recovering == true:
+		print(name, " Is Recovered")
+	if mode == Mode.RUN:
+		call_deferred("enable_collison")
+	else :
+		if recovering == true and position == start_pos:
+			reset_state()

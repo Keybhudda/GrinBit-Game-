@@ -261,9 +261,6 @@ one_shot = true
 [node name="FightTimer" type="Timer" parent="GameManager" groups=["FightTimer"]]
 one_shot = true
 
-[node name="RecoverTimer" type="Timer" parent="GameManager" groups=["RecoverTimer"]]
-one_shot = true
-
 [node name="score_label" type="Label" parent="GameManager" groups=["Score"]]
 z_index = 2
 offset_left = -205.86002
@@ -1084,4 +1081,3 @@ position = Vector2(-768, -640)
 [connection signal="timeout" from="GameManager/SwitchTimer" to="GameManager" method="_on_switch_timer_timeout"]
 [connection signal="timeout" from="GameManager/GoTimer" to="GameManager" method="_on_go_timer_timeout"]
 [connection signal="timeout" from="GameManager/FightTimer" to="GameManager" method="_on_fight_timer_timeout"]
-[connection signal="timeout" from="GameManager/RecoverTimer" to="GameManager" method="_on_recover_timer_timeout"]

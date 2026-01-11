@@ -39,7 +39,6 @@ ChaseTimer=""
 SwitchTimer=""
 Element=""
 FightTimer=""
-RecoverTimer=""
 
 [input]
 

@@ -28,7 +28,6 @@ var game_mode: ModeOfGame = ModeOfGame.NORM
 @onready var switch_timer: Timer = get_tree().get_first_node_in_group("SwitchTimer")
 @onready var go_timer: Timer = get_tree().get_first_node_in_group("GoTimer")
 @onready var fight_timer: Timer = get_tree().get_first_node_in_group("FightTimer")
-@onready var recover_timer: Timer = get_tree().get_first_node_in_group("RecoverTimer")
 
 #-----------------------Characters Ref------------------------------------------
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -56,34 +55,34 @@ func _ready() -> void:
 		print("Connecting enemy:", enemy.name)
 		enemy.connect("player_caught", Callable(self, "_on_player_caught"))
 		enemy.connect("Start_Position", Callable(self, "_on_Start_Position"))
-		
+		enemy.connect("element_clash", Callable(self, "_on_element_clash"))
 	
 	game_state.connect("all_items_collected", Callable(self, "_on_level_complete"))
 	
 	current_state = StateOfGame.RUNNING
 	
-func _on_element_clash(body):
+func _on_element_clash(body, opponent):
 	print(body.name, "Has Clashed With Another Element")
 	if game_mode == ModeOfGame.CHASE:
 		return
 	else :
 		for enemy in enemies:
-			if enemy.clashed == true:
-				print(enemy.name, " Is Fighting.")
-				fight_timer.start(5.0)
+			if enemy.clashed == true and opponent.clashed == true:
+				print(enemy.name, " Is Fighting. ", opponent.name)
+				enemy.on_enter_fight_mode()
+				opponent.on_enter_fight_mode()
+				fight_timer.start(5)
 
 func _on_fight_timer_timeout() -> void:
 	for enemy in enemies:
 		if enemy.clashed == true:
-			print(enemy.name, " Is Done Fighting.")
-			recover_timer.start(5.0)
 			enemy.recovering = true
+			print(enemy.name, " Is Done Fighting.")
+			enemy.on_exit_fight_mode()
 
 
-func _on_recover_timer_timeout() -> void:
-	for enemy in enemies:
-		if enemy.recovering == true:
-			print(enemy.name, " Is Recovering")
+
+
 
 
 

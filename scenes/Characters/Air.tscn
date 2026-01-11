@@ -73,14 +73,17 @@ region_enabled = true
 region_rect = Rect2(144, 480, 16, 16)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 19
+collision_layer = 64
+collision_mask = 179
 
 [node name="C_Body" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_08fxp")
 
 [node name="MindTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RecoverTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
@@ -93,3 +96,4 @@ libraries = {
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MindTimer" to="." method="_on_mind_timer_timeout"]
+[connection signal="timeout" from="RecoverTimer" to="." method="_on_recover_timer_timeout"]

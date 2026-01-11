@@ -20,6 +20,8 @@ var mode: Mode = Mode.NORM
 var current_mode: Mode = Mode.NORM
 
 const TURN_EARLY_DISTANCE := 16.0
+
+var _last_direction := Vector2.ZERO
 #----------------------Start Code ----------------------------------------------
 signal Start_Position(entity_name: String, position: Vector2)
 
@@ -98,8 +100,11 @@ func handle_input():
 	elif Input.is_action_just_pressed("ui_right"):
 		next_direction = Vector2.RIGHT
 
+
+
 func start_move(dir: Vector2):
 	direction = dir
+	_last_direction = dir
 	@warning_ignore("integer_division")
 	target_pos = (position + direction * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
 	moving = true

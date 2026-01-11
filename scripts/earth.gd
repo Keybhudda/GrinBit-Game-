@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-
+@onready var recover_timer: Timer = $RecoverTimer
 @onready var area_2d: Area2D = $Area2D
 @onready var mind_timer: Timer = $MindTimer
 @onready var deathscreen: Node2D = %deathscreen
@@ -16,9 +16,9 @@ extends CharacterBody2D
 @export var map: TileMapLayer
 #----------------------Based Variables & Modes----------------------------------
 @export var default_mode: Mode = Mode.SHUFFLE
-enum Mode { BASE, CHASE, SHUFFLE, RUN, DEAD }
+enum Mode { BASE, CHASE, SHUFFLE, RUN, FIGHT, DEAD }
 #Default,mode can change depending on character personality.
-var mode: Mode = Mode.SHUFFLE
+var mode: Mode = Mode.SHUFFLE 
 
 var current_mode: Mode = Mode.SHUFFLE
 
@@ -37,7 +37,7 @@ var target_pos = Vector2.ZERO
 var last_direction = Vector2.ZERO
 
 var decision_timer := 0.0
-var decision_interval := 0.5
+var decision_interval := 0.7
 
 var path: Array[Vector2] = []
 var path_index := 0
@@ -50,10 +50,12 @@ var start_pos: Vector2
 
 var has_printed_mode_killable := false
 
+signal element_clash()
+
 #----------------------Start Code ----------------------------------------------
 #Finds Where Grinbit is to track
 func _ready():
-# Get the player node from the exported path
+	# Get the player node from the exported path
 	player = get_node(player_path)
 	@warning_ignore("integer_division")
 	position = map.map_to_local(map.local_to_map(position)).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
@@ -61,14 +63,16 @@ func _ready():
 	if position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)):
 		start_pos = position
 		emit_signal("Start_Position", name, start_pos)
-		map.setup_astar_grid()
-		set_mode(default_mode)
+	map.setup_astar_grid()
+	set_mode(default_mode)
 #This function when called resets the character to a state usually its BASE State
 func reset_state():
 	norm.visible = true
 	run.visible = true
 	if get_node("Area2D/C_Body").disabled == true:
 		get_node("Area2D/C_Body").disabled = false
+	if get_node("ZT").disabled == true:
+		get_node("ZT").disabled = false
 	has_printed_mode_DEAD = false
 	has_printed_mode_killable = false
 	path.clear()
@@ -78,6 +82,8 @@ func reset_state():
 	target_pos = position
 	velocity = Vector2.ZERO
 	decision_timer = decision_interval
+	clashed = false
+	recovering = false
 	set_mode(default_mode)
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
@@ -89,23 +95,28 @@ func update_look(new_mode: Mode) -> void:
 			norm.visible = true
 		Mode.RUN:
 			norm.visible = false
+			run.visible = true
 		Mode.DEAD:
+			norm.visible = false
+			run.visible = false
+		Mode.FIGHT:
 			norm.visible = false
 			run.visible = false
 #----------------------MOVEMENT CODE--------------------------------------------
 #Movement Of Character
 func _physics_process(_delta: float) -> void:
+	
 	decision_timer -= _delta
-
+	
 	if player == null or mode == Mode.SHUFFLE:
-			set_mode(Mode.SHUFFLE)
-
-
+		set_mode(Mode.SHUFFLE)
+		
+	
 	if decision_timer <= 0.0:
 		decision_timer = decision_interval
-	if mode == Mode.CHASE and player:
-		path = map.get_astar_path(position, player.position)
-		path_index = 0
+		if mode == Mode.CHASE and player:
+			path = map.get_astar_path(position, player.position)
+			path_index = 0
 	match mode:
 		Mode.BASE:
 			character_mind()
@@ -118,12 +129,14 @@ func _physics_process(_delta: float) -> void:
 			killable(_delta)
 		Mode.DEAD:
 			_dead(_delta)
-	#Territory area function
+		Mode.FIGHT:
+			fight(_delta)
+#Territory area function
 func _on_t_area_body_exited(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-	
-	if mode == Mode.RUN or mode == Mode.DEAD:
+		
+	if mode == Mode.RUN or mode == Mode.DEAD or mode == Mode.FIGHT:
 		return
 	else:
 		if body.is_in_group("Player"):
@@ -134,52 +147,56 @@ func _on_t_area_body_exited(body: Node2D) -> void:
 func _on_t_area_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-
-	if mode == Mode.RUN or mode == Mode.DEAD:
+		
+	if mode == Mode.RUN or mode == Mode.DEAD or mode == Mode.FIGHT:
 		return
 	else:
 		if body.is_in_group("Player"):
 			print("Player entered Grumbl's terrirtory!")
-			speed = 2
+			speed = 3
 			set_mode(Mode.CHASE)
 #This is this characters mindset
 func character_mind() -> void:
-	set_mode(Mode.SHUFFLE)
+	if mode == Mode.FIGHT:
+		return
+	else:
+		set_mode(Mode.SHUFFLE)
 #This Function Makes the character Chase the player.
 func chase_player(_delta: float) -> void:
 	if path.is_empty():
 		path = map.get_astar_path(position, player.position)
 		path_index = 0
 		return
-
+	
 	if path_index >= path.size():
 		path.clear()
 		return
-
+	
 	target_pos = path[path_index]
-
+	
+	@warning_ignore("integer_division")
 	position = position.move_toward(target_pos, speed * _delta * GRID_SIZE)
-
+	
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
-	#This Function makes the character wander the map.
+#This Function makes the charcter wander the map.
 func wander_around(_delta: float) -> void:
 	var random_cell = map.walkable_cells.pick_random()
 	var random_target = map.map_to_local(random_cell)
-
+	
 	if path.is_empty():
 		path = map.get_astar_path(position, random_target)
 		path_index = 0
 		return
-
+		
 	if path_index >= path.size():
 		path.clear()
 		return
-
+	
 	target_pos = path[path_index]
-
+	
 	position = position.move_toward(target_pos, speed * _delta * GRID_SIZE)
-
+	
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
 #This Functions Makes this character Killable How They Should While In This State
@@ -188,19 +205,26 @@ func killable(_delta: float) -> void:
 		print(name, " is Killable!")
 		has_printed_mode_killable = true
 	var start_position = start_pos
+	
+	if recovering == true and clashed == true:
+		call_deferred("enable_collison")
+	
+	if clashed == true:
+		call_deferred("enable_collison")
+		
 	if path.is_empty():
 		@warning_ignore("integer_division")
 		path = map.get_astar_path(position, start_position)
 		path_index = 0
 		return
-
+		
 	if path_index >= path.size():
 		path.clear()
 		return
-
+		
 	target_pos = path[path_index]
 	position = position.move_toward(target_pos, speed * _delta * GRID_SIZE)
-
+		
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
 
@@ -230,6 +254,22 @@ func _dead(_delta: float) -> void:
 		
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
+
+func fight(_delta: float) -> void:
+	if mode == Mode.RUN:
+		return
+	get_node("ZT").disabled = true
+	path.clear()
+	@warning_ignore("integer_division")
+	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	if recovering == true and clashed == true:
+		set_mode(Mode.DEAD)
+		
+	if mode == Mode.RUN and clashed == true:
+		set_mode(Mode.RUN)
+		get_node("ZT").disabled = false
+		get_node("Area2D/C_Body").disabled = false
+
 #function that sets mode of character
 func set_mode(new_mode: Mode):
 	if current_mode != new_mode:
@@ -240,13 +280,13 @@ func set_mode(new_mode: Mode):
 #Standby function
 func can_move(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")
-	var test_pos = (position + dir * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	var test_pos = (position + dir * GRID_SIZE)
 	var space_state = get_world_2d().direct_space_state
 	var params = PhysicsPointQueryParameters2D.new()
 	params.position = test_pos
 	params.collide_with_areas = true
 	params.collide_with_bodies = true
-
+	
 	var result = space_state.intersect_point(params)
 	for r in result:
 		if r.collider.is_in_group("Player"):
@@ -256,13 +296,13 @@ func can_move(dir: Vector2) -> bool:
 #Standby function
 func can_move_to(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")
-	var test_pos = (position + dir * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	var test_pos = (position + dir * GRID_SIZE)
 	var space_state = get_world_2d().direct_space_state
 	var params = PhysicsPointQueryParameters2D.new()
 	params.position = test_pos
 	params.collide_with_areas = true
 	params.collide_with_bodies = true
-
+	
 	var result = space_state.intersect_point(params)
 	for r in result:
 		if r.collider.is_in_group("Player"):
@@ -275,7 +315,10 @@ func can_move_to(dir: Vector2) -> bool:
 func _caught():
 	print(name, " was caught!")
 	path.clear()
+	
 
+var clashed := false
+var recovering := false
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#If player enters area = death scene and or If player eneters area and mode == RUN then add points and eventually enemy back to stary pos
@@ -288,23 +331,59 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			return
 		else:
 			emit_signal("player_caught")
-		
 	if body.is_in_group("Element"):
-		print(name, " has crossed paths with ", body.name)
-	#Later Feature If body = enemy -> Fight
+		var opponent := body
+		clashed = true
+		emit_signal("element_clash", body, opponent)
+	#Later Feature If body = enemy -> Fight 
 
-#Functions for when the Game manager sets to CHASE mode this is what this charcter does
+#Functions for when the Game manager sets to CHASE mode this is what this charcter does 
 func on_enter_run_mode():
 	#Called when chase mode starts
-	set_mode(Mode.RUN)
-	speed = 2
+	if not mode == Mode.RUN:
+		set_mode(Mode.RUN)
+		speed = 2
 
 func on_exit_run_mode():
 	#Called when chase mode ends
-	set_mode(default_mode)
 	speed = 2
 	reset_state()
 
+func on_enter_fight_mode():
+	path.clear()
+	set_mode(Mode.FIGHT)
+	call_deferred("disable_collison")
 
+func on_exit_fight_mode():
+	if mode == Mode.RUN:
+		set_mode(Mode.RUN)
+		call_deferred("enable_collison")
+	else :
+		recover_timer.start(5)
+		set_mode(Mode.DEAD)
+
+
+func on_exit_recovery_mode():
+	if mode == Mode.RUN:
+		call_deferred("enable_collison")
+	else :
+		if recovering == true and position == start_pos:
+			reset_state()
+
+func disable_collison():
+	get_node("ZT").disabled = true
+	get_node("Area2D/C_Body").disabled = true
+
+func enable_collison():
+	get_node("ZT").disabled = false
+	get_node("Area2D/C_Body").disabled = false
 
 #---------------------------Character Personality = Territorial ---------------------------------------
+func _on_recover_timer_timeout() -> void:
+	if recovering == true:
+		print(name, " Is Recovered")
+	if mode == Mode.RUN:
+		call_deferred("enable_collison")
+	else :
+		if recovering == true and position == start_pos:
+			reset_state()
