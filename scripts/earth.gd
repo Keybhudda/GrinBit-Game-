@@ -381,7 +381,7 @@ func enable_collison():
 #---------------------------Character Personality = Territorial ---------------------------------------
 func _on_recover_timer_timeout() -> void:
 	if recovering == true:
-		print(name, " Is Recovered")
+		print(name, " Has Recovered")
 	if mode == Mode.RUN:
 		call_deferred("enable_collison")
 	else :
