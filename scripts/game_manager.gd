@@ -38,7 +38,7 @@ var score = 0
 var total_score = score
 var player_start_position: Vector2
 var enemy_start_position = {}
-
+var GRID_SIZE = 16
 
 #----------------------------Start Code-----------------------------------------
 func _ready() -> void:
@@ -68,17 +68,45 @@ func _on_element_clash(body, opponent):
 	else :
 		for enemy in enemies:
 			if enemy.clashed == true and opponent.clashed == true:
-				print(enemy.name, " Is Fighting. ", opponent.name)
-				enemy.on_enter_fight_mode()
-				opponent.on_enter_fight_mode()
-				fight_timer.start(5)
+				@warning_ignore("integer_division")
+				print(enemy.name, " Is Fighting. ", opponent.name, " Around ", enemy.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)), " And ", opponent.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)))
+				start_battle_timer(5, enemy, opponent)
 
+func start_battle_timer(duration: float, enemy, opponent) -> void:
+	if game_mode == ModeOfGame.CHASE:
+		return
+	else:
+		enemy.on_enter_fight_mode()
+		opponent.on_enter_fight_mode()
+		var timer:= Timer.new()
+		timer.wait_time = duration
+		timer.one_shot = true
+		timer.autostart = true
+	
+	
+		add_child(timer)
+	
+		timer.timeout.connect(_on_battle_timer_timeout)
+
+func _on_battle_timer_timeout() -> void:
+	if game_mode == ModeOfGame.CHASE:
+		return
+	else:
+		for enemy in enemies:
+			if enemy.clashed == true:
+				print(enemy.name, " Is Done Fighting.")
+				enemy.on_exit_fight_mode()
+
+#no longer in use 
 func _on_fight_timer_timeout() -> void:
-	for enemy in enemies:
-		if enemy.clashed == true:
-			enemy.recovering = true
-			print(enemy.name, " Is Done Fighting.")
-			enemy.on_exit_fight_mode()
+	if game_mode == ModeOfGame.CHASE:
+		return
+	else:
+		for enemy in enemies:
+			if enemy.clashed == true:
+				enemy.recovering = true
+				print(enemy.name, " Is Done Fighting.")
+				enemy.on_exit_fight_mode()
 
 
 

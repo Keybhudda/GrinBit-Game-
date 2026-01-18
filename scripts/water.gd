@@ -16,8 +16,6 @@ extends CharacterBody2D
 @export var default_mode: Mode = Mode.BASE
 enum Mode { BASE, CHASE, SHUFFLE, RUN, FIGHT, DEAD }
 #Default,mode can change depending on character personality.
-var mode: Mode = Mode.BASE
-
 
 var current_mode: Mode = Mode.BASE
 
@@ -67,10 +65,6 @@ func reset_state():
 	#Reset All values and mode back to norm
 	norm.visible = true
 	run.visible = true
-	if get_node("Area2D/C_Body").disabled == true:
-		get_node("Area2D/C_Body").disabled = false
-	if get_node("ZT").disabled ==  true:
-		get_node("ZT").disabled = false
 	has_printed_mode_DEAD = false
 	has_printed_mode_killable = false
 	path.clear()
@@ -82,6 +76,7 @@ func reset_state():
 	decision_timer = decision_interval
 	clashed = false
 	recovering = false
+	fighting = false
 	set_mode(default_mode)
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
@@ -108,16 +103,16 @@ var last_behavior: Mode = Mode.CHASE#Variable To Store For Mode Swapping
 func _physics_process(_delta: float) -> void:
 	decision_timer -= _delta
 	
-	if player == null or mode == Mode.SHUFFLE:
+	if player == null or current_mode == Mode.SHUFFLE:
 		set_mode(Mode.SHUFFLE)
 	
 	
 	if decision_timer <= 0.0:
 		decision_timer = decision_interval
-		if mode == Mode.CHASE and player:
+		if current_mode == Mode.CHASE and player:
 			path = map.get_astar_path(position, player.position)
 			path_index = 0
-	match mode:
+	match current_mode:
 		Mode.BASE:
 			character_mind()
 		Mode.CHASE:
@@ -138,13 +133,13 @@ func _physics_process(_delta: float) -> void:
 func _on_mind_timer_timeout() -> void:
 	print(name, " is done thinking!")
 	print(name, " current_mode: ", current_mode)
-	if mode == Mode.RUN or mode == Mode.DEAD or mode == Mode.FIGHT:
+	if current_mode == Mode.RUN or current_mode == Mode.DEAD or current_mode == Mode.FIGHT:
 		return
 	else:
 		set_mode(Mode.BASE)
 #This is this characters mindset
 func character_mind() -> void:
-	if mode == Mode.FIGHT:
+	if current_mode == Mode.FIGHT:
 		return
 	#this timer is for a change of character movement where the character changes their mode.
 	mind_timer.start(10.0)
@@ -202,10 +197,8 @@ func killable(_delta: float) -> void:
 		has_printed_mode_killable = true
 	var start_position = start_pos
 	
-	if recovering == true and clashed == true:
-		call_deferred("enable_collison")
-	if clashed == true:
-		call_deferred("enable_collison")
+	if current_mode == Mode.RUN and (recovering == true or clashed == true):
+		call_deferred("enable_collision")
 		
 	if path.is_empty():
 		@warning_ignore("integer_division")
@@ -227,6 +220,16 @@ func killable(_delta: float) -> void:
 #Function for when the charcter is cauptured by the player while in RUN Mode
 var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
+		set_mode(Mode.DEAD)
+		return
+#checks if conditions are met then sets character to shuffle for a bit
+	if not game_manager.game_mode == game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
+		reset_state()
+		set_mode(Mode.SHUFFLE)
+		recover_timer.start(2)
+		return
+
 	var start_position = start_pos
 	visible = true
 	get_node("Area2D/C_Body").disabled = true
@@ -250,13 +253,21 @@ func _dead(_delta: float) -> void:
 		
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
+		
+
 #function that sets mode of character
 func set_mode(new_mode: Mode):
 	if current_mode != new_mode:
+		
 		current_mode = new_mode
-		mode = new_mode
 		print(name, "mode switched to:", new_mode)
 		update_look(new_mode)
+		
+	match new_mode:
+		Mode.RUN, Mode.CHASE, Mode.SHUFFLE:
+			call_deferred("enable_collision")
+		Mode.FIGHT, Mode.DEAD:
+			call_deferred("disable_collision")
 
 #Standby function
 func can_move(dir: Vector2) -> bool:
@@ -302,7 +313,7 @@ var recovering := false
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#If player enters area = death scene and or If player eneters area and mode == RUN then add points and eventually enemy back to stary pos
 	if body.is_in_group("Player"):
-		if mode == Mode.RUN:
+		if current_mode == Mode.RUN:
 			game_manager.add_pointC()
 			_caught()
 			set_mode(Mode.DEAD)
@@ -316,8 +327,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		emit_signal("element_clash", body, opponent)
 	#Later Feature If body = enemy -> Fight 
 
+var fighting := false
 func fight(_delta: float) -> void:
-	if mode == Mode.RUN:
+	if current_mode == Mode.RUN:
 		return
 	get_node("ZT").disabled = true
 	path.clear()
@@ -326,7 +338,7 @@ func fight(_delta: float) -> void:
 	if recovering == true and clashed == true:
 		set_mode(Mode.DEAD)
 		
-	if mode == Mode.RUN and clashed == true:
+	if current_mode == Mode.RUN and clashed == true:
 		set_mode(Mode.RUN)
 		get_node("ZT").disabled = false
 		get_node("Area2D/C_Body").disabled = false
@@ -334,7 +346,7 @@ func fight(_delta: float) -> void:
 #Functions for when the Game manager sets to CHASE mode this is what this charcter does 
 func on_enter_run_mode():
 	#Called when chase mode starts
-	if not mode == Mode.RUN:
+	if not current_mode == Mode.RUN:
 		set_mode(Mode.RUN)
 		speed = 2
 
@@ -345,40 +357,43 @@ func on_exit_run_mode():
 	reset_state()
 
 func on_enter_fight_mode():
+	fighting = true
 	path.clear()
 	set_mode(Mode.FIGHT)
-	call_deferred("disable_collison")
+	call_deferred("disable_collision")
 
 func on_exit_fight_mode():
-	if mode == Mode.RUN:
+	fighting = false
+	recovering = true
+	if current_mode == Mode.RUN:
 		set_mode(Mode.RUN)
-		call_deferred("enable_collison")
+		call_deferred("enable_collision")
 	else :
-		recover_timer.start(5)
 		set_mode(Mode.DEAD)
 
 
 func on_exit_recovery_mode():
-	if mode == Mode.RUN:
-		call_deferred("enable_collison")
+	if current_mode == Mode.RUN:
+		call_deferred("enable_collision")
 	else :
 		if recovering == true and position == start_pos:
 			reset_state()
 
-func disable_collison():
+func _on_recover_timer_timeout() -> void:
+	if recovering == true:
+		print(name, " Has Recovered")
+	if current_mode == Mode.RUN:
+		call_deferred("enable_collision")
+		return
+	else :
+		reset_state()
+
+func disable_collision():
 	get_node("ZT").disabled = true
 	get_node("Area2D/C_Body").disabled = true
 
-func enable_collison():
+func enable_collision():
 	get_node("ZT").disabled = false
 	get_node("Area2D/C_Body").disabled = false
 
 #--------------------------------Character Personality = Aggressive But Absent Minded --------------------------------
-func _on_recover_timer_timeout() -> void:
-	if recovering == true:
-		print(name, " Has Recovered")
-	if mode == Mode.RUN:
-		call_deferred("enable_collison")
-	else :
-		if recovering == true and position == start_pos:
-			reset_state()
