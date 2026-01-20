@@ -180,6 +180,9 @@ func chase_player(_delta: float) -> void:
 		path_index += 1
 #This Function makes the charcter wander the map.
 func wander_around(_delta: float) -> void:
+	if not game_manager.game_mode == game_manager.ModeOfGame.CHASE and recovering == true:
+		call_deferred("disable_collision")
+		return
 	var random_cell = map.walkable_cells.pick_random()
 	var random_target = map.map_to_local(random_cell)
 	
@@ -227,14 +230,10 @@ func killable(_delta: float) -> void:
 #Function for when the charcter is cauptured by the player while in RUN Mode
 var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
-	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
-		set_mode(Mode.DEAD)
-		return
 #checks if conditions are met then sets character to shuffle for a bit
-	if not game_manager.game_mode == game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
-		reset_state()
+	if game_manager.game_mode != game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
 		set_mode(Mode.SHUFFLE)
-		recover_timer.start(2)
+		recover_timer.start(3)
 		return
 
 	var start_position = start_pos
@@ -265,19 +264,18 @@ func _dead(_delta: float) -> void:
 
 var fighting := false
 func fight(_delta: float) -> void:
-	if current_mode == Mode.RUN:
-		return
-	get_node("ZT").disabled = true
 	path.clear()
 	@warning_ignore("integer_division")
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
-	if recovering == true and clashed == true:
-		set_mode(Mode.DEAD)
-		
+	call_deferred("disable_collision")
+	
 	if current_mode == Mode.RUN and clashed == true:
 		set_mode(Mode.RUN)
-		get_node("ZT").disabled = false
-		get_node("Area2D/C_Body").disabled = false
+		call_deferred("enable_collision")
+		return
+	else:
+		if recovering == true:
+			set_mode(Mode.DEAD)
 
 #function that sets mode of character
 func set_mode(new_mode: Mode):
@@ -366,15 +364,21 @@ func on_exit_run_mode():
 
 func on_enter_fight_mode():
 	fighting = true
-	path.clear()
-	set_mode(Mode.FIGHT)
-	call_deferred("disable_collision")
+	if current_mode == Mode.RUN:
+		call_deferred("enable_collision")
+		return
+	else :
+		path.clear()
+		set_mode(Mode.FIGHT)
+		call_deferred("disable_collision")
 
 func on_exit_fight_mode():
 	fighting = false
 	recovering = true
 	if current_mode == Mode.RUN:
+		set_mode(Mode.RUN)
 		call_deferred("enable_collision")
+		return
 	else :
 		set_mode(Mode.DEAD)
 
@@ -382,8 +386,10 @@ func on_exit_fight_mode():
 func on_exit_recovery_mode():
 	if current_mode == Mode.RUN:
 		call_deferred("enable_collision")
+		return
 	else :
 		if recovering == true and position == start_pos:
+			enable_collision()
 			reset_state()
 
 func disable_collision():
