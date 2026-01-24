@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var mind_timer: Timer = $MindTimer
 @onready var deathscreen: Node2D = %deathscreen
 @onready var recover_timer: Timer = $RecoverTimer
+@onready var fight_timer: Timer = $FightTimer
 
 
 @onready var norm: Sprite2D = $Norm
@@ -155,9 +156,9 @@ func chase_player(_delta: float) -> void:
 		path_index += 1
 #This Function makes the charcter wander the map.
 func wander_around(_delta: float) -> void:
-	if not game_manager.game_mode == game_manager.ModeOfGame.CHASE and recovering == true:
+	if recovering == true:
 		call_deferred("disable_collision")
-		return
+
 	var random_cell = map.walkable_cells.pick_random()
 	var random_target = map.map_to_local(random_cell)
 	
@@ -343,10 +344,17 @@ func on_enter_fight_mode():
 	if current_mode == Mode.RUN:
 		call_deferred("enable_collision")
 		return
-	else :
-		path.clear()
-		set_mode(Mode.FIGHT)
-		call_deferred("disable_collision")
+	fight_timer.start(5)
+	path.clear()
+	set_mode(Mode.FIGHT)
+	call_deferred("disable_collision")
+
+func _on_fight_timer_timeout() -> void:
+	if current_mode == Mode.RUN:
+		call_deferred("enable_collision")
+		return
+	print(name, " Is Done Fighting.")
+	on_exit_fight_mode()
 
 func on_exit_fight_mode():
 	fighting = false
@@ -355,8 +363,7 @@ func on_exit_fight_mode():
 		set_mode(Mode.RUN)
 		call_deferred("enable_collision")
 		return
-	else :
-		set_mode(Mode.DEAD)
+	set_mode(Mode.DEAD)
 
 
 func on_exit_recovery_mode():

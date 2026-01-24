@@ -1080,4 +1080,3 @@ position = Vector2(-768, -640)
 [connection signal="timeout" from="GameManager/ReadyTimer" to="GameManager" method="_on_ready_timer_timeout"]
 [connection signal="timeout" from="GameManager/SwitchTimer" to="GameManager" method="_on_switch_timer_timeout"]
 [connection signal="timeout" from="GameManager/GoTimer" to="GameManager" method="_on_go_timer_timeout"]
-[connection signal="timeout" from="GameManager/FightTimer" to="GameManager" method="_on_fight_timer_timeout"]

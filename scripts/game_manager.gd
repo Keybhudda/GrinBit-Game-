@@ -27,7 +27,7 @@ var game_mode: ModeOfGame = ModeOfGame.NORM
 @onready var chase_timer: Timer = get_tree().get_first_node_in_group("ChaseTimer")
 @onready var switch_timer: Timer = get_tree().get_first_node_in_group("SwitchTimer")
 @onready var go_timer: Timer = get_tree().get_first_node_in_group("GoTimer")
-@onready var fight_timer: Timer = get_tree().get_first_node_in_group("FightTimer")
+
 
 #-----------------------Characters Ref------------------------------------------
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -70,7 +70,8 @@ func _on_element_clash(body, opponent):
 			if enemy.clashed == true and opponent.clashed == true:
 				@warning_ignore("integer_division")
 				print(enemy.name, " Is Fighting. ", opponent.name, " Around ", enemy.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)), " And ", opponent.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)))
-				start_battle_timer(5, enemy, opponent)
+				enemy.on_enter_fight_mode()
+				opponent.on_enter_fight_mode()
 
 func start_battle_timer(duration: float, enemy, opponent) -> void:
 	if game_mode == ModeOfGame.CHASE:
