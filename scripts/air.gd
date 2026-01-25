@@ -51,7 +51,7 @@ var start_pos: Vector2
 
 var has_printed_mode_killable := false
 
-signal element_clash()
+signal element_clash(self_enemy, other_enemy)
 
 
 #----------------------Start Code ----------------------------------------------
@@ -279,7 +279,7 @@ func killable(_delta: float) -> void:
 #Function for when the charcter is cauptured by the player while in RUN Mode
 var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
-#checks if conditions are met then sets character to shuffle for a bit
+#checks if conditions are met then sets character to shuffle for a bit and sets a timer to prevent auto player chase.
 	if game_manager.game_mode != game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
 		set_mode(Mode.SHUFFLE)
 		recover_timer.start(3)
@@ -319,7 +319,7 @@ func fight(_delta: float) -> void:
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
 	call_deferred("disable_collision")
 	
-	if current_mode == Mode.RUN and clashed == true:
+	if current_mode == Mode.RUN:
 		set_mode(Mode.RUN)
 		call_deferred("enable_collision")
 		return
@@ -397,7 +397,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Element"):
 		var opponent := body
 		clashed = true
-		emit_signal("element_clash", body, opponent)
+		emit_signal("element_clash", self, opponent)
 	#Later Feature If body = enemy -> Fight 
 
 #Functions for when the Game manager sets to CHASE mode this is what this charcter does 
@@ -415,14 +415,16 @@ func on_exit_run_mode():
 	reset_state()
 
 func on_enter_fight_mode():
-	fighting = true
 	if current_mode == Mode.RUN:
 		call_deferred("enable_collision")
 		return
-	fight_timer.start(5)
+	fighting = true
+	clashed = true
 	path.clear()
-	set_mode(Mode.FIGHT)
-	call_deferred("disable_collision")
+	if fight_timer.is_stopped():
+		fight_timer.start(5)
+		set_mode(Mode.FIGHT)
+		call_deferred("disable_collision")
 
 func _on_fight_timer_timeout() -> void:
 	if current_mode == Mode.RUN:
@@ -434,6 +436,7 @@ func _on_fight_timer_timeout() -> void:
 
 func on_exit_fight_mode():
 	fighting = false
+	clashed = false
 	recovering = true
 	if current_mode == Mode.RUN:
 		set_mode(Mode.RUN)

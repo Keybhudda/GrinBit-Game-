@@ -32,6 +32,7 @@ var game_mode: ModeOfGame = ModeOfGame.NORM
 #-----------------------Characters Ref------------------------------------------
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemies = get_tree().get_nodes_in_group("Element")
+@onready var token = get_tree().get_nodes_in_group("Token")
 
 #-----------------------Base Variables------------------------------------------
 var score = 0
@@ -61,17 +62,16 @@ func _ready() -> void:
 	
 	current_state = StateOfGame.RUNNING
 	
-func _on_element_clash(body, opponent):
-	print(body.name, "Has Clashed With Another Element")
+func _on_element_clash(enemy_a, enemy_b):
+	print(enemy_a.name, "Has Clashed With Another Element")
 	if game_mode == ModeOfGame.CHASE:
 		return
 	else :
 		for enemy in enemies:
-			if enemy.clashed == true and opponent.clashed == true:
 				@warning_ignore("integer_division")
-				print(enemy.name, " Is Fighting. ", opponent.name, " Around ", enemy.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)), " And ", opponent.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)))
-				enemy.on_enter_fight_mode()
-				opponent.on_enter_fight_mode()
+				print(enemy_a.name, " Is Fighting. ", enemy_b.name, " Around ", enemy_a.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)), " And ", enemy_b.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)))
+				enemy_a.on_enter_fight_mode()
+				enemy_b.on_enter_fight_mode()
 
 func start_battle_timer(duration: float, enemy, opponent) -> void:
 	if game_mode == ModeOfGame.CHASE:
@@ -108,7 +108,6 @@ func _on_fight_timer_timeout() -> void:
 				enemy.recovering = true
 				print(enemy.name, " Is Done Fighting.")
 				enemy.on_exit_fight_mode()
-
 
 
 

@@ -4,6 +4,7 @@ extends Area2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var game_manager: Node2D = %GameManager
 @onready var game_state: Node2D = %GameState
+@onready var pickupsound: AudioStreamPlayer2D = $Pickupsound
 
 #--------------------------Based Variables--------------------------------------
 @export var token_id: String = ""
