@@ -198,6 +198,11 @@ func _update_score_label():
 	score_label.text = "Score: " + str(score)
 	
 
+func stop_fight_timers():
+	for enemy in enemies:
+		enemy.fight_timer.stop()
+	print("all fights have been stopped.")
+
 #function that is called when a signal is emitted from a player and enemy collision
 func _on_player_caught():
 	if current_state != StateOfGame.RUNNING:
@@ -241,6 +246,8 @@ func reset_round():
 			player.global_position = player_start_position
 			print("Player reset to:", player_start_position)
 	
+		stop_fight_timers()
+		
 		for enemy in enemies:
 			if enemy.name in enemy_start_position:
 				enemy.reset_state()
