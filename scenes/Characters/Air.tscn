@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjsku8qly4bik"]
+[gd_scene format=3 uid="uid://bjsku8qly4bik"]
 
 [ext_resource type="Script" uid="uid://carmyb6nr8u7t" path="res://scripts/air.gd" id="1_3gwmn"]
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="1_70815"]
@@ -44,7 +44,7 @@ _data = {
 &"RESET": SubResource("Animation_kvfuw")
 }
 
-[node name="Whispr" type="CharacterBody2D"]
+[node name="Whispr" type="CharacterBody2D" unique_id=385097614]
 texture_filter = 1
 collision_layer = 64
 collision_mask = 179
@@ -52,50 +52,52 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3gwmn")
 
-[node name="ZT" type="CollisionShape2D" parent="."]
+[node name="ZT" type="CollisionShape2D" parent="." unique_id=1529780114]
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_j3a2q")
 debug_color = Color(0.48868084, 0.5855922, 1.92523e-07, 0.54901963)
 
-[node name="Dead" type="Sprite2D" parent="."]
+[node name="Dead" type="Sprite2D" parent="." unique_id=2076912652]
 texture = ExtResource("1_70815")
 region_enabled = true
 region_rect = Rect2(144, 416, 16, 16)
 
-[node name="RUN" type="Sprite2D" parent="."]
+[node name="RUN" type="Sprite2D" parent="." unique_id=504515381]
 texture = ExtResource("1_70815")
 region_enabled = true
 region_rect = Rect2(144, 448, 16, 16)
 
-[node name="Norm" type="Sprite2D" parent="."]
+[node name="Norm" type="Sprite2D" parent="." unique_id=2018395469]
 texture = ExtResource("1_70815")
 region_enabled = true
 region_rect = Rect2(144, 480, 16, 16)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=345699463]
 collision_layer = 64
 collision_mask = 179
 
-[node name="C_Body" type="CollisionShape2D" parent="Area2D"]
+[node name="C_Body" type="CollisionShape2D" parent="Area2D" unique_id=414468854]
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_08fxp")
 
-[node name="MindTimer" type="Timer" parent="."]
+[node name="MindTimer" type="Timer" parent="." unique_id=365020894]
 one_shot = true
 
-[node name="RecoverTimer" type="Timer" parent="."]
+[node name="RecoverTimer" type="Timer" parent="." unique_id=1439434434]
 one_shot = true
 
-[node name="FightTimer" type="Timer" parent="."]
+[node name="FightTimer" type="Timer" parent="." unique_id=1240908525]
 one_shot = true
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=158752936]
 stream = ExtResource("3_08fxp")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ky8bp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1153508151]
+libraries/ = SubResource("AnimationLibrary_ky8bp")
+
+[node name="Fighting" type="AudioStreamPlayer2D" parent="." unique_id=559267006]
+
+[node name="FightAnimation" type="AnimationPlayer" parent="." unique_id=363584062]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MindTimer" to="." method="_on_mind_timer_timeout"]

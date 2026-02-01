@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ugxi7kv3t16n"]
+[gd_scene format=3 uid="uid://ugxi7kv3t16n"]
 
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="1_1pclw"]
 [ext_resource type="Script" uid="uid://cmbd8npeejcen" path="res://scripts/water.gd" id="1_71sxn"]
@@ -48,62 +48,64 @@ _data = {
 &"RESET": SubResource("Animation_kvfuw")
 }
 
-[node name="Drizzl" type="CharacterBody2D"]
+[node name="Drizzl" type="CharacterBody2D" unique_id=1291365361]
 collision_layer = 128
 collision_mask = 115
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_71sxn")
 
-[node name="ZT" type="CollisionShape2D" parent="."]
+[node name="ZT" type="CollisionShape2D" parent="." unique_id=1201713239]
 position = Vector2(0, 0.846)
 scale = Vector2(0.8, 0.9)
 shape = SubResource("CapsuleShape2D_6snbe")
 debug_color = Color(0.570296, 0.55707115, 3.85046e-07, 0.41960785)
 
-[node name="Dead" type="Sprite2D" parent="."]
+[node name="Dead" type="Sprite2D" parent="." unique_id=1692075595]
 position = Vector2(0, -1)
 texture = ExtResource("1_1pclw")
 region_enabled = true
 region_rect = Rect2(81, 412, 14, 20)
 
-[node name="RUN" type="Sprite2D" parent="."]
+[node name="RUN" type="Sprite2D" parent="." unique_id=330463064]
 position = Vector2(0, -1)
 texture = ExtResource("1_1pclw")
 region_enabled = true
 region_rect = Rect2(81, 444, 14, 20)
 
-[node name="Norm" type="Sprite2D" parent="."]
+[node name="Norm" type="Sprite2D" parent="." unique_id=369505522]
 position = Vector2(0, -1)
 texture = ExtResource("1_1pclw")
 region_enabled = true
 region_rect = Rect2(81, 476, 14, 20)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1043813344]
 collision_layer = 128
 collision_mask = 115
 
-[node name="C_Body" type="CollisionShape2D" parent="Area2D"]
+[node name="C_Body" type="CollisionShape2D" parent="Area2D" unique_id=2108200421]
 position = Vector2(0, 0.8456962)
 scale = Vector2(0.8, 0.9)
 shape = SubResource("CapsuleShape2D_hjk4s")
 
-[node name="MindTimer" type="Timer" parent="."]
+[node name="MindTimer" type="Timer" parent="." unique_id=260572629]
 one_shot = true
 
-[node name="RecoverTimer" type="Timer" parent="."]
+[node name="RecoverTimer" type="Timer" parent="." unique_id=1180008252]
 one_shot = true
 
-[node name="FightTimer" type="Timer" parent="."]
+[node name="FightTimer" type="Timer" parent="." unique_id=985781620]
 one_shot = true
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=443986388]
 stream = ExtResource("3_hjk4s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ky8bp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1670618643]
+libraries/ = SubResource("AnimationLibrary_ky8bp")
+
+[node name="FightAnimation" type="AnimationPlayer" parent="." unique_id=2143409254]
+
+[node name="Fighting" type="AudioStreamPlayer2D" parent="." unique_id=757435206]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MindTimer" to="." method="_on_mind_timer_timeout"]

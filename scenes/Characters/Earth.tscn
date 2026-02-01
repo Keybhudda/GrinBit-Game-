@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmbvbms3pkvl2"]
+[gd_scene format=3 uid="uid://cmbvbms3pkvl2"]
 
 [ext_resource type="Script" uid="uid://bejja64fj8pos" path="res://scripts/earth.gd" id="1_3x3ub"]
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="2_3x3ub"]
@@ -48,68 +48,70 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hij7"]
 radius = 11.68
 
-[node name="Grumbl" type="CharacterBody2D"]
+[node name="Grumbl" type="CharacterBody2D" unique_id=1636013290]
 collision_layer = 32
 collision_mask = 211
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3x3ub")
 
-[node name="Dead" type="Sprite2D" parent="."]
+[node name="Dead" type="Sprite2D" parent="." unique_id=1172788746]
 texture = ExtResource("2_3x3ub")
 region_enabled = true
 region_rect = Rect2(112, 416, 16, 16)
 
-[node name="RUN" type="Sprite2D" parent="."]
+[node name="RUN" type="Sprite2D" parent="." unique_id=1796858599]
 texture = ExtResource("2_3x3ub")
 region_enabled = true
 region_rect = Rect2(112, 448, 16, 16)
 
-[node name="Norm" type="Sprite2D" parent="."]
+[node name="Norm" type="Sprite2D" parent="." unique_id=1798180209]
 texture = ExtResource("2_3x3ub")
 region_enabled = true
 region_rect = Rect2(112, 480, 16, 16)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=109130753]
 collision_layer = 32
 collision_mask = 211
 
-[node name="C_Body" type="CollisionShape2D" parent="Area2D"]
+[node name="C_Body" type="CollisionShape2D" parent="Area2D" unique_id=1269144654]
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_33wcd")
 
-[node name="MindTimer" type="Timer" parent="."]
+[node name="MindTimer" type="Timer" parent="." unique_id=892756558]
 process_mode = 2
 one_shot = true
 
-[node name="RecoverTimer" type="Timer" parent="."]
+[node name="RecoverTimer" type="Timer" parent="." unique_id=1030274996]
 one_shot = true
 
-[node name="FightTimer" type="Timer" parent="."]
+[node name="FightTimer" type="Timer" parent="." unique_id=59351642]
 one_shot = true
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1866776241]
 stream = ExtResource("3_33wcd")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ky8bp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=270310967]
+libraries/ = SubResource("AnimationLibrary_ky8bp")
 
-[node name="T-Area" type="Area2D" parent="."]
+[node name="T-Area" type="Area2D" parent="." unique_id=1764405055]
 disable_mode = 2
 collision_layer = 128
 collision_mask = 3
 
-[node name="T-Range" type="CollisionShape2D" parent="T-Area"]
+[node name="T-Range" type="CollisionShape2D" parent="T-Area" unique_id=493728537]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_kvfuw")
 debug_color = Color(0.17079999, 0.61, 0.61, 0.14117648)
 
-[node name="ZT" type="CollisionShape2D" parent="."]
+[node name="ZT" type="CollisionShape2D" parent="." unique_id=1762710849]
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_6hij7")
 debug_color = Color(0.56134766, 0.5350854, 0, 0.28627452)
+
+[node name="FightAnimation" type="AnimationPlayer" parent="." unique_id=358637904]
+
+[node name="Fighting" type="AudioStreamPlayer2D" parent="." unique_id=2002456665]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="RecoverTimer" to="." method="_on_recover_timer_timeout"]

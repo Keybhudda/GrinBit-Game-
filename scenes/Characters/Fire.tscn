@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xmly785p82v3"]
+[gd_scene format=3 uid="uid://xmly785p82v3"]
 
 [ext_resource type="Script" uid="uid://cl7ccyc1qiqck" path="res://scripts/fire.gd" id="1_v4dyv"]
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="2_v4dyv"]
@@ -46,62 +46,64 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cqpyd"]
 radius = 11.63
 
-[node name="Pyro" type="CharacterBody2D"]
+[node name="Pyro" type="CharacterBody2D" unique_id=1539017951]
 collision_layer = 16
 collision_mask = 19
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_v4dyv")
 
-[node name="Dead" type="Sprite2D" parent="."]
+[node name="Dead" type="Sprite2D" parent="." unique_id=881600465]
 texture = ExtResource("2_v4dyv")
 offset = Vector2(0, -3.5)
 region_enabled = true
 region_rect = Rect2(48, 409, 16, 23)
 
-[node name="RUN" type="Sprite2D" parent="."]
+[node name="RUN" type="Sprite2D" parent="." unique_id=1993050820]
 texture = ExtResource("2_v4dyv")
 offset = Vector2(0, -3.5)
 region_enabled = true
 region_rect = Rect2(48, 441, 16, 23)
 
-[node name="Norm" type="Sprite2D" parent="."]
+[node name="Norm" type="Sprite2D" parent="." unique_id=1366041483]
 texture = ExtResource("2_v4dyv")
 offset = Vector2(0, -3.5)
 region_enabled = true
 region_rect = Rect2(47.2821, 472.721, 17.3913, 23.507)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=622349911]
 collision_layer = 16
 collision_mask = 227
 
-[node name="C_Body" type="CollisionShape2D" parent="Area2D"]
+[node name="C_Body" type="CollisionShape2D" parent="Area2D" unique_id=1231063190]
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_to24d")
 
-[node name="MindTimer" type="Timer" parent="."]
+[node name="MindTimer" type="Timer" parent="." unique_id=1239433783]
 process_mode = 2
 one_shot = true
 
-[node name="RecoverTimer" type="Timer" parent="."]
+[node name="RecoverTimer" type="Timer" parent="." unique_id=86663229]
 one_shot = true
 
-[node name="FightTimer" type="Timer" parent="."]
+[node name="FightTimer" type="Timer" parent="." unique_id=1041607661]
 one_shot = true
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=128002999]
 stream = ExtResource("3_to24d")
 bus = &"Sound Effects"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_h5mf2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1158840055]
+libraries/ = SubResource("AnimationLibrary_h5mf2")
 
-[node name="ZT" type="CollisionShape2D" parent="."]
+[node name="ZT" type="CollisionShape2D" parent="." unique_id=367524036]
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_cqpyd")
 debug_color = Color(0.35333332, 0.4, 0, 0.27058825)
+
+[node name="Fighting" type="AudioStreamPlayer2D" parent="." unique_id=1987900233]
+
+[node name="FightAnimation" type="AnimationPlayer" parent="." unique_id=82991622]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="RecoverTimer" to="." method="_on_recover_timer_timeout"]
