@@ -3,6 +3,14 @@
 [ext_resource type="Script" uid="uid://bejja64fj8pos" path="res://scripts/earth.gd" id="1_3x3ub"]
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="2_3x3ub"]
 [ext_resource type="AudioStream" uid="uid://cafosjb5sedru" path="res://assets/Sounds/Game_Grinbit_SFX(Enemy Death).mp3" id="3_33wcd"]
+[ext_resource type="Texture2D" uid="uid://limrm18ux7fu" path="res://assets/characters/cloud animation/Characterfightcloud1.png" id="4_4bb1h"]
+[ext_resource type="Texture2D" uid="uid://4bwdjj5ikftm" path="res://assets/characters/cloud animation/Characterfightcloud2.png" id="5_cihl0"]
+[ext_resource type="Texture2D" uid="uid://wbhxdd7bpeiy" path="res://assets/characters/cloud animation/Characterfightcloud3.png" id="6_fo4s2"]
+[ext_resource type="Texture2D" uid="uid://bo1sgau6csl6v" path="res://assets/characters/cloud animation/Characterfightcloud4.png" id="7_itmlx"]
+[ext_resource type="Texture2D" uid="uid://drnogx5i63mtf" path="res://assets/characters/cloud animation/Characterfightcloud5.png" id="8_4u4tb"]
+[ext_resource type="Texture2D" uid="uid://cr3mhc73gf134" path="res://assets/characters/cloud animation/Characterfightcloud6.png" id="9_pc6r2"]
+[ext_resource type="Texture2D" uid="uid://dsv7lawkw450d" path="res://assets/characters/cloud animation/Characterfightcloud7.png" id="10_t36w7"]
+[ext_resource type="Texture2D" uid="uid://bbojje0rdo6pq" path="res://assets/characters/cloud animation/Characterfightcloud8.png" id="11_b5xw5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_33wcd"]
 radius = 11.675297
@@ -47,6 +55,38 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hij7"]
 radius = 11.68
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbswd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4bb1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cihl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fo4s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_itmlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4u4tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pc6r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t36w7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b5xw5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Grumbl" type="CharacterBody2D" unique_id=1636013290]
 collision_layer = 32
@@ -109,9 +149,14 @@ scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_6hij7")
 debug_color = Color(0.56134766, 0.5350854, 0, 0.28627452)
 
-[node name="FightAnimation" type="AnimationPlayer" parent="." unique_id=358637904]
-
-[node name="Fighting" type="AudioStreamPlayer2D" parent="." unique_id=2002456665]
+[node name="FightCloud" type="AnimatedSprite2D" parent="." unique_id=1569978746]
+visible = false
+position = Vector2(-125.223, -202.776)
+sprite_frames = SubResource("SpriteFrames_lbswd")
+autoplay = "default"
+frame = 2
+frame_progress = 0.72676027
+speed_scale = 1.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="RecoverTimer" to="." method="_on_recover_timer_timeout"]

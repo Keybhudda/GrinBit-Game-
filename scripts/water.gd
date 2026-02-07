@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var deathscreen: Node2D = %deathscreen
 @onready var norm: Sprite2D = $Norm
 @onready var run: Sprite2D = $RUN
+@onready var fight_cloud: AnimatedSprite2D = $FightCloud
 
 @export var map: TileMapLayer
 #----------------------Based Variables & Modes----------------------------------
@@ -83,21 +84,25 @@ func reset_state():
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
 func update_look(new_mode: Mode) -> void:
-	#changes the look of the enemy charcter for when in a certain mode.
 	match new_mode:
 		default_mode:
 			norm.visible = true
+			fight_cloud.visible = false
 		Mode.SHUFFLE:
 			norm.visible = true
+			fight_cloud.visible = false
 		Mode.RUN:
 			norm.visible = false
 			run.visible = true
+			fight_cloud.visible = false
 		Mode.DEAD:
 			norm.visible = false
 			run.visible = false
+			fight_cloud.visible = false
 		Mode.FIGHT:
-			norm.visible = false
+			norm.visible = true
 			run.visible = false
+			fight_cloud.visible = true
 
 #----------------------MOVEMENT CODE--------------------------------------------
 var last_behavior: Mode = Mode.CHASE#Variable To Store For Mode Swapping

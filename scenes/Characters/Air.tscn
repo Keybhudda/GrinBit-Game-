@@ -3,6 +3,14 @@
 [ext_resource type="Script" uid="uid://carmyb6nr8u7t" path="res://scripts/air.gd" id="1_3gwmn"]
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="1_70815"]
 [ext_resource type="AudioStream" uid="uid://cafosjb5sedru" path="res://assets/Sounds/Game_Grinbit_SFX(Enemy Death).mp3" id="3_08fxp"]
+[ext_resource type="Texture2D" uid="uid://limrm18ux7fu" path="res://assets/characters/cloud animation/Characterfightcloud1.png" id="4_tljm7"]
+[ext_resource type="Texture2D" uid="uid://4bwdjj5ikftm" path="res://assets/characters/cloud animation/Characterfightcloud2.png" id="5_hbh7g"]
+[ext_resource type="Texture2D" uid="uid://wbhxdd7bpeiy" path="res://assets/characters/cloud animation/Characterfightcloud3.png" id="6_imhft"]
+[ext_resource type="Texture2D" uid="uid://bo1sgau6csl6v" path="res://assets/characters/cloud animation/Characterfightcloud4.png" id="7_cl3rs"]
+[ext_resource type="Texture2D" uid="uid://drnogx5i63mtf" path="res://assets/characters/cloud animation/Characterfightcloud5.png" id="8_xtlbh"]
+[ext_resource type="Texture2D" uid="uid://cr3mhc73gf134" path="res://assets/characters/cloud animation/Characterfightcloud6.png" id="9_ihcb3"]
+[ext_resource type="Texture2D" uid="uid://dsv7lawkw450d" path="res://assets/characters/cloud animation/Characterfightcloud7.png" id="10_isynj"]
+[ext_resource type="Texture2D" uid="uid://bbojje0rdo6pq" path="res://assets/characters/cloud animation/Characterfightcloud8.png" id="11_t40ws"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3a2q"]
 
@@ -43,6 +51,38 @@ _data = {
 &"Death": SubResource("Animation_6hij7"),
 &"RESET": SubResource("Animation_kvfuw")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wudxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tljm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hbh7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_imhft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cl3rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xtlbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ihcb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_isynj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t40ws")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Whispr" type="CharacterBody2D" unique_id=385097614]
 texture_filter = 1
@@ -95,9 +135,14 @@ stream = ExtResource("3_08fxp")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1153508151]
 libraries/ = SubResource("AnimationLibrary_ky8bp")
 
-[node name="Fighting" type="AudioStreamPlayer2D" parent="." unique_id=559267006]
-
-[node name="FightAnimation" type="AnimationPlayer" parent="." unique_id=363584062]
+[node name="FightCloud" type="AnimatedSprite2D" parent="." unique_id=1651438566]
+visible = false
+position = Vector2(-125.223, -202.776)
+sprite_frames = SubResource("SpriteFrames_wudxy")
+autoplay = "default"
+frame = 7
+frame_progress = 0.8527566
+speed_scale = 1.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MindTimer" to="." method="_on_mind_timer_timeout"]

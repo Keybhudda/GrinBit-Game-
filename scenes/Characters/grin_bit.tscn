@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1vnwequen04s"]
+[gd_scene format=3 uid="uid://c1vnwequen04s"]
 
 [ext_resource type="Script" uid="uid://v5is7smufnuj" path="res://scripts/player(grin_bit).gd" id="1_7gdbq"]
 [ext_resource type="Texture2D" uid="uid://3560qdneyf3j" path="res://assets/Characters.png" id="2_oxj5r"]
@@ -6,27 +6,27 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxj5r"]
 radius = 12.05111
 
-[node name="Grinbit" type="CharacterBody2D"]
+[node name="Grinbit" type="CharacterBody2D" unique_id=2080814693]
 collision_layer = 2
 collision_mask = 31
 script = ExtResource("1_7gdbq")
 
-[node name="Invincible" type="Sprite2D" parent="."]
+[node name="Invincible" type="Sprite2D" parent="." unique_id=1291815953]
 texture = ExtResource("2_oxj5r")
 region_enabled = true
 region_rect = Rect2(16, 416, 16, 16)
 
-[node name="EatMode" type="Sprite2D" parent="."]
+[node name="EatMode" type="Sprite2D" parent="." unique_id=2054242631]
 texture = ExtResource("2_oxj5r")
 region_enabled = true
 region_rect = Rect2(16, 448, 16, 16)
 
-[node name="Norm" type="Sprite2D" parent="."]
+[node name="Norm" type="Sprite2D" parent="." unique_id=943115997]
 texture = ExtResource("2_oxj5r")
 region_enabled = true
 region_rect = Rect2(16, 480, 16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=244405765]
 rotation = -3.1415927
 scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_oxj5r")

@@ -20,6 +20,7 @@ var game_mode: ModeOfGame = ModeOfGame.NORM
 #-----------------------Music and Sounds----------------------------------------
 @onready var player_death: AudioStreamPlayer2D = $PlayerDeath
 @onready var backgroundmusic: AudioStreamPlayer2D = $Backgroundmusic
+@onready var fighting: AudioStreamPlayer2D = $Fighting
 
 #-----------------------Timers--------------------------------------------------
 @onready var death_timer: Timer = get_tree().get_first_node_in_group("DeathTimer")
@@ -72,6 +73,7 @@ func _on_element_clash(enemy_a, enemy_b):
 				print(enemy_a.name, " Is Fighting. ", enemy_b.name, " Around ", enemy_a.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)), " And ", enemy_b.position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)))
 				enemy_a.on_enter_fight_mode()
 				enemy_b.on_enter_fight_mode()
+				fighting.play()
 
 func start_battle_timer(duration: float, enemy, opponent) -> void:
 	if game_mode == ModeOfGame.CHASE:
@@ -247,7 +249,7 @@ func reset_round():
 			print("Player reset to:", player_start_position)
 	
 		stop_fight_timers()
-		
+		fighting.stop()
 		for enemy in enemies:
 			if enemy.name in enemy_start_position:
 				enemy.reset_state()
@@ -279,6 +281,7 @@ func _on_go_timer_timeout() -> void:
 #Chase Mode Function 
 func _on_chase_mode_activated():
 	print("CHASE MODE ACTIVATED!")
+	fighting.stop()
 	player.on_enter_run_mode()
 	for enemy in enemies:
 		enemy.path.clear()

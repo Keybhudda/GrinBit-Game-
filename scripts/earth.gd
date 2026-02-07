@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var mind_timer: Timer = $MindTimer
 @onready var deathscreen: Node2D = %deathscreen
 
+
+@onready var fight_cloud: AnimatedSprite2D = $FightCloud
 @onready var norm: Sprite2D = $Norm
 @onready var run: Sprite2D = $RUN
 
@@ -90,17 +92,22 @@ func update_look(new_mode: Mode) -> void:
 	match new_mode:
 		default_mode:
 			norm.visible = true
+			fight_cloud.visible = false
 		Mode.SHUFFLE:
 			norm.visible = true
+			fight_cloud.visible = false
 		Mode.RUN:
 			norm.visible = false
 			run.visible = true
+			fight_cloud.visible = false
 		Mode.DEAD:
 			norm.visible = false
 			run.visible = false
+			fight_cloud.visible = false
 		Mode.FIGHT:
-			norm.visible = false
+			norm.visible = true
 			run.visible = false
+			fight_cloud.visible = true
 #----------------------MOVEMENT CODE--------------------------------------------
 #Movement Of Character
 func _physics_process(_delta: float) -> void:
