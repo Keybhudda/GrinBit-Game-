@@ -9,11 +9,12 @@ extends CharacterBody2D
 @onready var deathscreen: Node2D = %deathscreen
 @onready var recover_timer: Timer = $RecoverTimer
 @onready var fight_timer: Timer = $FightTimer
+
 @onready var fight_cloud: AnimatedSprite2D = $FightCloud
-
-
 @onready var norm: Sprite2D = $Norm
 @onready var run: Sprite2D = $RUN
+@onready var dead: Sprite2D = $Dead
+
 
 
 @export var map: TileMapLayer
@@ -70,12 +71,14 @@ func _ready():
 func reset_state():
 	norm.visible = true
 	run.visible = true
+	dead.visible = false
 	if get_node("Area2D/C_Body").disabled == true or get_node("ZT").disabled == true:
 		enable_collision()
 	has_printed_mode_DEAD = false
 	has_printed_mode_killable = false
 	path.clear()
 	path_index = 0
+	speed = 4
 	moving = false
 	direction = Vector2.ZERO
 	target_pos = position
@@ -91,19 +94,24 @@ func update_look(new_mode: Mode) -> void:
 	match new_mode:
 		default_mode:
 			norm.visible = true
+			dead.visible = false
 			fight_cloud.visible = false
 		Mode.SHUFFLE:
 			norm.visible = true
+			dead.visible = true
 			fight_cloud.visible = false
 		Mode.RUN:
 			norm.visible = false
 			run.visible = true
+			dead.visible = false
 			fight_cloud.visible = false
 		Mode.DEAD:
+			dead.visible = true
 			norm.visible = false
 			run.visible = false
 			fight_cloud.visible = false
 		Mode.FIGHT:
+			dead.visible = true
 			norm.visible = true
 			run.visible = false
 			fight_cloud.visible = true
@@ -112,7 +120,8 @@ func update_look(new_mode: Mode) -> void:
 func _physics_process(_delta: float) -> void:
 	decision_timer -= _delta
 	
-	if player == null or current_mode == Mode.SHUFFLE:
+	if player == null:
+		print(name, "couldn't find player")
 		set_mode(Mode.SHUFFLE)
 	
 	if decision_timer <= 0.0:
@@ -163,6 +172,8 @@ func chase_player(_delta: float) -> void:
 #This Function makes the charcter wander the map.
 func wander_around(_delta: float) -> void:
 	if recovering == true:
+		norm.visible = false
+		speed = 2
 		call_deferred("disable_collision")
 
 	var random_cell = map.walkable_cells.pick_random()

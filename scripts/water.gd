@@ -12,7 +12,10 @@ extends CharacterBody2D
 @onready var deathscreen: Node2D = %deathscreen
 @onready var norm: Sprite2D = $Norm
 @onready var run: Sprite2D = $RUN
+@onready var dead: Sprite2D = $Dead
 @onready var fight_cloud: AnimatedSprite2D = $FightCloud
+@onready var confused: Label = $Confused
+
 
 @export var map: TileMapLayer
 #----------------------Based Variables & Modes----------------------------------
@@ -68,10 +71,14 @@ func reset_state():
 	#Reset All values and mode back to norm
 	norm.visible = true
 	run.visible = true
+	dead.visible = false
+	if get_node("Area2D/C_Body").disabled == true or get_node("ZT").disabled == true:
+		enable_collision()
 	has_printed_mode_DEAD = false
 	has_printed_mode_killable = false
 	path.clear()
 	path_index = 0
+	speed = 3
 	moving = false
 	direction = Vector2.ZERO
 	target_pos = position
@@ -80,6 +87,7 @@ func reset_state():
 	clashed = false
 	recovering = false
 	fighting = false
+	confused.visible = false
 	set_mode(default_mode)
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
@@ -87,19 +95,24 @@ func update_look(new_mode: Mode) -> void:
 	match new_mode:
 		default_mode:
 			norm.visible = true
+			dead.visible = false
 			fight_cloud.visible = false
 		Mode.SHUFFLE:
 			norm.visible = true
+			dead.visible = true
 			fight_cloud.visible = false
 		Mode.RUN:
 			norm.visible = false
 			run.visible = true
+			dead.visible = false
 			fight_cloud.visible = false
 		Mode.DEAD:
+			dead.visible = true
 			norm.visible = false
 			run.visible = false
 			fight_cloud.visible = false
 		Mode.FIGHT:
+			dead.visible = true
 			norm.visible = true
 			run.visible = false
 			fight_cloud.visible = true
@@ -110,7 +123,8 @@ var last_behavior: Mode = Mode.CHASE#Variable To Store For Mode Swapping
 func _physics_process(_delta: float) -> void:
 	decision_timer -= _delta
 	
-	if player == null or current_mode == Mode.SHUFFLE:
+	if player == null:
+		print(name, "couldn't find player")
 		set_mode(Mode.SHUFFLE)
 	
 	
@@ -154,9 +168,11 @@ func character_mind() -> void:
 	
 	if last_behavior == Mode.CHASE:
 		set_mode(Mode.SHUFFLE)
+		confused.visible = true
 		last_behavior = Mode.SHUFFLE
 		
 	else:
+		confused.visible = false
 		set_mode(Mode.CHASE)
 		last_behavior = Mode.CHASE
 #This Function Makes the character Chase the player.
@@ -179,6 +195,8 @@ func chase_player(_delta: float) -> void:
 #This Function makes the charcter wander the map.
 func wander_around(_delta: float) -> void:
 	if recovering == true:
+		norm.visible = false
+		speed = 2
 		call_deferred("disable_collision")
 	
 	var random_cell = map.walkable_cells.pick_random()
@@ -207,6 +225,8 @@ func killable(_delta: float) -> void:
 		has_printed_mode_killable = true
 	var start_position = start_pos
 	
+	confused.visible = false
+	
 	if current_mode == Mode.RUN and (recovering == true or clashed == true):
 		call_deferred("enable_collision")
 		
@@ -230,6 +250,7 @@ func killable(_delta: float) -> void:
 #Function for when the charcter is cauptured by the player while in RUN Mode
 var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
+	confused.visible = false
 #checks if conditions are met then sets character to shuffle for a bit and sets a timer to prevent auto player chase.
 	if game_manager.game_mode != game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
 		set_mode(Mode.SHUFFLE)
@@ -260,6 +281,22 @@ func _dead(_delta: float) -> void:
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
 		
+
+var fighting := false
+func fight(_delta: float) -> void:
+	confused.visible = false
+	path.clear()
+	@warning_ignore("integer_division")
+	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	call_deferred("disable_collision")
+	
+	if current_mode == Mode.RUN:
+		set_mode(Mode.RUN)
+		call_deferred("enable_collision")
+		return
+	else:
+		if recovering == true:
+			set_mode(Mode.DEAD)
 
 #function that sets mode of character
 func set_mode(new_mode: Mode):
@@ -333,20 +370,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		emit_signal("element_clash", self, opponent)
 	#Later Feature If body = enemy -> Fight 
 
-var fighting := false
-func fight(_delta: float) -> void:
-	path.clear()
-	@warning_ignore("integer_division")
-	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
-	call_deferred("disable_collision")
-	
-	if current_mode == Mode.RUN:
-		set_mode(Mode.RUN)
-		call_deferred("enable_collision")
-		return
-	else:
-		if recovering == true:
-			set_mode(Mode.DEAD)
 
 #Functions for when the Game manager sets to CHASE mode this is what this charcter does 
 func on_enter_run_mode():

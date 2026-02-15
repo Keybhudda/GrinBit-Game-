@@ -8,8 +8,7 @@ script = ExtResource("1_ylnw1")
 
 [node name="youdied" type="Label" parent="." unique_id=161405690]
 unique_name_in_owner = true
-z_index = 5
-texture_filter = 1
+z_index = 2
 offset_left = -32.0
 offset_top = -12.0
 offset_right = 42.0
@@ -17,6 +16,6 @@ offset_bottom = 11.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_uurjc")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 text = "You Died!"
 horizontal_alignment = 1

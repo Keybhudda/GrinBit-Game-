@@ -44,7 +44,7 @@ var GRID_SIZE = 16
 
 #----------------------------Start Code-----------------------------------------
 func _ready() -> void:
-	start_game()
+	begin_game()
 	game_mode = ModeOfGame.NORM
 	print("GameManager instance:", self.get_path())
 	game_state.debug_print_items()
@@ -74,44 +74,6 @@ func _on_element_clash(enemy_a, enemy_b):
 				enemy_a.on_enter_fight_mode()
 				enemy_b.on_enter_fight_mode()
 				fighting.play()
-
-func start_battle_timer(duration: float, enemy, opponent) -> void:
-	if game_mode == ModeOfGame.CHASE:
-		return
-	else:
-		enemy.on_enter_fight_mode()
-		opponent.on_enter_fight_mode()
-		var timer:= Timer.new()
-		timer.wait_time = duration
-		timer.one_shot = true
-		timer.autostart = true
-	
-	
-		add_child(timer)
-	
-		timer.timeout.connect(_on_battle_timer_timeout)
-
-func _on_battle_timer_timeout() -> void:
-	if game_mode == ModeOfGame.CHASE:
-		return
-	else:
-		for enemy in enemies:
-			if enemy.clashed == true:
-				print(enemy.name, " Is Done Fighting.")
-				enemy.on_exit_fight_mode()
-
-#no longer in use 
-func _on_fight_timer_timeout() -> void:
-	if game_mode == ModeOfGame.CHASE:
-		return
-	else:
-		for enemy in enemies:
-			if enemy.clashed == true:
-				enemy.recovering = true
-				print(enemy.name, " Is Done Fighting.")
-				enemy.on_exit_fight_mode()
-
-
 
 
 
@@ -259,7 +221,17 @@ func reset_round():
 		print("Positions reset!")
 		start_game()
 
+#For anything time the game goes through a stoppage to then continue
 func start_game():
+	current_state = StateOfGame.READY
+	get_tree().paused = true
+	deathscreen.visible = true
+	deathscreen.restarting()
+	ready_timer.start(3.0)
+	print("Ready?")
+
+#for start of game 
+func begin_game():
 	current_state = StateOfGame.READY
 	get_tree().paused = true
 	deathscreen.visible = true

@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cr3mhc73gf134" path="res://assets/characters/cloud animation/Characterfightcloud6.png" id="9_ihcb3"]
 [ext_resource type="Texture2D" uid="uid://dsv7lawkw450d" path="res://assets/characters/cloud animation/Characterfightcloud7.png" id="10_isynj"]
 [ext_resource type="Texture2D" uid="uid://bbojje0rdo6pq" path="res://assets/characters/cloud animation/Characterfightcloud8.png" id="11_t40ws"]
+[ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="12_hbh7g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3a2q"]
 
@@ -143,6 +144,18 @@ autoplay = "default"
 frame = 7
 frame_progress = 0.8527566
 speed_scale = 1.5
+
+[node name="Scared" type="Label" parent="." unique_id=1919828328]
+visible = false
+offset_left = 6.0
+offset_top = -16.0
+offset_right = 46.0
+offset_bottom = 7.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("12_hbh7g")
+theme_override_font_sizes/font_size = 16
+text = "!"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MindTimer" to="." method="_on_mind_timer_timeout"]

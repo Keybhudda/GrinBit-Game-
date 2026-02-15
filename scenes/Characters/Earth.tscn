@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cr3mhc73gf134" path="res://assets/characters/cloud animation/Characterfightcloud6.png" id="9_pc6r2"]
 [ext_resource type="Texture2D" uid="uid://dsv7lawkw450d" path="res://assets/characters/cloud animation/Characterfightcloud7.png" id="10_t36w7"]
 [ext_resource type="Texture2D" uid="uid://bbojje0rdo6pq" path="res://assets/characters/cloud animation/Characterfightcloud8.png" id="11_b5xw5"]
+[ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="12_cihl0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_33wcd"]
 radius = 11.675297
@@ -157,6 +158,19 @@ autoplay = "default"
 frame = 2
 frame_progress = 0.72676027
 speed_scale = 1.5
+
+[node name="Alert" type="Label" parent="." unique_id=1394809294]
+visible = false
+offset_left = 7.4657516
+offset_top = -16.941792
+offset_right = 39.46575
+offset_bottom = 6.0582085
+theme_override_colors/font_color = Color(0.5858881, 0, 0.0038074793, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("12_cihl0")
+theme_override_font_sizes/font_size = 16
+text = "!"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="RecoverTimer" to="." method="_on_recover_timer_timeout"]

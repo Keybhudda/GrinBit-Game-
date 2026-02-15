@@ -11,14 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://cr3mhc73gf134" path="res://assets/characters/cloud animation/Characterfightcloud6.png" id="9_8sjid"]
 [ext_resource type="Texture2D" uid="uid://dsv7lawkw450d" path="res://assets/characters/cloud animation/Characterfightcloud7.png" id="10_4ya5b"]
 [ext_resource type="Texture2D" uid="uid://bbojje0rdo6pq" path="res://assets/characters/cloud animation/Characterfightcloud8.png" id="11_iwgun"]
+[ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="12_7dfr2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6snbe"]
-radius = 8.17
-height = 18.76
+[sub_resource type="CircleShape2D" id="CircleShape2D_7dfr2"]
+radius = 8.75
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjk4s"]
-radius = 8.166933
-height = 18.75823
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3nq8"]
+radius = 8.753285
 
 [sub_resource type="Animation" id="Animation_6hij7"]
 resource_name = "Death"
@@ -96,9 +95,9 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_71sxn")
 
 [node name="ZT" type="CollisionShape2D" parent="." unique_id=1201713239]
-position = Vector2(0, 0.846)
+position = Vector2(-0.1, 0.934)
 scale = Vector2(0.8, 0.9)
-shape = SubResource("CapsuleShape2D_6snbe")
+shape = SubResource("CircleShape2D_7dfr2")
 debug_color = Color(0.570296, 0.55707115, 3.85046e-07, 0.41960785)
 
 [node name="Dead" type="Sprite2D" parent="." unique_id=1692075595]
@@ -124,9 +123,9 @@ collision_layer = 128
 collision_mask = 115
 
 [node name="C_Body" type="CollisionShape2D" parent="Area2D" unique_id=2108200421]
-position = Vector2(0, 0.8456962)
+position = Vector2(-0.099689394, 0.9336137)
 scale = Vector2(0.8, 0.9)
-shape = SubResource("CapsuleShape2D_hjk4s")
+shape = SubResource("CircleShape2D_p3nq8")
 
 [node name="MindTimer" type="Timer" parent="." unique_id=260572629]
 one_shot = true
@@ -149,6 +148,17 @@ position = Vector2(-125.223, -202.776)
 sprite_frames = SubResource("SpriteFrames_6qpi0")
 autoplay = "default"
 speed_scale = 1.5
+
+[node name="Confused" type="Label" parent="." unique_id=972157119]
+visible = false
+offset_left = 5.282364
+offset_top = -16.461355
+offset_right = 45.282364
+offset_bottom = 6.538645
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("12_7dfr2")
+theme_override_font_sizes/font_size = 16
+text = "?"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="MindTimer" to="." method="_on_mind_timer_timeout"]
