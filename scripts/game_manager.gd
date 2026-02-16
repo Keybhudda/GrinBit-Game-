@@ -57,12 +57,21 @@ func _ready() -> void:
 		print("Connecting enemy:", enemy.name)
 		enemy.connect("player_caught", Callable(self, "_on_player_caught"))
 		enemy.connect("Start_Position", Callable(self, "_on_Start_Position"))
-		enemy.connect("element_clash", Callable(self, "_on_element_clash"))
+		enemy.connect("element_fight", Callable(self, "_on_element_fight"))
 	
 	game_state.connect("all_items_collected", Callable(self, "_on_level_complete"))
 	
 	current_state = StateOfGame.RUNNING
 	
+
+func _on_element_fight():
+	if game_mode == ModeOfGame.CHASE:
+		fighting.stop()
+		return
+	fighting.play()
+
+
+#No longer should be used
 func _on_element_clash(enemy_a, enemy_b):
 	print(enemy_a.name, "Has Clashed With Another Element")
 	if game_mode == ModeOfGame.CHASE:
@@ -112,6 +121,7 @@ func set_game_mode(new_mode: ModeOfGame):
 					enemy.on_exit_run_mode()
 		
 		ModeOfGame.CHASE:
+			fighting.stop()
 			print("Game Mode -> CHASE")
 			for enemy in enemies:
 				if enemy and enemy.is_inside_tree():

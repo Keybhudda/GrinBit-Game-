@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dsv7lawkw450d" path="res://assets/characters/cloud animation/Characterfightcloud7.png" id="10_3ve74"]
 [ext_resource type="Texture2D" uid="uid://bbojje0rdo6pq" path="res://assets/characters/cloud animation/Characterfightcloud8.png" id="11_0e5k8"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cqpyd"]
+radius = 11.63
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_to24d"]
 radius = 11.62741
 
@@ -51,9 +54,6 @@ _data = {
 &"RESET": SubResource("Animation_h4d7e")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cqpyd"]
-radius = 11.63
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ua46k"]
 animations = [{
 "frames": [{
@@ -92,6 +92,11 @@ collision_mask = 19
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_v4dyv")
+
+[node name="ZT" type="CollisionShape2D" parent="." unique_id=367524036]
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CircleShape2D_cqpyd")
+debug_color = Color(0.35333332, 0.4, 0, 0.27058825)
 
 [node name="Dead" type="Sprite2D" parent="." unique_id=881600465]
 texture = ExtResource("2_v4dyv")
@@ -135,11 +140,6 @@ bus = &"Sound Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1158840055]
 libraries/ = SubResource("AnimationLibrary_h5mf2")
-
-[node name="ZT" type="CollisionShape2D" parent="." unique_id=367524036]
-scale = Vector2(0.7, 0.7)
-shape = SubResource("CircleShape2D_cqpyd")
-debug_color = Color(0.35333332, 0.4, 0, 0.27058825)
 
 [node name="FightCloud" type="AnimatedSprite2D" parent="." unique_id=1016541079]
 visible = false

@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var mind_timer: Timer = $MindTimer
 @onready var deathscreen: Node2D = %deathscreen
 
+@onready var enemies = get_tree().get_nodes_in_group("Element")
+
 
 @onready var fight_cloud: AnimatedSprite2D = $FightCloud
 @onready var norm: Sprite2D = $Norm
@@ -55,7 +57,7 @@ var start_pos: Vector2
 
 var has_printed_mode_killable := false
 
-signal element_clash(self_enemy, other_enemy)
+signal element_fight
 
 #----------------------Start Code ----------------------------------------------
 #Finds Where Grinbit is to track
@@ -87,7 +89,6 @@ func reset_state():
 	target_pos = position
 	velocity = Vector2.ZERO
 	decision_timer = decision_interval
-	clashed = false
 	recovering = false
 	fighting = false
 	alert.visible = false
@@ -98,7 +99,7 @@ func update_look(new_mode: Mode) -> void:
 	match new_mode:
 		default_mode:
 			norm.visible = true
-			dead.visible = false
+			dead.visible = true
 			fight_cloud.visible = false
 		Mode.SHUFFLE:
 			norm.visible = true
@@ -117,7 +118,7 @@ func update_look(new_mode: Mode) -> void:
 		Mode.FIGHT:
 			dead.visible = true
 			norm.visible = true
-			run.visible = false
+			run.visible = true
 			fight_cloud.visible = true
 #----------------------MOVEMENT CODE--------------------------------------------
 #Movement Of Character
@@ -149,11 +150,12 @@ func _physics_process(_delta: float) -> void:
 			_dead(_delta)
 		Mode.FIGHT:
 			fight(_delta)
-#Territory area function
+#Territory area function (exit)
 func _on_t_area_body_exited(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-		
+	if recovering == true:
+		return
 	if current_mode == Mode.RUN or current_mode == Mode.DEAD or current_mode == Mode.FIGHT:
 		return
 	else:
@@ -162,11 +164,12 @@ func _on_t_area_body_exited(body: Node2D) -> void:
 			print("Player left Grumbl's terrirtory!")
 			speed = 2
 			set_mode(Mode.BASE)
-#Territory area function
+#Territory area function (enter)
 func _on_t_area_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
-		
+	if recovering == true:
+		return
 	if current_mode == Mode.RUN or current_mode == Mode.DEAD or current_mode == Mode.FIGHT:
 		return
 	else:
@@ -183,6 +186,8 @@ func character_mind() -> void:
 		set_mode(Mode.SHUFFLE)
 #This Function Makes the character Chase the player.
 func chase_player(_delta: float) -> void:
+	if alert.visible == false:
+		alert.visible = true
 	if path.is_empty():
 		path = map.get_astar_path(position, player.position)
 		path_index = 0
@@ -201,7 +206,8 @@ func chase_player(_delta: float) -> void:
 		path_index += 1
 #This Function makes the charcter wander the map.
 func wander_around(_delta: float) -> void:
-	alert.visible = false
+	if alert.visible == true:
+		alert.visible = false
 	if recovering == true:
 		norm.visible = false
 		speed = 2
@@ -232,10 +238,9 @@ func killable(_delta: float) -> void:
 		has_printed_mode_killable = true
 	var start_position = start_pos
 	
-	alert.visible = false
-	if current_mode == Mode.RUN and (recovering == true or clashed == true):
-		call_deferred("enable_collision")
-		
+	if alert.visible == true:
+		alert.visible = false
+	
 	if path.is_empty():
 		@warning_ignore("integer_division")
 		path = map.get_astar_path(position, start_position)
@@ -255,12 +260,14 @@ func killable(_delta: float) -> void:
 #Function for when the charcter is cauptured by the player while in RUN Mode
 var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
-	alert.visible = false
+	if alert.visible == true:
+		alert.visible = false
 #checks if conditions are met then sets character to shuffle for a bit and sets a timer to prevent auto player chase.
 	if game_manager.game_mode != game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
 		set_mode(Mode.SHUFFLE)
 		recover_timer.start(3)
 		return
+	
 	var start_position = start_pos
 	visible = true
 	get_node("Area2D/C_Body").disabled = true
@@ -284,19 +291,18 @@ func _dead(_delta: float) -> void:
 		
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
-		
 
-
+#FightMode Functions Where Two Elements/enemies stop movement and fight eachother
 var fighting := false
 func fight(_delta: float) -> void:
-	alert.visible = false
+	if alert.visible == true:
+		alert.visible = false
 	path.clear()
 	@warning_ignore("integer_division")
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
 	call_deferred("disable_collision")
 	
-	if current_mode == Mode.RUN:
-		set_mode(Mode.RUN)
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		call_deferred("enable_collision")
 		return
 	else:
@@ -356,13 +362,12 @@ func _caught():
 	path.clear()
 	
 
-var clashed := false
 var recovering := false
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#If player enters area = death scene and or If player eneters area and mode == RUN then add points and eventually enemy back to stary pos
 	if body.is_in_group("Player"):
-		if current_mode == Mode.RUN:
+		if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 			game_manager.add_pointC()
 			_caught()
 			set_mode(Mode.DEAD)
@@ -372,61 +377,80 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			emit_signal("player_caught")
 	if body.is_in_group("Element"):
 		var opponent := body
-		clashed = true
-		emit_signal("element_clash", self, opponent)
+		opponent.start_fight()
+		on_enter_fight_mode()
+		emit_signal("element_fight")
+		print(name, " is fighting ", opponent.name)
 	#Later Feature If body = enemy -> Fight 
+
+
+#--------- Helper Functions --------------#
+func start_fight():
+	on_enter_fight_mode()
+
+func stop_all_timers():
+	mind_timer.stop()
+	recover_timer.stop()
+	fight_timer.stop()
 
 #Functions for when the Game manager sets to CHASE mode this is what this charcter does 
 func on_enter_run_mode():
-	#Called when chase mode starts
-	if not current_mode == Mode.RUN:
-		set_mode(Mode.RUN)
-		speed = 2
+	stop_all_timers()
+	set_mode(Mode.RUN)
+	speed = 2
 
 func on_exit_run_mode():
 	#Called when chase mode ends
 	speed = 2
 	reset_state()
 
+#Functions for when character is fighting another element
 func on_enter_fight_mode():
-	if current_mode == Mode.RUN:
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		call_deferred("enable_collision")
 		return
 	fighting = true
-	clashed = true
 	path.clear()
 	if fight_timer.is_stopped():
 		fight_timer.start(5)
 		set_mode(Mode.FIGHT)
 		call_deferred("disable_collision")
-
+#FightTimer Function
 func _on_fight_timer_timeout() -> void:
-	if current_mode == Mode.RUN:
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		call_deferred("enable_collision")
 		return
 	print(name, " Is Done Fighting.")
 	on_exit_fight_mode()
 
+#set character into a dead state
 func on_exit_fight_mode():
 	fighting = false
-	clashed = false
 	recovering = true
-	if current_mode == Mode.RUN:
-		set_mode(Mode.RUN)
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		call_deferred("enable_collision")
 		return
-	set_mode(Mode.DEAD)
-
-
-func on_exit_recovery_mode():
-	if current_mode == Mode.RUN:
+	else:
+		set_mode(Mode.DEAD)
+#RecoverTimer Function
+func _on_recover_timer_timeout() -> void:
+	print(name, " Has Recovered")
+	recovering = false
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		call_deferred("enable_collision")
 		return
 	else :
-		if recovering == true and position == start_pos:
+		on_exit_recovery_mode()
+#reset character back to norm
+func on_exit_recovery_mode():
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
+		call_deferred("enable_collision")
+		return
+	else :
+		if recovering == false:
 			enable_collision()
 			reset_state()
-
+#Functions for toggling collision
 func disable_collision():
 	get_node("ZT").disabled = true
 	get_node("Area2D/C_Body").disabled = true
@@ -434,14 +458,5 @@ func disable_collision():
 func enable_collision():
 	get_node("ZT").disabled = false
 	get_node("Area2D/C_Body").disabled = false
-
-func _on_recover_timer_timeout() -> void:
-	if recovering == true:
-		print(name, " Has Recovered")
-	if current_mode == Mode.RUN:
-		call_deferred("enable_collision")
-		return
-	else :
-		reset_state()
 
 #---------------------------Character Personality = Territorial ------------------------------------

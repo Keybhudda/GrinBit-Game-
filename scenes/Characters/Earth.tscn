@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bbojje0rdo6pq" path="res://assets/characters/cloud animation/Characterfightcloud8.png" id="11_b5xw5"]
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="12_cihl0"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6hij7"]
+radius = 11.68
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_33wcd"]
 radius = 11.675297
 
@@ -54,9 +57,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvfuw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6hij7"]
-radius = 11.68
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_lbswd"]
 animations = [{
 "frames": [{
@@ -95,6 +95,11 @@ collision_mask = 211
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3x3ub")
+
+[node name="ZT" type="CollisionShape2D" parent="." unique_id=1762710849]
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CircleShape2D_6hij7")
+debug_color = Color(0.56134766, 0.5350854, 0, 0.28627452)
 
 [node name="Dead" type="Sprite2D" parent="." unique_id=1172788746]
 texture = ExtResource("2_3x3ub")
@@ -144,11 +149,6 @@ collision_mask = 3
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_kvfuw")
 debug_color = Color(0.17079999, 0.61, 0.61, 0.14117648)
-
-[node name="ZT" type="CollisionShape2D" parent="." unique_id=1762710849]
-scale = Vector2(0.7, 0.7)
-shape = SubResource("CircleShape2D_6hij7")
-debug_color = Color(0.56134766, 0.5350854, 0, 0.28627452)
 
 [node name="FightCloud" type="AnimatedSprite2D" parent="." unique_id=1569978746]
 visible = false
