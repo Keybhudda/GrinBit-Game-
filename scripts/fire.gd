@@ -89,6 +89,7 @@ func reset_state():
 	decision_timer = decision_interval
 	recovering = false
 	fighting = false
+	stop_all_timers()
 	set_mode(default_mode)
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
@@ -150,7 +151,7 @@ func _physics_process(_delta: float) -> void:
 
 #This is this characters mindset
 func character_mind() -> void:
-	if current_mode == Mode.FIGHT:
+	if not can_think():
 		return
 	set_mode(default_mode)#Chase The Player
 #This Function Makes the character Chase the player.
@@ -344,7 +345,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 #--------- Helper Functions --------------#
 func start_fight():
+	print("Someone Is Fighting ", name)
 	on_enter_fight_mode()
+
+func can_think() -> bool:
+	if current_mode in [Mode.FIGHT, Mode.DEAD]:
+		return false
+		
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
+		return false
+		
+	return true
 
 func stop_all_timers():
 	mind_timer.stop()

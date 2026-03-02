@@ -91,7 +91,7 @@ func reset_state():
 	decision_timer = decision_interval
 	recovering = false
 	fighting = false
-	alert.visible = false
+	stop_all_timers()
 	set_mode(default_mode)
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
@@ -160,7 +160,6 @@ func _on_t_area_body_exited(body: Node2D) -> void:
 		return
 	else:
 		if body.is_in_group("Player"):
-			alert.visible = false
 			print("Player left Grumbl's terrirtory!")
 			speed = 2
 			set_mode(Mode.BASE)
@@ -174,20 +173,17 @@ func _on_t_area_body_entered(body: Node2D) -> void:
 		return
 	else:
 		if body.is_in_group("Player"):
-			alert.visible = true
 			print("Player entered Grumbl's terrirtory!")
 			speed = 3
 			set_mode(Mode.CHASE)
 #This is this characters mindset
 func character_mind() -> void:
-	if current_mode == Mode.FIGHT:
+	if not can_think():
 		return
 	else:
 		set_mode(Mode.SHUFFLE)
 #This Function Makes the character Chase the player.
 func chase_player(_delta: float) -> void:
-	if alert.visible == false:
-		alert.visible = true
 	if path.is_empty():
 		path = map.get_astar_path(position, player.position)
 		path_index = 0
@@ -206,8 +202,6 @@ func chase_player(_delta: float) -> void:
 		path_index += 1
 #This Function makes the charcter wander the map.
 func wander_around(_delta: float) -> void:
-	if alert.visible == true:
-		alert.visible = false
 	if recovering == true:
 		norm.visible = false
 		speed = 2
@@ -238,8 +232,6 @@ func killable(_delta: float) -> void:
 		has_printed_mode_killable = true
 	var start_position = start_pos
 	
-	if alert.visible == true:
-		alert.visible = false
 	
 	if path.is_empty():
 		@warning_ignore("integer_division")
@@ -260,8 +252,6 @@ func killable(_delta: float) -> void:
 #Function for when the charcter is cauptured by the player while in RUN Mode
 var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
-	if alert.visible == true:
-		alert.visible = false
 #checks if conditions are met then sets character to shuffle for a bit and sets a timer to prevent auto player chase.
 	if game_manager.game_mode != game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
 		set_mode(Mode.SHUFFLE)
@@ -295,8 +285,6 @@ func _dead(_delta: float) -> void:
 #FightMode Functions Where Two Elements/enemies stop movement and fight eachother
 var fighting := false
 func fight(_delta: float) -> void:
-	if alert.visible == true:
-		alert.visible = false
 	path.clear()
 	@warning_ignore("integer_division")
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
@@ -386,7 +374,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 #--------- Helper Functions --------------#
 func start_fight():
+	print("Someone Is Fighting ", name)
 	on_enter_fight_mode()
+
+func can_think() -> bool:
+	if current_mode in [Mode.FIGHT, Mode.DEAD]:
+		return false
+		
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
+		return false
+		
+	return true
 
 func stop_all_timers():
 	mind_timer.stop()

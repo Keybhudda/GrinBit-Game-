@@ -92,7 +92,7 @@ func reset_state():
 	decision_timer = decision_interval
 	recovering = false
 	fighting = false
-	scared.visible = false
+	stop_all_timers()
 	set_mode(default_mode)
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
@@ -155,24 +155,22 @@ func _physics_process(_delta: float) -> void:
 #This Function if a timer timeout which just tells the character what to do when the timer's time runs out.
 func _on_mind_timer_timeout() -> void:
 	print(name, " has Came to Mind!")
-	if current_mode == Mode.RUN or current_mode == Mode.DEAD or current_mode == Mode.FIGHT:
+	if current_mode in [Mode.FIGHT, Mode.DEAD, Mode.RUN]:
 		return
 	else:
 		set_mode(Mode.BASE)
 
 #This is this characters mindset
 func character_mind() -> void:
-	if current_mode == Mode.FIGHT:
+	if not can_think():
 		return
 	print(name, " is thinking. . .")
 	# 50/50 of either going into Chase mode or Shuffle.
 	if randi() % 2 == 0:
-		scared.visible = true
 		set_mode(Mode.SHUFFLE)
 		mind_timer.start(8.0)
 		print(name, " is Scared and is wandering")
 	else:
-		scared.visible = false
 		set_mode(Mode.CHASE)
 		mind_timer.start(8.0)
 		print(name, "is trying to cut off Player!")
@@ -278,8 +276,7 @@ func killable(_delta: float) -> void:
 		has_printed_mode_killable = true
 	var start_position = start_pos
 	
-	if scared.visible == true:
-		scared.visible = false
+
 	
 	if path.is_empty():
 		@warning_ignore("integer_division")
@@ -302,8 +299,7 @@ func killable(_delta: float) -> void:
 #Function for when the charcter is cauptured by the player while in RUN Mode
 var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
-	if scared.visible == true:
-		scared.visible = false
+
 #checks if conditions are met then sets character to shuffle for a bit and sets a timer to prevent auto player chase.
 	if game_manager.game_mode != game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
 		set_mode(Mode.SHUFFLE)
@@ -337,8 +333,6 @@ func _dead(_delta: float) -> void:
 #FightMode Functions Where Two Elements/enemies stop movement and fight eachother
 var fighting := false
 func fight(_delta: float) -> void:
-	if scared.visible == true:
-		scared.visible = false
 	path.clear()
 	@warning_ignore("integer_division")
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
@@ -429,7 +423,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 #--------- Helper Functions --------------#
 func start_fight():
+	print("Someone Is Fighting ", name)
 	on_enter_fight_mode()
+
+func can_think() -> bool:
+	if current_mode in [Mode.FIGHT, Mode.DEAD]:
+		return false
+		
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
+		return false
+		
+	return true
 
 func stop_all_timers():
 	mind_timer.stop()
