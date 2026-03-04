@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://wripf5ftdf07"]
+[gd_scene format=3 uid="uid://wripf5ftdf07"]
 
 [ext_resource type="Script" uid="uid://sort2fkqphvp" path="res://scripts/gameover.gd" id="1_mt7yr"]
 [ext_resource type="Texture2D" uid="uid://dqoogeeunbvs3" path="res://assets/Black screen.png" id="1_ncp31"]
@@ -60,7 +60,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="gameover" type="Control"]
+[node name="gameover" type="Control" unique_id=1429100196]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,12 +69,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mt7yr")
 
-[node name="blkscreen" type="Sprite2D" parent="."]
+[node name="blkscreen" type="Sprite2D" parent="." unique_id=1918703574]
 position = Vector2(529.813, 325.313)
 scale = Vector2(3.88698, 3.23376)
 texture = ExtResource("1_ncp31")
 
-[node name="Gratitude" type="RichTextLabel" parent="."]
+[node name="Gratitude" type="RichTextLabel" parent="." unique_id=976265850]
 z_index = 1
 layout_mode = 0
 offset_left = 568.0
@@ -95,7 +95,7 @@ text = "			Thank You For Playing My Game
 "
 fit_content = true
 
-[node name="Info" type="RichTextLabel" parent="."]
+[node name="Info" type="RichTextLabel" parent="." unique_id=944974794]
 layout_mode = 0
 offset_top = 444.0
 offset_right = 670.0
@@ -116,7 +116,7 @@ text = "
 
 	Music Created By Keybhudda"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=162421823]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 40.0
@@ -125,7 +125,7 @@ offset_bottom = 295.0
 scale = Vector2(1.875, 1.875)
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1558138642]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -134,7 +134,14 @@ theme_override_font_sizes/font_size = 24
 text = "Game Over !"
 horizontal_alignment = 1
 
-[node name="endscore" type="Label" parent="VBoxContainer"]
+[node name="highscore" type="Label" parent="VBoxContainer" unique_id=1028810517]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3gj0k")
+text = "Highest Score : x"
+horizontal_alignment = 1
+
+[node name="endscore" type="Label" parent="VBoxContainer" unique_id=944675400]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -142,7 +149,7 @@ theme_override_fonts/font = ExtResource("3_3gj0k")
 text = "Score : x"
 horizontal_alignment = 1
 
-[node name="startmenu" type="Button" parent="VBoxContainer"]
+[node name="startmenu" type="Button" parent="VBoxContainer" unique_id=2009635316]
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
 theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
@@ -155,7 +162,7 @@ icon = ExtResource("2_2mkfd")
 icon_alignment = 2
 script = ExtResource("2_dy3ie")
 
-[node name="quitbutton" type="Button" parent="VBoxContainer"]
+[node name="quitbutton" type="Button" parent="VBoxContainer" unique_id=454755933]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.45, 0.058499996, 0.058499996, 1)
@@ -168,7 +175,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ke020")
 text = "Exit Game"
 script = ExtResource("4_h8i2o")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=49664625]
 stream = ExtResource("6_qwp2v")
 volume_db = -5.0
 autoplay = true

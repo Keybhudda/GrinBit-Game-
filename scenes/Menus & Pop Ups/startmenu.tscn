@@ -125,7 +125,6 @@ script = ExtResource("1_ag814")
 metadata/_edit_use_anchors_ = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=188792715]
-visible = false
 layout_mode = 0
 offset_left = 387.97192
 offset_top = 1.7715454
@@ -133,8 +132,8 @@ offset_right = 707.9719
 offset_bottom = 241.77155
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1567655254]
-position = Vector2(586.22534, 320.51407)
-scale = Vector2(1.2879342, 1.4441335)
+position = Vector2(596, 338.25705)
+scale = Vector2(1.3468013, 1.5434953)
 texture = ExtResource("2_fndww")
 
 [node name="Info" type="RichTextLabel" parent="." unique_id=842326433]
