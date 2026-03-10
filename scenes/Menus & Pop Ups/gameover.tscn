@@ -135,7 +135,6 @@ text = "Game Over !"
 horizontal_alignment = 1
 
 [node name="highscore" type="Label" parent="VBoxContainer" unique_id=1028810517]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3gj0k")
 text = "Highest Score : x"

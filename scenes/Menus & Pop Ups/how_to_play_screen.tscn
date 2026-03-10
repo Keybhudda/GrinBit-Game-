@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://b1wtxm0dbrh7x"]
 
 [ext_resource type="Texture2D" uid="uid://dqoogeeunbvs3" path="res://assets/Black screen.png" id="1_4mb7w"]
-[ext_resource type="Texture2D" uid="uid://c1p48ajsh6yos" path="res://assets/Fruits/Apple.png" id="1_6vcj7"]
+[ext_resource type="Texture2D" uid="uid://c1p48ajsh6yos" path="res://assets/Food & Point-Items/Apple.png" id="1_6vcj7"]
 [ext_resource type="Texture2D" uid="uid://uq8xsncvume4" path="res://assets/Picture for game explaination.png" id="1_v1fyb"]
+[ext_resource type="Texture2D" uid="uid://ck0cerbaoi7g4" path="res://assets/Food & Point-Items/Fruits and Other Point items.png" id="3_cb3q1"]
 [ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="4_pcm25"]
 [ext_resource type="Script" uid="uid://vekk67qa0vri" path="res://scripts/mainmenubutton.gd" id="5_hap1o"]
-[ext_resource type="Texture2D" uid="uid://bybbosc3qt2r0" path="res://assets/Kill point Token.png" id="6_hap1o"]
-[ext_resource type="Texture2D" uid="uid://bexqp6kabiukb" path="res://assets/Token Point.png" id="7_hl6b5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl6b5"]
 bg_color = Color(0.27, 0.27, 0.27, 0.45882353)
@@ -149,7 +148,7 @@ offset_top = 328.0
 offset_right = 468.0
 offset_bottom = 448.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.98039216, 0.8666667, 0, 0.56078434)
+theme_override_colors/font_outline_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 12
 text = "	Collecting The Token With K
@@ -179,15 +178,19 @@ autowrap_mode = 0
 
 [node name="KillPointToken" type="Sprite2D" parent="." unique_id=683702034]
 z_index = 1
-position = Vector2(369, 300)
+position = Vector2(363, 302)
 scale = Vector2(3, 3)
-texture = ExtResource("6_hap1o")
+texture = ExtResource("3_cb3q1")
+region_enabled = true
+region_rect = Rect2(96, 240, 16, 16)
 
 [node name="TokenPoint" type="Sprite2D" parent="." unique_id=2091431943]
 z_index = 1
 position = Vector2(279, 303)
 scale = Vector2(3, 3)
-texture = ExtResource("7_hl6b5")
+texture = ExtResource("3_cb3q1")
+region_enabled = true
+region_rect = Rect2(64, 208, 16, 16)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1766088778]
 z_index = 2

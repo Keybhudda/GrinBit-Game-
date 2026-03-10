@@ -293,6 +293,7 @@ parameters/looping = true
 [node name="Fighting" type="AudioStreamPlayer2D" parent="GameManager" unique_id=1334520136]
 stream = ExtResource("7_5newe")
 volume_db = -10.0
+attenuation = 2.3784127
 bus = &"Sound Effects"
 
 [node name="Player_Lives" type="Node" parent="." unique_id=533944452]

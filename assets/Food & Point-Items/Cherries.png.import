@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bexqp6kabiukb"
-path="res://.godot/imported/Token Point.png-b871351cd4bd532b0270869d47085f36.ctex"
+uid="uid://cv6yjrwdajonm"
+path="res://.godot/imported/Cherries.png-6acc921260161ed8c0374a5feae8acc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Token Point.png"
-dest_files=["res://.godot/imported/Token Point.png-b871351cd4bd532b0270869d47085f36.ctex"]
+source_file="res://assets/Food & Point-Items/Cherries.png"
+dest_files=["res://.godot/imported/Cherries.png-6acc921260161ed8c0374a5feae8acc2.ctex"]
 
 [params]
 

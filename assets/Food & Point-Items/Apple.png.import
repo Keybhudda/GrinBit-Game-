@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv6yjrwdajonm"
-path="res://.godot/imported/Cherries.png-99b55f9a86a113a817d4453823447de1.ctex"
+uid="uid://c1p48ajsh6yos"
+path="res://.godot/imported/Apple.png-85351124769a0cc6ed8aff5c4d25f2f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fruits/Cherries.png"
-dest_files=["res://.godot/imported/Cherries.png-99b55f9a86a113a817d4453823447de1.ctex"]
+source_file="res://assets/Food & Point-Items/Apple.png"
+dest_files=["res://.godot/imported/Apple.png-85351124769a0cc6ed8aff5c4d25f2f2.ctex"]
 
 [params]
 

@@ -3,8 +3,15 @@ extends Control
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var endscore: Label = $VBoxContainer/endscore
+@onready var highscore: Label = $VBoxContainer/highscore
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalData.check_new_high_score()
+	
+	if GlobalData.high_score > 0:
+		highscore.text = "High Score: " + str(GlobalData.high_score)
+		
 	endscore.text = "Final Score: " + str(GlobalData.total_score)
+	
 	audio_stream_player_2d.play()

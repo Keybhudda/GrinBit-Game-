@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bybbosc3qt2r0"
-path="res://.godot/imported/Kill point Token.png-5635103961c58faff222301869b5d7ca.ctex"
+uid="uid://c3m46ql686kj"
+path="res://.godot/imported/Orange.png-827ba7bd3c74970f9d2678a45e7e9b00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Kill point Token.png"
-dest_files=["res://.godot/imported/Kill point Token.png-5635103961c58faff222301869b5d7ca.ctex"]
+source_file="res://assets/Food & Point-Items/Orange.png"
+dest_files=["res://.godot/imported/Orange.png-827ba7bd3c74970f9d2678a45e7e9b00.ctex"]
 
 [params]
 

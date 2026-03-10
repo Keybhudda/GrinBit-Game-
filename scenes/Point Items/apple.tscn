@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdqsih0y850lp"]
+[gd_scene format=3 uid="uid://bdqsih0y850lp"]
 
-[ext_resource type="Texture2D" uid="uid://c1p48ajsh6yos" path="res://assets/Fruits/Apple.png" id="1_8mcfl"]
 [ext_resource type="Script" uid="uid://dtouvbsh7sw7m" path="res://scripts/apple.gd" id="1_a84or"]
+[ext_resource type="Texture2D" uid="uid://ck0cerbaoi7g4" path="res://assets/Food & Point-Items/Fruits and Other Point items.png" id="2_3kxrm"]
 [ext_resource type="AudioStream" uid="uid://bi4utg6yif7qq" path="res://assets/Sounds/Game_Grinbit_Fruit_SFX.mp3" id="3_3kxrm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a84or"]
@@ -82,29 +82,30 @@ _data = {
 &"pickup": SubResource("Animation_alj01")
 }
 
-[node name="Apple" type="Area2D"]
+[node name="Apple" type="Area2D" unique_id=1002611667]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_a84or")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8mcfl")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647267724]
+texture = ExtResource("2_3kxrm")
 offset = Vector2(8, -9)
+region_enabled = true
+region_rect = Rect2(48, 190.35081, 16, 17.649185)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=953517776]
 position = Vector2(8, -6.8001537)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_a84or")
 
-[node name="Pickupsound" type="AudioStreamPlayer2D" parent="."]
+[node name="Pickupsound" type="AudioStreamPlayer2D" parent="." unique_id=348465877]
 volume_db = -10.0
+bus = &"Sound Effects"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_s7hjn")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=366422977]
+libraries/ = SubResource("AnimationLibrary_s7hjn")
 
-[node name="AvailableTimer" type="Timer" parent="."]
+[node name="AvailableTimer" type="Timer" parent="." unique_id=106423456]
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://5g4ufdx14egl"]
+[gd_scene format=3 uid="uid://5g4ufdx14egl"]
 
 [ext_resource type="Script" uid="uid://dril3r5wsv4gt" path="res://scripts/orange.gd" id="1_24ymx"]
-[ext_resource type="Texture2D" uid="uid://c3m46ql686kj" path="res://assets/Fruits/Orange.png" id="1_bou5x"]
+[ext_resource type="Texture2D" uid="uid://ck0cerbaoi7g4" path="res://assets/Food & Point-Items/Fruits and Other Point items.png" id="2_xnr1h"]
 [ext_resource type="AudioStream" uid="uid://bi4utg6yif7qq" path="res://assets/Sounds/Game_Grinbit_Fruit_SFX.mp3" id="3_xnr1h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24ymx"]
@@ -82,25 +82,26 @@ _data = {
 &"pickup": SubResource("Animation_02iu2")
 }
 
-[node name="Orange" type="Area2D"]
+[node name="Orange" type="Area2D" unique_id=918756236]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_24ymx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bou5x")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1358617061]
+texture = ExtResource("2_xnr1h")
 offset = Vector2(8, -8)
+region_enabled = true
+region_rect = Rect2(32, 208, 16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=854395090]
 position = Vector2(8, -7.94436)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_24ymx")
 
-[node name="Pickupsound" type="AudioStreamPlayer2D" parent="."]
+[node name="Pickupsound" type="AudioStreamPlayer2D" parent="." unique_id=728676670]
+bus = &"Sound Effects"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1phyu")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=872314513]
+libraries/ = SubResource("AnimationLibrary_1phyu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Grin-Bit"
 config/description="This Is Grin-Bit Indie Game Made By Humble Knight Games (HKG) Founded By KeyBhudda "
-run/main_scene="uid://c1uulnctcvunt"
+run/main_scene="uid://qojtnvgumkc"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://c5ymtve60lch6"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxusgrkfbvels"]
+[gd_scene format=3 uid="uid://cxusgrkfbvels"]
 
 [ext_resource type="Script" uid="uid://db1b21n3xaeob" path="res://scripts/game_won_screen.gd" id="1_pf3d3"]
 [ext_resource type="Texture2D" uid="uid://dlunhnfjhm5rw" path="res://assets/Golden Grinbit CutOut.png" id="2_6jbjv"]
@@ -61,14 +61,14 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="GameWonScreen" type="Control"]
+[node name="GameWonScreen" type="Control" unique_id=1556276343]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_pf3d3")
 
-[node name="G-Grin" type="Sprite2D" parent="."]
+[node name="G-Grin" type="Sprite2D" parent="." unique_id=1526475473]
 z_index = 1
 position = Vector2(-403, 0)
 scale = Vector2(0.5, 0.5)
@@ -77,12 +77,12 @@ region_enabled = true
 region_rect = Rect2(257, 132, 257, 354)
 region_filter_clip_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1555079660]
 position = Vector2(-0.5, 0.5)
 scale = Vector2(5, 5)
 texture = ExtResource("3_6jbjv")
 
-[node name="youwon" type="Label" parent="."]
+[node name="youwon" type="Label" parent="." unique_id=1694121232]
 layout_mode = 0
 offset_left = -224.0
 offset_top = -240.0
@@ -95,7 +95,7 @@ theme_override_fonts/font = ExtResource("3_fgjvg")
 theme_override_font_sizes/font_size = 40
 text = "CONGRATS YOU WON!! "
 
-[node name="finalscore" type="Label" parent="."]
+[node name="finalscore" type="Label" parent="." unique_id=1046681443]
 layout_mode = 0
 offset_left = -112.0
 offset_top = -160.0
@@ -107,7 +107,19 @@ theme_override_fonts/font = ExtResource("3_fgjvg")
 theme_override_font_sizes/font_size = 30
 text = "Score: 0"
 
-[node name="props" type="Label" parent="."]
+[node name="highscore" type="Label" parent="." unique_id=186738632]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -192.0
+offset_right = 27.0
+offset_bottom = -150.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_fgjvg")
+theme_override_font_sizes/font_size = 30
+text = "Highest Score: 0"
+
+[node name="props" type="Label" parent="." unique_id=821201290]
 layout_mode = 0
 offset_left = -224.0
 offset_top = -103.0
@@ -120,7 +132,7 @@ theme_override_fonts/font = ExtResource("3_fgjvg")
 theme_override_font_sizes/font_size = 24
 text = "You Rock! What A Gamer You Are! "
 
-[node name="Gratitude" type="RichTextLabel" parent="."]
+[node name="Gratitude" type="RichTextLabel" parent="." unique_id=103131510]
 layout_mode = 0
 offset_left = -594.00006
 offset_top = 243.0
@@ -141,12 +153,12 @@ text = "			Thank You For Playing My Game
 
 "
 
-[node name="Info" type="RichTextLabel" parent="."]
+[node name="Info" type="RichTextLabel" parent="." unique_id=661311157]
 layout_mode = 0
-offset_left = -594.0
-offset_top = -335.0
-offset_right = 76.0
-offset_bottom = 1712.0
+offset_left = -594.00006
+offset_top = -352.0
+offset_right = 75.99994
+offset_bottom = 1695.0
 scale = Vector2(0.9, 0.9)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -163,7 +175,7 @@ text = "
 
 	Music Created By Keybhudda"
 
-[node name="Gratitude2" type="RichTextLabel" parent="."]
+[node name="Gratitude2" type="RichTextLabel" parent="." unique_id=1876850941]
 layout_mode = 0
 offset_left = 151.0
 offset_top = -965.0
@@ -203,7 +215,7 @@ fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2111048339]
 layout_mode = 0
 offset_left = -176.0
 offset_top = -48.0
@@ -211,7 +223,7 @@ offset_right = -15.0
 offset_bottom = 18.0
 scale = Vector2(2, 2)
 
-[node name="startmenu" type="Button" parent="VBoxContainer"]
+[node name="startmenu" type="Button" parent="VBoxContainer" unique_id=347311073]
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
 theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
@@ -224,7 +236,7 @@ icon = ExtResource("2_wupp1")
 icon_alignment = 2
 script = ExtResource("3_pf3d3")
 
-[node name="quitbutton" type="Button" parent="VBoxContainer"]
+[node name="quitbutton" type="Button" parent="VBoxContainer" unique_id=1475978297]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.45, 0.058499996, 0.058499996, 1)
@@ -237,13 +249,13 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fxr8n")
 text = "Exit Game"
 script = ExtResource("4_fgjvg")
 
-[node name="winning_music" type="AudioStreamPlayer2D" parent="."]
+[node name="winning_music" type="AudioStreamPlayer2D" parent="." unique_id=265445464]
 stream = ExtResource("7_itah0")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1756232256]
 
 [connection signal="pressed" from="VBoxContainer/startmenu" to="VBoxContainer/startmenu" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/quitbutton" to="VBoxContainer/quitbutton" method="_on_pressed"]
