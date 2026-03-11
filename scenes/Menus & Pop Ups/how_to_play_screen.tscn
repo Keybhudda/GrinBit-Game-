@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b1wtxm0dbrh7x"]
 
+[ext_resource type="Script" uid="uid://dsxeayhlr3g5v" path="res://scripts/how_to_play_screen.gd" id="1_0r2s6"]
 [ext_resource type="Texture2D" uid="uid://dqoogeeunbvs3" path="res://assets/Black screen.png" id="1_4mb7w"]
 [ext_resource type="Texture2D" uid="uid://c1p48ajsh6yos" path="res://assets/Food & Point-Items/Apple.png" id="1_6vcj7"]
 [ext_resource type="Texture2D" uid="uid://uq8xsncvume4" path="res://assets/Picture for game explaination.png" id="1_v1fyb"]
@@ -40,23 +41,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0r2s6")
 
-[node name="Title" type="Label" parent="." unique_id=1955786227]
-z_index = 1
+[node name="startmenu" type="Button" parent="." unique_id=2007462316]
+z_index = 2
 layout_mode = 0
-offset_left = 467.0
-offset_top = 24.0
-offset_right = 738.0
-offset_bottom = 79.0
-theme_override_colors/font_color = Color(0.30999985, 0, 0.6, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 40
-text = "HOW TO PLAY"
-
-[node name="Buttons" type="Node" parent="." unique_id=1232733567]
-
-[node name="startmenu" type="Button" parent="Buttons" unique_id=2007462316]
 offset_left = 528.0
 offset_top = 153.0
 offset_right = 704.0
@@ -71,6 +60,19 @@ text = "Main Menu"
 icon = ExtResource("4_pcm25")
 icon_alignment = 2
 script = ExtResource("5_hap1o")
+
+[node name="Title" type="Label" parent="." unique_id=1955786227]
+z_index = 1
+layout_mode = 0
+offset_left = 467.0
+offset_top = 24.0
+offset_right = 738.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0.30999985, 0, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "HOW TO PLAY"
 
 [node name="Controls" type="RichTextLabel" parent="." unique_id=884774876]
 z_index = 2
@@ -298,4 +300,4 @@ theme_override_font_sizes/font_size = 20
 text = "This is Whispr
 "
 
-[connection signal="pressed" from="Buttons/startmenu" to="Buttons/startmenu" method="_on_pressed"]
+[connection signal="pressed" from="startmenu" to="startmenu" method="_on_pressed"]
