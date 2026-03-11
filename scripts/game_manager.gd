@@ -41,7 +41,7 @@ var total_score = score
 var player_start_position: Vector2
 var enemy_start_position = {}
 var GRID_SIZE = 16
-
+var run_combo := 0
 #----------------------------Start Code-----------------------------------------
 func _ready() -> void:
 	begin_game()
@@ -163,10 +163,24 @@ func add_pointf3():
 
 	_update_score_label()
 	#This is the new add point function for when the player collides with an enemy earning them points
+#Old Point amount/system for enemies
 func add_pointC():
 	score += 600
 	
 	_update_score_label()
+#New and more accurate Point system
+func combo_points():
+	run_combo += 1
+	
+	var points = 200 * (1 << (run_combo - 1))
+	score += points
+	print("Enemy Combo: ", run_combo, " Points: ", points)
+	
+	if  run_combo == enemies.size():
+		score += 600
+		print("All Elements Defeated! +600!")
+	_update_score_label()
+	return points
 #function That updates score
 func _update_score_label():
 	score_label.text = "Score: " + str(score)
@@ -271,6 +285,7 @@ func _on_chase_mode_activated():
 
 
 func _on_chase_timer_timeout() -> void:
+	run_combo = 0
 	print("CHASE MODE ENDED!")
 	player.on_exit_run_mode()
 	set_game_mode(ModeOfGame.NORM)

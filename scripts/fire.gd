@@ -327,7 +327,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	#If player enters area = death scene and or If player eneters area and mode == RUN then add points and eventually enemy back to stary pos
 	if body.is_in_group("Player"):
 		if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
-			game_manager.add_pointC()
+			game_manager.combo_points()
 			_caught()
 			set_mode(Mode.DEAD)
 			animation_player.play("Death")
@@ -341,6 +341,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		emit_signal("element_fight")
 		print(name, " is fighting ", opponent.name)
 	#Later Feature If body = enemy -> Fight 
+
+#For Visual Pop for when enemy is collected
+func spawn_score_popup(points):
+	var popup = preload("res://scenes/Menus & Pop Ups/Score_popup.tscn")
+	get_tree().current_scene.add_child(popup)
+	popup.position = global_position
+	popup.set_score(points)
 
 
 #--------- Helper Functions --------------#
