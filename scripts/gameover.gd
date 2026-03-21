@@ -23,3 +23,7 @@ func _ready() -> void:
 	startmenu.grab_focus()
 	
 	await get_tree().create_timer(0.2).timeout
+
+
+func _on_resethighscorebtn_pressed() -> void:
+	pass # Replace with function body.

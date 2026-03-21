@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="3_3gj0k"]
 [ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="4_h8i2o"]
 [ext_resource type="AudioStream" uid="uid://b2yw87ibrhbrx" path="res://assets/Sounds/Music/GrinBit_Game_Over_Song_1.mp3" id="6_qwp2v"]
+[ext_resource type="Script" uid="uid://b1iudksgmeisc" path="res://scripts/resethighscore.gd" id="7_lcmgc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mt7yr"]
 bg_color = Color(0.27, 0.27, 0.27, 0.45882353)
@@ -22,17 +23,31 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwp2v"]
-bg_color = Color(0.37, 0.37, 0.37, 0.5019608)
+bg_color = Color(0.37, 0.37, 0.37, 0.3372549)
 border_width_left = 20
 border_width_top = 20
 border_width_right = 20
 border_width_bottom = 20
-border_color = Color(0.22800004, 0.72, 0, 0.3372549)
+border_color = Color(0.17733337, 0.56, 0, 0.6627451)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i3ev"]
+bg_color = Color(0.36862746, 0.36862746, 0.36862746, 0.3372549)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.1764706, 0.56078434, 0, 0.6627451)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gj0k"]
 bg_color = Color(0.24477637, 0.2447764, 0.24477637, 0.41568628)
@@ -48,17 +63,74 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke020"]
-bg_color = Color(0.2, 0.2, 0.2, 0.60784316)
+bg_color = Color(0.2, 0.2, 0.2, 0.38039216)
 border_width_left = 30
 border_width_top = 30
 border_width_right = 30
 border_width_bottom = 30
-border_color = Color(0.35, 0.07700001, 0.07700001, 0.5058824)
+border_color = Color(0.35, 0.07700001, 0.07700001, 0.7176471)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmf8j"]
+bg_color = Color(0.2, 0.2, 0.2, 0.38039216)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.34901962, 0.078431375, 0.078431375, 0.7176471)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcmgc"]
+bg_color = Color(0.62, 0.589, 0.61793333, 0.13725491)
+border_width_left = 20
+border_width_top = 10
+border_width_right = 20
+border_width_bottom = 10
+border_color = Color(0.15715005, 0.0455, 0.35, 0.31764707)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing = false
+anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6bb8"]
+bg_color = Color(0.61960787, 0.5882353, 0.61960787, 0.13725491)
+border_width_left = 20
+border_width_top = 10
+border_width_right = 20
+border_width_bottom = 10
+border_color = Color(0.15715005, 0.0455, 0.35, 0.8039216)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71qw6"]
+bg_color = Color(0.61960787, 0.5882353, 0.61960787, 0.13725491)
+border_width_left = 20
+border_width_top = 10
+border_width_right = 20
+border_width_bottom = 10
+border_color = Color(0.15686275, 0.047058824, 0.34901962, 0.8039216)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing = false
 
 [node name="gameover" type="Control" unique_id=1429100196]
 layout_mode = 3
@@ -77,9 +149,9 @@ texture = ExtResource("1_ncp31")
 [node name="Gratitude" type="RichTextLabel" parent="." unique_id=976265850]
 z_index = 1
 layout_mode = 0
-offset_left = 568.0
+offset_left = 603.0
 offset_top = 24.0
-offset_right = 1152.0
+offset_right = 1187.0
 offset_bottom = 185.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -97,9 +169,9 @@ fit_content = true
 
 [node name="Info" type="RichTextLabel" parent="." unique_id=944974794]
 layout_mode = 0
-offset_top = 444.0
+offset_top = 464.0
 offset_right = 670.0
-offset_bottom = 2491.0
+offset_bottom = 2511.0
 scale = Vector2(0.9, 0.9)
 theme_override_colors/font_outline_color = Color(0.11, 0.11, 0.11, 0.6784314)
 theme_override_constants/outline_size = 10
@@ -152,10 +224,13 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
 theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_3gj0k")
 theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = SubResource("StyleBoxFlat_mt7yr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qwp2v")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8i3ev")
 text = "Main Menu"
 icon = ExtResource("2_2mkfd")
 icon_alignment = 2
@@ -167,12 +242,28 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.45, 0.058499996, 0.058499996, 1)
 theme_override_colors/font_hover_color = Color(0.4, 0.28800002, 0.28800002, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_3gj0k")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_3gj0k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ke020")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mmf8j")
 text = "Exit Game"
 script = ExtResource("4_h8i2o")
+
+[node name="resethighscorebtn" type="Button" parent="VBoxContainer" unique_id=1986056107]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.15686275, 0.047058824, 0.34901962, 0.31764707)
+theme_override_colors/font_hover_color = Color(0.36596993, 0.1254, 0.66, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_3gj0k")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_lcmgc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g6bb8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_71qw6")
+text = "Reset High Score"
+script = ExtResource("7_lcmgc")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=49664625]
 stream = ExtResource("6_qwp2v")
@@ -182,3 +273,4 @@ bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/startmenu" to="VBoxContainer/startmenu" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/quitbutton" to="VBoxContainer/quitbutton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/resethighscorebtn" to="VBoxContainer/resethighscorebtn" method="_on_pressed"]

@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var recover_timer: Timer = $RecoverTimer
 @onready var area_2d: Area2D = $Area2D
 @onready var mind_timer: Timer = $MindTimer
+@onready var recent_fight_timer: Timer = $RecentFightTimer
 
 @onready var enemies = get_tree().get_nodes_in_group("Element")
 
@@ -52,6 +53,8 @@ signal Start_Position(entity_name: String, position: Vector2)
 var start_pos: Vector2
 
 var has_printed_mode_killable := false
+
+var recently_fought := false
 
 signal element_fight
 
@@ -274,7 +277,7 @@ func _dead(_delta: float) -> void:
 		path_index += 1
 		
 
-#FightMode Functions Where Two Elements/enemies stop mo
+#FightMode Functions Where Two Elements/enemies stop to fight each other
 var fighting := false
 func fight(_delta: float) -> void:
 	@warning_ignore("integer_division")
@@ -282,7 +285,6 @@ func fight(_delta: float) -> void:
 	call_deferred("disable_collision")
 	
 	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
-		set_mode(Mode.RUN)
 		call_deferred("enable_collision")
 		return
 	else:
@@ -341,6 +343,7 @@ func _caught():
 	path.clear()
 
 var recovering := false
+var elements_can_fight := false
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#If player enters area = death scene and or If player eneters area and mode == RUN then add points and eventually enemy back to stary pos
@@ -355,6 +358,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			emit_signal("player_caught")
 	if body.is_in_group("Element"):
 		var opponent := body
+		if recently_fought or opponent.recently_fought:
+			norm.visible = false
+			run.visible = false
+			dead.visible = true
+			print("Elements cannot fight.")
+			return
 		opponent.start_fight()
 		on_enter_fight_mode()
 		emit_signal("element_fight")
@@ -367,6 +376,7 @@ func spawn_score_popup(points):
 	get_tree().current_scene.add_child(popup)
 	popup.position = global_position
 	popup.set_score(points)
+
 
 
 #--------- Helper Functions --------------#
@@ -391,6 +401,8 @@ func stop_all_timers():
 #Functions for when the Game manager sets to CHASE mode this is what this charcter does 
 func on_enter_run_mode():
 	stop_all_timers()
+	recently_fought = false
+	recent_fight_timer.stop()
 	set_mode(Mode.RUN)
 	speed = 2
 
@@ -417,10 +429,18 @@ func _on_fight_timer_timeout() -> void:
 		return
 	print(name, " Is Done Fighting.")
 	on_exit_fight_mode()
+
+func _on_recent_fight_timer_timeout() -> void:
+	print(name, " can fight again!")
+	recently_fought = false
+
 #set character into a dead state
 func on_exit_fight_mode():
 	fighting = false
 	recovering = true
+	recently_fought = true
+	recent_fight_timer.start(30)
+	print("recent fight Time Started!")
 	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		call_deferred("enable_collision")
 		return

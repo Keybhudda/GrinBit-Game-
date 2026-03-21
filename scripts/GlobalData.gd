@@ -25,3 +25,7 @@ func load_high_score():
 		file.close()
 	else:
 		high_score = 0
+
+func reset_high_score():
+	high_score = 0
+	save_high_score()

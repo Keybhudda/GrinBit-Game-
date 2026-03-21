@@ -134,6 +134,9 @@ one_shot = true
 [node name="FightTimer" type="Timer" parent="." unique_id=1041607661]
 one_shot = true
 
+[node name="RecentFightTimer" type="Timer" parent="." unique_id=278064932]
+one_shot = true
+
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=128002999]
 stream = ExtResource("3_to24d")
 bus = &"Sound Effects"
@@ -153,3 +156,4 @@ speed_scale = 1.5
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="RecoverTimer" to="." method="_on_recover_timer_timeout"]
 [connection signal="timeout" from="FightTimer" to="." method="_on_fight_timer_timeout"]
+[connection signal="timeout" from="RecentFightTimer" to="." method="_on_recent_fight_timer_timeout"]

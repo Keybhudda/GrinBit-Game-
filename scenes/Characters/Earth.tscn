@@ -134,6 +134,9 @@ one_shot = true
 [node name="FightTimer" type="Timer" parent="." unique_id=59351642]
 one_shot = true
 
+[node name="RecentFightTimer" type="Timer" parent="." unique_id=1071981223]
+one_shot = true
+
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1866776241]
 stream = ExtResource("3_33wcd")
 bus = &"Sound Effects"
@@ -176,5 +179,6 @@ text = "!"
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="RecoverTimer" to="." method="_on_recover_timer_timeout"]
 [connection signal="timeout" from="FightTimer" to="." method="_on_fight_timer_timeout"]
+[connection signal="timeout" from="RecentFightTimer" to="." method="_on_recent_fight_timer_timeout"]
 [connection signal="body_entered" from="T-Area" to="." method="_on_t_area_body_entered"]
 [connection signal="body_exited" from="T-Area" to="." method="_on_t_area_body_exited"]
