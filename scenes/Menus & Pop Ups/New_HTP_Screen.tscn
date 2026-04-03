@@ -15,7 +15,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 1168.0
 offset_bottom = 688.0
-color = Color(0.01258161, 0.005168853, 0.017434943, 1)
+color = Color(0.34173498, 0.31543568, 0.3592679, 1)
 
 [node name="Title" type="Label" parent="." unique_id=1113601794]
 z_index = 1
@@ -41,47 +41,44 @@ offset_left = -0.06400013
 offset_top = 12.096001
 offset_right = 8.0
 offset_bottom = -324.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="MapDetails" type="Button" parent="InfoSections" unique_id=1729541586]
+[node name="Togglebtn" type="Button" parent="InfoSections" unique_id=1729541586 groups=["InfoButtons"]]
 layout_mode = 2
 toggle_mode = true
 text = "Map"
 script = ExtResource("1_alruo")
 
-[node name="Panel" type="Panel" parent="InfoSections/MapDetails" unique_id=984949451]
-visible = false
+[node name="Panel" type="Panel" parent="InfoSections/Togglebtn" unique_id=984949451]
 layout_mode = 0
 offset_bottom = 40.0
 
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/MapDetails/Panel" unique_id=588841575]
+[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/Togglebtn/Panel" unique_id=588841575]
 position = Vector2(184, 104)
 scale = Vector2(0.77380955, 0.70312476)
 texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(16, 0, 336, 192)
 
-[node name="PictureForGameExplaination2" type="Sprite2D" parent="InfoSections/MapDetails/Panel" unique_id=987920240]
+[node name="PictureForGameExplaination2" type="Sprite2D" parent="InfoSections/Togglebtn/Panel" unique_id=987920240]
 position = Vector2(439.99997, 104.00001)
 scale = Vector2(0.5833334, 0.60267866)
 texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(768, 416, 384, 224)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="InfoSections/MapDetails/Panel" unique_id=782466446]
+[node name="RichTextLabel" type="RichTextLabel" parent="InfoSections/Togglebtn/Panel" unique_id=782466446]
 layout_mode = 0
 offset_left = 88.0
-offset_top = 168.0
+offset_top = 171.0
 offset_right = 496.0
-offset_bottom = 208.0
+offset_bottom = 240.0
 theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
 theme_override_constants/outline_size = 8
 text = "The Openings Are Way To Get Away From Enemies. Which Sends You The Opposing Opening As Your Exit."
 
-[node name="Label" type="Label" parent="InfoSections/MapDetails/Panel" unique_id=1281254859]
+[node name="Label" type="Label" parent="InfoSections/Togglebtn/Panel" unique_id=1281254859]
 layout_mode = 0
 offset_left = 72.0
 offset_top = 37.0
@@ -90,7 +87,7 @@ offset_bottom = 60.0
 theme_override_constants/outline_size = 5
 text = "Top Opening"
 
-[node name="Label2" type="Label" parent="InfoSections/MapDetails/Panel" unique_id=15315274]
+[node name="Label2" type="Label" parent="InfoSections/Togglebtn/Panel" unique_id=15315274]
 layout_mode = 0
 offset_left = 344.0
 offset_top = 120.0
@@ -100,24 +97,32 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Bottom Opening"
 
-[node name="OBJ" type="Button" parent="InfoSections" unique_id=972060465]
-visible = false
-layout_mode = 2
+[node name="Sprite2D" type="Sprite2D" parent="InfoSections/Togglebtn/Panel" unique_id=1899699997]
+position = Vector2(616, 80)
+texture = ExtResource("2_jrugu")
+region_enabled = true
+region_rect = Rect2(544, 384, 96, 80)
 
-[node name="Panel" type="Panel" parent="InfoSections/OBJ" unique_id=1399664717]
+[node name="Controls" type="Button" parent="InfoSections" unique_id=972060465 groups=["InfoButtons"]]
+layout_mode = 2
+text = "Controls
+"
+
+[node name="Panel" type="Panel" parent="InfoSections/Controls" unique_id=1399664717]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/OBJ/Panel" unique_id=984022420]
+[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/Controls/Panel" unique_id=984022420]
 position = Vector2(248, 138)
 texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(768, 416, 384, 224)
 
-[node name="Characters" type="Button" parent="InfoSections" unique_id=111208970]
-visible = false
+[node name="Characters" type="Button" parent="InfoSections" unique_id=111208970 groups=["InfoButtons"]]
 layout_mode = 2
+text = "Enemies
+"
 
 [node name="Panel" type="Panel" parent="InfoSections/Characters" unique_id=94892118]
 layout_mode = 0
@@ -130,9 +135,9 @@ texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(768, 416, 384, 224)
 
-[node name="Modes" type="Button" parent="InfoSections" unique_id=1667405436]
-visible = false
+[node name="Modes" type="Button" parent="InfoSections" unique_id=1667405436 groups=["InfoButtons"]]
 layout_mode = 2
+text = "Modes"
 
 [node name="Panel" type="Panel" parent="InfoSections/Modes" unique_id=1701003185]
 layout_mode = 0
@@ -145,4 +150,4 @@ texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(768, 416, 384, 224)
 
-[connection signal="pressed" from="InfoSections/MapDetails" to="InfoSections/MapDetails" method="_on_pressed"]
+[connection signal="pressed" from="InfoSections/Togglebtn" to="InfoSections/Togglebtn" method="_on_pressed"]

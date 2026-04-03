@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var game_state: Node2D = %GameState
 @onready var game_manager: Node2D = %GameManager
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var bump: AudioStreamPlayer2D = $bump
 
 @onready var recent_fight_timer: Timer = $RecentFightTimer
 @onready var fight_timer: Timer = $FightTimer
@@ -10,6 +11,7 @@ extends CharacterBody2D
 @onready var area_2d: Area2D = $Area2D
 @onready var mind_timer: Timer = $MindTimer
 @onready var deathscreen: Node2D = %deathscreen
+@onready var parry_timer: Timer = $ParryTimer
 
 @onready var enemies = get_tree().get_nodes_in_group("Element")
 
@@ -18,6 +20,7 @@ extends CharacterBody2D
 @onready var norm: Sprite2D = $Norm
 @onready var run: Sprite2D = $RUN
 @onready var dead: Sprite2D = $Dead
+@onready var parry: Sprite2D = $Parry
 @onready var alert: Label = $Alert
 
 
@@ -94,6 +97,8 @@ func reset_state():
 	decision_timer = decision_interval
 	recovering = false
 	fighting = false
+	if game_manager.current_state == game_manager.StateOfGame.RESETTING:
+		recently_fought = false
 	stop_all_timers()
 	set_mode(default_mode)
 	print(name, " has been reset.")
@@ -103,25 +108,30 @@ func update_look(new_mode: Mode) -> void:
 		default_mode:
 			norm.visible = true
 			dead.visible = true
+			parry.visible = false
 			fight_cloud.visible = false
 		Mode.SHUFFLE:
 			norm.visible = true
 			dead.visible = true
+			parry.visible = false
 			fight_cloud.visible = false
 		Mode.RUN:
 			norm.visible = false
 			run.visible = true
 			dead.visible = false
+			parry.visible = false
 			fight_cloud.visible = false
 		Mode.DEAD:
 			dead.visible = true
 			norm.visible = false
 			run.visible = false
+			parry.visible = false
 			fight_cloud.visible = false
 		Mode.FIGHT:
 			dead.visible = true
 			norm.visible = true
 			run.visible = true
+			parry.visible = false
 			fight_cloud.visible = true
 #----------------------MOVEMENT CODE--------------------------------------------
 #Movement Of Character
@@ -291,6 +301,7 @@ func fight(_delta: float) -> void:
 	path.clear()
 	@warning_ignore("integer_division")
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	fight_cloud.visible = true
 	call_deferred("disable_collision")
 	
 	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
@@ -370,9 +381,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Element"):
 		var opponent := body
 		if recently_fought or opponent.recently_fought:
-			norm.visible = false
-			run.visible = false
-			dead.visible = true
+			cant_fight()
 			print("Elements cannot fight.")
 			return
 		opponent.start_fight()
@@ -387,6 +396,27 @@ func spawn_score_popup(points):
 	get_tree().current_scene.add_child(popup)
 	popup.position = global_position
 	popup.set_score(points)
+
+var has_parried := false
+func cant_fight():
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
+		return
+	if not has_parried:
+		norm.visible = false
+		dead.visible = false
+		run.visible = false
+		parry.visible = true
+		bump.play()
+		has_parried = true
+		parry_timer.start(2)
+
+func _on_parry_timer_timeout() -> void:
+	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
+		bump.stop()
+		return
+	if has_parried:
+		has_parried = false
+		update_look(default_mode)
 
 #--------- Helper Functions --------------#
 func start_fight():

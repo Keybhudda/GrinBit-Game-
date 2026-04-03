@@ -12,6 +12,9 @@ var game_mode: ModeOfGame = ModeOfGame.NORM
 @onready var game_state: Node2D = %GameState
 
 @onready var score_label: Label = $score_label
+@onready var _1_lives: Sprite2D = $"1Lives"
+@onready var _2_lives: Sprite2D = $"2Lives"
+@onready var _3_lives: Sprite2D = $"3Lives"
 
 
 @onready var deathscreen: Node2D = get_tree().get_first_node_in_group("deathscreen")
@@ -45,6 +48,7 @@ var run_combo := 0
 #----------------------------Start Code-----------------------------------------
 func _ready() -> void:
 	begin_game()
+	update_lives()
 	game_mode = ModeOfGame.NORM
 	print("GameManager instance:", self.get_path())
 	game_state.debug_print_items()
@@ -84,7 +88,24 @@ func _on_element_clash(enemy_a, enemy_b):
 				enemy_b.on_enter_fight_mode()
 				fighting.play()
 
-
+func update_lives():
+	if Player_Lives.Player_Lives == 4:
+		_3_lives.visible = true
+		_2_lives.visible = false
+		_1_lives.visible = false
+		
+	if Player_Lives.Player_Lives == 3:
+		_3_lives.visible = false
+		_2_lives.visible = true
+		_1_lives.visible = false
+	if Player_Lives.Player_Lives == 2: 
+		_3_lives.visible = false
+		_2_lives.visible = false
+		_1_lives.visible = true
+	if Player_Lives.Player_Lives == 1: 
+		_3_lives.visible = false
+		_2_lives.visible = false
+		_1_lives.visible = false
 
 
 #A timer to give time to play game beat music and then send to game over screen for now until we make more levels
@@ -201,6 +222,7 @@ func _on_player_caught():
 	if current_state == StateOfGame.DEAD:
 		get_tree().paused = true
 		player_death.play()
+		update_lives()
 	Player_Lives.lose_life()#Function to subtract lives after each death.
 	
 	if Player_Lives.Player_Lives > 0:
@@ -221,6 +243,7 @@ func out_of_lives():
 #Function For when to init reset of the game. to then continue
 func _on_death_timer_timeout() -> void:
 	deathscreen.visible = false
+	update_lives()
 	reset_round()
 
 #reset the scene 
@@ -236,6 +259,7 @@ func reset_round():
 	
 		stop_fight_timers()
 		fighting.stop()
+		update_lives()
 		for enemy in enemies:
 			if enemy.name in enemy_start_position:
 				enemy.reset_state()

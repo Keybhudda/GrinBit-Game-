@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bxcvic0y282jg" path="res://assets/Sounds/Scuffle sound effects.mp3" id="7_5newe"]
 [ext_resource type="Script" uid="uid://b3fpgqqcj7gao" path="res://scripts/tunnel.gd" id="7_ir15t"]
 [ext_resource type="Script" uid="uid://chtciv4simcjy" path="res://scripts/tunnel2.gd" id="8_ca42v"]
+[ext_resource type="Texture2D" uid="uid://c2f86rnpywpjg" path="res://assets/characters/Charactersupdated2026t.png" id="9_37s47"]
 [ext_resource type="PackedScene" uid="uid://bjsku8qly4bik" path="res://scenes/Characters/Air.tscn" id="11_ca42v"]
 [ext_resource type="PackedScene" uid="uid://ugxi7kv3t16n" path="res://scenes/Characters/Water.tscn" id="13_rysoc"]
 [ext_resource type="PackedScene" uid="uid://d0cfpufh3sl7g" path="res://scenes/Point Items/token.tscn" id="20_1kice"]
@@ -295,6 +296,30 @@ stream = ExtResource("7_5newe")
 volume_db = -10.0
 attenuation = 2.3784127
 bus = &"Sound Effects"
+
+[node name="1Lives" type="Sprite2D" parent="GameManager" unique_id=211429816 groups=["LivesDisplay"]]
+visible = false
+z_index = 5
+position = Vector2(-263.94577, 152)
+texture = ExtResource("9_37s47")
+region_enabled = true
+region_rect = Rect2(32, 176, 16, 16)
+
+[node name="2Lives" type="Sprite2D" parent="GameManager" unique_id=1132314287 groups=["LivesDisplay"]]
+visible = false
+z_index = 5
+position = Vector2(-256, 152)
+texture = ExtResource("9_37s47")
+region_enabled = true
+region_rect = Rect2(32, 208, 32, 16)
+
+[node name="3Lives" type="Sprite2D" parent="GameManager" unique_id=1553522922 groups=["LivesDisplay"]]
+visible = false
+z_index = 5
+position = Vector2(-248.22128, 152)
+texture = ExtResource("9_37s47")
+region_enabled = true
+region_rect = Rect2(32, 240, 48, 16)
 
 [node name="Player_Lives" type="Node" parent="." unique_id=533944452]
 unique_name_in_owner = true

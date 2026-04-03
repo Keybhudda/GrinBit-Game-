@@ -43,6 +43,7 @@ ChaseTimer=""
 SwitchTimer=""
 Element=""
 FightTimer=""
+LivesDisplay="The Visuals For How Many Lives Are Left."
 
 [input]
 
