@@ -39,4 +39,9 @@ func _on_body_entered(_body) -> void:
 	game_manager.add_point() #add score
 	game_state.collect_item(token_id, "token") # register collection
 	
+	if game_manager.current_state == game_manager.StateOfGame.RESETTING:
+		pickupsound.stop()
+		print("Stopping Sound")
+		return
+	
 	animation_player.play("Pick up")

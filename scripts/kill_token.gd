@@ -7,6 +7,7 @@ extends Area2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var game_state: Node2D = %GameState
 @onready var game_manager: Node2D = %GameManager
+@onready var pickup_sound: AudioStreamPlayer2D = $"Pickup sound"
 
 #--------------------------Based Variables & Signals----------------------------
 @export var ktoken_id: String = ""
@@ -48,5 +49,9 @@ func _on_body_entered(_body) -> void:
 	game_manager.Check_timer()
 	game_state.collect_item(ktoken_id, "ktoken")# register collection
 	
+	if game_manager.current_state == game_manager.StateOfGame.RESETTING:
+		pickup_sound.stop()
+		print("Stopping Sound")
+		return
 	
 	animation_player.play("pick up")

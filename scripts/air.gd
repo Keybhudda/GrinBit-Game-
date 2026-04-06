@@ -440,7 +440,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 #For Visual Pop for when enemy is collected
 func spawn_score_popup(points):
-	var popup = preload("res://scenes/Menus & Pop Ups/Score_popup.tscn")
+	var popup = preload("res://scenes/Menus & Pop Ups/UI-Assets/Score_popup.tscn")
 	get_tree().current_scene.add_child(popup)
 	popup.position = global_position
 	popup.set_score(points)

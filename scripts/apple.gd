@@ -4,6 +4,7 @@ extends Area2D
 @onready var game_state: Node = %GameState
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var pickupsound: AudioStreamPlayer2D = $Pickupsound
 
 #--------------------------Timers-----------------------------------------------
 @onready var available_timer: Timer = $AvailableTimer
@@ -39,6 +40,11 @@ func _on_body_entered(_body) -> void:
 	print("food_item", food_id, " collected!")
 	
 	game_manager.add_pointf2()
+	
+	if game_manager.current_state == game_manager.StateOfGame.RESETTING:
+		pickupsound.stop()
+		print("Stopping Sound")
+		return
 	
 	animation_player.play("pickup")
 

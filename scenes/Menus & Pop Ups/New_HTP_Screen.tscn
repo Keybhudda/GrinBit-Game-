@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://de1ncdj5d323j"]
 
-[ext_resource type="Script" uid="uid://b84kkqcgwoluf" path="res://scripts/dropdownbtn.gd" id="1_alruo"]
+[ext_resource type="Texture2D" uid="uid://c5ymtve60lch6" path="res://assets/characters/GrinBit SC Cut for logo.png" id="1_6bv25"]
+[ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="1_jrugu"]
+[ext_resource type="StyleBox" uid="uid://8i7vsvmm6osq" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat.tres" id="2_6bv25"]
 [ext_resource type="Texture2D" uid="uid://uq8xsncvume4" path="res://assets/Picture for game explaination.png" id="2_jrugu"]
+[ext_resource type="StyleBox" uid="uid://b4ihuvxyhnqdh" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_default.tres" id="3_kqa8f"]
+[ext_resource type="StyleBox" uid="uid://i03iyfiqjbdn" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_pressed.tres" id="4_jwtfp"]
+[ext_resource type="StyleBox" uid="uid://bbj2uusekva5j" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_hover.tres" id="5_pgshu"]
 
-[node name="Control" type="Control" unique_id=1846994594]
+[node name="How To Play" type="Control" unique_id=1846994594]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +20,29 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 1168.0
 offset_bottom = 688.0
-color = Color(0.34173498, 0.31543568, 0.3592679, 1)
+color = Color(0.12759992, 0.046400007, 0.29, 0.53333336)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1900557849]
+visible = false
+z_index = -1
+position = Vector2(80, 48)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_6bv25")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1643514300]
+visible = false
+z_index = -1
+position = Vector2(208, 48)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_6bv25")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1257006058]
+visible = false
+z_index = -1
+position = Vector2(336, 48)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_6bv25")
+region_rect = Rect2(0, 0, 284, 284)
 
 [node name="Title" type="Label" parent="." unique_id=1113601794]
 z_index = 1
@@ -25,8 +52,12 @@ offset_top = 24.0
 offset_right = 738.0
 offset_bottom = 79.0
 theme_override_colors/font_color = Color(0.30999985, 0, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.32156864)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = -4
 theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 7
 theme_override_font_sizes/font_size = 40
 text = "HOW TO PLAY"
 
@@ -44,110 +75,165 @@ offset_bottom = -324.0
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Togglebtn" type="Button" parent="InfoSections" unique_id=1729541586 groups=["InfoButtons"]]
+[node name="MapSection" type="VBoxContainer" parent="InfoSections" unique_id=1758747525]
 layout_mode = 2
+
+[node name="Map" type="Button" parent="InfoSections/MapSection" unique_id=1729541586]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_jrugu")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_kqa8f")
+theme_override_styles/pressed = ExtResource("4_jwtfp")
+theme_override_styles/hover = ExtResource("5_pgshu")
 toggle_mode = true
 text = "Map"
-script = ExtResource("1_alruo")
 
-[node name="Panel" type="Panel" parent="InfoSections/Togglebtn" unique_id=984949451]
-layout_mode = 0
-offset_bottom = 40.0
+[node name="Panel" type="Panel" parent="InfoSections/MapSection" unique_id=984949451]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_6bv25")
 
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/Togglebtn/Panel" unique_id=588841575]
-position = Vector2(184, 104)
+[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=588841575]
+position = Vector2(168, 88)
 scale = Vector2(0.77380955, 0.70312476)
 texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(16, 0, 336, 192)
 
-[node name="PictureForGameExplaination2" type="Sprite2D" parent="InfoSections/Togglebtn/Panel" unique_id=987920240]
-position = Vector2(439.99997, 104.00001)
+[node name="PictureForGameExplaination2" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=987920240]
+position = Vector2(423.99997, 88.00001)
 scale = Vector2(0.5833334, 0.60267866)
 texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(768, 416, 384, 224)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="InfoSections/Togglebtn/Panel" unique_id=782466446]
+[node name="Sprite2D" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=2104642741]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=782466446]
 layout_mode = 0
-offset_left = 88.0
-offset_top = 171.0
-offset_right = 496.0
-offset_bottom = 240.0
+offset_top = 156.0
+offset_right = 848.0
+offset_bottom = 225.0
 theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
 theme_override_constants/outline_size = 8
-text = "The Openings Are Way To Get Away From Enemies. Which Sends You The Opposing Opening As Your Exit."
+text = "The Openings Are A Way To Get Away From Enemies. Which Sends You The Opposing Opening As Your Exit."
 
-[node name="Label" type="Label" parent="InfoSections/Togglebtn/Panel" unique_id=1281254859]
+[node name="RichTextLabel3" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=1294478971]
 layout_mode = 0
-offset_left = 72.0
-offset_top = 37.0
-offset_right = 171.0
-offset_bottom = 60.0
+offset_left = 536.0
+offset_right = 1384.0
+offset_bottom = 69.0
+theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
+theme_override_constants/outline_size = 8
+text = "Collectables = Points, Below Are Some Collectable Items That Give You Points!
+"
+
+[node name="Label" type="Label" parent="InfoSections/MapSection/Panel" unique_id=1281254859]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 39.0
+offset_right = 139.0
+offset_bottom = 62.0
 theme_override_constants/outline_size = 5
 text = "Top Opening"
 
-[node name="Label2" type="Label" parent="InfoSections/Togglebtn/Panel" unique_id=15315274]
+[node name="Label2" type="Label" parent="InfoSections/MapSection/Panel" unique_id=15315274]
 layout_mode = 0
 offset_left = 344.0
-offset_top = 120.0
+offset_top = 110.0
 offset_right = 472.0
-offset_bottom = 143.0
+offset_bottom = 133.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Bottom Opening"
 
-[node name="Sprite2D" type="Sprite2D" parent="InfoSections/Togglebtn/Panel" unique_id=1899699997]
-position = Vector2(616, 80)
-texture = ExtResource("2_jrugu")
-region_enabled = true
-region_rect = Rect2(544, 384, 96, 80)
-
-[node name="Controls" type="Button" parent="InfoSections" unique_id=972060465 groups=["InfoButtons"]]
+[node name="ControlsSection" type="VBoxContainer" parent="InfoSections" unique_id=2088519259]
 layout_mode = 2
+
+[node name="Controls" type="Button" parent="InfoSections/ControlsSection" unique_id=1891172431]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_jrugu")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_kqa8f")
+theme_override_styles/pressed = ExtResource("4_jwtfp")
+theme_override_styles/hover = ExtResource("5_pgshu")
+toggle_mode = true
 text = "Controls
 "
 
-[node name="Panel" type="Panel" parent="InfoSections/Controls" unique_id=1399664717]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Panel" type="Panel" parent="InfoSections/ControlsSection" unique_id=1399664717]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_6bv25")
 
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/Controls/Panel" unique_id=984022420]
+[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/ControlsSection/Panel" unique_id=984022420]
 position = Vector2(248, 138)
 texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(768, 416, 384, 224)
 
-[node name="Characters" type="Button" parent="InfoSections" unique_id=111208970 groups=["InfoButtons"]]
+[node name="CharacterSection" type="VBoxContainer" parent="InfoSections" unique_id=1086638505]
 layout_mode = 2
-text = "Enemies
+
+[node name="Characters" type="Button" parent="InfoSections/CharacterSection" unique_id=72289891]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_jrugu")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_kqa8f")
+theme_override_styles/pressed = ExtResource("4_jwtfp")
+theme_override_styles/hover = ExtResource("5_pgshu")
+toggle_mode = true
+text = "Characters
 "
 
-[node name="Panel" type="Panel" parent="InfoSections/Characters" unique_id=94892118]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/Characters/Panel" unique_id=1648654034]
-position = Vector2(248, 138)
-texture = ExtResource("2_jrugu")
-region_enabled = true
-region_rect = Rect2(768, 416, 384, 224)
-
-[node name="Modes" type="Button" parent="InfoSections" unique_id=1667405436 groups=["InfoButtons"]]
+[node name="Panel" type="Panel" parent="InfoSections/CharacterSection" unique_id=94892118]
+visible = false
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-text = "Modes"
+theme_override_styles/panel = ExtResource("2_6bv25")
 
-[node name="Panel" type="Panel" parent="InfoSections/Modes" unique_id=1701003185]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/Modes/Panel" unique_id=1054799537]
+[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=1648654034]
 position = Vector2(248, 138)
 texture = ExtResource("2_jrugu")
 region_enabled = true
 region_rect = Rect2(768, 416, 384, 224)
 
-[connection signal="pressed" from="InfoSections/Togglebtn" to="InfoSections/Togglebtn" method="_on_pressed"]
+[node name="ModesSection" type="VBoxContainer" parent="InfoSections" unique_id=1039479673]
+layout_mode = 2
+
+[node name="Modes" type="Button" parent="InfoSections/ModesSection" unique_id=1926646113]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_jrugu")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_kqa8f")
+theme_override_styles/pressed = ExtResource("4_jwtfp")
+theme_override_styles/hover = ExtResource("5_pgshu")
+toggle_mode = true
+text = "Modes
+"
+
+[node name="Panel" type="Panel" parent="InfoSections/ModesSection" unique_id=1701003185]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_6bv25")
+
+[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=1054799537]
+position = Vector2(248, 138)
+texture = ExtResource("2_jrugu")
+region_enabled = true
+region_rect = Rect2(768, 416, 384, 224)

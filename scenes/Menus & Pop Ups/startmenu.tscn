@@ -33,6 +33,19 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fw7ij"]
+bg_color = Color(0.16, 0.16, 0.16, 0.7921569)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.073800005, 0.41, 0.08500666, 0.8784314)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqn8n"]
 bg_color = Color(0, 0, 0, 0.7921569)
 border_width_left = 20
@@ -67,6 +80,19 @@ border_width_top = 10
 border_width_right = 30
 border_width_bottom = 10
 border_color = Color(0.23, 0.18116334, 0.020699995, 0.1764706)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djma1"]
+bg_color = Color(0.27, 0.27, 0.27, 0.83137256)
+border_width_left = 30
+border_width_top = 10
+border_width_right = 30
+border_width_bottom = 10
+border_color = Color(0.027199995, 0.34, 0.2618, 0.7764706)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -112,13 +138,26 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fndww"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu7si"]
 bg_color = Color(0, 0, 0.03137255, 0.8156863)
 border_width_left = 30
 border_width_top = 20
 border_width_right = 30
 border_width_bottom = 20
 border_color = Color(0.8, 0.11999998, 0.11999998, 0.7490196)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fndww"]
+bg_color = Color(0.15660001, 0.16440001, 0.18, 0.85882354)
+border_width_left = 30
+border_width_top = 20
+border_width_right = 30
+border_width_bottom = 20
+border_color = Color(0.55, 0.06050001, 0.06050001, 0.7490196)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -216,6 +255,7 @@ horizontal_alignment = 1
 
 [node name="startbutton" type="Button" parent="VBoxContainer" unique_id=39927440]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.47563165, 0.772539, 1.1551381e-06, 1)
 theme_override_colors/font_pressed_color = Color(0.26192242, 0.4403051, 4.813075e-07, 1)
 theme_override_colors/font_hover_color = Color(0.81383, 0.97, 0.5626001, 1)
@@ -224,6 +264,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
 theme_override_icons/icon = ExtResource("2_poymh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ihhoq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fw7ij")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lqn8n")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1khpa")
 text = "Start"
@@ -231,10 +272,12 @@ script = ExtResource("3_poymh")
 
 [node name="how_to_btn" type="Button" parent="VBoxContainer" unique_id=1633129052]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.36, 1, 0.8186667, 0.7019608)
 theme_override_colors/font_hover_color = Color(0.2556, 0.71, 0.58125335, 0.7019608)
 theme_override_constants/outline_size = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_kbbg3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_djma1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qpdwg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mq1nj")
 text = "How To Play"
@@ -243,12 +286,14 @@ script = ExtResource("7_kbbg3")
 
 [node name="quitbutton" type="Button" parent="VBoxContainer" unique_id=1964762878]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0.8352941)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 0.45490196)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 20
 theme_override_icons/icon = ExtResource("3_cy0qo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ag814")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yu7si")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fndww")
 theme_override_styles/focus = SubResource("StyleBoxFlat_2rde4")
 text = "Quit"
