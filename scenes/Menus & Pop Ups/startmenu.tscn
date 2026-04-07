@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cwh2e4alsblcm" path="res://scripts/startbutton.gd" id="3_poymh"]
 [ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="5_cy0qo"]
 [ext_resource type="Texture2D" uid="uid://c52p61pny4aa0" path="res://assets/characters/Water Enemy (Simple Game).png" id="6_2qj7i"]
+[ext_resource type="StyleBox" uid="uid://comoppuhyyouh" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat_focused.tres" id="6_mq1nj"]
 [ext_resource type="PackedScene" uid="uid://r4jspoqxew56" path="res://scenes/volume_slider.tscn" id="7_fndww"]
 [ext_resource type="Script" uid="uid://c0fjtlwx1uvjs" path="res://scripts/how_to_btn.gd" id="7_kbbg3"]
 [ext_resource type="AudioStream" uid="uid://c6ili5txxuru0" path="res://assets/Sounds/Music/Grin_Theme_2.mp3" id="7_lqn8n"]
@@ -106,19 +107,6 @@ border_width_top = 10
 border_width_right = 30
 border_width_bottom = 10
 border_color = Color(0.021599997, 0.27, 0.2079, 0.7137255)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq1nj"]
-bg_color = Color(0, 0, 0, 0.7921569)
-border_width_left = 30
-border_width_top = 10
-border_width_right = 30
-border_width_bottom = 10
-border_color = Color(0.023529412, 0.27058825, 0.20784314, 0.7137255)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -279,7 +267,7 @@ theme_override_constants/outline_size = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_kbbg3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_djma1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qpdwg")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mq1nj")
+theme_override_styles/focus = ExtResource("6_mq1nj")
 text = "How To Play"
 icon = ExtResource("6_2qj7i")
 script = ExtResource("7_kbbg3")

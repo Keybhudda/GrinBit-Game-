@@ -3,10 +3,26 @@
 [ext_resource type="Texture2D" uid="uid://c5ymtve60lch6" path="res://assets/characters/GrinBit SC Cut for logo.png" id="1_6bv25"]
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="1_jrugu"]
 [ext_resource type="StyleBox" uid="uid://8i7vsvmm6osq" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat.tres" id="2_6bv25"]
+[ext_resource type="PackedScene" uid="uid://byqttaltknbxc" path="res://scenes/Menus & Pop Ups/UI-Assets/startmenubtn.tscn" id="2_acp68"]
 [ext_resource type="Texture2D" uid="uid://uq8xsncvume4" path="res://assets/Picture for game explaination.png" id="2_jrugu"]
+[ext_resource type="Script" uid="uid://jd0pu2n7hv7r" path="res://scenes/Menus & Pop Ups/scripts-for-menus/info_sections.gd" id="2_pgshu"]
 [ext_resource type="StyleBox" uid="uid://b4ihuvxyhnqdh" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_default.tres" id="3_kqa8f"]
 [ext_resource type="StyleBox" uid="uid://i03iyfiqjbdn" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_pressed.tres" id="4_jwtfp"]
 [ext_resource type="StyleBox" uid="uid://bbj2uusekva5j" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_hover.tres" id="5_pgshu"]
+[ext_resource type="StyleBox" uid="uid://buxcq1gb81xyx" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_focused.tres" id="8_gsw6x"]
+[ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="10_13esy"]
+[ext_resource type="StyleBox" uid="uid://comoppuhyyouh" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat_focused.tres" id="11_13esy"]
+[ext_resource type="Texture2D" uid="uid://dtkgrxeqbjc4k" path="res://assets/characters/360_F_1738975417_z9jHsH3sascUNsm55l31Li0F1SgLr2ZA.png" id="11_52l34"]
+[ext_resource type="Texture2D" uid="uid://241wns2q3k5d" path="res://assets/characters/11ea80a4.png" id="12_oqukb"]
+[ext_resource type="Texture2D" uid="uid://rrxvlmhi3uxg" path="res://assets/characters/depad.png" id="13_oqukb"]
+[ext_resource type="Texture2D" uid="uid://cn7sgo8x4ocxn" path="res://assets/characters/playstation controller.png" id="14_wmr83"]
+[ext_resource type="Texture2D" uid="uid://d2kyfkv8oalr8" path="res://assets/characters/norm pyro.png" id="17_6gvk5"]
+[ext_resource type="Texture2D" uid="uid://cleluke5c427r" path="res://assets/characters/drizzl norm.png" id="18_jh4ml"]
+[ext_resource type="Texture2D" uid="uid://ig835uul6nn1" path="res://assets/characters/norm Grumbl.png" id="19_tw0pd"]
+[ext_resource type="Texture2D" uid="uid://mx78nkqxld8a" path="res://assets/characters/norm whispr.png" id="20_0mojg"]
+[ext_resource type="Texture2D" uid="uid://brs4f4y2wulcw" path="res://assets/characters/Runmode pyro.png" id="21_co34o"]
+[ext_resource type="Texture2D" uid="uid://bqa8oqyf5h6cp" path="res://assets/characters/Runmode drizzl.png" id="22_0r1ba"]
+[ext_resource type="Texture2D" uid="uid://bepnhbntpc2sr" path="res://assets/characters/Runmode Grumbl.png" id="23_4ey0j"]
 
 [node name="How To Play" type="Control" unique_id=1846994594]
 layout_mode = 3
@@ -61,6 +77,13 @@ theme_override_constants/shadow_outline_size = 7
 theme_override_font_sizes/font_size = 40
 text = "HOW TO PLAY"
 
+[node name="startmenu" parent="." unique_id=1414448072 instance=ExtResource("2_acp68")]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 24.0
+offset_right = 272.0
+offset_bottom = 93.0
+
 [node name="InfoSections" type="VBoxContainer" parent="." unique_id=1209342048]
 layout_mode = 1
 anchors_preset = -1
@@ -74,11 +97,12 @@ offset_right = 8.0
 offset_bottom = -324.0
 theme_override_constants/separation = 8
 alignment = 1
+script = ExtResource("2_pgshu")
 
-[node name="MapSection" type="VBoxContainer" parent="InfoSections" unique_id=1758747525]
+[node name="ControlsSection" type="VBoxContainer" parent="InfoSections" unique_id=2088519259 groups=["Sections"]]
 layout_mode = 2
 
-[node name="Map" type="Button" parent="InfoSections/MapSection" unique_id=1729541586]
+[node name="Button" type="Button" parent="InfoSections/ControlsSection" unique_id=1891172431]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -88,12 +112,158 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("3_kqa8f")
 theme_override_styles/pressed = ExtResource("4_jwtfp")
 theme_override_styles/hover = ExtResource("5_pgshu")
+theme_override_styles/focus = ExtResource("8_gsw6x")
 toggle_mode = true
-text = "Map"
+text = "Controls
+"
 
-[node name="Panel" type="Panel" parent="InfoSections/MapSection" unique_id=984949451]
+[node name="Panel" type="Panel" parent="InfoSections/ControlsSection" unique_id=1399664717]
 visible = false
 custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_6bv25")
+
+[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/ControlsSection/Panel" unique_id=984022420]
+position = Vector2(104, 103)
+scale = Vector2(5, 5)
+texture = ExtResource("10_13esy")
+region_rect = Rect2(768, 416, 384, 224)
+
+[node name="Label" type="Label" parent="InfoSections/ControlsSection/Panel" unique_id=510007096]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 211.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4627451)
+theme_override_colors/font_outline_color = Color(0.2627451, 0.15686275, 0.49411765, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+text = "This Is GrinBit (AKA You)"
+
+[node name="Label2" type="Label" parent="InfoSections/ControlsSection/Panel" unique_id=914544472]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 23.0
+offset_right = 531.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4627451)
+theme_override_colors/font_outline_color = Color(0.2627451, 0.15686275, 0.49411765, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+text = "You Can Move Using : "
+
+[node name="Label4" type="Label" parent="InfoSections/ControlsSection/Panel" unique_id=1901607552]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 23.0
+offset_right = 883.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4627451)
+theme_override_colors/font_outline_color = Color(0.2627451, 0.15686275, 0.49411765, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+text = "You Can Also Use(Controller): "
+
+[node name="Label6" type="Label" parent="InfoSections/ControlsSection/Panel" unique_id=1665457993]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 135.0
+offset_right = 825.0
+offset_bottom = 158.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4627451)
+theme_override_colors/font_outline_color = Color(0.2627451, 0.15686275, 0.49411765, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 14
+text = "My Personal Suggestion! "
+
+[node name="Label3" type="Label" parent="InfoSections/ControlsSection/Panel" unique_id=1740332309]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 103.0
+offset_right = 594.0
+offset_bottom = 126.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4627451)
+theme_override_colors/font_outline_color = Color(0.2627451, 0.15686275, 0.49411765, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+text = "Or"
+
+[node name="Label5" type="Label" parent="InfoSections/ControlsSection/Panel" unique_id=1397761787]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 87.0
+offset_right = 979.0
+offset_bottom = 110.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4627451)
+theme_override_colors/font_outline_color = Color(0.2627451, 0.15686275, 0.49411765, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+text = "Or"
+
+[node name="WASD" type="Sprite2D" parent="InfoSections/ControlsSection/Panel" unique_id=1807073389]
+modulate = Color(0.36720002, 0.288, 0.72, 0.99215686)
+position = Vector2(344, 103)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_52l34")
+
+[node name="ARROW Keys" type="Sprite2D" parent="InfoSections/ControlsSection/Panel" unique_id=430705352]
+modulate = Color(0.26367998, 0.17919998, 0.64, 1)
+position = Vector2(488, 103)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("12_oqukb")
+
+[node name="D-pad" type="Sprite2D" parent="InfoSections/ControlsSection/Panel" unique_id=1524890638]
+modulate = Color(0.26367998, 0.17919998, 0.64, 1)
+position = Vector2(696, 135)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_oqukb")
+
+[node name="D-pad2" type="Sprite2D" parent="InfoSections/ControlsSection/Panel" unique_id=616445694]
+modulate = Color(0.26367998, 0.17919998, 0.64, 1)
+position = Vector2(872, 103)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("14_wmr83")
+region_enabled = true
+region_rect = Rect2(32, 96, 432, 304)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InfoSections/ControlsSection/Panel" unique_id=1995936179]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 151.0
+offset_right = 280.0
+offset_bottom = 209.0
+theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 12
+text = "FUN TIP! : Moving Into  A Wall Or Barrier Will Stop You Completely! *Just Like Pac-Man*"
+
+[node name="MapSection" type="VBoxContainer" parent="InfoSections" unique_id=1758747525 groups=["Sections"]]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="InfoSections/MapSection" unique_id=1729541586]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_jrugu")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_kqa8f")
+theme_override_styles/pressed = ExtResource("4_jwtfp")
+theme_override_styles/hover = ExtResource("5_pgshu")
+theme_override_styles/focus = ExtResource("11_13esy")
+toggle_mode = true
+text = "Map/OBJ"
+
+[node name="Panel" type="Panel" parent="InfoSections/MapSection" unique_id=984949451]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_6bv25")
 
@@ -151,39 +321,10 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Bottom Opening"
 
-[node name="ControlsSection" type="VBoxContainer" parent="InfoSections" unique_id=2088519259]
+[node name="CharacterSection" type="VBoxContainer" parent="InfoSections" unique_id=1086638505 groups=["Sections"]]
 layout_mode = 2
 
-[node name="Controls" type="Button" parent="InfoSections/ControlsSection" unique_id=1891172431]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("1_jrugu")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("3_kqa8f")
-theme_override_styles/pressed = ExtResource("4_jwtfp")
-theme_override_styles/hover = ExtResource("5_pgshu")
-toggle_mode = true
-text = "Controls
-"
-
-[node name="Panel" type="Panel" parent="InfoSections/ControlsSection" unique_id=1399664717]
-visible = false
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_6bv25")
-
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/ControlsSection/Panel" unique_id=984022420]
-position = Vector2(248, 138)
-texture = ExtResource("2_jrugu")
-region_enabled = true
-region_rect = Rect2(768, 416, 384, 224)
-
-[node name="CharacterSection" type="VBoxContainer" parent="InfoSections" unique_id=1086638505]
-layout_mode = 2
-
-[node name="Characters" type="Button" parent="InfoSections/CharacterSection" unique_id=72289891]
+[node name="Button" type="Button" parent="InfoSections/CharacterSection" unique_id=72289891]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -193,26 +334,68 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("3_kqa8f")
 theme_override_styles/pressed = ExtResource("4_jwtfp")
 theme_override_styles/hover = ExtResource("5_pgshu")
+theme_override_styles/focus = ExtResource("11_13esy")
 toggle_mode = true
 text = "Characters
 "
 
 [node name="Panel" type="Panel" parent="InfoSections/CharacterSection" unique_id=94892118]
-visible = false
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_6bv25")
 
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=1648654034]
-position = Vector2(248, 138)
-texture = ExtResource("2_jrugu")
-region_enabled = true
+[node name="pyro" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=1648654034]
+position = Vector2(72.000015, 69.00001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_6gvk5")
 region_rect = Rect2(768, 416, 384, 224)
 
-[node name="ModesSection" type="VBoxContainer" parent="InfoSections" unique_id=1039479673]
+[node name="drizzl" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=1648469367]
+position = Vector2(200, 69.00001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("18_jh4ml")
+region_rect = Rect2(768, 416, 384, 224)
+
+[node name="grumbl" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=1580445221]
+position = Vector2(312, 69.00001)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("19_tw0pd")
+region_rect = Rect2(768, 416, 384, 224)
+
+[node name="whispr" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=1924583674]
+position = Vector2(440, 69.00001)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("20_0mojg")
+region_rect = Rect2(768, 416, 384, 224)
+
+[node name="pyro2" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=2059282098]
+position = Vector2(670.3, 69.09998)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("21_co34o")
+region_rect = Rect2(768, 416, 384, 224)
+
+[node name="drizzl2" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=645307389]
+position = Vector2(798.3, 69.09998)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("22_0r1ba")
+region_rect = Rect2(768, 416, 384, 224)
+
+[node name="grumbl2" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=332383900]
+position = Vector2(920.00006, 85.00001)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("23_4ey0j")
+region_rect = Rect2(768, 416, 384, 224)
+
+[node name="whispr2" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=1886696993]
+position = Vector2(1038.3, 69.09998)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("20_0mojg")
+region_rect = Rect2(768, 416, 384, 224)
+
+[node name="ModesSection" type="VBoxContainer" parent="InfoSections" unique_id=1039479673 groups=["Sections"]]
 layout_mode = 2
 
-[node name="Modes" type="Button" parent="InfoSections/ModesSection" unique_id=1926646113]
+[node name="Button" type="Button" parent="InfoSections/ModesSection" unique_id=1926646113]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -222,13 +405,14 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("3_kqa8f")
 theme_override_styles/pressed = ExtResource("4_jwtfp")
 theme_override_styles/hover = ExtResource("5_pgshu")
+theme_override_styles/focus = ExtResource("11_13esy")
 toggle_mode = true
 text = "Modes
 "
 
 [node name="Panel" type="Panel" parent="InfoSections/ModesSection" unique_id=1701003185]
 visible = false
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_6bv25")
 

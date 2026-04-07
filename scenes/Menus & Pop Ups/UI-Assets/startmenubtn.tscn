@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://byqttaltknbxc"]
+
+[ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="1_1s68f"]
+[ext_resource type="Script" uid="uid://vekk67qa0vri" path="res://scripts/mainmenubutton.gd" id="2_a801j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl6b5"]
+bg_color = Color(0.2, 0.2, 0.2, 0.5058824)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.11111334, 0.28, 0.0644, 0.8392157)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s68f"]
+bg_color = Color(0.17141835, 0.49, 0.08330001, 0.81960785)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.6862745)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(0, 0, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj0qs"]
+bg_color = Color(0.37, 0.37, 0.37, 0.5019608)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.097250015, 0.25, 0.055000007, 0.9098039)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r2s6"]
+bg_color = Color(0.36862746, 0.36862746, 0.36862746, 0.5019608)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.16727003, 0.43, 0.094600014, 0.9098039)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="startmenu" type="Button" unique_id=1414448072]
+z_index = 2
+offset_left = 528.0
+offset_top = 153.0
+offset_right = 704.0
+offset_bottom = 222.0
+theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
+theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_hl6b5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1s68f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jj0qs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0r2s6")
+text = "Main Menu"
+icon = ExtResource("1_1s68f")
+icon_alignment = 2
+script = ExtResource("2_a801j")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
