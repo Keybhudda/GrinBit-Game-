@@ -11,7 +11,6 @@
 [ext_resource type="StyleBox" uid="uid://bbj2uusekva5j" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_hover.tres" id="5_pgshu"]
 [ext_resource type="StyleBox" uid="uid://buxcq1gb81xyx" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_focused.tres" id="8_gsw6x"]
 [ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="10_13esy"]
-[ext_resource type="StyleBox" uid="uid://comoppuhyyouh" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat_focused.tres" id="11_13esy"]
 [ext_resource type="Texture2D" uid="uid://dtkgrxeqbjc4k" path="res://assets/characters/360_F_1738975417_z9jHsH3sascUNsm55l31Li0F1SgLr2ZA.png" id="11_52l34"]
 [ext_resource type="Texture2D" uid="uid://241wns2q3k5d" path="res://assets/characters/11ea80a4.png" id="12_oqukb"]
 [ext_resource type="Texture2D" uid="uid://rrxvlmhi3uxg" path="res://assets/characters/depad.png" id="13_oqukb"]
@@ -258,7 +257,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("3_kqa8f")
 theme_override_styles/pressed = ExtResource("4_jwtfp")
 theme_override_styles/hover = ExtResource("5_pgshu")
-theme_override_styles/focus = ExtResource("11_13esy")
+theme_override_styles/focus = ExtResource("8_gsw6x")
 toggle_mode = true
 text = "Map/OBJ"
 
@@ -334,7 +333,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("3_kqa8f")
 theme_override_styles/pressed = ExtResource("4_jwtfp")
 theme_override_styles/hover = ExtResource("5_pgshu")
-theme_override_styles/focus = ExtResource("11_13esy")
+theme_override_styles/focus = ExtResource("8_gsw6x")
 toggle_mode = true
 text = "Characters
 "
@@ -405,7 +404,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("3_kqa8f")
 theme_override_styles/pressed = ExtResource("4_jwtfp")
 theme_override_styles/hover = ExtResource("5_pgshu")
-theme_override_styles/focus = ExtResource("11_13esy")
+theme_override_styles/focus = ExtResource("8_gsw6x")
 toggle_mode = true
 text = "Modes
 "
