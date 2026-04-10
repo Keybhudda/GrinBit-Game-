@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3m46ql686kj"
-path="res://.godot/imported/Orange.png-827ba7bd3c74970f9d2678a45e7e9b00.ctex"
+uid="uid://d2cdvgyawog2n"
+path="res://.godot/imported/orange.png-775c666175b774f1967e06895a054cb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food & Point-Items/Orange.png"
-dest_files=["res://.godot/imported/Orange.png-827ba7bd3c74970f9d2678a45e7e9b00.ctex"]
+source_file="res://assets/Food & Point-Items/orange.png"
+dest_files=["res://.godot/imported/orange.png-775c666175b774f1967e06895a054cb7.ctex"]
 
 [params]
 

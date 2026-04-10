@@ -4,24 +4,36 @@
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="1_jrugu"]
 [ext_resource type="StyleBox" uid="uid://8i7vsvmm6osq" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat.tres" id="2_6bv25"]
 [ext_resource type="PackedScene" uid="uid://byqttaltknbxc" path="res://scenes/Menus & Pop Ups/UI-Assets/startmenubtn.tscn" id="2_acp68"]
-[ext_resource type="Texture2D" uid="uid://uq8xsncvume4" path="res://assets/Picture for game explaination.png" id="2_jrugu"]
 [ext_resource type="Script" uid="uid://jd0pu2n7hv7r" path="res://scenes/Menus & Pop Ups/scripts-for-menus/info_sections.gd" id="2_pgshu"]
 [ext_resource type="StyleBox" uid="uid://b4ihuvxyhnqdh" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_default.tres" id="3_kqa8f"]
 [ext_resource type="StyleBox" uid="uid://i03iyfiqjbdn" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_pressed.tres" id="4_jwtfp"]
 [ext_resource type="StyleBox" uid="uid://bbj2uusekva5j" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_hover.tres" id="5_pgshu"]
+[ext_resource type="Texture2D" uid="uid://b5pkb5782a4lp" path="res://assets/characters/GrinBit two face.png" id="6_bdya0"]
+[ext_resource type="Texture2D" uid="uid://bm4bb2qno8fak" path="res://assets/characters/hungry GrinBit.png" id="7_vd14f"]
 [ext_resource type="StyleBox" uid="uid://buxcq1gb81xyx" path="res://scenes/Menus & Pop Ups/Themes&Styles/how_to_play_menu_btns_focused.tres" id="8_gsw6x"]
 [ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="10_13esy"]
 [ext_resource type="Texture2D" uid="uid://dtkgrxeqbjc4k" path="res://assets/characters/360_F_1738975417_z9jHsH3sascUNsm55l31Li0F1SgLr2ZA.png" id="11_52l34"]
 [ext_resource type="Texture2D" uid="uid://241wns2q3k5d" path="res://assets/characters/11ea80a4.png" id="12_oqukb"]
 [ext_resource type="Texture2D" uid="uid://rrxvlmhi3uxg" path="res://assets/characters/depad.png" id="13_oqukb"]
 [ext_resource type="Texture2D" uid="uid://cn7sgo8x4ocxn" path="res://assets/characters/playstation controller.png" id="14_wmr83"]
+[ext_resource type="Texture2D" uid="uid://betjae6hfbm4d" path="res://assets/Pics Of Game/Snapshot_94.png" id="15_4ey0j"]
+[ext_resource type="Texture2D" uid="uid://c1p48ajsh6yos" path="res://assets/Food & Point-Items/Apple.png" id="16_co34o"]
+[ext_resource type="Texture2D" uid="uid://cwve73nl78jll" path="res://assets/Food & Point-Items/cherries.png" id="17_0r1ba"]
 [ext_resource type="Texture2D" uid="uid://d2kyfkv8oalr8" path="res://assets/characters/norm pyro.png" id="17_6gvk5"]
+[ext_resource type="Texture2D" uid="uid://d2cdvgyawog2n" path="res://assets/Food & Point-Items/orange.png" id="18_4ey0j"]
 [ext_resource type="Texture2D" uid="uid://cleluke5c427r" path="res://assets/characters/drizzl norm.png" id="18_jh4ml"]
+[ext_resource type="Texture2D" uid="uid://ql4nwhm00ore" path="res://assets/Food & Point-Items/token.png" id="19_4ey0j"]
 [ext_resource type="Texture2D" uid="uid://ig835uul6nn1" path="res://assets/characters/norm Grumbl.png" id="19_tw0pd"]
 [ext_resource type="Texture2D" uid="uid://mx78nkqxld8a" path="res://assets/characters/norm whispr.png" id="20_0mojg"]
+[ext_resource type="Texture2D" uid="uid://ck0cerbaoi7g4" path="res://assets/Food & Point-Items/Fruits and Other Point items.png" id="20_pgsw2"]
 [ext_resource type="Texture2D" uid="uid://brs4f4y2wulcw" path="res://assets/characters/Runmode pyro.png" id="21_co34o"]
 [ext_resource type="Texture2D" uid="uid://bqa8oqyf5h6cp" path="res://assets/characters/Runmode drizzl.png" id="22_0r1ba"]
 [ext_resource type="Texture2D" uid="uid://bepnhbntpc2sr" path="res://assets/characters/Runmode Grumbl.png" id="23_4ey0j"]
+[ext_resource type="Texture2D" uid="uid://ci8wrp4edw33u" path="res://assets/characters/runmode whispr.png" id="26_pgsw2"]
+[ext_resource type="Texture2D" uid="uid://dqdkbjeuhm72v" path="res://assets/Pics Of Game/Snapshot_101.png" id="29_pgsw2"]
+[ext_resource type="Texture2D" uid="uid://ctf5b72atptyg" path="res://assets/Pics Of Game/Snapshot_105.png" id="30_j6f7t"]
+[ext_resource type="Texture2D" uid="uid://csrnmrd0k7wj1" path="res://assets/Pics Of Game/Snapshot_107.png" id="30_wsu1x"]
+[ext_resource type="Texture2D" uid="uid://biuemilx34m8n" path="res://assets/Pics Of Game/Snapshot_102.png" id="31_ryhb8"]
 
 [node name="How To Play" type="Control" unique_id=1846994594]
 layout_mode = 3
@@ -37,26 +49,85 @@ offset_right = 1168.0
 offset_bottom = 688.0
 color = Color(0.12759992, 0.046400007, 0.29, 0.53333336)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1900557849]
-visible = false
+[node name="decor" type="Control" parent="." unique_id=360947340]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="decor" unique_id=1900557849]
 z_index = -1
-position = Vector2(80, 48)
+position = Vector2(48, 599)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_6bv25")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1643514300]
-visible = false
+[node name="Sprite2D2" type="Sprite2D" parent="decor" unique_id=1643514300]
 z_index = -1
-position = Vector2(208, 48)
+position = Vector2(173, 578)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("17_6gvk5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="decor" unique_id=1257006058]
+z_index = -1
+position = Vector2(303, 586)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("18_jh4ml")
+region_rect = Rect2(0, 0, 284, 284)
+
+[node name="Sprite2D4" type="Sprite2D" parent="decor" unique_id=509426848]
+z_index = -1
+position = Vector2(847, 53)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_tw0pd")
+
+[node name="Sprite2D5" type="Sprite2D" parent="decor" unique_id=630418532]
+z_index = -1
+position = Vector2(977, 53)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("20_0mojg")
+
+[node name="Sprite2D6" type="Sprite2D" parent="decor" unique_id=86879232]
+z_index = -1
+position = Vector2(1097, 56)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_6bv25")
+region_rect = Rect2(0, 0, 284, 284)
+
+[node name="Sprite2D7" type="Sprite2D" parent="decor" unique_id=1144931504]
+z_index = -1
+position = Vector2(48, 48)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_6bv25")
 
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1257006058]
-visible = false
+[node name="Sprite2D8" type="Sprite2D" parent="decor" unique_id=394301619]
 z_index = -1
-position = Vector2(336, 48)
+position = Vector2(176, 48)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_6bv25")
+texture = ExtResource("6_bdya0")
+
+[node name="Sprite2D9" type="Sprite2D" parent="decor" unique_id=1306317786]
+z_index = -1
+position = Vector2(304, 48)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_vd14f")
+region_rect = Rect2(0, 0, 284, 284)
+
+[node name="Sprite2D10" type="Sprite2D" parent="decor" unique_id=347619780]
+z_index = -1
+position = Vector2(846, 580)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("21_co34o")
+
+[node name="Sprite2D11" type="Sprite2D" parent="decor" unique_id=70445655]
+z_index = -1
+position = Vector2(978, 585)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("22_0r1ba")
+
+[node name="Sprite2D12" type="Sprite2D" parent="decor" unique_id=304429761]
+z_index = -1
+position = Vector2(1104, 599)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_vd14f")
 region_rect = Rect2(0, 0, 284, 284)
 
 [node name="Title" type="Label" parent="." unique_id=1113601794]
@@ -181,6 +252,21 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 14
 text = "My Personal Suggestion! "
 
+[node name="Label7" type="Label" parent="InfoSections/ControlsSection/Panel" unique_id=1368922830]
+layout_mode = 0
+offset_left = 846.0
+offset_top = 118.0
+offset_right = 905.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.76862746)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4627451)
+theme_override_colors/font_outline_color = Color(0.22486663, 0.11600001, 0.4, 0.38431373)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 12
+text = "*Joystick*"
+
 [node name="Label3" type="Label" parent="InfoSections/ControlsSection/Panel" unique_id=1740332309]
 layout_mode = 0
 offset_left = 407.0
@@ -227,7 +313,7 @@ texture = ExtResource("13_oqukb")
 
 [node name="D-pad2" type="Sprite2D" parent="InfoSections/ControlsSection/Panel" unique_id=616445694]
 modulate = Color(0.26367998, 0.17919998, 0.64, 1)
-position = Vector2(872, 103)
+position = Vector2(876, 103)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("14_wmr83")
 region_enabled = true
@@ -243,6 +329,7 @@ theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 12
 text = "FUN TIP! : Moving Into  A Wall Or Barrier Will Stop You Completely! *Just Like Pac-Man*"
+horizontal_alignment = 1
 
 [node name="MapSection" type="VBoxContainer" parent="InfoSections" unique_id=1758747525 groups=["Sections"]]
 layout_mode = 2
@@ -262,40 +349,147 @@ toggle_mode = true
 text = "Map/OBJ"
 
 [node name="Panel" type="Panel" parent="InfoSections/MapSection" unique_id=984949451]
+visible = false
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_6bv25")
 
 [node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=588841575]
-position = Vector2(168, 88)
-scale = Vector2(0.77380955, 0.70312476)
-texture = ExtResource("2_jrugu")
+position = Vector2(120, 86)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_4ey0j")
 region_enabled = true
-region_rect = Rect2(16, 0, 336, 192)
+region_rect = Rect2(56, 25, 933, 594)
 
-[node name="PictureForGameExplaination2" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=987920240]
-position = Vector2(423.99997, 88.00001)
-scale = Vector2(0.5833334, 0.60267866)
-texture = ExtResource("2_jrugu")
+[node name="PictureForGameExplaination2" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=120410248]
+position = Vector2(396, 86)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_4ey0j")
 region_enabled = true
-region_rect = Rect2(768, 416, 384, 224)
+region_rect = Rect2(2548, 1596, 849, 538)
 
-[node name="Sprite2D" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=2104642741]
+[node name="fruit" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=2104642741]
+position = Vector2(568, 64)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("16_co34o")
+
+[node name="fruit2" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=1261170775]
+position = Vector2(632, 64)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("17_0r1ba")
+
+[node name="fruit3" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=1212213391]
+position = Vector2(696, 70)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("18_4ey0j")
+
+[node name="token" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=458187526]
+position = Vector2(813.065, 139.065)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("19_4ey0j")
+
+[node name="token2" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=1231890985]
+position = Vector2(833.06506, 171.065)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("19_4ey0j")
+
+[node name="token3" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=1058699326]
+position = Vector2(849.065, 139.065)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("19_4ey0j")
+
+[node name="k-token" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=955946841]
+position = Vector2(968, 75)
+scale = Vector2(3, 3)
+texture = ExtResource("20_pgsw2")
+region_enabled = true
+region_rect = Rect2(128, 224, 16, 16)
+
+[node name="k-token2" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=224005334]
+position = Vector2(1016.00006, 102)
+scale = Vector2(3, 3)
+texture = ExtResource("20_pgsw2")
+region_enabled = true
+region_rect = Rect2(128, 224, 16, 16)
+
+[node name="k-token3" type="Sprite2D" parent="InfoSections/MapSection/Panel" unique_id=247619973]
+position = Vector2(1064, 75)
+scale = Vector2(3, 3)
+texture = ExtResource("20_pgsw2")
+region_enabled = true
+region_rect = Rect2(128, 224, 16, 16)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=782466446]
 layout_mode = 0
-offset_top = 156.0
-offset_right = 848.0
-offset_bottom = 225.0
+offset_left = 12.0
+offset_top = 172.0
+offset_right = 476.0
+offset_bottom = 241.0
 theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
 theme_override_constants/outline_size = 8
-text = "The Openings Are A Way To Get Away From Enemies. Which Sends You The Opposing Opening As Your Exit."
+text = "The Openings Are A Way To Get Away From Enemies!
+Which Sends You The Opposing Opening As Your Exit."
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=2043707611]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 134.0
+offset_right = 792.0
+offset_bottom = 198.0
+theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 14
+text = "Fruits Are Just An Extra Point Collectable 
+That Is (When Spawned) On A LIMITED TIMER For You To Collect. "
+horizontal_alignment = 1
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=1573762664]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 214.0
+offset_right = 928.0
+offset_bottom = 278.0
+theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 12
+text = "Tokens Are Just Your Normal
+ &
+ Most Consistent Point Item."
+horizontal_alignment = 1
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=1341910452]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 33.0
+offset_right = 1114.0
+offset_bottom = 113.0
+theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 12
+text = "Collect All Tokens & K-Tokens To Win The Level!"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=224608714]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 134.0
+offset_right = 1149.0
+offset_bottom = 214.0
+theme_override_colors/font_outline_color = Color(0.66, 0.176, 0, 0.6392157)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 12
+text = "K-Tokens (When Collected) 
+Activate RUN MODE
+
+(See More About Mode In Mode Section)"
+horizontal_alignment = 1
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=1294478971]
 layout_mode = 0
-offset_left = 536.0
-offset_right = 1384.0
-offset_bottom = 69.0
+offset_left = 531.0
+offset_top = 6.0
+offset_right = 1379.0
+offset_bottom = 75.0
 theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
 theme_override_constants/outline_size = 8
 text = "Collectables = Points, Below Are Some Collectable Items That Give You Points!
@@ -303,22 +497,73 @@ text = "Collectables = Points, Below Are Some Collectable Items That Give You Po
 
 [node name="Label" type="Label" parent="InfoSections/MapSection/Panel" unique_id=1281254859]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 39.0
-offset_right = 139.0
-offset_bottom = 62.0
+offset_left = 50.0
+offset_top = 32.0
+offset_right = 149.0
+offset_bottom = 55.0
 theme_override_constants/outline_size = 5
 text = "Top Opening"
+
+[node name="Fruits" type="Label" parent="InfoSections/MapSection/Panel" unique_id=1539932631]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 106.0
+offset_right = 667.0
+offset_bottom = 129.0
+theme_override_constants/outline_size = 5
+text = "Fruits"
+
+[node name="Tokens" type="Label" parent="InfoSections/MapSection/Panel" unique_id=1059208362]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 89.0
+offset_right = 969.0
+offset_bottom = 112.0
+theme_override_constants/outline_size = 5
+text = "Tokens"
 
 [node name="Label2" type="Label" parent="InfoSections/MapSection/Panel" unique_id=15315274]
 layout_mode = 0
 offset_left = 344.0
-offset_top = 110.0
+offset_top = 149.0
 offset_right = 472.0
-offset_bottom = 133.0
+offset_bottom = 172.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "Bottom Opening"
+
+[node name="WorthLabel" type="Label" parent="InfoSections/MapSection/Panel" unique_id=728472657]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 112.0
+offset_right = 753.0
+offset_bottom = 126.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_jrugu")
+text = "+300"
+
+[node name="WorthLabel2" type="Label" parent="InfoSections/MapSection/Panel" unique_id=1147286465]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 194.0
+offset_right = 936.0
+offset_bottom = 208.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_jrugu")
+text = "+25"
+
+[node name="WorthLabel3" type="Label" parent="InfoSections/MapSection/Panel" unique_id=1240002103]
+layout_mode = 0
+offset_left = 1038.0
+offset_top = 114.0
+offset_right = 1166.0
+offset_bottom = 128.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_jrugu")
+text = "+75"
 
 [node name="CharacterSection" type="VBoxContainer" parent="InfoSections" unique_id=1086638505 groups=["Sections"]]
 layout_mode = 2
@@ -339,6 +584,7 @@ text = "Characters
 "
 
 [node name="Panel" type="Panel" parent="InfoSections/CharacterSection" unique_id=94892118]
+visible = false
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_6bv25")
@@ -380,16 +626,142 @@ texture = ExtResource("22_0r1ba")
 region_rect = Rect2(768, 416, 384, 224)
 
 [node name="grumbl2" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=332383900]
-position = Vector2(920.00006, 85.00001)
+position = Vector2(926, 69.00001)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("23_4ey0j")
 region_rect = Rect2(768, 416, 384, 224)
 
 [node name="whispr2" type="Sprite2D" parent="InfoSections/CharacterSection/Panel" unique_id=1886696993]
-position = Vector2(1038.3, 69.09998)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("20_0mojg")
+position = Vector2(1048, 69.00001)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("26_pgsw2")
 region_rect = Rect2(768, 416, 384, 224)
+
+[node name="Pyro" type="Label" parent="InfoSections/CharacterSection/Panel" unique_id=480778077]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 127.0
+offset_right = 86.0
+offset_bottom = 176.0
+theme_override_colors/font_outline_color = Color(0.7294118, 0.0627451, 0, 0.49019608)
+theme_override_constants/outline_size = 5
+text = "Pyro
+"
+
+[node name="Drizzl" type="Label" parent="InfoSections/CharacterSection/Panel" unique_id=986704082]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 127.0
+offset_right = 222.0
+offset_bottom = 176.0
+theme_override_colors/font_outline_color = Color(0.3529412, 0.57254905, 0.9490196, 0.24313726)
+theme_override_constants/outline_size = 5
+text = "Drizzl
+"
+
+[node name="Grumbl" type="Label" parent="InfoSections/CharacterSection/Panel" unique_id=1768865318]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 125.0
+offset_right = 341.0
+offset_bottom = 174.0
+theme_override_colors/font_outline_color = Color(0.15294118, 0.2784314, 0.03137255, 0.6)
+theme_override_constants/outline_size = 5
+text = "Grumbl
+"
+
+[node name="Whispr" type="Label" parent="InfoSections/CharacterSection/Panel" unique_id=480533733]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 127.0
+offset_right = 471.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.9411765, 0.9411765, 0.9411765, 0.5803922)
+theme_override_constants/outline_size = 5
+text = "Whispr
+"
+
+[node name="Chracters" type="RichTextLabel" parent="InfoSections/CharacterSection/Panel" unique_id=910909934]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 149.0
+offset_right = 488.0
+offset_bottom = 218.0
+theme_override_colors/font_outline_color = Color(0.06876727, 0.027827919, 0.15967226, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 18
+text = "These Are The Four Enemies 
+You Must Escape From While Playing!"
+horizontal_alignment = 1
+
+[node name="RunMode" type="RichTextLabel" parent="InfoSections/CharacterSection/Panel" unique_id=355386760]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 123.0
+offset_right = 1141.0
+offset_bottom = 241.0
+theme_override_colors/font_outline_color = Color(0.06876727, 0.027827919, 0.15967226, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 20
+text = "When Enemis Look Like This They Are Defeatable. 
+Run Into Them To Earn Points 
+If You Collect All Enemies In One Go You Can Get Up 
+To "
+horizontal_alignment = 1
+
+[node name="Pyroinfo" type="RichTextLabel" parent="InfoSections/CharacterSection/Panel" unique_id=1822470497]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 206.0
+offset_right = 773.0
+offset_bottom = 229.0
+theme_override_colors/font_outline_color = Color(0.73, 0.06083332, 0, 0.49019608)
+theme_override_constants/outline_size = 8
+text = " Pyro -> Super Aggressive (Always Is Coming For You)"
+
+[node name="DrizzlInfo2" type="RichTextLabel" parent="InfoSections/CharacterSection/Panel" unique_id=2103324563]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 228.0
+offset_right = 773.0
+offset_bottom = 251.0
+theme_override_colors/font_outline_color = Color(0.3515, 0.57095003, 0.95, 0.24313726)
+theme_override_constants/outline_size = 8
+text = " Drizzl -> Aggressive But Absent Minded (Forgets What He is Doing Sometimes And Wanders)"
+
+[node name="GrumblInfo2" type="RichTextLabel" parent="InfoSections/CharacterSection/Panel" unique_id=345749396]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 251.0
+offset_right = 773.0
+offset_bottom = 275.0
+theme_override_colors/font_outline_color = Color(0.15124667, 0.28, 0.030800004, 0.6)
+theme_override_constants/outline_size = 8
+text = " Grumbl -> Territorial (Chases You ONLY While You Are In His Zone)"
+
+[node name="WhisprInfo2" type="RichTextLabel" parent="InfoSections/CharacterSection/Panel" unique_id=1218737455]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 275.0
+offset_right = 773.0
+offset_bottom = 300.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.94, 0.94, 0.94, 0.5803922)
+theme_override_constants/outline_size = 8
+text = " Whispr -> Skittish But Aggressive (Has Moments Where He Wandering But Will Chase At Random)"
+
+[node name="WorthLabel" type="Label" parent="InfoSections/CharacterSection/Panel" unique_id=1477645215]
+layout_mode = 0
+offset_left = 884.0
+offset_top = 211.0
+offset_right = 1012.0
+offset_bottom = 236.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_jrugu")
+theme_override_font_sizes/font_size = 28
+text = "+2200"
 
 [node name="ModesSection" type="VBoxContainer" parent="InfoSections" unique_id=1039479673 groups=["Sections"]]
 layout_mode = 2
@@ -411,12 +783,195 @@ text = "Modes
 
 [node name="Panel" type="Panel" parent="InfoSections/ModesSection" unique_id=1701003185]
 visible = false
-custom_minimum_size = Vector2(0, 300)
+custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_6bv25")
 
-[node name="PictureForGameExplaination" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=1054799537]
-position = Vector2(248, 138)
-texture = ExtResource("2_jrugu")
+[node name="RunMode Example" type="Label" parent="InfoSections/ModesSection/Panel" unique_id=535701427]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 165.70001
+offset_right = 390.0
+offset_bottom = 214.70001
+theme_override_colors/font_outline_color = Color(0.2142, 0.39167997, 0.51, 0.74509805)
+theme_override_constants/outline_size = 7
+text = "CHASE/RUN Mode
+Is Activated When GrinBit Collects A K-Token! "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RunModeTime" type="Label" parent="InfoSections/ModesSection/Panel" unique_id=1379770242]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 94.0
+offset_right = 429.0
+offset_bottom = 143.0
+theme_override_colors/font_outline_color = Color(0.20784314, 0.3137255, 0.45882353, 1)
+theme_override_constants/outline_size = 5
+text = "*(8 seconds)*"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FightModeTime" type="Label" parent="InfoSections/ModesSection/Panel" unique_id=241181099]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 96.0
+offset_right = 813.0
+offset_bottom = 145.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "*(5 seconds)*"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FightMode Example2" type="Label" parent="InfoSections/ModesSection/Panel" unique_id=974984950]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 202.70001
+offset_right = 772.0
+offset_bottom = 251.70001
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 12
+text = "*You Can Go Through Them At This Time* "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Run Modeinfo" type="RichTextLabel" parent="InfoSections/ModesSection/Panel" unique_id=2096896511]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 222.70001
+offset_right = 413.0
+offset_bottom = 282.7
+theme_override_colors/font_outline_color = Color(0.1974, 0.36095998, 0.47, 0.4)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 12
+text = "Enemies Are Vulnerable During This Time Which Gives GrinBit The Ability To Defeat Them *Just Collide Into Them* Which Earns You Points And Puts Them Out For A Bit. "
+horizontal_alignment = 1
+
+[node name="FightMode(parry) Info" type="RichTextLabel" parent="InfoSections/ModesSection/Panel" unique_id=552056661]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 226.0
+offset_right = 833.0
+offset_bottom = 286.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 12
+text = "< - - - - This Is What Happens When Enemies Won't Fight Each Other. "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightMode(parry) Info2" type="RichTextLabel" parent="InfoSections/ModesSection/Panel" unique_id=1846679556]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 268.0
+offset_right = 836.0
+offset_bottom = 328.0
+theme_override_colors/font_outline_color = Color(0.77, 0.06416665, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 12
+text = "< - - - - 
+*CONTINUE TO AVOID THEM IN THIS STATE !! *"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightMode Example" type="Label" parent="InfoSections/ModesSection/Panel" unique_id=813507278]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 165.70001
+offset_right = 775.0
+offset_bottom = 214.70001
+theme_override_constants/outline_size = 5
+text = "Fight Mode
+Enemies Fight Each Over When They Collide!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DeadModeExample" type="Label" parent="InfoSections/ModesSection/Panel" unique_id=1624844847]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 162.0
+offset_right = 1118.0
+offset_bottom = 211.0
+theme_override_colors/font_outline_color = Color(0.75686276, 0.75686276, 0.7882353, 0.33333334)
+theme_override_constants/outline_size = 5
+text = "DEAD/Recover Mode
+*When They Look Translucent*"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DeadModeInfo" type="RichTextLabel" parent="InfoSections/ModesSection/Panel" unique_id=334064983]
+layout_mode = 0
+offset_left = 804.0
+offset_top = 211.0
+offset_right = 1071.0
+offset_bottom = 271.0
+theme_override_colors/font_outline_color = Color(0.7584, 0.7584, 0.79, 0.33333334)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 12
+text = "This Mode Means The Enemy Is Harmless 
+&
+ You Can Go Through Them! "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeadModeInfo2" type="RichTextLabel" parent="InfoSections/ModesSection/Panel" unique_id=1606311747]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 260.0
+offset_right = 1075.0
+offset_bottom = 320.0
+theme_override_colors/font_outline_color = Color(0.77, 0.38179165, 0.34649998, 0.44705883)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 13
+text = "*Be Careful Though They Can Change While You Go Through Them!*"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightModePic" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=1054799537]
+position = Vector2(573, 96.70001)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("29_pgsw2")
 region_enabled = true
-region_rect = Rect2(768, 416, 384, 224)
+region_rect = Rect2(1601, 1247, 784, 458)
+
+[node name="DeadModePic" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=563657791]
+position = Vector2(888.00006, 100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_wsu1x")
+region_enabled = true
+region_rect = Rect2(1095, 559, 134, 170)
+
+[node name="DeadModePic2" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=1848853061]
+position = Vector2(969, 100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_wsu1x")
+region_enabled = true
+region_rect = Rect2(887, 1292, 137, 172)
+
+[node name="ParryModePic" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=1344801624]
+position = Vector2(488, 283)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("31_ryhb8")
+region_enabled = true
+region_rect = Rect2(1601, 1247, 784, 458)
+
+[node name="CHASE_RUNModePic" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=1779040766]
+position = Vector2(194, 96.70001)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("30_j6f7t")
+region_enabled = true
+region_rect = Rect2(2678, 344, 784, 458)
+
+[node name="k-token" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=1114437912]
+position = Vector2(350.00006, 169)
+scale = Vector2(3, 3)
+texture = ExtResource("20_pgsw2")
+region_enabled = true
+region_rect = Rect2(128, 224, 16, 16)

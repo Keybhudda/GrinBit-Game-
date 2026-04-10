@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwve73nl78jll"
-path="res://.godot/imported/cherries.png-f11ca82e1c06be8adcb5caf347e53b18.ctex"
+uid="uid://bdux6j2xtbjlj"
+path="res://.godot/imported/K-Token(silver).png-2b8f5a4be57585f51e0987b4ff1661de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food & Point-Items/cherries.png"
-dest_files=["res://.godot/imported/cherries.png-f11ca82e1c06be8adcb5caf347e53b18.ctex"]
+source_file="res://assets/Food & Point-Items/K-Token(silver).png"
+dest_files=["res://.godot/imported/K-Token(silver).png-2b8f5a4be57585f51e0987b4ff1661de.ctex"]
 
 [params]
 

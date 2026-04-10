@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwve73nl78jll"
-path="res://.godot/imported/cherries.png-f11ca82e1c06be8adcb5caf347e53b18.ctex"
+uid="uid://cctc4j4l40mym"
+path="res://.godot/imported/Snapshot_96.png-3e1c73dc72c577fb10258fd02548da21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Food & Point-Items/cherries.png"
-dest_files=["res://.godot/imported/cherries.png-f11ca82e1c06be8adcb5caf347e53b18.ctex"]
+source_file="res://assets/Pics Of Game/Snapshot_96.png"
+dest_files=["res://.godot/imported/Snapshot_96.png-3e1c73dc72c577fb10258fd02548da21.ctex"]
 
 [params]
 

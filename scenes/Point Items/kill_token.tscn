@@ -138,7 +138,7 @@ script = ExtResource("1_g55k0")
 texture = ExtResource("2_ix2n4")
 offset = Vector2(8, -8)
 region_enabled = true
-region_rect = Rect2(96, 240, 16, 16)
+region_rect = Rect2(128, 224, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184838435]
 position = Vector2(7.94296, -7.506)

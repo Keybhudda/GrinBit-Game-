@@ -334,7 +334,7 @@ position = Vector2(103.215805, 132.46437)
 scale = Vector2(5.719059, 5.6533413)
 texture = ExtResource("12_1khpa")
 region_enabled = true
-region_rect = Rect2(96, 240, 16, 16)
+region_rect = Rect2(128, 224, 16, 16)
 
 [node name="New Ktoken2" type="Sprite2D" parent="." unique_id=566571111]
 z_index = -2
@@ -342,7 +342,7 @@ position = Vector2(364.05176, 314.81577)
 scale = Vector2(5.719059, 5.6533413)
 texture = ExtResource("12_1khpa")
 region_enabled = true
-region_rect = Rect2(96, 240, 16, 16)
+region_rect = Rect2(128, 224, 16, 16)
 
 [node name="New Ktoken3" type="Sprite2D" parent="." unique_id=637872328]
 z_index = -2
@@ -350,7 +350,7 @@ position = Vector2(698.38684, 323.08023)
 scale = Vector2(5.719059, 5.6533413)
 texture = ExtResource("12_1khpa")
 region_enabled = true
-region_rect = Rect2(96, 240, 16, 16)
+region_rect = Rect2(128, 224, 16, 16)
 
 [node name="New Ktoken4" type="Sprite2D" parent="." unique_id=174237296]
 z_index = -2
@@ -358,7 +358,7 @@ position = Vector2(1039.5222, 128.35492)
 scale = Vector2(5.719059, 5.6533413)
 texture = ExtResource("12_1khpa")
 region_enabled = true
-region_rect = Rect2(96, 240, 16, 16)
+region_rect = Rect2(128, 224, 16, 16)
 
 [node name="New Ktoken5" type="Sprite2D" parent="." unique_id=162091466]
 z_index = -2
@@ -366,7 +366,7 @@ position = Vector2(1039.5222, 504.62866)
 scale = Vector2(5.719059, 5.6533413)
 texture = ExtResource("12_1khpa")
 region_enabled = true
-region_rect = Rect2(96, 240, 16, 16)
+region_rect = Rect2(128, 224, 16, 16)
 
 [node name="New Ktoken6" type="Sprite2D" parent="." unique_id=833454179]
 z_index = -2
@@ -374,7 +374,7 @@ position = Vector2(109.818665, 510.48508)
 scale = Vector2(5.719059, 5.6533413)
 texture = ExtResource("12_1khpa")
 region_enabled = true
-region_rect = Rect2(96, 240, 16, 16)
+region_rect = Rect2(128, 224, 16, 16)
 
 [connection signal="pressed" from="VBoxContainer/startbutton" to="VBoxContainer/startbutton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/how_to_btn" to="VBoxContainer/how_to_btn" method="_on_pressed"]
