@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c5ymtve60lch6" path="res://assets/characters/GrinBit SC Cut for logo.png" id="1_6bv25"]
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="1_jrugu"]
+[ext_resource type="AudioStream" uid="uid://rllgf420tipm" path="res://assets/Sounds/Music/Grin_Main_Theme_.mp3" id="1_vd14f"]
 [ext_resource type="StyleBox" uid="uid://8i7vsvmm6osq" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat.tres" id="2_6bv25"]
 [ext_resource type="PackedScene" uid="uid://byqttaltknbxc" path="res://scenes/Menus & Pop Ups/UI-Assets/startmenubtn.tscn" id="2_acp68"]
 [ext_resource type="Script" uid="uid://jd0pu2n7hv7r" path="res://scenes/Menus & Pop Ups/scripts-for-menus/info_sections.gd" id="2_pgshu"]
@@ -42,6 +43,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="music" type="AudioStreamPlayer2D" parent="." unique_id=382252689]
+stream = ExtResource("1_vd14f")
+volume_db = -30.0
+autoplay = true
+attenuation = 1.5
+bus = &"Music"
+parameters/looping = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1553915614]
 layout_mode = 0
