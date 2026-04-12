@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c5ymtve60lch6" path="res://assets/characters/GrinBit SC Cut for logo.png" id="1_6bv25"]
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="1_jrugu"]
+[ext_resource type="Script" uid="uid://ckx1axru0hvhd" path="res://scenes/Menus & Pop Ups/scripts-for-menus/new_htp_screen.gd" id="1_rvj31"]
 [ext_resource type="AudioStream" uid="uid://rllgf420tipm" path="res://assets/Sounds/Music/Grin_Main_Theme_.mp3" id="1_vd14f"]
 [ext_resource type="StyleBox" uid="uid://8i7vsvmm6osq" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat.tres" id="2_6bv25"]
 [ext_resource type="PackedScene" uid="uid://byqttaltknbxc" path="res://scenes/Menus & Pop Ups/UI-Assets/startmenubtn.tscn" id="2_acp68"]
@@ -43,6 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rvj31")
 
 [node name="music" type="AudioStreamPlayer2D" parent="." unique_id=382252689]
 stream = ExtResource("1_vd14f")
@@ -437,7 +439,7 @@ offset_bottom = 241.0
 theme_override_colors/font_outline_color = Color(0.26132628, 0.15705916, 0.49273735, 1)
 theme_override_constants/outline_size = 8
 text = "The Openings Are A Way To Get Away From Enemies!
-Which Sends You The Opposing Opening As Your Exit."
+Which Sends You To The Opposing Opening As Your Exit."
 horizontal_alignment = 1
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=2043707611]
@@ -490,7 +492,7 @@ theme_override_font_sizes/normal_font_size = 12
 text = "K-Tokens (When Collected) 
 Activate RUN MODE
 
-(See More About Mode In Mode Section)"
+(See More About Mode In MODES Section)"
 horizontal_alignment = 1
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="InfoSections/MapSection/Panel" unique_id=1294478971]
@@ -758,7 +760,7 @@ offset_bottom = 300.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.94, 0.94, 0.94, 0.5803922)
 theme_override_constants/outline_size = 8
-text = " Whispr -> Skittish But Aggressive (Has Moments Where He Wandering But Will Chase At Random)"
+text = " Whispr -> Skittish But Aggressive (Has Moments Where He Wanders But Will Chase At Random)"
 
 [node name="WorthLabel" type="Label" parent="InfoSections/CharacterSection/Panel" unique_id=1477645215]
 layout_mode = 0
@@ -791,7 +793,6 @@ text = "Modes
 "
 
 [node name="Panel" type="Panel" parent="InfoSections/ModesSection" unique_id=1701003185]
-visible = false
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_6bv25")
@@ -864,9 +865,9 @@ horizontal_alignment = 1
 [node name="FightMode(parry) Info" type="RichTextLabel" parent="InfoSections/ModesSection/Panel" unique_id=552056661]
 layout_mode = 0
 offset_left = 566.0
-offset_top = 226.0
+offset_top = 242.0
 offset_right = 833.0
-offset_bottom = 286.0
+offset_bottom = 302.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 12
@@ -876,15 +877,27 @@ vertical_alignment = 1
 
 [node name="FightMode(parry) Info2" type="RichTextLabel" parent="InfoSections/ModesSection/Panel" unique_id=1846679556]
 layout_mode = 0
-offset_left = 566.0
-offset_top = 268.0
-offset_right = 836.0
-offset_bottom = 328.0
+offset_left = 559.0
+offset_top = 293.0
+offset_right = 940.0
+offset_bottom = 353.0
 theme_override_colors/font_outline_color = Color(0.77, 0.06416665, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 12
-text = "< - - - - 
-*CONTINUE TO AVOID THEM IN THIS STATE !! *"
+theme_override_font_sizes/normal_font_size = 16
+text = "*CONTINUE TO AVOID THEM IN THIS STATE !! *"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightMode(parry) Info3" type="RichTextLabel" parent="InfoSections/ModesSection/Panel" unique_id=1539487792]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 272.0
+offset_right = 785.0
+offset_bottom = 332.0
+theme_override_colors/font_outline_color = Color(0.77, 0.06416665, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 16
+text = "< - - - - "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -896,7 +909,7 @@ offset_right = 775.0
 offset_bottom = 214.70001
 theme_override_constants/outline_size = 5
 text = "Fight Mode
-Enemies Fight Each Over When They Collide!"
+Enemies Fight Each Other When They Collide!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -910,7 +923,7 @@ offset_bottom = 211.0
 theme_override_colors/font_outline_color = Color(0.75686276, 0.75686276, 0.7882353, 0.33333334)
 theme_override_constants/outline_size = 5
 text = "DEAD/Recover Mode
-*When They Look Translucent*"
+*(AKA) When They Look Translucent*"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -965,7 +978,7 @@ region_enabled = true
 region_rect = Rect2(887, 1292, 137, 172)
 
 [node name="ParryModePic" type="Sprite2D" parent="InfoSections/ModesSection/Panel" unique_id=1344801624]
-position = Vector2(488, 283)
+position = Vector2(488.00003, 294)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("31_ryhb8")
 region_enabled = true

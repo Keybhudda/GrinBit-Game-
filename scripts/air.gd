@@ -82,9 +82,7 @@ func _ready():
 	set_mode(default_mode)
 #This function when called resets the character to a state usually its BASE State
 func reset_state():
-	norm.visible = true
-	run.visible = true
-	dead.visible = false
+	update_look(current_mode)
 	if get_node("Area2D/C_Body").disabled == true or get_node("ZT").disabled == true:
 		enable_collision()
 	has_printed_mode_DEAD = false
@@ -99,6 +97,7 @@ func reset_state():
 	decision_timer = decision_interval
 	recovering = false
 	fighting = false
+	has_parried = false
 	if game_manager.current_state == game_manager.StateOfGame.RESETTING:
 		recently_fought = false
 	stop_all_timers()
@@ -106,34 +105,28 @@ func reset_state():
 	print(name, " has been reset.")
 #This function changes the characters look according to certain modes.
 func update_look(new_mode: Mode) -> void:
+	dead.visible = false
+	norm.visible = false
+	run.visible = false
+	parry.visible = false
+	fight_cloud.visible = false
+	
 	match new_mode:
-		default_mode:
+		Mode.BASE:
 			norm.visible = true
-			dead.visible = false
-			parry.visible = false
-			fight_cloud.visible = false
+			dead.visible = true
+		Mode.CHASE:
+			norm.visible = true
+			dead.visible = true
 		Mode.SHUFFLE:
 			norm.visible = true
 			dead.visible = true
-			parry.visible = false
-			fight_cloud.visible = false
 		Mode.RUN:
-			norm.visible = false
 			run.visible = true
-			dead.visible = false
-			parry.visible = false
-			fight_cloud.visible = false
 		Mode.DEAD:
 			dead.visible = true
-			norm.visible = false
-			run.visible = false
-			parry.visible = false
-			fight_cloud.visible = false
 		Mode.FIGHT:
-			dead.visible = true
 			norm.visible = true
-			run.visible = false
-			parry.visible = false
 			fight_cloud.visible = true
 
 #----------------------MOVEMENT CODE--------------------------------------------
@@ -214,7 +207,7 @@ func intercept_player(_delta: float) -> void:
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
 
-
+#Old Tries of making cut off code work better
 func get_intercept_tile(tiles_ahead: int = 4) -> Vector2:
 	var dir = player._last_direction
 	if dir == Vector2.ZERO:
@@ -431,6 +424,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var opponent := body
 		if recently_fought or opponent.recently_fought:
 			cant_fight()
+			opponent.cant_fight()
 			print("Elements cannot fight.")
 			return
 		opponent.start_fight()
@@ -450,13 +444,15 @@ func cant_fight():
 	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		return
 	if not has_parried:
-		norm.visible = false
-		dead.visible = false
-		run.visible = false
-		parry.visible = true
 		bump.play()
 		has_parried = true
 		parry_timer.start(2)
+	if has_parried:
+		parry.visible = true
+		dead.visible = false
+		norm.visible = false
+		run.visible = false
+		fight_cloud.visible = false
 
 func _on_parry_timer_timeout() -> void:
 	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
@@ -464,7 +460,8 @@ func _on_parry_timer_timeout() -> void:
 		return
 	if has_parried:
 		has_parried = false
-		update_look(default_mode)
+		update_look(current_mode)
+
 #--------- Helper Functions --------------#
 func start_fight():
 	print("Someone Is Fighting ", name)
@@ -503,6 +500,7 @@ func on_enter_fight_mode():
 		call_deferred("enable_collision")
 		return
 	fighting = true
+	mind_timer.stop()
 	path.clear()
 	if fight_timer.is_stopped():
 		fight_timer.start(5)
@@ -525,7 +523,7 @@ func on_exit_fight_mode():
 	fighting = false
 	recovering = true
 	recently_fought = true
-	recent_fight_timer.start(30)
+	recent_fight_timer.start(20)
 	print("recent fight Time Started!")
 	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		call_deferred("enable_collision")

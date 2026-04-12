@@ -252,6 +252,7 @@ text = "Exit Game"
 script = ExtResource("4_h8i2o")
 
 [node name="resethighscorebtn" type="Button" parent="VBoxContainer" unique_id=1986056107]
+visible = false
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.15686275, 0.047058824, 0.34901962, 0.31764707)
 theme_override_colors/font_hover_color = Color(0.36596993, 0.1254, 0.66, 1)

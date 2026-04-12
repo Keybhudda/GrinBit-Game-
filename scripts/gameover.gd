@@ -7,11 +7,13 @@ extends Control
 
 @onready var startmenu: Button = $VBoxContainer/startmenu
 @onready var quitbutton: Button = $VBoxContainer/quitbutton
+@onready var resethighscorebtn: Button = $VBoxContainer/resethighscorebtn
 
 var input_enalbed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	resethighscorebtn.visible = false
 	GlobalData.check_new_high_score()
 	
 	if GlobalData.high_score > 0:
@@ -24,6 +26,7 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.2).timeout
 
-
-func _on_resethighscorebtn_pressed() -> void:
-	pass # Replace with function body.
+#Secret input fo show and hide the reset highscore button.
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Show_reset_button"):
+		resethighscorebtn.visible = !resethighscorebtn.visible
