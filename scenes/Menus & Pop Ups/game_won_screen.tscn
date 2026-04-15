@@ -15,7 +15,7 @@ border_width_left = 20
 border_width_top = 20
 border_width_right = 20
 border_width_bottom = 20
-border_color = Color(0.053634934, 0.13554458, 0.031477414, 0.4392157)
+border_color = Color(0.14682834, 0.37, 0.08510001, 0.84313726)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -23,12 +23,25 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jbjv"]
-bg_color = Color(0.37, 0.37, 0.37, 0.5019608)
+bg_color = Color(0.22745098, 0.72156864, 0, 0.3372549)
 border_width_left = 20
 border_width_top = 20
 border_width_right = 20
 border_width_bottom = 20
-border_color = Color(0.22800004, 0.72, 0, 0.3372549)
+border_color = Color(0.16, 0.16, 0.16, 0.5529412)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puf78"]
+bg_color = Color(0.17733337, 0.56, 0, 0.62352943)
+border_width_left = 30
+border_width_top = 10
+border_width_right = 30
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 0.47058824)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -36,12 +49,12 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mex30"]
-bg_color = Color(0.24477637, 0.2447764, 0.24477637, 0.41568628)
+bg_color = Color(0.31, 0.0403, 0.0403, 0.4392157)
 border_width_left = 20
 border_width_top = 20
 border_width_right = 20
 border_width_bottom = 20
-border_color = Color(0.08, 0.021599999, 0.021599999, 0.61960787)
+border_color = Color(0.08, 0.08, 0.08, 0.8666667)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -49,12 +62,25 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxr8n"]
-bg_color = Color(0.2, 0.2, 0.2, 0.60784316)
+bg_color = Color(0.34901962, 0.078431375, 0.078431375, 0.5058824)
 border_width_left = 30
 border_width_top = 30
 border_width_right = 30
 border_width_bottom = 30
-border_color = Color(0.35, 0.07700001, 0.07700001, 0.5058824)
+border_color = Color(0.08, 0.08, 0.08, 0.7254902)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cey7s"]
+bg_color = Color(0.34901962, 0.078431375, 0.078431375, 0.7254902)
+border_width_left = 30
+border_width_top = 10
+border_width_right = 30
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 0.47058824)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -231,6 +257,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = SubResource("StyleBoxFlat_itah0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6jbjv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_puf78")
 text = "Main Menu"
 icon = ExtResource("2_wupp1")
 icon_alignment = 2
@@ -246,6 +273,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_mex30")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fxr8n")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cey7s")
 text = "Exit Game"
 script = ExtResource("4_fgjvg")
 
