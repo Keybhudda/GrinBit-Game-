@@ -12,3 +12,6 @@ func restarting():
 
 func start():
 	%youdied.text = "\n Go!"
+
+func level_complete():
+	%youdied.text = "\n Level \n Completed!"

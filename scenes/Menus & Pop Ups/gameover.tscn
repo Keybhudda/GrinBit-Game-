@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="2_2mkfd"]
 [ext_resource type="Script" uid="uid://vekk67qa0vri" path="res://scripts/mainmenubutton.gd" id="2_dy3ie"]
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="3_3gj0k"]
-[ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="4_h8i2o"]
+[ext_resource type="PackedScene" uid="uid://cpm7g0opay2ci" path="res://scenes/Menus & Pop Ups/UI-Assets/quitbutton.tscn" id="6_lcmgc"]
 [ext_resource type="AudioStream" uid="uid://b2yw87ibrhbrx" path="res://assets/Sounds/Music/GrinBit_Game_Over_Song_1.mp3" id="6_qwp2v"]
 [ext_resource type="Script" uid="uid://b1iudksgmeisc" path="res://scripts/resethighscore.gd" id="7_lcmgc"]
 
@@ -42,46 +42,6 @@ border_width_top = 20
 border_width_right = 20
 border_width_bottom = 20
 border_color = Color(0.1764706, 0.56078434, 0, 0.6627451)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gj0k"]
-bg_color = Color(0.24477637, 0.2447764, 0.24477637, 0.41568628)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color(0.08, 0.021599999, 0.021599999, 0.61960787)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke020"]
-bg_color = Color(0.2, 0.2, 0.2, 0.38039216)
-border_width_left = 30
-border_width_top = 30
-border_width_right = 30
-border_width_bottom = 30
-border_color = Color(0.35, 0.07700001, 0.07700001, 0.7176471)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmf8j"]
-bg_color = Color(0.2, 0.2, 0.2, 0.38039216)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color(0.34901962, 0.078431375, 0.078431375, 0.7176471)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -223,7 +183,7 @@ horizontal_alignment = 1
 [node name="startmenu" type="Button" parent="VBoxContainer" unique_id=2009635316]
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
-theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("3_3gj0k")
@@ -236,26 +196,14 @@ icon = ExtResource("2_2mkfd")
 icon_alignment = 2
 script = ExtResource("2_dy3ie")
 
-[node name="quitbutton" type="Button" parent="VBoxContainer" unique_id=454755933]
+[node name="quitbutton" parent="VBoxContainer" unique_id=1303899875 instance=ExtResource("6_lcmgc")]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.45, 0.058499996, 0.058499996, 1)
-theme_override_colors/font_hover_color = Color(0.4, 0.28800002, 0.28800002, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("3_3gj0k")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_3gj0k")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ke020")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mmf8j")
-text = "Exit Game"
-script = ExtResource("4_h8i2o")
 
 [node name="resethighscorebtn" type="Button" parent="VBoxContainer" unique_id=1986056107]
 visible = false
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0.15686275, 0.047058824, 0.34901962, 0.31764707)
-theme_override_colors/font_hover_color = Color(0.36596993, 0.1254, 0.66, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("3_3gj0k")
@@ -264,6 +212,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lcmgc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g6bb8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_71qw6")
 text = "Reset High Score"
+icon_alignment = 2
+expand_icon = true
 script = ExtResource("7_lcmgc")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=49664625]
@@ -273,5 +223,4 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/startmenu" to="VBoxContainer/startmenu" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/quitbutton" to="VBoxContainer/quitbutton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/resethighscorebtn" to="VBoxContainer/resethighscorebtn" method="_on_pressed"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpm7g0opay2ci"]
 
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="1_t1vni"]
+[ext_resource type="Texture2D" uid="uid://cf54uj8l1m3x4" path="res://assets/characters/Fire Enemy (Simple Game).png" id="2_em777"]
 [ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="2_th0fv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gj0k"]
@@ -15,6 +16,19 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1vni"]
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 0.5019608)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.25, 0.040000007, 0.040000007, 0.93333334)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke020"]
 bg_color = Color(0.2, 0.2, 0.2, 0.38039216)
@@ -43,18 +57,21 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 anti_aliasing = false
 
-[node name="quitbutton" type="Button" unique_id=1737698584]
+[node name="quitbutton" type="Button" unique_id=1303899875]
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.45, 0.058499996, 0.058499996, 1)
-theme_override_colors/font_hover_color = Color(0.4, 0.28800002, 0.28800002, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("1_t1vni")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_3gj0k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t1vni")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ke020")
 theme_override_styles/focus = SubResource("StyleBoxFlat_mmf8j")
 text = "Exit Game"
+icon = ExtResource("2_em777")
+icon_alignment = 2
 script = ExtResource("2_th0fv")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -39,14 +39,14 @@ var game_mode: ModeOfGame = ModeOfGame.NORM
 @onready var token = get_tree().get_nodes_in_group("Token")
 
 #-----------------------Base Variables------------------------------------------
-var score = 0
-var total_score = score
 var player_start_position: Vector2
 var enemy_start_position = {}
 var GRID_SIZE = 16
 var run_combo := 0
+
 #----------------------------Start Code-----------------------------------------
 func _ready() -> void:
+	_update_score_label()
 	begin_game()
 	update_lives()
 	game_mode = ModeOfGame.NORM
@@ -67,7 +67,7 @@ func _ready() -> void:
 	
 	current_state = StateOfGame.RUNNING
 	
-
+ 
 func _on_element_fight():
 	if game_mode == ModeOfGame.CHASE:
 		fighting.stop()
@@ -110,17 +110,20 @@ func update_lives():
 
 #A timer to give time to play game beat music and then send to game over screen for now until we make more levels
 func _on_switch_timer_timeout() -> void:
-	pass
+	get_tree().paused = false
+	call_deferred("Level_1C")
 #where when a level is complete it send you to the next level. 
 func _on_level_complete():
-	GlobalData.total_score = score
+	get_tree().paused = true
 	print("Level Complete!")
-	call_deferred("game_won")
+	deathscreen.visible = true
+	deathscreen.level_complete()
+	switch_timer.start(2)
+
 
 #Sends Player to Game won screen for now Will send them to next level later
-func game_won():
-	get_tree().change_scene_to_file("res://scenes/Menus & Pop Ups/game_won_screen.tscn")
-	Player_Lives.reset()
+func Level_1C():
+	get_tree().change_scene_to_file("res://scenes/Level_2.tscn")
 #Gets the starting points for all characters to use later for reload.
 func _on_Start_Position(entity_name: String, position: Vector2):
 	if entity_name == "Grinbit":
@@ -162,31 +165,31 @@ func Check_timer():
 
 #Scoring System
 func add_point():
-	score += 25
+	GlobalData.total_score += 25
 	
 	_update_score_label()
 func add_point1():
-	score += 75
+	GlobalData.total_score += 75
 
 
 
 	_update_score_label()
 func add_pointf1():
-	score += 400
+	GlobalData.total_score += 400
 
 	_update_score_label()
 func add_pointf2():
-	score += 300
+	GlobalData.total_score += 300
 
 	_update_score_label()
 func add_pointf3():
-	score += 600
+	GlobalData.total_score += 600
 
 	_update_score_label()
 	#This is the new add point function for when the player collides with an enemy earning them points
 #Old Point amount/system for enemies
 func add_pointC():
-	score += 600
+	GlobalData.total_score += 600
 	
 	_update_score_label()
 #New and more accurate Point system
@@ -194,17 +197,17 @@ func combo_points():
 	run_combo += 1
 	
 	var points = 200 * (1 << (run_combo - 1))
-	score += points
+	GlobalData.total_score += points
 	print("Enemy Combo: ", run_combo, " Points: ", points)
 	
 	if  run_combo == enemies.size():
-		score += 600
+		GlobalData.total_score += 600
 		print("All Elements Defeated! +600!")
 	_update_score_label()
 	return points
 #function That updates score
 func _update_score_label():
-	score_label.text = "Score: " + str(score)
+	score_label.text = "Score: " + str(GlobalData.total_score)
 	
 
 func stop_fight_timers():
@@ -220,6 +223,7 @@ func _on_player_caught():
 	print("player caught!")
 	current_state = StateOfGame.DEAD
 	if current_state == StateOfGame.DEAD:
+		
 		get_tree().paused = true
 		player_death.play()
 		update_lives()
@@ -237,9 +241,10 @@ func _on_player_caught():
 
 #Function for when the player runs out of lives
 func out_of_lives():
-	GlobalData.total_score = score
+	GlobalData.is_game_over = true
 	get_tree().change_scene_to_file("res://scenes/Menus & Pop Ups/gameover.tscn")
-	Player_Lives.reset()
+
+
 #Function For when to init reset of the game. to then continue
 func _on_death_timer_timeout() -> void:
 	deathscreen.visible = false

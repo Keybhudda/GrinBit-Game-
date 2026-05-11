@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var fight_timer: Timer = $FightTimer
 @onready var recent_fight_timer: Timer = $RecentFightTimer
 @onready var parry_timer: Timer = $ParryTimer
+@onready var pop_up_timer: Timer = $PopUpTimer
 
 @onready var enemies = get_tree().get_nodes_in_group("Element")
 
@@ -324,16 +325,21 @@ func can_move_to(dir: Vector2) -> bool:
 #When this character is caught while in RUN mode.
 func _caught():
 	print(name, " was caught!")
+	if pop_spawned:
+		display_points()
+	
+	if pop_spawned == false:
+		spawn_score_popup()
 	path.clear()
 
 var recovering := false
 var elements_can_fight := false
+var pop_spawned := false
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#If player enters area = death scene and or If player eneters area and mode == RUN then add points and eventually enemy back to stary pos
 	if body.is_in_group("Player"):
 		if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
-			game_manager.combo_points()
 			_caught()
 			set_mode(Mode.DEAD)
 			animation_player.play("Death")
@@ -354,11 +360,28 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	#Later Feature If body = enemy -> Fight 
 
 #For Visual Pop for when enemy is collected
-func spawn_score_popup(points):
-	var popup = preload("res://scenes/Menus & Pop Ups/UI-Assets/Score_popup.tscn")
+var popup = preload("res://scenes/Menus & Pop Ups/UI-Assets/Score_popup.tscn").instantiate()
+func spawn_score_popup():
+	var points = game_manager.combo_points()
 	get_tree().current_scene.add_child(popup)
-	popup.position = global_position
+	popup.visible = true
+	@warning_ignore("integer_division")
+	popup.position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
 	popup.set_score(points)
+	pop_spawned = true
+	pop_up_timer.start(2)
+
+func display_points():
+	var points = game_manager.combo_points()
+	popup.visible = true
+	@warning_ignore("integer_division")
+	popup.position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	popup.set_score(points)
+	pop_up_timer.start(2)
+
+func _on_pop_up_timer_timeout() -> void:
+	if popup:
+		popup.visible = false
 
 var has_parried := false
 func cant_fight():

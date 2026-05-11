@@ -99,9 +99,11 @@ scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_xb821")
 
 [node name="Pickupsound" type="AudioStreamPlayer2D" parent="." unique_id=1942314027]
+process_mode = 3
 bus = &"Sound Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1344265994]
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_n2q2n")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

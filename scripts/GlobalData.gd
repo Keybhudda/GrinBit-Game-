@@ -3,7 +3,7 @@ extends Node
 #Eventually would like to add the ability to save game highscores for each user and maybe even out of everyone whom plays the game. 
 var total_score: int = 0
 var high_score: int = 0
-
+var is_game_over := false
 
 func _ready():
 	load_high_score()
@@ -29,3 +29,13 @@ func load_high_score():
 func reset_high_score():
 	high_score = 0
 	save_high_score()
+	
+
+func start_new_game():
+	if GlobalData.is_game_over:
+		GlobalData.total_score = 0
+		Player_Lives.reset()
+		GlobalData.is_game_over = false
+
+func Levels_completed():
+	var _Level = []

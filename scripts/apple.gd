@@ -41,7 +41,7 @@ func _on_body_entered(_body) -> void:
 	
 	game_manager.add_pointf2()
 	
-	if game_manager.current_state == game_manager.StateOfGame.RESETTING:
+	if get_tree().paused == true:
 		pickupsound.stop()
 		print("Stopping Sound")
 		return

@@ -2,90 +2,11 @@
 
 [ext_resource type="Script" uid="uid://db1b21n3xaeob" path="res://scripts/game_won_screen.gd" id="1_pf3d3"]
 [ext_resource type="Texture2D" uid="uid://dlunhnfjhm5rw" path="res://assets/Golden Grinbit CutOut.png" id="2_6jbjv"]
-[ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="2_wupp1"]
 [ext_resource type="Texture2D" uid="uid://cmmf3g4xhgnmc" path="res://assets/Grin bit start menu pic draft.png" id="3_6jbjv"]
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="3_fgjvg"]
-[ext_resource type="Script" uid="uid://vekk67qa0vri" path="res://scripts/mainmenubutton.gd" id="3_pf3d3"]
-[ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="4_fgjvg"]
+[ext_resource type="PackedScene" uid="uid://byqttaltknbxc" path="res://scenes/Menus & Pop Ups/UI-Assets/startmenubtn.tscn" id="5_lp0xe"]
+[ext_resource type="PackedScene" uid="uid://cpm7g0opay2ci" path="res://scenes/Menus & Pop Ups/UI-Assets/quitbutton.tscn" id="6_lp0xe"]
 [ext_resource type="AudioStream" uid="uid://bf0yo0ifhi4rf" path="res://assets/Sounds/Music/GrinBit_Game_won_music(yippy).mp3" id="7_itah0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itah0"]
-bg_color = Color(0.27, 0.27, 0.27, 0.45882353)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color(0.14682834, 0.37, 0.08510001, 0.84313726)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jbjv"]
-bg_color = Color(0.22745098, 0.72156864, 0, 0.3372549)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color(0.16, 0.16, 0.16, 0.5529412)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puf78"]
-bg_color = Color(0.17733337, 0.56, 0, 0.62352943)
-border_width_left = 30
-border_width_top = 10
-border_width_right = 30
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 0.47058824)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mex30"]
-bg_color = Color(0.31, 0.0403, 0.0403, 0.4392157)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
-border_color = Color(0.08, 0.08, 0.08, 0.8666667)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxr8n"]
-bg_color = Color(0.34901962, 0.078431375, 0.078431375, 0.5058824)
-border_width_left = 30
-border_width_top = 30
-border_width_right = 30
-border_width_bottom = 30
-border_color = Color(0.08, 0.08, 0.08, 0.7254902)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cey7s"]
-bg_color = Color(0.34901962, 0.078431375, 0.078431375, 0.7254902)
-border_width_left = 30
-border_width_top = 10
-border_width_right = 30
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 0.47058824)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [node name="GameWonScreen" type="Control" unique_id=1556276343]
 layout_mode = 3
@@ -235,7 +156,7 @@ text = "		 This Is My First Project Ever
 		    I Am Frover GRATEFUL For You 
 
 
-   Cant Wait To Continue To Build On This!
+          Cant Wait To Continue To Build!
 "
 fit_content = true
 autowrap_mode = 0
@@ -249,33 +170,11 @@ offset_right = -15.0
 offset_bottom = 18.0
 scale = Vector2(2, 2)
 
-[node name="startmenu" type="Button" parent="VBoxContainer" unique_id=347311073]
+[node name="startmenu" parent="VBoxContainer" unique_id=1414448072 instance=ExtResource("5_lp0xe")]
 layout_mode = 2
-theme_override_colors/font_pressed_color = Color(0.12179998, 0.58, 0.12179998, 0.6392157)
-theme_override_colors/font_hover_color = Color(0.59, 0.59, 0.59, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 19
-theme_override_styles/normal = SubResource("StyleBoxFlat_itah0")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6jbjv")
-theme_override_styles/focus = SubResource("StyleBoxFlat_puf78")
-text = "Main Menu"
-icon = ExtResource("2_wupp1")
-icon_alignment = 2
-script = ExtResource("3_pf3d3")
 
-[node name="quitbutton" type="Button" parent="VBoxContainer" unique_id=1475978297]
+[node name="quitbutton" parent="VBoxContainer" unique_id=1303899875 instance=ExtResource("6_lp0xe")]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.45, 0.058499996, 0.058499996, 1)
-theme_override_colors/font_hover_color = Color(0.4, 0.28800002, 0.28800002, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_mex30")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fxr8n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_cey7s")
-text = "Exit Game"
-script = ExtResource("4_fgjvg")
 
 [node name="winning_music" type="AudioStreamPlayer2D" parent="." unique_id=265445464]
 stream = ExtResource("7_itah0")
@@ -284,6 +183,3 @@ autoplay = true
 bus = &"Music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1756232256]
-
-[connection signal="pressed" from="VBoxContainer/startmenu" to="VBoxContainer/startmenu" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/quitbutton" to="VBoxContainer/quitbutton" method="_on_pressed"]

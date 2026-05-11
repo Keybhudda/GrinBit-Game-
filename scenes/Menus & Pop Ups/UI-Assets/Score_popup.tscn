@@ -3,13 +3,10 @@
 [ext_resource type="Script" uid="uid://n8gnd2iq653s" path="res://scripts/score_popup.gd" id="1_6iq87"]
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="1_ji7on"]
 
-[node name="ScorePopup" type="Control" unique_id=865361654]
-layout_mode = 3
-anchors_preset = 0
+[node name="ScorePopup" type="Node2D" unique_id=903253450]
 script = ExtResource("1_6iq87")
 
 [node name="Label" type="Label" parent="." unique_id=1756382253]
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

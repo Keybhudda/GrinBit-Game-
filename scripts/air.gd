@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var fight_timer: Timer = $FightTimer
 @onready var recent_fight_timer: Timer = $RecentFightTimer
 @onready var parry_timer: Timer = $ParryTimer
+@onready var pop_up_timer: Timer = $PopUpTimer
 
 
 @onready var enemies = get_tree().get_nodes_in_group("Element")
@@ -174,7 +175,7 @@ func character_mind() -> void:
 	print(name, " is thinking. . .")
 	# 50/50 of either going into Chase mode or Shuffle.
 	if randi() % 2 == 0:
-		set_mode(Mode.SHUFFLE)
+		set_mode(Mode.CHASE)
 		mind_timer.start(8.0)
 		print(name, " is Scared and is wandering")
 	else:
@@ -190,7 +191,8 @@ func intercept_player(_delta: float) -> void:
 		return
 	
 	@warning_ignore("unused_variable")
-	var predicted_pos := get_intercept_tile(4)
+	var predicted_pos := get_intercept_tile(5)
+	
 	
 	if path.is_empty():
 		path = map.get_astar_path(position, player.position)
@@ -208,12 +210,12 @@ func intercept_player(_delta: float) -> void:
 		path_index += 1
 
 #Old Tries of making cut off code work better
-func get_intercept_tile(tiles_ahead: int = 4) -> Vector2:
-	var dir = player._last_direction
-	if dir == Vector2.ZERO:
-		dir = player.direction
+func get_intercept_tile(tiles_ahead: int ) -> Vector2:
+	var place = player._last_direction
+	if place == Vector2.ZERO:
+		return player.position
 	
-	var tile_dir := Vector2i(dir)
+	var tile_dir := Vector2i(place)
 	
 	var player_tile: Vector2i = map.local_to_map(player.position)
 	
@@ -402,18 +404,23 @@ func can_move_to(dir: Vector2) -> bool:
 #When this character is caught while in RUN mode.
 func _caught():
 	print(name, " was caught!")
+	if pop_spawned:
+		display_points()
+	
+	if pop_spawned == false:
+		spawn_score_popup()
 	path.clear()
 
 
 
 var recovering := false
 var elements_can_fight := false
+var pop_spawned := false
 #Code For When This Character Comes In Contact With The PLayer(GrinBit) and or Other enemy characters
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#If player enters area = death scene and or If player eneters area and mode == RUN then add points and eventually enemy back to stary pos
 	if body.is_in_group("Player"):
 		if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
-			game_manager.combo_points()
 			_caught()
 			set_mode(Mode.DEAD)
 			animation_player.play("Death")
@@ -433,11 +440,28 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		print(name, " is fighting ", opponent.name)
 
 #For Visual Pop for when enemy is collected
-func spawn_score_popup(points):
-	var popup = preload("res://scenes/Menus & Pop Ups/UI-Assets/Score_popup.tscn")
+var popup = preload("res://scenes/Menus & Pop Ups/UI-Assets/Score_popup.tscn").instantiate()
+func spawn_score_popup():
+	var points = game_manager.combo_points()
 	get_tree().current_scene.add_child(popup)
-	popup.position = global_position
+	popup.visible = true
+	@warning_ignore("integer_division")
+	popup.position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
 	popup.set_score(points)
+	pop_spawned = true
+	pop_up_timer.start(2)
+
+func display_points():
+	var points = game_manager.combo_points()
+	popup.visible = true
+	@warning_ignore("integer_division")
+	popup.position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	popup.set_score(points)
+	pop_up_timer.start(2)
+
+func _on_pop_up_timer_timeout() -> void:
+	if popup:
+		popup.visible = false
 
 var has_parried := false
 func cant_fight():

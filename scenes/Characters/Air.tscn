@@ -145,6 +145,9 @@ one_shot = true
 [node name="ParryTimer" type="Timer" parent="." unique_id=207557987]
 one_shot = true
 
+[node name="PopUpTimer" type="Timer" parent="." unique_id=2028910901]
+one_shot = true
+
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=158752936]
 stream = ExtResource("3_08fxp")
 bus = &"Sound Effects"
@@ -184,3 +187,4 @@ text = "!"
 [connection signal="timeout" from="FightTimer" to="." method="_on_fight_timer_timeout"]
 [connection signal="timeout" from="RecentFightTimer" to="." method="_on_recent_fight_timer_timeout"]
 [connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]
+[connection signal="timeout" from="PopUpTimer" to="." method="_on_pop_up_timer_timeout"]

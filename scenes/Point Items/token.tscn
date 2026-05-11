@@ -152,11 +152,13 @@ position = Vector2(7.478, -7.50303)
 shape = SubResource("RectangleShape2D_20bui")
 
 [node name="Pickupsound" type="AudioStreamPlayer2D" parent="." unique_id=1324550585]
+process_mode = 3
 stream = ExtResource("3_jioob")
 volume_db = -20.0
 bus = &"Sound Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=298798568]
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_qe0uj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
