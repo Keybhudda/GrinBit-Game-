@@ -175,7 +175,7 @@ func character_mind() -> void:
 	print(name, " is thinking. . .")
 	# 50/50 of either going into Chase mode or Shuffle.
 	if randi() % 2 == 0:
-		set_mode(Mode.CHASE)
+		set_mode(Mode.SHUFFLE)
 		mind_timer.start(8.0)
 		print(name, " is Scared and is wandering")
 	else:
@@ -410,7 +410,6 @@ func _caught():
 	if pop_spawned == false:
 		spawn_score_popup()
 	path.clear()
-
 
 
 var recovering := false

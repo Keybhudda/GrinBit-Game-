@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://5g4ufdx14egl"]
+[gd_scene format=3 uid="uid://3c1d4vxdgfct"]
 
-[ext_resource type="Script" uid="uid://dril3r5wsv4gt" path="res://scripts/orange.gd" id="1_24ymx"]
-[ext_resource type="Texture2D" uid="uid://ck0cerbaoi7g4" path="res://assets/Food & Point-Items/Fruits and Other Point items.png" id="2_xnr1h"]
-[ext_resource type="AudioStream" uid="uid://bi4utg6yif7qq" path="res://assets/Sounds/Game_Grinbit_Fruit_SFX.mp3" id="3_xnr1h"]
+[ext_resource type="Script" uid="uid://cjutrliqhbf02" path="res://scripts/blueberry.gd" id="1_7wcxw"]
+[ext_resource type="Texture2D" uid="uid://ck0cerbaoi7g4" path="res://assets/Food & Point-Items/Fruits and Other Point items.png" id="2_bgsrv"]
+[ext_resource type="AudioStream" uid="uid://bi4utg6yif7qq" path="res://assets/Sounds/Game_Grinbit_Fruit_SFX.mp3" id="3_ir31t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_24ymx"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r2wo"]
 size = Vector2(19.999996, 18.773834)
 
 [sub_resource type="Animation" id="Animation_1nt56"]
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.35000008,
 "start_offset": 0.0,
-"stream": ExtResource("3_xnr1h")
+"stream": ExtResource("3_ir31t")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -76,37 +76,37 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phyu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmr1n"]
 _data = {
 &"RESET": SubResource("Animation_1nt56"),
 &"pickup": SubResource("Animation_02iu2")
 }
 
-[node name="Orange" type="Area2D" unique_id=918756236]
+[node name="Blueberry" type="Area2D" unique_id=429520924]
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_24ymx")
+script = ExtResource("1_7wcxw")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1358617061]
-texture = ExtResource("2_xnr1h")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1004177383]
+texture = ExtResource("2_bgsrv")
 offset = Vector2(8, -8)
 region_enabled = true
-region_rect = Rect2(32, 208, 16, 16)
+region_rect = Rect2(16, 192, 16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=854395090]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2055188029]
 position = Vector2(8, -7.94436)
 scale = Vector2(0.8, 0.8)
-shape = SubResource("RectangleShape2D_24ymx")
+shape = SubResource("RectangleShape2D_7r2wo")
 
-[node name="Pickupsound" type="AudioStreamPlayer2D" parent="." unique_id=728676670]
+[node name="Pickupsound" type="AudioStreamPlayer2D" parent="." unique_id=1107472470]
 process_mode = 3
 bus = &"Sound Effects"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=872314513]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1327105324]
 process_mode = 3
-libraries/ = SubResource("AnimationLibrary_1phyu")
+libraries/ = SubResource("AnimationLibrary_bmr1n")
 
-[node name="AvailableTimer" type="Timer" parent="." unique_id=1081537641]
+[node name="AvailableTimer" type="Timer" parent="." unique_id=747530540]
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

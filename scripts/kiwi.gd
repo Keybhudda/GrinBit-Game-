@@ -2,9 +2,9 @@ extends Area2D
 #----------------------Scene and Other Node Connections ------------------------
 @onready var game_manager: Node = %GameManager
 @onready var game_state: Node = %GameState
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var pickupsound: AudioStreamPlayer2D = $Pickupsound
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #--------------------------Timers-----------------------------------------------
 @onready var available_timer: Timer = $AvailableTimer

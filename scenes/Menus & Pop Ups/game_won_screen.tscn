@@ -32,15 +32,15 @@ texture = ExtResource("3_6jbjv")
 [node name="youwon" type="Label" parent="." unique_id=1694121232]
 layout_mode = 0
 offset_left = -224.0
-offset_top = -240.0
-offset_right = 209.0
-offset_bottom = -69.0
+offset_top = -256.0
+offset_right = 346.0
+offset_bottom = -85.0
 theme_override_colors/font_color = Color(0.05490196, 0.70980394, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_fgjvg")
 theme_override_font_sizes/font_size = 40
-text = "CONGRATS YOU WON!! "
+text = "CONGRATS BEAT MY GAME!! "
 
 [node name="finalscore" type="Label" parent="." unique_id=1046681443]
 layout_mode = 0

@@ -148,6 +148,8 @@ one_shot = true
 [node name="PopUpTimer" type="Timer" parent="." unique_id=2028910901]
 one_shot = true
 
+[node name="DelayTimer" type="Timer" parent="." unique_id=1074939879]
+
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=158752936]
 stream = ExtResource("3_08fxp")
 bus = &"Sound Effects"

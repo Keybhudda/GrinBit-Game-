@@ -111,7 +111,7 @@ func update_lives():
 #A timer to give time to play game beat music and then send to game over screen for now until we make more levels
 func _on_switch_timer_timeout() -> void:
 	get_tree().paused = false
-	call_deferred("Level_1C")
+	call_deferred("go_next_level")
 #where when a level is complete it send you to the next level. 
 func _on_level_complete():
 	get_tree().paused = true
@@ -121,8 +121,38 @@ func _on_level_complete():
 	switch_timer.start(2)
 
 
+
+#beginning varaible for level system -Temp
+var levels = [
+	{"name": "Level 1", "completed": false},
+	{"name": "Level 2", "completed": false},
+	{"name": "Level 3", "completed": false},
+	{"name": "Level 4", "completed": false},
+	{"name": "Level 5", "completed": false},
+	{"name": "Level 6", "completed": false},
+	{"name": "Level 7", "completed": false},
+	{"name": "Level 8", "completed": false},
+	{"name": "Level 9", "completed": false},
+	{"name": "Level 10", "completed": false}
+	
+	]
+
+var current_level_index: int = 0
 #Sends Player to Game won screen for now Will send them to next level later
-func Level_1C():
+func go_next_level():
+	levels[current_level_index]["completed"] = true
+	current_level_index += 1
+	
+	if current_level_index > 2 and current_level_index % 2 == 0:
+		Player_Lives.add_life()
+	
+	if current_level_index < levels.size():
+		get_tree().change_scene_to_file("res://scenes/Level_%d.tscn" %
+	(current_level_index + 1))
+	print(current_level_index)
+
+#normal way of switching levels -OlD Tho want to use whats above
+func Level_2C():
 	get_tree().change_scene_to_file("res://scenes/Level_2.tscn")
 #Gets the starting points for all characters to use later for reload.
 func _on_Start_Position(entity_name: String, position: Vector2):
@@ -285,6 +315,7 @@ func start_game():
 
 #for start of game 
 func begin_game():
+	print(levels)
 	current_state = StateOfGame.READY
 	get_tree().paused = true
 	deathscreen.visible = true

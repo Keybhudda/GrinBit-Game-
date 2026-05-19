@@ -12,3 +12,7 @@ func reset():
 func lose_life():
 	Player_Lives -= 1
 	print("Lives Left: ",Player_Lives)
+
+func add_life():
+	Player_Lives += 1
+	print("Lives Left: ", Player_Lives)
