@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ck78cwoa1171d"]
+
+[ext_resource type="Script" uid="uid://b3fpgqqcj7gao" path="res://scripts/tunnel.gd" id="1_t3el0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
+size = Vector2(48.000004, 16.000002)
+
+[node name="Tunnel_A" type="Area2D" unique_id=920700065 groups=["Tunnels"]]
+position = Vector2(-241, -143.66496)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_t3el0")
+linked_tunnel = NodePath("../Tunnel_B")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=221006811]
+position = Vector2(9, -8.335037)
+shape = SubResource("RectangleShape2D_kvuet")
+debug_color = Color(0, 0.93333334, 0.3019608, 0.41960785)
