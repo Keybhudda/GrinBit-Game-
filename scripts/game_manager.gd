@@ -62,12 +62,18 @@ func _ready() -> void:
 		enemy.connect("player_caught", Callable(self, "_on_player_caught"))
 		enemy.connect("Start_Position", Callable(self, "_on_Start_Position"))
 		enemy.connect("element_fight", Callable(self, "_on_element_fight"))
+
 	
 	game_state.connect("all_items_collected", Callable(self, "_on_level_complete"))
 	
 	current_state = StateOfGame.RUNNING
 	
  
+func _on_mode_change(new_mode):
+	for enemy in enemies:
+		enemy.nextmode = new_mode
+		enemy.delay_timer.start(.5)
+
 func _on_element_fight():
 	if game_mode == ModeOfGame.CHASE:
 		fighting.stop()
@@ -116,6 +122,7 @@ func _on_switch_timer_timeout() -> void:
 func _on_level_complete():
 	get_tree().paused = true
 	print("Level Complete!")
+	current_level_index += 1 #This help skip to level 3 at least but it skips level 2 all together.
 	deathscreen.visible = true
 	deathscreen.level_complete()
 	switch_timer.start(2)
@@ -137,23 +144,28 @@ var levels = [
 	
 	]
 
+
+
 var current_level_index: int = 0
 #Sends Player to Game won screen for now Will send them to next level later
 func go_next_level():
 	levels[current_level_index]["completed"] = true
 	current_level_index += 1
 	
-	if current_level_index > 2 and current_level_index % 2 == 0:
+	if current_level_index > 1 and current_level_index % 2 == 0:
 		Player_Lives.add_life()
 	
 	if current_level_index < levels.size():
 		get_tree().change_scene_to_file("res://scenes/Level_%d.tscn" %
 	(current_level_index + 1))
+	
+	if current_level_index > 10:
+		game_won()
 	print(current_level_index)
 
 #normal way of switching levels -OlD Tho want to use whats above
-func Level_2C():
-	get_tree().change_scene_to_file("res://scenes/Level_2.tscn")
+func game_won():
+	get_tree().change_scene_to_file("res://scenes/Menus & Pop Ups/game_won_screen.tscn")
 #Gets the starting points for all characters to use later for reload.
 func _on_Start_Position(entity_name: String, position: Vector2):
 	if entity_name == "Grinbit":

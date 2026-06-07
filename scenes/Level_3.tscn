@@ -141,6 +141,42 @@ texture = ExtResource("11_hp4dp")
 16:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:13/0 = 0
 14:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+26:9/0 = 0
+26:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+24:9/0 = 0
+24:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+22:9/0 = 0
+22:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+22:7/0 = 0
+22:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+25:7/0 = 0
+25:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:9/0 = 0
+20:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+18:9/0 = 0
+18:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:9/0 = 0
+16:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:9/0 = 0
+14:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+26:5/0 = 0
+26:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+24:5/0 = 0
+24:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+22:5/0 = 0
+22:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+20:5/0 = 0
+20:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+18:5/0 = 0
+18:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:5/0 = 0
+16:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:5/0 = 0
+14:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+25:3/0 = 0
+25:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+22:3/0 = 0
+22:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_ir15t"]
 physics_layer_0/collision_layer = 1
@@ -266,7 +302,7 @@ tile_map_data = PackedByteArray("AADv//f/AAAGABsAAADw//f/AAAGABsAAADx//f/AAAGABs
 tile_set = SubResource("TileSet_v2yb1")
 
 [node name="Map" type="TileMapLayer" parent="Level_Items" unique_id=694833775]
-tile_map_data = PackedByteArray("AAARAP7/AwAOAA0AAAAFAPr/AwAOAA0AAGABAPr/AwASAA0AAGD2/wkAAwAOAA0AAFD1/wkAAwAOAA0AAFAGAPb/AwAOAA0AAGD3/wgAAwALABcAAAD4/wgAAwALABcAAAD5/wgAAwALABcAAAD6/wgAAwALABcAAAD7/wgAAwALABcAAAD8/wgAAwALABcAAAD9/wgAAwALABcAAAD+/wgAAwALABcAAAD//wgAAwALABcAAAAAAAgAAwALABcAAAABAAgAAwALABcAAAACAAgAAwALABcAAAADAAgAAwALABcAAAAEAAgAAwALABcAAAAFAAgAAwALABcAAAAGAAgAAwALABcAAAAGAAYAAwALABcAAAAGAAcAAwALABcAAAADAAYAAwALABcAAAAEAAYAAwALABcAAAAFAAYAAwALABcAAAADAAcAAwAUAA0AADACAAYAAwALABcAAAD3/wYAAwASAA0AAFD4/wYAAwAYAA0AAAD5/wYAAwASAA0AAGD9/wYAAwALABcAAAD+/wYAAwASAA0AAAD//wYAAwALABcAAAABAAYAAwALABcAAAD4/wcAAwASAA0AAAD5/wcAAwALABcAAAD6/wcAAwALABcAAAD9/wcAAwALABcAAAD+/wcAAwALABcAAAD//wUAAwALABcAAAABAAUAAwASAA0AAAD+/wMAAwAOAA0AAAD+/wQAAwAaAA0AAFD//wIAAwALABcAAAD//wQAAwAQAA0AAAACAAIAAwALABcAAAACAAEAAwALABcAAAADAAEAAwALABcAAAADAAIAAwALABcAAAAEAAAAAwALABcAAAAEAAEAAwALABcAAAAEAAIAAwALABcAAAAFAAAAAwALABcAAAAFAAEAAwALABcAAAAEAAMAAwALABcAAAAEAAUAAwALABcAAAAFAAMAAwALABcAAAAFAAQAAwAQAA0AAAAFAAUAAwALABcAAAAGAAMAAwALABcAAAAHAAMAAwALABcAAAAHAAQAAwAWAA0AAGAIAAMAAwALABcAAAAIAAQAAwALABcAAAAJAAMAAwALABcAAAAJAAQAAwALABcAAAAIAAUAAwALABcAAAAIAAYAAwALABcAAAAIAAcAAwALABcAAAAJAAUAAwALABcAAAAJAAYAAwALABcAAAAJAAcAAwALABcAAAAIAAgAAwALABcAAAAJAAgAAwALABcAAAAKAAgAAwALABcAAAALAAgAAwALABcAAAAMAAgAAwALABcAAAAKAAYAAwALABcAAAAKAAcAAwALABcAAAALAAYAAwALABcAAAALAAcAAwALABcAAAAMAAYAAwALABcAAAAMAAcAAwALABcAAAALAAMAAwALABcAAAALAAQAAwALABcAAAALAAUAAwALABcAAAAMAAMAAwALABcAAAANAAMAAwALABcAAAAOAAMAAwALABcAAAAPAAMAAwALABcAAAAQAAMAAwALABcAAAAQAAQAAwALABcAAAAQAAUAAwALABcAAAAQAAYAAwALABcAAAAQAAcAAwALABcAAAAQAAgAAwALABcAAAAOAAgAAwALABcAAAAPAAgAAwALABcAAAAOAAUAAwALABcAAAAOAAYAAwALABcAAAAOAAcAAwALABcAAAAMAAUAAwALABcAAAANAAUAAwALABcAAAAPAAUAAwALABcAAAANAAQAAwALABcAAAAGAAAAAwASAA0AAAAHAP7/AwALABcAAAAHAP//AwALABcAAAAHAAAAAwALABcAAAAIAP7/AwALABcAAAAIAP//AwALABcAAAAIAAAAAwALABcAAAAHAAEAAwALABcAAAAIAAEAAwALABcAAAAJAAEAAwALABcAAAAKAAEAAwALABcAAAALAAEAAwALABcAAAAMAAEAAwALABcAAAANAAEAAwALABcAAAAOAAEAAwALABcAAAAPAAEAAwALABcAAAAQAAEAAwALABcAAAAQAAAAAwALABcAAAAMAAAAAwALABcAAAANAAAAAwALABcAAAAOAAAAAwALABcAAAAJAP//AwALABcAAAALAP//AwALABcAAAAMAP//AwALABcAAAANAP//AwALABcAAAAMAP7/AwALABcAAAANAP7/AwALABcAAAAOAP7/AwALABcAAAAQAPv/AwALABcAAAAQAPz/AwALABcAAAAQAP3/AwALABcAAAAQAP7/AwALABcAAAAHAPv/AwALABcAAAAHAPz/AwALABcAAAAIAPv/AwALABcAAAAIAPz/AwALABcAAAAJAPv/AwALABcAAAAJAPz/AwALABcAAAAKAPz/AwALABcAAAAMAPz/AwALABcAAAANAPz/AwALABcAAAAOAPv/AwALABcAAAAOAPz/AwALABcAAAAPAPv/AwALABcAAAAPAPz/AwALABcAAAAJAP3/AwALABcAAAAMAP3/AwALABcAAAANAP3/AwALABcAAAAOAP3/AwALABcAAAAPAP3/AwALABcAAAABAPf/AwALABcAAAACAPf/AwALABcAAAADAPf/AwALABcAAAAEAPf/AwALABcAAAAFAPf/AwALABcAAAABAPj/AwALABcAAAABAPn/AwALABcAAAADAPn/AwALABcAAAAEAPn/AwALABcAAAAFAPn/AwALABcAAAAFAPj/AwALABcAAAACAPr/AwALABcAAAACAPv/AwALABcAAAADAPr/AwALABcAAAADAPv/AwALABcAAAAEAPv/AwALABcAAAAEAPz/AwALABcAAAAFAPv/AwALABcAAAAFAPz/AwALABcAAAAEAP3/AwALABcAAAAEAP7/AwALABcAAAAEAP//AwALABcAAAAFAP3/AwALABcAAAAFAP7/AwALABcAAAAFAP//AwALABcAAAD///v/AwALABcAAAD///z/AwALABcAAAAAAPv/AwALABcAAAAAAPz/AwALABcAAAABAPv/AwALABcAAAABAPz/AwALABcAAAD7//v/AwALABcAAAD7//z/AwALABcAAAD8//v/AwALABcAAAD8//z/AwALABcAAAD9//v/AwALABcAAAD+//v/AwALABcAAAD8//r/AwALABcAAAD9//r/AwALABcAAAD7//f/AwALABcAAAD8//f/AwALABcAAAD9//f/AwALABcAAAD+//f/AwALABcAAAD///f/AwALABcAAAD7//j/AwALABcAAAD///j/AwALABcAAAD+//n/AwALABcAAAD///n/AwALABcAAAD9//n/AwALABcAAAD///3/AwALABcAAAAAAP3/AwALABcAAAABAP3/AwALABcAAAD+//7/AwALABcAAAD+////AwALABcAAAD///7/AwALABcAAAD/////AwALABcAAAAAAP7/AwALABcAAAAAAP//AwALABcAAAACAP7/AwALABcAAAACAP//AwALABcAAAD8/wAAAwALABcAAAD9/wAAAwALABcAAAD+/wAAAwALABcAAAD+/wEAAwALABcAAAD6//3/AwALABcAAAD6////AwALABcAAAD7//3/AwALABcAAAD4//r/AwALABcAAAD4//v/AwALABcAAAD4//z/AwALABcAAAD5//r/AwALABcAAAD5//v/AwALABcAAAD5//z/AwALABcAAAD6//z/AwALABcAAAD4//3/AwALABcAAAD5//3/AwALABcAAAD0//j/AwALABcAAAD1//f/AwALABcAAAD1//j/AwALABcAAAD2//f/AwALABcAAAD2//j/AwALABcAAAD3//f/AwALABcAAAD3//j/AwALABcAAAD4//f/AwALABcAAAD4//j/AwALABcAAAD5//f/AwALABcAAAD5//j/AwALABcAAAD2//n/AwALABcAAAD2//r/AwALABcAAAD2//v/AwALABcAAAD3//n/AwALABcAAAD3//r/AwALABcAAAD3//v/AwALABcAAAD0//r/AwALABcAAAD0//v/AwALABcAAAD0//z/AwALABcAAAD1//r/AwALABcAAAD1//v/AwALABcAAAD1//z/AwALABcAAAD2//z/AwALABcAAADz//z/AwALABcAAADz//7/AwALABcAAAD0//7/AwALABcAAADv//f/AwALABcAAADv//j/AwALABcAAADw//f/AwALABcAAADx//f/AwALABcAAADx//j/AwALABcAAADv//n/AwALABcAAADv//r/AwALABcAAADv//v/AwALABcAAADv//z/AwALABcAAADv//3/AwALABcAAADv//7/AwALABcAAADw//r/AwASAA0AAADw//7/AwALABcAAADx//r/AwALABcAAADx//z/AwALABcAAADx//3/AwALABcAAADx//7/AwALABcAAADy//3/AwAWAA0AAFDz////AwALABcAAADz/wAAAwALABcAAAD0////AwALABcAAAD0/wAAAwALABcAAAD1////AwALABcAAAD1/wAAAwALABcAAAD2////AwALABcAAAD2/wAAAwALABcAAAD4////AwALABcAAAD5////AwALABcAAAD5/wAAAwALABcAAADv/wAAAwALABcAAADv/wEAAwALABcAAADw/wAAAwALABcAAADw/wEAAwALABcAAADx/wAAAwALABcAAADx/wEAAwAUAA0AAGDv/wIAAwALABcAAADv/wMAAwALABcAAADv/wQAAwAQAA0AAADv/wUAAwALABcAAADv/wYAAwALABcAAADv/wcAAwALABcAAADv/wgAAwALABcAAADw/wgAAwALABcAAADx/wgAAwALABcAAADy/wgAAwALABcAAADz/wgAAwALABcAAAD0/wgAAwALABcAAAD1/wgAAwALABcAAADw/wcAAwALABcAAADw/wUAAwALABcAAADw/wQAAwAQAA0AAADx/wQAAwAYAA0AAADy/wEAAwALABcAAADy/wQAAwAQAA0AAADz/wIAAwALABcAAAD1/wIAAwALABcAAADz/wQAAwAQAA0AAADz/wEAAwALABcAAAD0/wEAAwALABcAAAD3/wQAAwALABcAAAD3/wUAAwALABcAAAD2/wIAAwALABcAAAD2/wMAAwALABcAAAD2/wUAAwALABcAAADy/wUAAwALABcAAADz/wUAAwALABcAAAD1/wUAAwALABcAAADz/wYAAwALABcAAAD0/wYAAwALABcAAAD1/wYAAwALABcAAADy/wcAAwALABcAAADz/wcAAwALABcAAAD4/wIAAwALABcAAAD4/wMAAwALABcAAAD5/wIAAwALABcAAAD6/wIAAwALABcAAAD7/wIAAwALABcAAAD8/wMAAwALABcAAAD6/wUAAwALABcAAAD8/wUAAwALABcAAAD4/wUAAwASAA0AADAQAPj/AwALABcAAAAQAPf/AwALABcAAAAQAPn/AwALABcAAAAPAPn/AwALABcAAAAPAPf/AwALABcAAAAOAPf/AwALABcAAAANAPv/AwALABcAAAAMAPv/AwALABcAAAAKAPv/AwALABcAAAAHAPn/AwALABcAAAAHAPj/AwALABcAAAAHAPf/AwALABcAAAAIAPn/AwALABcAAAAIAPf/AwALABcAAAANAPn/AwALABcAAAANAPf/AwALABcAAAAJAPf/AwALABcAAAANAPr/AwALABcAAAAKAPf/AwALABcAAAALAPf/AwALABcAAAAMAPf/AwALABcAAAAMAPj/AwALABcAAAAMAPn/AwALABcAAAALAPn/AwALABcAAAAKAPn/AwALABcAAAALAPj/AwALABcAAADv/wkAAwAOAA0AAFDu/wcAAwAOAA0AADDu/wYAAwAOAA0AADDu////AwAOAA0AADDu//7/AwAOAA0AADDu//b/AwAWAA0AADDu//f/AwAOAA0AADDu//j/AwAOAA0AADDu//n/AwAOAA0AADDu//r/AwAOAA0AADDu//v/AwAOAA0AADDu//z/AwAOAA0AADDu//3/AwAOAA0AADD6//b/AwAOAA0AAGD2//b/AwAOAA0AAGD3//b/AwAOAA0AAGD4//b/AwAOAA0AAGD5//b/AwAOAA0AAGD7//b/AwAOAA0AAGD8//b/AwAOAA0AAGD9//b/AwAOAA0AAGD+//b/AwAOAA0AAGD///b/AwAOAA0AAGAAAPr/AwAaAA0AAAAAAPf/AwAOAA0AADAAAPb/AwAOAA0AAGABAPb/AwAOAA0AAGACAPb/AwAOAA0AAGADAPb/AwAOAA0AAGAEAPj/AwASAA0AAGACAPj/AwASAA0AAFAGAPn/AwAOAA0AAAAGAPj/AwAOAA0AADAGAPf/AwAOAA0AADAEAPb/AwAOAA0AAGAFAPb/AwAOAA0AAGAHAPb/AwAOAA0AAGAIAPb/AwAOAA0AAGAJAPb/AwAOAA0AAGAKAPb/AwAOAA0AAGALAPb/AwAOAA0AAGAMAPb/AwAOAA0AAGANAPb/AwAOAA0AAGAOAPb/AwAOAA0AAGAPAPb/AwAOAA0AAGARAPb/AwAWAA0AAGAQAPb/AwAOAA0AAGARAPf/AwAOAA0AAAARAPj/AwAOAA0AAAARAPn/AwAOAA0AAAARAPr/AwAOAA0AAAARAPv/AwAOAA0AAAARAPz/AwAOAA0AAAARAP3/AwAOAA0AAAARAP//AwAOAA0AAAARAAAAAwAOAA0AAAARAAIAAwAOAA0AAAANAAkAAwAOAA0AAFAMAAkAAwAOAA0AAFARAAEAAwAOAA0AAAARAAMAAwAOAA0AAAARAAQAAwAOAA0AAAARAAUAAwAOAA0AAAARAAYAAwAOAA0AAAARAAcAAwAOAA0AAAARAAgAAwAOAA0AAAAOAAkAAwAOAA0AAFAPAAkAAwAOAA0AAFAQAAkAAwAOAA0AAFARAAkAAwAWAA0AAAAHAAgAAwASAA0AADD3/wkAAwAOAA0AAFD4/wkAAwAOAA0AAFD5/wkAAwAOAA0AAFD6/wkAAwAOAA0AAFD7/wkAAwAOAA0AAFD8/wkAAwAOAA0AAFD9/wkAAwAOAA0AAFD+/wkAAwAOAA0AAFD//wkAAwAOAA0AAFAAAAkAAwAOAA0AAFABAAkAAwAOAA0AAFACAAkAAwAOAA0AAFADAAkAAwAOAA0AAFAEAAkAAwAOAA0AAFAFAAkAAwAOAA0AAFAGAAkAAwAOAA0AAFD0/wkAAwAOAA0AAFDz/wkAAwAOAA0AAFDy/wkAAwAOAA0AAFDx/wkAAwAOAA0AAFDw/wkAAwAOAA0AAFDu/wkAAwAWAA0AAFDu/wgAAwAOAA0AADDu/wUAAwAOAA0AADDu/wAAAwAOAA0AADDu/wEAAwAOAA0AADDu/wIAAwAOAA0AADDu/wMAAwAOAA0AADAPAP//AwANABAAAAAAAPn/AwAOAA0AADAAAPj/AwAOAA0AADADAPj/AwAOAA0AAGAEAPr/AwASAA0AAFDz//b/AwAWAA0AADDv//b/AwAUAA0AAAAAAAMAAwALABcAAAAAAAQAAwAQAA0AADD//wMAAwALABcAAAACAAMAAwALABcAAAAHAAkAAwAWAA0AAAALAAkAAwAWAA0AAFABAAMAAwASAA0AADD1//b/AwAOAA0AAGD0//b/AwAOAA0AAGD0//f/AwALABcAAADy//f/AwALABcAAADy//j/AwALABcAAAACAAcAAwALABcAAAD///r/AwAOAA0AAFD+//r/AwASAA0AAFACAPn/AwALABcAAADz//f/AwAOAA0AAADz//j/AwAOAA0AAADz//n/AwAOAA0AAADz//3/AwAUAA0AAADy//z/AwAOAA0AAADy//v/AwAOAA0AAADz//r/AwAWAA0AAADy//r/AwAWAA0AADAGAPr/AwAaAA0AAGAGAPv/AwASAA0AAAAEAAQAAwAQAA0AAAADAAQAAwASAA0AAFABAAQAAwAaAA0AAGAGAAQAAwAQAA0AAAAHAAUAAwAQAA0AAFD+/wUAAwAOAA0AAAD+/wIAAwASAA0AADD7/wQAAwAYAA0AAAD8/wQAAwAUAA0AAAD7/wMAAwAUAA0AAGD6/wQAAwAUAA0AADD7/wUAAwAUAA0AAFD0/wQAAwAaAA0AAGD0/wUAAwASAA0AAAD0/wMAAwASAA0AADDx/wUAAwAOAA0AAADx/wYAAwASAA0AAADx/wMAAwAOAA0AAADy/wIAAwAUAA0AAADx/wIAAwAaAA0AAFD1/wcAAwAUAA0AAAD0/wcAAwAUAA0AADD3/wEAAwAYAA0AAAD4/wEAAwAQAA0AAAD3/wAAAwAQAA0AAFD2/wEAAwAQAA0AADD3/wIAAwAQAA0AAGD3/wMAAwAUAA0AAFD5/wEAAwAUAA0AAAD3////AwAUAA0AAGD1/wEAAwAUAA0AADAFAAcAAwAUAA0AAAAEAAcAAwAQAA0AAAD8/wcAAwAZAAsAAADy////AwAUAA0AAADw////AwAUAA0AADDx////AwAQAA0AAAAGAP//AwAOAA0AAAAGAP7/AwASAA0AADAHAAYAAwASAA0AAADw//3/AwASAA0AAADw//z/AwASAA0AADDw//n/AwASAA0AADDu/wQAAwAaAA0AAFA=")
+tile_map_data = PackedByteArray("AAARAP7/AwAOAA0AAAAFAPr/AwAOAA0AAGABAPr/AwASAA0AAGD2/wkAAwAOAA0AAFD1/wkAAwAOAA0AAFD3/wgAAwALABcAAAD4/wgAAwALABcAAAD5/wgAAwALABcAAAD6/wgAAwALABcAAAD7/wgAAwALABcAAAD8/wgAAwALABcAAAD9/wgAAwALABcAAAD+/wgAAwALABcAAAD//wgAAwALABcAAAAAAAgAAwALABcAAAABAAgAAwALABcAAAACAAgAAwALABcAAAADAAgAAwALABcAAAAEAAgAAwALABcAAAAFAAgAAwALABcAAAAGAAgAAwALABcAAAAGAAYAAwALABcAAAAGAAcAAwALABcAAAADAAYAAwALABcAAAAEAAYAAwALABcAAAAFAAYAAwALABcAAAADAAcAAwAUAA0AADACAAYAAwALABcAAAD3/wYAAwASAA0AAFD4/wYAAwAYAA0AAAD5/wYAAwASAA0AAGD9/wYAAwALABcAAAD+/wYAAwASAA0AAAD//wYAAwALABcAAAABAAYAAwALABcAAAD4/wcAAwASAA0AAAD5/wcAAwALABcAAAD6/wcAAwALABcAAAD9/wcAAwALABcAAAD+/wcAAwALABcAAAD//wUAAwALABcAAAABAAUAAwASAA0AAAD+/wMAAwAOAA0AAAD+/wQAAwAaAA0AAFD//wIAAwALABcAAAD//wQAAwAQAA0AAAACAAIAAwALABcAAAACAAEAAwASAA0AAAADAAEAAwALABcAAAADAAIAAwALABcAAAAEAAAAAwALABcAAAAEAAEAAwALABcAAAAEAAIAAwALABcAAAAFAAAAAwALABcAAAAFAAEAAwALABcAAAAEAAMAAwALABcAAAAEAAUAAwALABcAAAAFAAMAAwALABcAAAAFAAQAAwAQAA0AAAAFAAUAAwALABcAAAAGAAMAAwALABcAAAAHAAMAAwALABcAAAAHAAQAAwAWAA0AAGAIAAMAAwALABcAAAAIAAQAAwALABcAAAAJAAMAAwALABcAAAAJAAQAAwALABcAAAAIAAUAAwALABcAAAAIAAYAAwALABcAAAAIAAcAAwALABcAAAAJAAUAAwAWAAsAADAJAAYAAwAWAAsAAFAJAAcAAwALABcAAAAIAAgAAwALABcAAAAJAAgAAwALABcAAAAKAAgAAwALABcAAAALAAgAAwALABcAAAAMAAgAAwALABcAAAAKAAYAAwAWAAsAAAAKAAcAAwALABcAAAALAAYAAwALABcAAAALAAcAAwALABcAAAAMAAYAAwALABcAAAAMAAcAAwAUAA0AADALAAMAAwALABcAAAALAAQAAwALABcAAAALAAUAAwALABcAAAAMAAMAAwAWAAsAAFANAAMAAwAWAAsAAAAOAAMAAwALABcAAAAPAAMAAwALABcAAAAQAAMAAwALABcAAAAQAAQAAwALABcAAAAQAAUAAwALABcAAAAQAAYAAwALABcAAAAQAAcAAwALABcAAAAQAAgAAwALABcAAAAOAAgAAwALABcAAAAPAAgAAwALABcAAAAOAAUAAwAUAA0AAAAOAAYAAwALABcAAAAOAAcAAwAUAA0AAAAMAAUAAwAUAA0AADAPAAUAAwALABcAAAANAAQAAwALABcAAAAGAAAAAwASAA0AAAAHAP7/AwALABcAAAAHAP//AwALABcAAAAHAAAAAwALABcAAAAIAP7/AwAZAAsAAAAIAP//AwALABcAAAAIAAAAAwAUAA0AADAHAAEAAwALABcAAAAIAAEAAwALABcAAAAJAAEAAwALABcAAAAKAAEAAwALABcAAAALAAEAAwALABcAAAAMAAEAAwALABcAAAANAAEAAwALABcAAAAOAAEAAwALABcAAAAPAAEAAwALABcAAAAQAAEAAwALABcAAAAQAAAAAwALABcAAAAMAAAAAwALABcAAAANAAAAAwAUAA0AADAOAAAAAwAQAA0AAAAJAP//AwALABcAAAALAP//AwALABcAAAAMAP//AwALABcAAAANAP//AwALABcAAAAMAP7/AwALABcAAAANAP7/AwAWAAsAAFAOAP7/AwAWAAsAAAAQAPv/AwALABcAAAAQAPz/AwALABcAAAAQAP3/AwALABcAAAAQAP7/AwALABcAAAAHAPv/AwALABcAAAAHAPz/AwALABcAAAAIAPv/AwALABcAAAAIAPz/AwALABcAAAAJAPv/AwASAA0AAAAJAPz/AwALABcAAAAKAPz/AwALABcAAAAMAPz/AwALABcAAAANAPz/AwALABcAAAAOAPv/AwALABcAAAAOAPz/AwALABcAAAAPAPv/AwAZAAsAAAAPAPz/AwALABcAAAAJAP3/AwALABcAAAAMAP3/AwALABcAAAANAP3/AwAWAAsAADAOAP3/AwAWAAsAAGAPAP3/AwALABcAAAABAPf/AwALABcAAAACAPf/AwALABcAAAADAPf/AwALABcAAAAEAPf/AwALABcAAAAFAPf/AwALABcAAAABAPj/AwALABcAAAABAPn/AwALABcAAAADAPn/AwALABcAAAAEAPn/AwALABcAAAAFAPn/AwALABcAAAAFAPj/AwALABcAAAACAPr/AwALABcAAAACAPv/AwALABcAAAADAPr/AwALABcAAAADAPv/AwALABcAAAAEAPv/AwALABcAAAAEAPz/AwALABcAAAAFAPv/AwALABcAAAAFAPz/AwALABcAAAAEAP3/AwALABcAAAAEAP//AwALABcAAAAFAP3/AwALABcAAAAFAP7/AwALABcAAAAFAP//AwALABcAAAD///v/AwALABcAAAD///z/AwALABcAAAAAAPv/AwALABcAAAAAAPz/AwALABcAAAABAPv/AwALABcAAAABAPz/AwALABcAAAD7//v/AwALABcAAAD7//z/AwALABcAAAD8//v/AwALABcAAAD8//z/AwALABcAAAD9//v/AwALABcAAAD+//v/AwALABcAAAD8//r/AwALABcAAAD9//r/AwALABcAAAD7//f/AwALABcAAAD8//f/AwALABcAAAD9//f/AwALABcAAAD+//f/AwALABcAAAD///f/AwALABcAAAD7//j/AwALABcAAAD///j/AwALABcAAAD+//n/AwALABcAAAD///n/AwALABcAAAD9//n/AwALABcAAAD///3/AwALABcAAAAAAP3/AwALABcAAAABAP3/AwALABcAAAD+//7/AwALABcAAAD+////AwALABcAAAD///7/AwALABcAAAD/////AwALABcAAAAAAP7/AwASAA0AAFAAAP//AwALABcAAAACAP7/AwAYAA0AAAD9/wAAAwALABcAAAD+/wAAAwAZAAsAAAD+/wEAAwALABcAAAD6//3/AwALABcAAAD6////AwALABcAAAD7//3/AwALABcAAAD4//v/AwALABcAAAD4//z/AwALABcAAAD5//r/AwASAA0AAFD5//v/AwALABcAAAD5//z/AwALABcAAAD6//z/AwASAA0AAAD5//3/AwALABcAAAD0//j/AwALABcAAAD1//f/AwALABcAAAD1//j/AwAZAAsAAAD2//f/AwALABcAAAD2//j/AwALABcAAAD3//f/AwALABcAAAD3//j/AwAZAAsAAAD4//f/AwALABcAAAD4//j/AwALABcAAAD5//f/AwALABcAAAD5//j/AwALABcAAAD2//n/AwALABcAAAD2//r/AwAaAA0AADD2//v/AwAOAA0AAAD3//r/AwASAA0AAGD3//v/AwALABcAAAD0//r/AwALABcAAAD0//v/AwALABcAAAD0//z/AwALABcAAAD1//r/AwASAA0AAFD1//v/AwALABcAAAD1//z/AwALABcAAAD2//z/AwASAA0AAADz//z/AwALABcAAADz//7/AwALABcAAAD0//7/AwALABcAAADv//f/AwALABcAAADv//j/AwALABcAAADw//f/AwALABcAAADx//f/AwALABcAAADx//j/AwALABcAAADv//n/AwALABcAAADv//r/AwALABcAAADv//v/AwALABcAAADv//z/AwALABcAAADv//3/AwALABcAAADv//7/AwALABcAAADw//r/AwASAA0AAADw//7/AwALABcAAADx//r/AwALABcAAADx//z/AwALABcAAADx//3/AwALABcAAADx//7/AwALABcAAADy//3/AwAWAA0AAFDz////AwALABcAAADz/wAAAwALABcAAAD0////AwALABcAAAD0/wAAAwALABcAAAD1////AwALABcAAAD1/wAAAwALABcAAAD2////AwALABcAAAD2/wAAAwALABcAAAD4////AwALABcAAAD5////AwALABcAAAD5/wAAAwALABcAAADv/wAAAwALABcAAADv/wEAAwALABcAAADw/wAAAwALABcAAADw/wEAAwALABcAAADx/wAAAwALABcAAADx/wEAAwAUAA0AAGDv/wIAAwALABcAAADv/wMAAwALABcAAADv/wQAAwAQAA0AAADv/wUAAwALABcAAADv/wYAAwALABcAAADv/wcAAwALABcAAADv/wgAAwALABcAAADw/wgAAwALABcAAADx/wgAAwALABcAAADy/wgAAwALABcAAADz/wgAAwALABcAAAD0/wgAAwALABcAAAD1/wgAAwALABcAAADw/wcAAwALABcAAADw/wUAAwALABcAAADw/wQAAwAQAA0AAADx/wQAAwAYAA0AAADy/wEAAwALABcAAADy/wQAAwAQAA0AAADz/wIAAwALABcAAAD1/wIAAwALABcAAADz/wQAAwAQAA0AAADz/wEAAwALABcAAAD0/wEAAwALABcAAAD3/wQAAwALABcAAAD3/wUAAwALABcAAAD2/wIAAwALABcAAAD2/wMAAwALABcAAAD2/wUAAwALABcAAADy/wUAAwALABcAAADz/wUAAwALABcAAAD1/wUAAwALABcAAADz/wYAAwALABcAAAD0/wYAAwALABcAAAD1/wYAAwALABcAAADy/wcAAwALABcAAADz/wcAAwALABcAAAD4/wIAAwALABcAAAD4/wMAAwALABcAAAD5/wIAAwALABcAAAD6/wIAAwALABcAAAD7/wIAAwALABcAAAD8/wMAAwALABcAAAD6/wUAAwALABcAAAD8/wUAAwALABcAAAD4/wUAAwASAA0AADAQAPj/AwALABcAAAAQAPf/AwALABcAAAAQAPn/AwALABcAAAAPAPn/AwALABcAAAAPAPf/AwALABcAAAAOAPf/AwALABcAAAANAPv/AwASAA0AAAAMAPv/AwALABcAAAAKAPv/AwALABcAAAAHAPn/AwAQAA0AAAAHAPj/AwALABcAAAAHAPf/AwALABcAAAAIAPn/AwAQAA0AAAAIAPf/AwALABcAAAANAPn/AwALABcAAAANAPf/AwAOAA0AAAAJAPf/AwALABcAAAANAPr/AwASAA0AADAKAPf/AwALABcAAAALAPf/AwALABcAAAAMAPf/AwALABcAAAAMAPj/AwALABcAAAAMAPn/AwALABcAAAALAPn/AwALABcAAAAKAPn/AwALABcAAAALAPj/AwALABcAAADv/wkAAwAOAA0AAFDu/wcAAwAOAA0AADDu/wYAAwAOAA0AADDu////AwAOAA0AADDu//7/AwAOAA0AADDu//b/AwAWAA0AADDu//f/AwAOAA0AADDu//j/AwAOAA0AADDu//n/AwAOAA0AADDu//r/AwAOAA0AADDu//v/AwAOAA0AADDu//z/AwAOAA0AADDu//3/AwAOAA0AADD6//b/AwAOAA0AAGD2//b/AwAOAA0AAGD3//b/AwAOAA0A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")
 tile_set = SubResource("TileSet_ir15t")
 script = ExtResource("12_i28wl")
 debug_draw = false
@@ -297,30 +333,30 @@ debug_color = Color(0, 0.7764706, 0.22745098, 0.41960785)
 
 [node name="Grinbit" parent="Level_Items" unique_id=1742117688 node_paths=PackedStringArray("map") groups=["Player"] instance=ExtResource("15_q13c6")]
 z_index = 2
-position = Vector2(-9, -24)
+position = Vector2(7.7938843, -39.905693)
 map = NodePath("../Map")
 
 [node name="Pryo" parent="Level_Items" unique_id=1972846575 node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("16_wbc6a")]
 z_index = 2
-position = Vector2(-200, 120)
+position = Vector2(-215.90791, 135.9079)
 map = NodePath("../Map")
 player_path = NodePath("../Grinbit")
 
 [node name="Grumbl" parent="Level_Items" unique_id=2089524450 node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("17_tjjo8")]
 z_index = 2
-position = Vector2(200, -8)
+position = Vector2(200.4241, -104.27016)
 map = NodePath("../Map")
 player_path = NodePath("../Grinbit")
 
 [node name="Whispr" parent="Level_Items" unique_id=1805054777 node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("18_s3wbq")]
 z_index = 2
-position = Vector2(247.59544, 87.84643)
+position = Vector2(248.10857, 39.609566)
 map = NodePath("../Map")
 player_path = NodePath("../Grinbit")
 
 [node name="Drizzl" parent="Level_Items" unique_id=1362491636 node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("19_ubxxj")]
 z_index = 2
-position = Vector2(-152, -73)
+position = Vector2(-184.32895, -57.092102)
 map = NodePath("../Map")
 player_path = NodePath("../Grinbit")
 
@@ -338,7 +374,7 @@ position = Vector2(16, -128)
 position = Vector2(16, -112)
 
 [node name="Token7" parent="Level_Items/Pickups/Tokens" unique_id=136793251 instance=ExtResource("20_8o5aa")]
-position = Vector2(-48, -16)
+position = Vector2(-160, -96)
 
 [node name="Token" parent="Level_Items/Pickups/Tokens" unique_id=748395283 instance=ExtResource("20_8o5aa")]
 position = Vector2(32, -96)
@@ -368,7 +404,7 @@ position = Vector2(-128, 144)
 position = Vector2(-48, -80)
 
 [node name="Token29" parent="Level_Items/Pickups/Tokens" unique_id=554523868 instance=ExtResource("20_8o5aa")]
-position = Vector2(-48, -112)
+position = Vector2(-48, -128)
 
 [node name="Token42" parent="Level_Items/Pickups/Tokens" unique_id=2070049695 instance=ExtResource("20_8o5aa")]
 position = Vector2(-16, -112)
@@ -422,7 +458,7 @@ position = Vector2(-240, 16)
 position = Vector2(-256, -16)
 
 [node name="Token53" parent="Level_Items/Pickups/Tokens" unique_id=931596989 instance=ExtResource("20_8o5aa")]
-position = Vector2(144, 80)
+position = Vector2(128, 112)
 
 [node name="Token203" parent="Level_Items/Pickups/Tokens" unique_id=2099446210 instance=ExtResource("20_8o5aa")]
 position = Vector2(176, 144)
@@ -452,7 +488,7 @@ position = Vector2(80, -128)
 position = Vector2(-144, 144)
 
 [node name="Token12" parent="Level_Items/Pickups/Tokens" unique_id=1883817248 instance=ExtResource("20_8o5aa")]
-position = Vector2(-112, -112)
+position = Vector2(-112, -96)
 
 [node name="Token13" parent="Level_Items/Pickups/Tokens" unique_id=1233746020 instance=ExtResource("20_8o5aa")]
 position = Vector2(-64, -48)
@@ -461,13 +497,13 @@ position = Vector2(-64, -48)
 position = Vector2(-32, -64)
 
 [node name="Token118" parent="Level_Items/Pickups/Tokens" unique_id=1227382971 instance=ExtResource("20_8o5aa")]
-position = Vector2(80, -32)
+position = Vector2(80, -16)
 
 [node name="Token178" parent="Level_Items/Pickups/Tokens" unique_id=647635208 instance=ExtResource("20_8o5aa")]
-position = Vector2(80, -48)
+position = Vector2(80, 0)
 
 [node name="Token119" parent="Level_Items/Pickups/Tokens" unique_id=269529651 instance=ExtResource("20_8o5aa")]
-position = Vector2(96, 96)
+position = Vector2(96, 112)
 
 [node name="Token9" parent="Level_Items/Pickups/Tokens" unique_id=943211156 instance=ExtResource("20_8o5aa")]
 position = Vector2(-16, -96)
@@ -500,7 +536,7 @@ position = Vector2(-16, 48)
 position = Vector2(192, 144)
 
 [node name="Token68" parent="Level_Items/Pickups/Tokens" unique_id=1999159087 instance=ExtResource("20_8o5aa")]
-position = Vector2(144, 96)
+position = Vector2(128, 96)
 
 [node name="Token57" parent="Level_Items/Pickups/Tokens" unique_id=1111097146 instance=ExtResource("20_8o5aa")]
 position = Vector2(176, 64)
@@ -512,7 +548,7 @@ position = Vector2(176, 64)
 position = Vector2(176, 80)
 
 [node name="Token195" parent="Level_Items/Pickups/Tokens" unique_id=2086064869 instance=ExtResource("20_8o5aa")]
-position = Vector2(176, 96)
+position = Vector2(112, 128)
 
 [node name="Token196" parent="Level_Items/Pickups/Tokens" unique_id=1607767995 instance=ExtResource("20_8o5aa")]
 position = Vector2(256, 80)
@@ -524,7 +560,7 @@ position = Vector2(256, 144)
 position = Vector2(240, 144)
 
 [node name="Token199" parent="Level_Items/Pickups/Tokens" unique_id=2032616172 instance=ExtResource("20_8o5aa")]
-position = Vector2(224, 128)
+position = Vector2(240, 80)
 
 [node name="Token205" parent="Level_Items/Pickups/Tokens" unique_id=1260798794 instance=ExtResource("20_8o5aa")]
 position = Vector2(224, 112)
@@ -539,13 +575,13 @@ position = Vector2(224, 80)
 position = Vector2(208, 80)
 
 [node name="Token209" parent="Level_Items/Pickups/Tokens" unique_id=1033732703 instance=ExtResource("20_8o5aa")]
-position = Vector2(80, 112)
+position = Vector2(80, 96)
 
 [node name="Token210" parent="Level_Items/Pickups/Tokens" unique_id=439755324 instance=ExtResource("20_8o5aa")]
-position = Vector2(208, 96)
+position = Vector2(64, 64)
 
 [node name="Token211" parent="Level_Items/Pickups/Tokens" unique_id=1275284519 instance=ExtResource("20_8o5aa")]
-position = Vector2(224, 96)
+position = Vector2(176, 128)
 
 [node name="Token200" parent="Level_Items/Pickups/Tokens" unique_id=1762600341 instance=ExtResource("20_8o5aa")]
 position = Vector2(256, 128)
@@ -557,10 +593,10 @@ position = Vector2(256, 112)
 position = Vector2(256, 96)
 
 [node name="Token58" parent="Level_Items/Pickups/Tokens" unique_id=1943820322 instance=ExtResource("20_8o5aa")]
-position = Vector2(192, 64)
+position = Vector2(176, 48)
 
 [node name="Token59" parent="Level_Items/Pickups/Tokens" unique_id=670413281 instance=ExtResource("20_8o5aa")]
-position = Vector2(208, 64)
+position = Vector2(224, 48)
 
 [node name="Token60" parent="Level_Items/Pickups/Tokens" unique_id=169797372 instance=ExtResource("20_8o5aa")]
 position = Vector2(224, 64)
@@ -584,16 +620,16 @@ position = Vector2(-240, -16)
 position = Vector2(-208, -16)
 
 [node name="Token21" parent="Level_Items/Pickups/Tokens" unique_id=730083032 instance=ExtResource("20_8o5aa")]
-position = Vector2(-80, -32)
+position = Vector2(-48, -32)
 
 [node name="Token35" parent="Level_Items/Pickups/Tokens" unique_id=1223495097 instance=ExtResource("20_8o5aa")]
-position = Vector2(32, 0)
+position = Vector2(48, -32)
 
 [node name="Token228" parent="Level_Items/Pickups/Tokens" unique_id=1213512262 instance=ExtResource("20_8o5aa")]
 position = Vector2(0, -64)
 
 [node name="Token229" parent="Level_Items/Pickups/Tokens" unique_id=1162104834 instance=ExtResource("20_8o5aa")]
-position = Vector2(-64, 32)
+position = Vector2(-48, 80)
 
 [node name="Token230" parent="Level_Items/Pickups/Tokens" unique_id=1024433111 instance=ExtResource("20_8o5aa")]
 position = Vector2(32, 80)
@@ -602,7 +638,7 @@ position = Vector2(32, 80)
 position = Vector2(192, -48)
 
 [node name="Token239" parent="Level_Items/Pickups/Tokens" unique_id=259605213 instance=ExtResource("20_8o5aa")]
-position = Vector2(-16, 0)
+position = Vector2(16, -32)
 
 [node name="Token232" parent="Level_Items/Pickups/Tokens" unique_id=467551887 instance=ExtResource("20_8o5aa")]
 position = Vector2(48, 0)
@@ -611,7 +647,7 @@ position = Vector2(48, 0)
 position = Vector2(192, -64)
 
 [node name="Token41" parent="Level_Items/Pickups/Tokens" unique_id=1389040750 instance=ExtResource("20_8o5aa")]
-position = Vector2(64, 64)
+position = Vector2(-80, 144)
 
 [node name="Token36" parent="Level_Items/Pickups/Tokens" unique_id=2121075968 instance=ExtResource("20_8o5aa")]
 position = Vector2(-128, -128)
@@ -620,9 +656,10 @@ position = Vector2(-128, -128)
 position = Vector2(-144, -128)
 
 [node name="Token19" parent="Level_Items/Pickups/Tokens" unique_id=258289656 instance=ExtResource("20_8o5aa")]
-position = Vector2(48, 112)
+position = Vector2(32, 112)
 
 [node name="Token180" parent="Level_Items/Pickups/Tokens" unique_id=1638128416 instance=ExtResource("20_8o5aa")]
+position = Vector2(16, 0)
 
 [node name="Token181" parent="Level_Items/Pickups/Tokens" unique_id=1096426051 instance=ExtResource("20_8o5aa")]
 position = Vector2(-32, 32)
@@ -649,13 +686,13 @@ position = Vector2(256, 16)
 position = Vector2(256, -16)
 
 [node name="Token62" parent="Level_Items/Pickups/Tokens" unique_id=178676961 instance=ExtResource("20_8o5aa")]
-position = Vector2(80, 48)
+position = Vector2(-16, 144)
 
 [node name="Token179" parent="Level_Items/Pickups/Tokens" unique_id=325242811 instance=ExtResource("20_8o5aa")]
-position = Vector2(80, 32)
+position = Vector2(80, 16)
 
 [node name="Token120" parent="Level_Items/Pickups/Tokens" unique_id=1532129633 instance=ExtResource("20_8o5aa")]
-position = Vector2(112, 32)
+position = Vector2(112, 16)
 
 [node name="Token121" parent="Level_Items/Pickups/Tokens" unique_id=29635980 instance=ExtResource("20_8o5aa")]
 position = Vector2(128, 32)
@@ -667,7 +704,7 @@ position = Vector2(160, 32)
 position = Vector2(144, 32)
 
 [node name="Token63" parent="Level_Items/Pickups/Tokens" unique_id=1742100728 instance=ExtResource("20_8o5aa")]
-position = Vector2(80, 64)
+position = Vector2(-48, 144)
 
 [node name="Token64" parent="Level_Items/Pickups/Tokens" unique_id=1888318518 instance=ExtResource("20_8o5aa")]
 position = Vector2(96, 64)
@@ -679,10 +716,10 @@ position = Vector2(112, 64)
 position = Vector2(128, 64)
 
 [node name="Token67" parent="Level_Items/Pickups/Tokens" unique_id=1085589696 instance=ExtResource("20_8o5aa")]
-position = Vector2(144, 64)
+position = Vector2(128, 80)
 
 [node name="Token50" parent="Level_Items/Pickups/Tokens" unique_id=111416818 instance=ExtResource("20_8o5aa")]
-position = Vector2(-112, -128)
+position = Vector2(-96, -128)
 
 [node name="Token51" parent="Level_Items/Pickups/Tokens" unique_id=996970841 instance=ExtResource("20_8o5aa")]
 position = Vector2(176, 32)
@@ -691,7 +728,7 @@ position = Vector2(176, 32)
 position = Vector2(176, -128)
 
 [node name="Token131" parent="Level_Items/Pickups/Tokens" unique_id=490961336 instance=ExtResource("20_8o5aa")]
-position = Vector2(208, -128)
+position = Vector2(208, -96)
 
 [node name="Token132" parent="Level_Items/Pickups/Tokens" unique_id=1874878602 instance=ExtResource("20_8o5aa")]
 position = Vector2(224, -128)
@@ -712,7 +749,7 @@ position = Vector2(112, -112)
 position = Vector2(112, -64)
 
 [node name="Token186" parent="Level_Items/Pickups/Tokens" unique_id=500467736 instance=ExtResource("20_8o5aa")]
-position = Vector2(112, -48)
+position = Vector2(128, -64)
 
 [node name="Token187" parent="Level_Items/Pickups/Tokens" unique_id=1523095483 instance=ExtResource("20_8o5aa")]
 position = Vector2(176, -96)
@@ -721,7 +758,7 @@ position = Vector2(176, -96)
 position = Vector2(192, -128)
 
 [node name="Token192" parent="Level_Items/Pickups/Tokens" unique_id=812390647 instance=ExtResource("20_8o5aa")]
-position = Vector2(128, -96)
+position = Vector2(128, -80)
 
 [node name="Token188" parent="Level_Items/Pickups/Tokens" unique_id=874387922 instance=ExtResource("20_8o5aa")]
 position = Vector2(160, -32)
@@ -736,10 +773,10 @@ position = Vector2(160, -64)
 position = Vector2(192, -32)
 
 [node name="Token148" parent="Level_Items/Pickups/Tokens" unique_id=1029893635 instance=ExtResource("20_8o5aa")]
-position = Vector2(128, -48)
+position = Vector2(128, -32)
 
 [node name="Token189" parent="Level_Items/Pickups/Tokens" unique_id=2038096849 instance=ExtResource("20_8o5aa")]
-position = Vector2(240, -64)
+position = Vector2(224, -64)
 
 [node name="Token190" parent="Level_Items/Pickups/Tokens" unique_id=1508239547 instance=ExtResource("20_8o5aa")]
 position = Vector2(256, -48)
@@ -754,7 +791,7 @@ position = Vector2(256, -64)
 position = Vector2(256, -96)
 
 [node name="Token142" parent="Level_Items/Pickups/Tokens" unique_id=112611591 instance=ExtResource("20_8o5aa")]
-position = Vector2(240, -96)
+position = Vector2(224, -80)
 
 [node name="Token143" parent="Level_Items/Pickups/Tokens" unique_id=412812944 instance=ExtResource("20_8o5aa")]
 position = Vector2(256, -112)
@@ -772,7 +809,7 @@ position = Vector2(160, -128)
 position = Vector2(144, -128)
 
 [node name="Token139" parent="Level_Items/Pickups/Tokens" unique_id=1791060554 instance=ExtResource("20_8o5aa")]
-position = Vector2(112, -96)
+position = Vector2(112, -80)
 
 [node name="Token52" parent="Level_Items/Pickups/Tokens" unique_id=220465222 instance=ExtResource("20_8o5aa")]
 position = Vector2(-272, 0)
@@ -790,10 +827,10 @@ position = Vector2(-272, 32)
 position = Vector2(-256, 48)
 
 [node name="Token73" parent="Level_Items/Pickups/Tokens" unique_id=671406463 instance=ExtResource("20_8o5aa")]
-position = Vector2(-272, 64)
+position = Vector2(-224, 64)
 
 [node name="Token74" parent="Level_Items/Pickups/Tokens" unique_id=1470223548 instance=ExtResource("20_8o5aa")]
-position = Vector2(-272, 80)
+position = Vector2(-272, 48)
 
 [node name="Token75" parent="Level_Items/Pickups/Tokens" unique_id=486008891 instance=ExtResource("20_8o5aa")]
 position = Vector2(-272, 144)
@@ -862,7 +899,7 @@ position = Vector2(-256, 64)
 position = Vector2(-256, -64)
 
 [node name="Token167" parent="Level_Items/Pickups/Tokens" unique_id=1812333983 instance=ExtResource("20_8o5aa")]
-position = Vector2(-176, -80)
+position = Vector2(-208, -64)
 
 [node name="Token168" parent="Level_Items/Pickups/Tokens" unique_id=1519188430 instance=ExtResource("20_8o5aa")]
 position = Vector2(-192, -80)
@@ -871,16 +908,16 @@ position = Vector2(-192, -80)
 position = Vector2(-192, -64)
 
 [node name="Token169" parent="Level_Items/Pickups/Tokens" unique_id=841926430 instance=ExtResource("20_8o5aa")]
-position = Vector2(-112, -80)
+position = Vector2(-112, -64)
 
 [node name="Token184" parent="Level_Items/Pickups/Tokens" unique_id=479379582 instance=ExtResource("20_8o5aa")]
-position = Vector2(-112, -64)
+position = Vector2(-112, -48)
 
 [node name="Token185" parent="Level_Items/Pickups/Tokens" unique_id=2049417055 instance=ExtResource("20_8o5aa")]
 position = Vector2(-80, -64)
 
 [node name="Token170" parent="Level_Items/Pickups/Tokens" unique_id=1091726416 instance=ExtResource("20_8o5aa")]
-position = Vector2(-128, -80)
+position = Vector2(-144, -64)
 
 [node name="Token171" parent="Level_Items/Pickups/Tokens" unique_id=29900938 instance=ExtResource("20_8o5aa")]
 position = Vector2(-64, -80)
@@ -925,7 +962,7 @@ position = Vector2(-112, 48)
 position = Vector2(-112, 144)
 
 [node name="Token91" parent="Level_Items/Pickups/Tokens" unique_id=1901734521 instance=ExtResource("20_8o5aa")]
-position = Vector2(-48, 80)
+position = Vector2(-80, 48)
 
 [node name="Token92" parent="Level_Items/Pickups/Tokens" unique_id=1876438698 instance=ExtResource("20_8o5aa")]
 position = Vector2(-96, 64)
@@ -949,7 +986,7 @@ position = Vector2(-208, 96)
 position = Vector2(-144, 96)
 
 [node name="Token117" parent="Level_Items/Pickups/Tokens" unique_id=186388231 instance=ExtResource("20_8o5aa")]
-position = Vector2(96, 128)
+position = Vector2(64, 112)
 
 [node name="Token111" parent="Level_Items/Pickups/Tokens" unique_id=1481293800 instance=ExtResource("20_8o5aa")]
 position = Vector2(-112, 96)
@@ -964,10 +1001,10 @@ position = Vector2(-96, 0)
 position = Vector2(-32, 128)
 
 [node name="Token96" parent="Level_Items/Pickups/Tokens" unique_id=1858944280 instance=ExtResource("20_8o5aa")]
-position = Vector2(16, 112)
+position = Vector2(0, 144)
 
 [node name="Token97" parent="Level_Items/Pickups/Tokens" unique_id=302976072 instance=ExtResource("20_8o5aa")]
-position = Vector2(32, 128)
+position = Vector2(16, 144)
 
 [node name="Token98" parent="Level_Items/Pickups/Tokens" unique_id=1952694687 instance=ExtResource("20_8o5aa")]
 position = Vector2(32, 144)
@@ -982,7 +1019,7 @@ position = Vector2(64, 144)
 position = Vector2(-16, 112)
 
 [node name="Token115" parent="Level_Items/Pickups/Tokens" unique_id=675529941 instance=ExtResource("20_8o5aa")]
-position = Vector2(-96, -16)
+position = Vector2(-64, 16)
 
 [node name="Token105" parent="Level_Items/Pickups/Tokens" unique_id=78283647 instance=ExtResource("20_8o5aa")]
 position = Vector2(-16, 96)
@@ -994,10 +1031,10 @@ position = Vector2(0, 96)
 position = Vector2(-16, 64)
 
 [node name="Token108" parent="Level_Items/Pickups/Tokens" unique_id=1923500652 instance=ExtResource("20_8o5aa")]
-position = Vector2(64, 96)
+position = Vector2(48, 96)
 
 [node name="Token109" parent="Level_Items/Pickups/Tokens" unique_id=1971292459 instance=ExtResource("20_8o5aa")]
-position = Vector2(192, 128)
+position = Vector2(192, 80)
 
 [node name="Token101" parent="Level_Items/Pickups/Tokens" unique_id=1842068174 instance=ExtResource("20_8o5aa")]
 position = Vector2(80, 144)
@@ -1014,13 +1051,13 @@ position = Vector2(192, 112)
 position = Vector2(256, 32)
 
 [node name="Kill Token2" parent="Level_Items/Pickups/K Tokes" unique_id=1407354938 instance=ExtResource("21_tutxi")]
-position = Vector2(-48, -128)
+position = Vector2(-32, 144)
 
 [node name="Kill Token" parent="Level_Items/Pickups/K Tokes" unique_id=315071165 instance=ExtResource("21_tutxi")]
-position = Vector2(-224, 64)
+position = Vector2(-272, 64)
 
 [node name="Kill Token7" parent="Level_Items/Pickups/K Tokes" unique_id=320849702 instance=ExtResource("21_tutxi")]
-position = Vector2(-176, -112)
+position = Vector2(-112, -128)
 
 [node name="Kill Token8" parent="Level_Items/Pickups/K Tokes" unique_id=1357686523 instance=ExtResource("21_tutxi")]
 position = Vector2(-272, 96)

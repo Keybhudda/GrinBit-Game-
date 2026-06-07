@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bactl5a8hoebo" path="res://scenes/tunnel_v.gd" id="1_x81wy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
-size = Vector2(48.000004, 16.000002)
+size = Vector2(47.999985, 16.000002)
 
 [node name="Tunnel_A" type="Area2D" unique_id=1180927945 groups=["Tunnels"]]
 position = Vector2(-241, -143.66496)

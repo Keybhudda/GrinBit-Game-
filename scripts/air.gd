@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var recent_fight_timer: Timer = $RecentFightTimer
 @onready var parry_timer: Timer = $ParryTimer
 @onready var pop_up_timer: Timer = $PopUpTimer
+@onready var delay_timer: Timer = $DelayTimer
 
 
 @onready var enemies = get_tree().get_nodes_in_group("Element")
@@ -66,6 +67,8 @@ var has_printed_mode_killable := false
 var recently_fought := false
 
 signal element_fight
+
+signal mode_change
 
 
 #----------------------Start Code ----------------------------------------------
@@ -183,15 +186,13 @@ func character_mind() -> void:
 		mind_timer.start(8.0)
 		print(name, "is trying to cut off Player!")
 
+
 #This Function is a unique function only for this character when They try to cut the player off. 
 var intercept_distance := GRID_SIZE * 4 # x grid cells ahead
 func intercept_player(_delta: float) -> void:
 	if player == null:
 		print(name, " cant find player!")
 		return
-	
-	@warning_ignore("unused_variable")
-	var predicted_pos := get_intercept_tile(5)
 	
 	
 	if path.is_empty():
@@ -208,6 +209,8 @@ func intercept_player(_delta: float) -> void:
 	
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
+
+
 
 #Old Tries of making cut off code work better
 func get_intercept_tile(tiles_ahead: int ) -> Vector2:
@@ -354,10 +357,15 @@ func fight(_delta: float) -> void:
 		if recovering == true:
 			set_mode(Mode.DEAD)
 
+#first attempt at making mode transitioning delay.
+var mode_transition_timer := 0.0
+@export var mode_transition_delay := 0.15
+var freeze_path_recalc := false
+var nextmode = Mode.BASE
 #function that sets mode of character
 func set_mode(new_mode: Mode):
+	
 	if current_mode != new_mode:
-		
 		current_mode = new_mode
 		print(name, "mode switched to:", new_mode)
 		update_look(new_mode)
@@ -367,6 +375,15 @@ func set_mode(new_mode: Mode):
 			call_deferred("enable_collision")
 		Mode.FIGHT, Mode.DEAD:
 			call_deferred("disable_collision")
+
+func switchmode(new_mode: Mode):
+	emit_signal("mode_change", new_mode)
+
+	
+func _on_delay_timer_timeout() -> void:
+	set_mode(nextmode)
+	print("Next Mode Activated!")
+
 #Standby function
 func can_move(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")

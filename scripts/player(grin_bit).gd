@@ -106,7 +106,7 @@ func start_move(dir: Vector2):
 	direction = dir
 	_last_direction = direction
 	@warning_ignore("integer_division")
-	target_pos = (position + direction * GRID_SIZE).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	target_pos = (position + direction * GRID_SIZE)
 	moving = true
 
 func can_move(dir: Vector2) -> bool:
