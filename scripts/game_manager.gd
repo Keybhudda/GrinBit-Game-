@@ -122,7 +122,6 @@ func _on_switch_timer_timeout() -> void:
 func _on_level_complete():
 	get_tree().paused = true
 	print("Level Complete!")
-	current_level_index += 1 #This help skip to level 3 at least but it skips level 2 all together.
 	deathscreen.visible = true
 	deathscreen.level_complete()
 	switch_timer.start(2)
@@ -130,38 +129,24 @@ func _on_level_complete():
 
 
 #beginning varaible for level system -Temp
-var levels = [
-	{"name": "Level 1", "completed": false},
-	{"name": "Level 2", "completed": false},
-	{"name": "Level 3", "completed": false},
-	{"name": "Level 4", "completed": false},
-	{"name": "Level 5", "completed": false},
-	{"name": "Level 6", "completed": false},
-	{"name": "Level 7", "completed": false},
-	{"name": "Level 8", "completed": false},
-	{"name": "Level 9", "completed": false},
-	{"name": "Level 10", "completed": false}
-	
-	]
 
 
-
-var current_level_index: int = 0
 #Sends Player to Game won screen for now Will send them to next level later
 func go_next_level():
-	levels[current_level_index]["completed"] = true
-	current_level_index += 1
+	GlobalData.levels[GlobalData.current_level_index]["completed"] = true
+	GlobalData.current_level_index += 1
 	
-	if current_level_index > 1 and current_level_index % 2 == 0:
+	if GlobalData.current_level_index > 1 and GlobalData.current_level_index % 2 == 0:
 		Player_Lives.add_life()
 	
-	if current_level_index < levels.size():
+	if GlobalData.current_level_index < GlobalData.levels.size():
 		get_tree().change_scene_to_file("res://scenes/Level_%d.tscn" %
-	(current_level_index + 1))
+	(GlobalData.current_level_index + 1))
 	
-	if current_level_index > 10:
+	if GlobalData.current_level_index >= GlobalData.levels.size():
 		game_won()
-	print(current_level_index)
+		return
+	print(GlobalData.current_level_index)
 
 #normal way of switching levels -OlD Tho want to use whats above
 func game_won():
@@ -327,7 +312,7 @@ func start_game():
 
 #for start of game 
 func begin_game():
-	print(levels)
+	print(GlobalData.levels)
 	current_state = StateOfGame.READY
 	get_tree().paused = true
 	deathscreen.visible = true

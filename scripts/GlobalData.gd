@@ -4,6 +4,22 @@ extends Node
 var total_score: int = 0
 var high_score: int = 0
 var is_game_over := false
+var current_level_index: int = 0
+
+
+var levels = [
+	{"name": "Level 1", "completed": false},
+	{"name": "Level 2", "completed": false},
+	{"name": "Level 3", "completed": false},
+	{"name": "Level 4", "completed": false},
+	{"name": "Level 5", "completed": false},
+	{"name": "Level 6", "completed": false},
+	{"name": "Level 7", "completed": false},
+	{"name": "Level 8", "completed": false},
+	{"name": "Level 9", "completed": false},
+	{"name": "Level 10", "completed": false}
+	
+	]
 
 func _ready():
 	load_high_score()
@@ -36,6 +52,3 @@ func start_new_game():
 		GlobalData.total_score = 0
 		Player_Lives.reset()
 		GlobalData.is_game_over = false
-
-func Levels_completed():
-	var _Level = []
