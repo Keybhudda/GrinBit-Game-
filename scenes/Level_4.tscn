@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ugxi7kv3t16n" path="res://scenes/Characters/Water.tscn" id="19_ddf51"]
 [ext_resource type="PackedScene" uid="uid://d0cfpufh3sl7g" path="res://scenes/Point Items/token.tscn" id="20_4kacq"]
 [ext_resource type="PackedScene" uid="uid://4u4qwiixwvi7" path="res://scenes/Point Items/kill_token.tscn" id="21_yn63w"]
-[ext_resource type="PackedScene" uid="uid://5g4ufdx14egl" path="res://scenes/Point Items/orange.tscn" id="22_anlkq"]
+[ext_resource type="PackedScene" uid="uid://cpfmo35fbaslw" path="res://scenes/Point Items/kiwi.tscn" id="22_dhv8i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wljb1"]
 texture = ExtResource("10_xu68g")
@@ -315,7 +315,7 @@ debug_color = Color(0, 0.7764706, 0.22745098, 0.41960785)
 
 [node name="Grinbit" parent="Level_Items" unique_id=1742117688 node_paths=PackedStringArray("map") groups=["Player"] instance=ExtResource("15_y7lqc")]
 z_index = 2
-position = Vector2(32, 48)
+position = Vector2(23.94677, 55.83757)
 map = NodePath("../Map")
 
 [node name="Pryo" parent="Level_Items" unique_id=1972846575 node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("16_t8ao8")]
@@ -1052,7 +1052,7 @@ position = Vector2(16, -128)
 
 [node name="Fruits" type="Node2D" parent="Level_Items/Pickups" unique_id=273715163]
 
-[node name="Orange" parent="Level_Items/Pickups/Fruits" unique_id=918756236 instance=ExtResource("22_anlkq")]
+[node name="Kiwi" parent="Level_Items/Pickups/Fruits" unique_id=1110814514 instance=ExtResource("22_dhv8i")]
 position = Vector2(0, -48)
 
 [connection signal="timeout" from="GameManager/ChaseTimer" to="GameManager" method="_on_chase_timer_timeout"]

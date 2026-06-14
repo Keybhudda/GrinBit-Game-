@@ -39,7 +39,7 @@ func _on_body_entered(_body) -> void:
 	collected = true
 	print("food_item", food_id, " collected!")
 	
-	game_manager.add_pointf2()
+	game_manager.add_pointf3()
 	
 	if get_tree().paused == true:
 		pickupsound.stop()

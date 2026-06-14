@@ -291,7 +291,7 @@ debug_color = Color(0, 0.7764706, 0.22745098, 0.41960785)
 
 [node name="Grinbit" parent="Level_Items" unique_id=1742117688 node_paths=PackedStringArray("map") groups=["Player"] instance=ExtResource("15_vb04n")]
 z_index = 2
-position = Vector2(-9, -24)
+position = Vector2(-8, -24)
 map = NodePath("../Map")
 
 [node name="Pryo" parent="Level_Items" unique_id=1972846575 node_paths=PackedStringArray("map") groups=["Element"] instance=ExtResource("16_rnohh")]

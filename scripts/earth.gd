@@ -376,6 +376,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		else:
 			emit_signal("player_caught")
 	if body.is_in_group("Element"):
+		if game_manager.current_state == game_manager.StateOfGame.DEAD:
+			return
 		var opponent := body
 		if recently_fought or opponent.recently_fought:
 			cant_fight()

@@ -202,11 +202,11 @@ func add_point1():
 
 	_update_score_label()
 func add_pointf1():
-	GlobalData.total_score += 400
+	GlobalData.total_score += 300
 
 	_update_score_label()
 func add_pointf2():
-	GlobalData.total_score += 300
+	GlobalData.total_score += 400
 
 	_update_score_label()
 func add_pointf3():

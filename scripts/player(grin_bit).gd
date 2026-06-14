@@ -21,7 +21,10 @@ var current_mode: Mode = Mode.NORM
 
 const TURN_EARLY_DISTANCE := 16.0
 
-var _last_direction := Vector2.ZERO
+var _last_direction : Vector2 = Vector2.ZERO
+
+var grid_pos: Vector2i
+var target_grid_pos: Vector2i
 #----------------------Start Code ----------------------------------------------
 signal Start_Position(entity_name: String, position: Vector2)
 
@@ -29,6 +32,8 @@ func _ready():
 	#snap player to grid at start
 	@warning_ignore("integer_division")
 	position = map.map_to_local(map.local_to_map(position)).snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	grid_pos = map.local_to_map(position)
+	position = map.map_to_local(grid_pos)
 	target_pos = position
 	@warning_ignore("integer_division")
 	if position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2)):
@@ -87,7 +92,12 @@ func _physics_process(_delta):
 		#If not moving, try next direction if possible
 		if next_direction != Vector2.ZERO and can_move(next_direction):
 			start_move(next_direction)
-	
+
+#function doesn't get used I believe
+func get_travel_direction() -> Vector2:
+	if direction != Vector2.ZERO:
+		return direction
+	return _last_direction
 
 #How The Player Moves Grinbit
 func handle_input():
@@ -101,13 +111,15 @@ func handle_input():
 		next_direction = Vector2.RIGHT
 
 
-
+#new movement AI did help with this. Still kinda shaky with it tho
 func start_move(dir: Vector2):
+	
 	direction = dir
-	_last_direction = direction
-	@warning_ignore("integer_division")
-	target_pos = (position + direction * GRID_SIZE)
+	grid_pos = map.local_to_map(position)
+	target_grid_pos = grid_pos + Vector2i(dir)
+	target_pos = map.map_to_local(target_grid_pos)
 	moving = true
+	print (target_pos)
 
 func can_move(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")

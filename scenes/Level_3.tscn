@@ -961,6 +961,21 @@ position = Vector2(-112, 48)
 [node name="Token90" parent="Level_Items/Pickups/Tokens" unique_id=1130390459 instance=ExtResource("20_8o5aa")]
 position = Vector2(-112, 144)
 
+[node name="Token177" parent="Level_Items/Pickups/Tokens" unique_id=295639088 instance=ExtResource("20_8o5aa")]
+position = Vector2(-96, 144)
+
+[node name="Token221" parent="Level_Items/Pickups/Tokens" unique_id=1214252300 instance=ExtResource("20_8o5aa")]
+position = Vector2(-64, 144)
+
+[node name="Token222" parent="Level_Items/Pickups/Tokens" unique_id=188737918 instance=ExtResource("20_8o5aa")]
+position = Vector2(-176, 144)
+
+[node name="Token223" parent="Level_Items/Pickups/Tokens" unique_id=381458842 instance=ExtResource("20_8o5aa")]
+position = Vector2(-208, 144)
+
+[node name="Token224" parent="Level_Items/Pickups/Tokens" unique_id=717375178 instance=ExtResource("20_8o5aa")]
+position = Vector2(-240, 144)
+
 [node name="Token91" parent="Level_Items/Pickups/Tokens" unique_id=1901734521 instance=ExtResource("20_8o5aa")]
 position = Vector2(-80, 48)
 

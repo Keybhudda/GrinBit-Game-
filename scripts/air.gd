@@ -48,7 +48,6 @@ var direction = Vector2.ZERO
 var moving = false
 var target_pos = Vector2.ZERO
 
-var last_direction = Vector2.ZERO
 
 var decision_timer := 0.0
 var decision_interval := 0.5
@@ -216,6 +215,7 @@ func intercept_player(_delta: float) -> void:
 func get_intercept_tile(tiles_ahead: int ) -> Vector2:
 	var place = player._last_direction
 	if place == Vector2.ZERO:
+		print("the player's position", player.position)
 		return player.position
 	
 	var tile_dir := Vector2i(place)
@@ -226,8 +226,9 @@ func get_intercept_tile(tiles_ahead: int ) -> Vector2:
 	
 	if not map.astar_grid.is_in_boundsv(intercept_tile):
 		intercept_tile = player_tile
-		
+	print (name, "is targeting", intercept_tile)
 	return map.map_to_local(intercept_tile)
+
 func to_vector2_array(arr: Array) -> Array[Vector2]:
 	var result: Array[Vector2] = []
 	for p in arr:
@@ -376,6 +377,7 @@ func set_mode(new_mode: Mode):
 		Mode.FIGHT, Mode.DEAD:
 			call_deferred("disable_collision")
 
+#not used function idea for this is to help with enemy mode transitioning. so when they switch modes is much smoother.
 func switchmode(new_mode: Mode):
 	emit_signal("mode_change", new_mode)
 
@@ -444,6 +446,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		else:
 			emit_signal("player_caught")
 	if body.is_in_group("Element"):
+		if game_manager.current_state == game_manager.StateOfGame.DEAD:
+			return
 		var opponent := body
 		if recently_fought or opponent.recently_fought:
 			cant_fight()
