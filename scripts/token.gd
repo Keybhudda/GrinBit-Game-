@@ -6,6 +6,8 @@ extends Area2D
 @onready var game_state: Node2D = %GameState
 @onready var pickupsound: AudioStreamPlayer2D = $Pickupsound
 
+
+signal token_deactivated
 #--------------------------Based Variables--------------------------------------
 @export var token_id: String = ""
 var collected := false
@@ -27,10 +29,24 @@ func _ready() -> void:
 	else:
 		collected = false
 		print("Token", token_id, " ready and registered.")
-		
+	
+	
 
 #----------------------Action Code----------------------------------------------
 func _on_body_entered(_body) -> void:
+	#if function should prevent token activation when player collects and his caught by enemy.
+	if game_manager.game_reset == true:
+		print("No Token Use!")
+		emit_signal("token_deactivated")
+		print(name, " is deactivated!")
+		queue_free()
+		return
+	
+	if game_manager.current_state == game_manager.StateOfGame.DEAD:
+		pickupsound.stop()
+		print("Stopping Sound")
+		return
+	
 	if collected:
 		return #prevent Duplicate pickup
 	collected = true
@@ -38,10 +54,5 @@ func _on_body_entered(_body) -> void:
 	
 	game_manager.add_point() #add score
 	game_state.collect_item(token_id, "token") # register collection
-	
-	if get_tree().paused == true:
-		pickupsound.stop()
-		print("Stopping Sound")
-		return
 	
 	animation_player.play("Pick up")

@@ -150,6 +150,7 @@ one_shot = true
 one_shot = true
 
 [node name="PopUpTimer" type="Timer" parent="." unique_id=550006235]
+process_mode = 3
 one_shot = true
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=128002999]

@@ -188,6 +188,10 @@ one_shot = true
 [node name="FightTimer" type="Timer" parent="GameManager" unique_id=69086565 groups=["FightTimer"]]
 one_shot = true
 
+[node name="ResetTimer" type="Timer" parent="GameManager" unique_id=534658671 groups=["ResetTimer"]]
+process_mode = 3
+one_shot = true
+
 [node name="score_label" type="Label" parent="GameManager" unique_id=236644508 groups=["Score"]]
 z_index = 2
 offset_left = -205.86002
@@ -199,7 +203,6 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_vkavj")
 text = "Score: 0"
 vertical_alignment = 1
-autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerDeath" type="AudioStreamPlayer2D" parent="GameManager" unique_id=441147116]
@@ -1004,34 +1007,35 @@ position = Vector2(192, 112)
 
 [node name="K Tokes" type="Node2D" parent="Level_Items/Pickups" unique_id=1208528872]
 
-[node name="Kill Token4" parent="Level_Items/Pickups/K Tokes" unique_id=1501428099 instance=ExtResource("21_wso75")]
+[node name="Kill Token4" parent="Level_Items/Pickups/K Tokes" unique_id=1501428099 groups=["K-Tokens"] instance=ExtResource("21_wso75")]
 position = Vector2(256, 32)
 
-[node name="Kill Token2" parent="Level_Items/Pickups/K Tokes" unique_id=1407354938 instance=ExtResource("21_wso75")]
+[node name="Kill Token2" parent="Level_Items/Pickups/K Tokes" unique_id=1407354938 groups=["K-Tokens"] instance=ExtResource("21_wso75")]
 position = Vector2(-48, -128)
 
-[node name="Kill Token" parent="Level_Items/Pickups/K Tokes" unique_id=315071165 instance=ExtResource("21_wso75")]
+[node name="Kill Token" parent="Level_Items/Pickups/K Tokes" unique_id=315071165 groups=["K-Tokens"] instance=ExtResource("21_wso75")]
 position = Vector2(-272, 144)
 
-[node name="Kill Token7" parent="Level_Items/Pickups/K Tokes" unique_id=320849702 instance=ExtResource("21_wso75")]
+[node name="Kill Token7" parent="Level_Items/Pickups/K Tokes" unique_id=320849702 groups=["K-Tokens"] instance=ExtResource("21_wso75")]
 position = Vector2(-176, -112)
 
-[node name="Kill Token8" parent="Level_Items/Pickups/K Tokes" unique_id=1357686523 instance=ExtResource("21_wso75")]
+[node name="Kill Token8" parent="Level_Items/Pickups/K Tokes" unique_id=1357686523 groups=["K-Tokens"] instance=ExtResource("21_wso75")]
 position = Vector2(-32, 144)
 
-[node name="Kill Token3" parent="Level_Items/Pickups/K Tokes" unique_id=230184106 instance=ExtResource("21_wso75")]
+[node name="Kill Token3" parent="Level_Items/Pickups/K Tokes" unique_id=230184106 groups=["K-Tokens"] instance=ExtResource("21_wso75")]
 position = Vector2(224, 144)
 
-[node name="Kill Token6" parent="Level_Items/Pickups/K Tokes" unique_id=1891307776 instance=ExtResource("21_wso75")]
+[node name="Kill Token6" parent="Level_Items/Pickups/K Tokes" unique_id=1891307776 groups=["K-Tokens"] instance=ExtResource("21_wso75")]
 position = Vector2(48, -128)
 
 [node name="Fruits" type="Node2D" parent="Level_Items/Pickups" unique_id=273715163]
 
 [node name="Apple" parent="Level_Items/Pickups/Fruits" unique_id=1347281903 instance=ExtResource("22_lamtu")]
-position = Vector2(-128, -32)
+position = Vector2(-80, 32)
 
 [connection signal="timeout" from="GameManager/ChaseTimer" to="GameManager" method="_on_chase_timer_timeout"]
 [connection signal="timeout" from="GameManager/DeathTimer" to="GameManager" method="_on_death_timer_timeout"]
 [connection signal="timeout" from="GameManager/ReadyTimer" to="GameManager" method="_on_ready_timer_timeout"]
 [connection signal="timeout" from="GameManager/SwitchTimer" to="GameManager" method="_on_switch_timer_timeout"]
 [connection signal="timeout" from="GameManager/GoTimer" to="GameManager" method="_on_go_timer_timeout"]
+[connection signal="timeout" from="GameManager/ResetTimer" to="GameManager" method="_on_reset_timer_timeout"]

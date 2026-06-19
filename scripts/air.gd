@@ -137,7 +137,6 @@ func update_look(new_mode: Mode) -> void:
 func _physics_process(_delta: float) -> void:
 	decision_timer -= _delta
 	
-	
 	if player == null:
 		print(name, "couldn't find player")
 		set_mode(Mode.SHUFFLE)
@@ -346,6 +345,7 @@ func _dead(_delta: float) -> void:
 #FightMode Functions Where Two Elements/enemies stop movement and fight eachother
 var fighting := false
 func fight(_delta: float) -> void:
+	
 	path.clear()
 	@warning_ignore("integer_division")
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))

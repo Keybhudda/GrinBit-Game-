@@ -15,6 +15,7 @@ var collected := false
 
 
 signal Activate_Chase
+signal token_deactivated
 #----------------------Start Code ----------------------------------------------
 func _ready() -> void:
 	#Assign a consistent ID if not set manually
@@ -35,23 +36,30 @@ func _ready() -> void:
 
 #----------------------Action Code----------------------------------------------
 func _on_body_entered(_body) -> void:
+	#if function should prevent k-token activation when player collects and his caught by enemy.
+	if game_manager.game_reset == true:
+		print("No K-Token Use!")
+		emit_signal("token_deactivated")
+		print(name, " is deactivated!")
+		queue_free()
+		return
+	
+	if game_manager.current_state == game_manager.StateOfGame.DEAD:
+		pickup_sound.stop()
+		print("Stopping Sound")
+		return
+	
 	if collected:
 		return #prevent Duplicated pickup
 	
-	collected = true
-	print("ktoken", ktoken_id, " collected!")
-	
 	if _body.is_in_group("Player"):
+		collected = true
+		print("ktoken", ktoken_id, " collected!")
 		print("ktoken", ktoken_id, " triggered by player - emitting Activate_Chase")
 		game_manager._on_chase_mode_activated()
 		emit_signal("Activate_Chase") #Trigger Chase mode
 	game_manager.add_point1()
 	game_manager.Check_timer()
 	game_state.collect_item(ktoken_id, "ktoken")# register collection
-	
-	if game_manager.current_state == game_manager.StateOfGame.RESETTING:
-		pickup_sound.stop()
-		print("Stopping Sound")
-		return
 	
 	animation_player.play("pick up")

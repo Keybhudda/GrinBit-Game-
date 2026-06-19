@@ -41,13 +41,13 @@ func _on_body_entered(_body) -> void:
 	
 	game_manager.add_pointf3()
 	
-	if get_tree().paused == true:
+	if game_manager.current_state == game_manager.StateOfGame.DEAD:
 		pickupsound.stop()
 		print("Stopping Sound")
 		return
-	
 	animation_player.play("pickup")
-
+#used to pop up score of collect item.
+var popup = preload("res://scenes/Menus & Pop Ups/UI-Assets/Score_popup.tscn").instantiate()
 
 func _on_available_timer_timeout() -> void:
 	if visible == false and collision_shape_2d.disabled == true:

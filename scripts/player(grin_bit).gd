@@ -42,6 +42,8 @@ func _ready():
 
 #Funtion Stops player movment to prevent going off grid
 func stop_movement() -> void:
+	_last_direction = Vector2.ZERO
+	next_direction = Vector2.ZERO
 	velocity = Vector2.ZERO
 	moving = false
 	@warning_ignore("integer_division")
@@ -119,7 +121,6 @@ func start_move(dir: Vector2):
 	target_grid_pos = grid_pos + Vector2i(dir)
 	target_pos = map.map_to_local(target_grid_pos)
 	moving = true
-	print (target_pos)
 
 func can_move(dir: Vector2) -> bool:
 	@warning_ignore("integer_division")

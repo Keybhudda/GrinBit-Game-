@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Grin-Bit"
 config/description="This Is Grin-Bit Indie Game Made By Humble Knight Games (HKG) Founded By KeyBhudda "
 run/main_scene="uid://qojtnvgumkc"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://c5ymtve60lch6"
 
 [autoload]
@@ -25,6 +25,7 @@ config/icon="uid://c5ymtve60lch6"
 GameState="*res://scripts/game_state.gd"
 GlobalData="*res://scripts/GlobalData.gd"
 Player_Lives="*res://scripts/player_lives.gd"
+FadeScreen="*uid://cxqioggtjon38"
 
 [display]
 
@@ -44,6 +45,7 @@ SwitchTimer=""
 Element=""
 FightTimer=""
 LivesDisplay="The Visuals For How Many Lives Are Left."
+ResetTimer=""
 
 [input]
 

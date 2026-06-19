@@ -236,6 +236,10 @@ one_shot = true
 [node name="FightTimer" type="Timer" parent="GameManager" unique_id=69086565 groups=["FightTimer"]]
 one_shot = true
 
+[node name="ResetTimer" type="Timer" parent="GameManager" unique_id=911441880 groups=["ResetTimer"]]
+process_mode = 3
+one_shot = true
+
 [node name="score_label" type="Label" parent="GameManager" unique_id=236644508 groups=["Score"]]
 z_index = 2
 offset_left = -205.86002
@@ -247,7 +251,6 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_3qd3g")
 text = "Score: 0"
 vertical_alignment = 1
-autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerDeath" type="AudioStreamPlayer2D" parent="GameManager" unique_id=441147116]
@@ -370,705 +373,705 @@ player_path = NodePath("../Grinbit")
 
 [node name="Tokens" type="Node2D" parent="Level_Items/Pickups" unique_id=1274103145]
 
-[node name="Token4" parent="Level_Items/Pickups/Tokens" unique_id=907147905 instance=ExtResource("20_mxjko")]
+[node name="Token4" parent="Level_Items/Pickups/Tokens" unique_id=907147905 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-16, -128)
 
-[node name="Token5" parent="Level_Items/Pickups/Tokens" unique_id=1936712508 instance=ExtResource("20_mxjko")]
+[node name="Token5" parent="Level_Items/Pickups/Tokens" unique_id=1936712508 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(16, -128)
 
-[node name="Token6" parent="Level_Items/Pickups/Tokens" unique_id=36227944 instance=ExtResource("20_mxjko")]
+[node name="Token6" parent="Level_Items/Pickups/Tokens" unique_id=36227944 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(16, -112)
 
-[node name="Token7" parent="Level_Items/Pickups/Tokens" unique_id=136793251 instance=ExtResource("20_mxjko")]
+[node name="Token7" parent="Level_Items/Pickups/Tokens" unique_id=136793251 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-32, -16)
 
-[node name="Token" parent="Level_Items/Pickups/Tokens" unique_id=748395283 instance=ExtResource("20_mxjko")]
+[node name="Token" parent="Level_Items/Pickups/Tokens" unique_id=748395283 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(32, -96)
 
-[node name="Token2" parent="Level_Items/Pickups/Tokens" unique_id=353312542 instance=ExtResource("20_mxjko")]
+[node name="Token2" parent="Level_Items/Pickups/Tokens" unique_id=353312542 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, -112)
 
-[node name="Token22" parent="Level_Items/Pickups/Tokens" unique_id=1046875963 instance=ExtResource("20_mxjko")]
+[node name="Token22" parent="Level_Items/Pickups/Tokens" unique_id=1046875963 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-80, -112)
 
-[node name="Token30" parent="Level_Items/Pickups/Tokens" unique_id=2113098944 instance=ExtResource("20_mxjko")]
+[node name="Token30" parent="Level_Items/Pickups/Tokens" unique_id=2113098944 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(64, -96)
 
-[node name="Token23" parent="Level_Items/Pickups/Tokens" unique_id=728689134 instance=ExtResource("20_mxjko")]
+[node name="Token23" parent="Level_Items/Pickups/Tokens" unique_id=728689134 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-64, -128)
 
-[node name="Token26" parent="Level_Items/Pickups/Tokens" unique_id=389133656 instance=ExtResource("20_mxjko")]
+[node name="Token26" parent="Level_Items/Pickups/Tokens" unique_id=389133656 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(16, -96)
 
-[node name="Token24" parent="Level_Items/Pickups/Tokens" unique_id=1218464410 instance=ExtResource("20_mxjko")]
+[node name="Token24" parent="Level_Items/Pickups/Tokens" unique_id=1218464410 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-80, -128)
 
-[node name="Token28" parent="Level_Items/Pickups/Tokens" unique_id=1077960962 instance=ExtResource("20_mxjko")]
+[node name="Token28" parent="Level_Items/Pickups/Tokens" unique_id=1077960962 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, 144)
 
-[node name="Token25" parent="Level_Items/Pickups/Tokens" unique_id=939551550 instance=ExtResource("20_mxjko")]
+[node name="Token25" parent="Level_Items/Pickups/Tokens" unique_id=939551550 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-64, -112)
 
-[node name="Token29" parent="Level_Items/Pickups/Tokens" unique_id=554523868 instance=ExtResource("20_mxjko")]
+[node name="Token29" parent="Level_Items/Pickups/Tokens" unique_id=554523868 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-64, -112)
 
-[node name="Token42" parent="Level_Items/Pickups/Tokens" unique_id=2070049695 instance=ExtResource("20_mxjko")]
+[node name="Token42" parent="Level_Items/Pickups/Tokens" unique_id=2070049695 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-16, -112)
 
-[node name="Token43" parent="Level_Items/Pickups/Tokens" unique_id=125864535 instance=ExtResource("20_mxjko")]
+[node name="Token43" parent="Level_Items/Pickups/Tokens" unique_id=125864535 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(32, -128)
 
-[node name="Token44" parent="Level_Items/Pickups/Tokens" unique_id=538532041 instance=ExtResource("20_mxjko")]
+[node name="Token44" parent="Level_Items/Pickups/Tokens" unique_id=538532041 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(48, -96)
 
-[node name="Token45" parent="Level_Items/Pickups/Tokens" unique_id=1437218310 instance=ExtResource("20_mxjko")]
+[node name="Token45" parent="Level_Items/Pickups/Tokens" unique_id=1437218310 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, 0)
 
-[node name="Token212" parent="Level_Items/Pickups/Tokens" unique_id=342299539 instance=ExtResource("20_mxjko")]
+[node name="Token212" parent="Level_Items/Pickups/Tokens" unique_id=342299539 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-112, 0)
 
-[node name="Token213" parent="Level_Items/Pickups/Tokens" unique_id=626246520 instance=ExtResource("20_mxjko")]
+[node name="Token213" parent="Level_Items/Pickups/Tokens" unique_id=626246520 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, 16)
 
-[node name="Token214" parent="Level_Items/Pickups/Tokens" unique_id=2097681046 instance=ExtResource("20_mxjko")]
+[node name="Token214" parent="Level_Items/Pickups/Tokens" unique_id=2097681046 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-160, 16)
 
-[node name="Token215" parent="Level_Items/Pickups/Tokens" unique_id=79795307 instance=ExtResource("20_mxjko")]
+[node name="Token215" parent="Level_Items/Pickups/Tokens" unique_id=79795307 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, 0)
 
-[node name="Token216" parent="Level_Items/Pickups/Tokens" unique_id=1038686837 instance=ExtResource("20_mxjko")]
+[node name="Token216" parent="Level_Items/Pickups/Tokens" unique_id=1038686837 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, -32)
 
-[node name="Token217" parent="Level_Items/Pickups/Tokens" unique_id=1578886580 instance=ExtResource("20_mxjko")]
+[node name="Token217" parent="Level_Items/Pickups/Tokens" unique_id=1578886580 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-160, -48)
 
-[node name="Token218" parent="Level_Items/Pickups/Tokens" unique_id=1536874172 instance=ExtResource("20_mxjko")]
+[node name="Token218" parent="Level_Items/Pickups/Tokens" unique_id=1536874172 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, -48)
 
-[node name="Token219" parent="Level_Items/Pickups/Tokens" unique_id=1288224636 instance=ExtResource("20_mxjko")]
+[node name="Token219" parent="Level_Items/Pickups/Tokens" unique_id=1288224636 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-96, -48)
 
-[node name="Token47" parent="Level_Items/Pickups/Tokens" unique_id=9447089 instance=ExtResource("20_mxjko")]
+[node name="Token47" parent="Level_Items/Pickups/Tokens" unique_id=9447089 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-224, -80)
 
-[node name="Token182" parent="Level_Items/Pickups/Tokens" unique_id=1312597388 instance=ExtResource("20_mxjko")]
+[node name="Token182" parent="Level_Items/Pickups/Tokens" unique_id=1312597388 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-224, -64)
 
-[node name="Token153" parent="Level_Items/Pickups/Tokens" unique_id=1642713902 instance=ExtResource("20_mxjko")]
+[node name="Token153" parent="Level_Items/Pickups/Tokens" unique_id=1642713902 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-240, -16)
 
-[node name="Token154" parent="Level_Items/Pickups/Tokens" unique_id=1480902951 instance=ExtResource("20_mxjko")]
+[node name="Token154" parent="Level_Items/Pickups/Tokens" unique_id=1480902951 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, -16)
 
-[node name="Token155" parent="Level_Items/Pickups/Tokens" unique_id=205749546 instance=ExtResource("20_mxjko")]
+[node name="Token155" parent="Level_Items/Pickups/Tokens" unique_id=205749546 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-256, -16)
 
-[node name="Token53" parent="Level_Items/Pickups/Tokens" unique_id=931596989 instance=ExtResource("20_mxjko")]
+[node name="Token53" parent="Level_Items/Pickups/Tokens" unique_id=931596989 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(144, 80)
 
-[node name="Token203" parent="Level_Items/Pickups/Tokens" unique_id=2099446210 instance=ExtResource("20_mxjko")]
+[node name="Token203" parent="Level_Items/Pickups/Tokens" unique_id=2099446210 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(176, 144)
 
-[node name="Token204" parent="Level_Items/Pickups/Tokens" unique_id=134236273 instance=ExtResource("20_mxjko")]
+[node name="Token204" parent="Level_Items/Pickups/Tokens" unique_id=134236273 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(176, 144)
 
-[node name="Token54" parent="Level_Items/Pickups/Tokens" unique_id=2092872086 instance=ExtResource("20_mxjko")]
+[node name="Token54" parent="Level_Items/Pickups/Tokens" unique_id=2092872086 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, -112)
 
-[node name="Token48" parent="Level_Items/Pickups/Tokens" unique_id=1330470999 instance=ExtResource("20_mxjko")]
+[node name="Token48" parent="Level_Items/Pickups/Tokens" unique_id=1330470999 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(96, 144)
 
-[node name="Token55" parent="Level_Items/Pickups/Tokens" unique_id=1997108248 instance=ExtResource("20_mxjko")]
+[node name="Token55" parent="Level_Items/Pickups/Tokens" unique_id=1997108248 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-32, 80)
 
-[node name="Token46" parent="Level_Items/Pickups/Tokens" unique_id=1642145470 instance=ExtResource("20_mxjko")]
+[node name="Token46" parent="Level_Items/Pickups/Tokens" unique_id=1642145470 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, 144)
 
-[node name="Token27" parent="Level_Items/Pickups/Tokens" unique_id=808666780 instance=ExtResource("20_mxjko")]
+[node name="Token27" parent="Level_Items/Pickups/Tokens" unique_id=808666780 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-192, 144)
 
-[node name="Token8" parent="Level_Items/Pickups/Tokens" unique_id=2072473227 instance=ExtResource("20_mxjko")]
+[node name="Token8" parent="Level_Items/Pickups/Tokens" unique_id=2072473227 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, -128)
 
-[node name="Token34" parent="Level_Items/Pickups/Tokens" unique_id=359146318 instance=ExtResource("20_mxjko")]
+[node name="Token34" parent="Level_Items/Pickups/Tokens" unique_id=359146318 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-144, 144)
 
-[node name="Token12" parent="Level_Items/Pickups/Tokens" unique_id=1883817248 instance=ExtResource("20_mxjko")]
+[node name="Token12" parent="Level_Items/Pickups/Tokens" unique_id=1883817248 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-112, -112)
 
-[node name="Token13" parent="Level_Items/Pickups/Tokens" unique_id=1233746020 instance=ExtResource("20_mxjko")]
+[node name="Token13" parent="Level_Items/Pickups/Tokens" unique_id=1233746020 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-64, -48)
 
-[node name="Token32" parent="Level_Items/Pickups/Tokens" unique_id=30333758 instance=ExtResource("20_mxjko")]
+[node name="Token32" parent="Level_Items/Pickups/Tokens" unique_id=30333758 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-32, -48)
 
-[node name="Token118" parent="Level_Items/Pickups/Tokens" unique_id=1227382971 instance=ExtResource("20_mxjko")]
+[node name="Token118" parent="Level_Items/Pickups/Tokens" unique_id=1227382971 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, -32)
 
-[node name="Token178" parent="Level_Items/Pickups/Tokens" unique_id=647635208 instance=ExtResource("20_mxjko")]
+[node name="Token178" parent="Level_Items/Pickups/Tokens" unique_id=647635208 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, -48)
 
-[node name="Token119" parent="Level_Items/Pickups/Tokens" unique_id=269529651 instance=ExtResource("20_mxjko")]
+[node name="Token119" parent="Level_Items/Pickups/Tokens" unique_id=269529651 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, 112)
 
-[node name="Token9" parent="Level_Items/Pickups/Tokens" unique_id=943211156 instance=ExtResource("20_mxjko")]
+[node name="Token9" parent="Level_Items/Pickups/Tokens" unique_id=943211156 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-16, -96)
 
-[node name="Token10" parent="Level_Items/Pickups/Tokens" unique_id=196634538 instance=ExtResource("20_mxjko")]
+[node name="Token10" parent="Level_Items/Pickups/Tokens" unique_id=196634538 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(64, -128)
 
-[node name="Token11" parent="Level_Items/Pickups/Tokens" unique_id=1824981183 instance=ExtResource("20_mxjko")]
+[node name="Token11" parent="Level_Items/Pickups/Tokens" unique_id=1824981183 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-32, -128)
 
-[node name="Token33" parent="Level_Items/Pickups/Tokens" unique_id=286138447 instance=ExtResource("20_mxjko")]
+[node name="Token33" parent="Level_Items/Pickups/Tokens" unique_id=286138447 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-48, -128)
 
-[node name="Token16" parent="Level_Items/Pickups/Tokens" unique_id=50542044 instance=ExtResource("20_mxjko")]
+[node name="Token16" parent="Level_Items/Pickups/Tokens" unique_id=50542044 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-192, -128)
 
-[node name="Token17" parent="Level_Items/Pickups/Tokens" unique_id=1116615265 instance=ExtResource("20_mxjko")]
+[node name="Token17" parent="Level_Items/Pickups/Tokens" unique_id=1116615265 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-160, -128)
 
-[node name="Token14" parent="Level_Items/Pickups/Tokens" unique_id=1001588552 instance=ExtResource("20_mxjko")]
+[node name="Token14" parent="Level_Items/Pickups/Tokens" unique_id=1001588552 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, -64)
 
-[node name="Token176" parent="Level_Items/Pickups/Tokens" unique_id=1966483138 instance=ExtResource("20_mxjko")]
+[node name="Token176" parent="Level_Items/Pickups/Tokens" unique_id=1966483138 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(64, -64)
 
-[node name="Token15" parent="Level_Items/Pickups/Tokens" unique_id=1643154092 instance=ExtResource("20_mxjko")]
+[node name="Token15" parent="Level_Items/Pickups/Tokens" unique_id=1643154092 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-16, 16)
 
-[node name="Token38" parent="Level_Items/Pickups/Tokens" unique_id=956941237 instance=ExtResource("20_mxjko")]
+[node name="Token38" parent="Level_Items/Pickups/Tokens" unique_id=956941237 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(192, 144)
 
-[node name="Token68" parent="Level_Items/Pickups/Tokens" unique_id=1999159087 instance=ExtResource("20_mxjko")]
+[node name="Token68" parent="Level_Items/Pickups/Tokens" unique_id=1999159087 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(144, 96)
 
-[node name="Token57" parent="Level_Items/Pickups/Tokens" unique_id=1111097146 instance=ExtResource("20_mxjko")]
+[node name="Token57" parent="Level_Items/Pickups/Tokens" unique_id=1111097146 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(176, 64)
 
-[node name="Token193" parent="Level_Items/Pickups/Tokens" unique_id=1240520177 instance=ExtResource("20_mxjko")]
+[node name="Token193" parent="Level_Items/Pickups/Tokens" unique_id=1240520177 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(176, 64)
 
-[node name="Token194" parent="Level_Items/Pickups/Tokens" unique_id=643028792 instance=ExtResource("20_mxjko")]
+[node name="Token194" parent="Level_Items/Pickups/Tokens" unique_id=643028792 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(176, 80)
 
-[node name="Token195" parent="Level_Items/Pickups/Tokens" unique_id=2086064869 instance=ExtResource("20_mxjko")]
+[node name="Token195" parent="Level_Items/Pickups/Tokens" unique_id=2086064869 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(176, 96)
 
-[node name="Token196" parent="Level_Items/Pickups/Tokens" unique_id=1607767995 instance=ExtResource("20_mxjko")]
+[node name="Token196" parent="Level_Items/Pickups/Tokens" unique_id=1607767995 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, 80)
 
-[node name="Token197" parent="Level_Items/Pickups/Tokens" unique_id=1385531386 instance=ExtResource("20_mxjko")]
+[node name="Token197" parent="Level_Items/Pickups/Tokens" unique_id=1385531386 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, 144)
 
-[node name="Token198" parent="Level_Items/Pickups/Tokens" unique_id=679946701 instance=ExtResource("20_mxjko")]
+[node name="Token198" parent="Level_Items/Pickups/Tokens" unique_id=679946701 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(240, 144)
 
-[node name="Token199" parent="Level_Items/Pickups/Tokens" unique_id=2032616172 instance=ExtResource("20_mxjko")]
+[node name="Token199" parent="Level_Items/Pickups/Tokens" unique_id=2032616172 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(224, 128)
 
-[node name="Token205" parent="Level_Items/Pickups/Tokens" unique_id=1260798794 instance=ExtResource("20_mxjko")]
+[node name="Token205" parent="Level_Items/Pickups/Tokens" unique_id=1260798794 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(224, 112)
 
-[node name="Token206" parent="Level_Items/Pickups/Tokens" unique_id=1450708192 instance=ExtResource("20_mxjko")]
+[node name="Token206" parent="Level_Items/Pickups/Tokens" unique_id=1450708192 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(240, 112)
 
-[node name="Token207" parent="Level_Items/Pickups/Tokens" unique_id=197929132 instance=ExtResource("20_mxjko")]
+[node name="Token207" parent="Level_Items/Pickups/Tokens" unique_id=197929132 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(224, 80)
 
-[node name="Token208" parent="Level_Items/Pickups/Tokens" unique_id=1674250727 instance=ExtResource("20_mxjko")]
+[node name="Token208" parent="Level_Items/Pickups/Tokens" unique_id=1674250727 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(208, 80)
 
-[node name="Token209" parent="Level_Items/Pickups/Tokens" unique_id=1033732703 instance=ExtResource("20_mxjko")]
+[node name="Token209" parent="Level_Items/Pickups/Tokens" unique_id=1033732703 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, 96)
 
-[node name="Token210" parent="Level_Items/Pickups/Tokens" unique_id=439755324 instance=ExtResource("20_mxjko")]
+[node name="Token210" parent="Level_Items/Pickups/Tokens" unique_id=439755324 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(208, 96)
 
-[node name="Token211" parent="Level_Items/Pickups/Tokens" unique_id=1275284519 instance=ExtResource("20_mxjko")]
+[node name="Token211" parent="Level_Items/Pickups/Tokens" unique_id=1275284519 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(224, 96)
 
-[node name="Token200" parent="Level_Items/Pickups/Tokens" unique_id=1762600341 instance=ExtResource("20_mxjko")]
+[node name="Token200" parent="Level_Items/Pickups/Tokens" unique_id=1762600341 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, 128)
 
-[node name="Token201" parent="Level_Items/Pickups/Tokens" unique_id=211619509 instance=ExtResource("20_mxjko")]
+[node name="Token201" parent="Level_Items/Pickups/Tokens" unique_id=211619509 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, 112)
 
-[node name="Token202" parent="Level_Items/Pickups/Tokens" unique_id=726587599 instance=ExtResource("20_mxjko")]
+[node name="Token202" parent="Level_Items/Pickups/Tokens" unique_id=726587599 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, 96)
 
-[node name="Token58" parent="Level_Items/Pickups/Tokens" unique_id=1943820322 instance=ExtResource("20_mxjko")]
+[node name="Token58" parent="Level_Items/Pickups/Tokens" unique_id=1943820322 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(192, 64)
 
-[node name="Token59" parent="Level_Items/Pickups/Tokens" unique_id=670413281 instance=ExtResource("20_mxjko")]
+[node name="Token59" parent="Level_Items/Pickups/Tokens" unique_id=670413281 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(208, 64)
 
-[node name="Token60" parent="Level_Items/Pickups/Tokens" unique_id=169797372 instance=ExtResource("20_mxjko")]
+[node name="Token60" parent="Level_Items/Pickups/Tokens" unique_id=169797372 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(224, 64)
 
-[node name="Token61" parent="Level_Items/Pickups/Tokens" unique_id=1784229087 instance=ExtResource("20_mxjko")]
+[node name="Token61" parent="Level_Items/Pickups/Tokens" unique_id=1784229087 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(240, 64)
 
-[node name="Token39" parent="Level_Items/Pickups/Tokens" unique_id=1509526111 instance=ExtResource("20_mxjko")]
+[node name="Token39" parent="Level_Items/Pickups/Tokens" unique_id=1509526111 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, -96)
 
-[node name="Token56" parent="Level_Items/Pickups/Tokens" unique_id=1221763508 instance=ExtResource("20_mxjko")]
+[node name="Token56" parent="Level_Items/Pickups/Tokens" unique_id=1221763508 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, -112)
 
-[node name="Token40" parent="Level_Items/Pickups/Tokens" unique_id=2089015735 instance=ExtResource("20_mxjko")]
+[node name="Token40" parent="Level_Items/Pickups/Tokens" unique_id=2089015735 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, -128)
 
-[node name="Token18" parent="Level_Items/Pickups/Tokens" unique_id=1166463514 instance=ExtResource("20_mxjko")]
+[node name="Token18" parent="Level_Items/Pickups/Tokens" unique_id=1166463514 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-160, -32)
 
-[node name="Token20" parent="Level_Items/Pickups/Tokens" unique_id=1669866650 instance=ExtResource("20_mxjko")]
+[node name="Token20" parent="Level_Items/Pickups/Tokens" unique_id=1669866650 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-112, -32)
 
-[node name="Token21" parent="Level_Items/Pickups/Tokens" unique_id=730083032 instance=ExtResource("20_mxjko")]
+[node name="Token21" parent="Level_Items/Pickups/Tokens" unique_id=730083032 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-160, 0)
 
-[node name="Token35" parent="Level_Items/Pickups/Tokens" unique_id=1223495097 instance=ExtResource("20_mxjko")]
+[node name="Token35" parent="Level_Items/Pickups/Tokens" unique_id=1223495097 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(32, -16)
 
-[node name="Token228" parent="Level_Items/Pickups/Tokens" unique_id=1213512262 instance=ExtResource("20_mxjko")]
+[node name="Token228" parent="Level_Items/Pickups/Tokens" unique_id=1213512262 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(32, -48)
 
-[node name="Token229" parent="Level_Items/Pickups/Tokens" unique_id=1162104834 instance=ExtResource("20_mxjko")]
+[node name="Token229" parent="Level_Items/Pickups/Tokens" unique_id=1162104834 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-48, 32)
 
-[node name="Token230" parent="Level_Items/Pickups/Tokens" unique_id=1024433111 instance=ExtResource("20_mxjko")]
+[node name="Token230" parent="Level_Items/Pickups/Tokens" unique_id=1024433111 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(48, 32)
 
-[node name="Token238" parent="Level_Items/Pickups/Tokens" unique_id=148650268 instance=ExtResource("20_mxjko")]
+[node name="Token238" parent="Level_Items/Pickups/Tokens" unique_id=148650268 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, -16)
 
-[node name="Token239" parent="Level_Items/Pickups/Tokens" unique_id=259605213 instance=ExtResource("20_mxjko")]
+[node name="Token239" parent="Level_Items/Pickups/Tokens" unique_id=259605213 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, 16)
 
-[node name="Token232" parent="Level_Items/Pickups/Tokens" unique_id=467551887 instance=ExtResource("20_mxjko")]
+[node name="Token232" parent="Level_Items/Pickups/Tokens" unique_id=467551887 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, 16)
 
-[node name="Token233" parent="Level_Items/Pickups/Tokens" unique_id=1291104691 instance=ExtResource("20_mxjko")]
+[node name="Token233" parent="Level_Items/Pickups/Tokens" unique_id=1291104691 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, -16)
 
-[node name="Token41" parent="Level_Items/Pickups/Tokens" unique_id=1389040750 instance=ExtResource("20_mxjko")]
+[node name="Token41" parent="Level_Items/Pickups/Tokens" unique_id=1389040750 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(32, 80)
 
-[node name="Token36" parent="Level_Items/Pickups/Tokens" unique_id=2121075968 instance=ExtResource("20_mxjko")]
+[node name="Token36" parent="Level_Items/Pickups/Tokens" unique_id=2121075968 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, -128)
 
-[node name="Token37" parent="Level_Items/Pickups/Tokens" unique_id=1573758925 instance=ExtResource("20_mxjko")]
+[node name="Token37" parent="Level_Items/Pickups/Tokens" unique_id=1573758925 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-144, -128)
 
-[node name="Token19" parent="Level_Items/Pickups/Tokens" unique_id=258289656 instance=ExtResource("20_mxjko")]
+[node name="Token19" parent="Level_Items/Pickups/Tokens" unique_id=258289656 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(16, 48)
 
-[node name="Token180" parent="Level_Items/Pickups/Tokens" unique_id=1638128416 instance=ExtResource("20_mxjko")]
+[node name="Token180" parent="Level_Items/Pickups/Tokens" unique_id=1638128416 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(16, 16)
 
-[node name="Token181" parent="Level_Items/Pickups/Tokens" unique_id=1096426051 instance=ExtResource("20_mxjko")]
+[node name="Token181" parent="Level_Items/Pickups/Tokens" unique_id=1096426051 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-16, 48)
 
-[node name="Token49" parent="Level_Items/Pickups/Tokens" unique_id=1833337427 instance=ExtResource("20_mxjko")]
+[node name="Token49" parent="Level_Items/Pickups/Tokens" unique_id=1833337427 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, 64)
 
-[node name="Token124" parent="Level_Items/Pickups/Tokens" unique_id=134102800 instance=ExtResource("20_mxjko")]
+[node name="Token124" parent="Level_Items/Pickups/Tokens" unique_id=134102800 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(192, 32)
 
-[node name="Token125" parent="Level_Items/Pickups/Tokens" unique_id=563428814 instance=ExtResource("20_mxjko")]
+[node name="Token125" parent="Level_Items/Pickups/Tokens" unique_id=563428814 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(208, 32)
 
-[node name="Token126" parent="Level_Items/Pickups/Tokens" unique_id=1884533782 instance=ExtResource("20_mxjko")]
+[node name="Token126" parent="Level_Items/Pickups/Tokens" unique_id=1884533782 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(224, 32)
 
-[node name="Token127" parent="Level_Items/Pickups/Tokens" unique_id=1290879320 instance=ExtResource("20_mxjko")]
+[node name="Token127" parent="Level_Items/Pickups/Tokens" unique_id=1290879320 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(240, 32)
 
-[node name="Token128" parent="Level_Items/Pickups/Tokens" unique_id=1662232199 instance=ExtResource("20_mxjko")]
+[node name="Token128" parent="Level_Items/Pickups/Tokens" unique_id=1662232199 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, 16)
 
-[node name="Token129" parent="Level_Items/Pickups/Tokens" unique_id=2142629336 instance=ExtResource("20_mxjko")]
+[node name="Token129" parent="Level_Items/Pickups/Tokens" unique_id=2142629336 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, -16)
 
-[node name="Token62" parent="Level_Items/Pickups/Tokens" unique_id=178676961 instance=ExtResource("20_mxjko")]
+[node name="Token62" parent="Level_Items/Pickups/Tokens" unique_id=178676961 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, 48)
 
-[node name="Token179" parent="Level_Items/Pickups/Tokens" unique_id=325242811 instance=ExtResource("20_mxjko")]
+[node name="Token179" parent="Level_Items/Pickups/Tokens" unique_id=325242811 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, 32)
 
-[node name="Token120" parent="Level_Items/Pickups/Tokens" unique_id=1532129633 instance=ExtResource("20_mxjko")]
+[node name="Token120" parent="Level_Items/Pickups/Tokens" unique_id=1532129633 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, 32)
 
-[node name="Token121" parent="Level_Items/Pickups/Tokens" unique_id=29635980 instance=ExtResource("20_mxjko")]
+[node name="Token121" parent="Level_Items/Pickups/Tokens" unique_id=29635980 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(128, 32)
 
-[node name="Token122" parent="Level_Items/Pickups/Tokens" unique_id=1319707023 instance=ExtResource("20_mxjko")]
+[node name="Token122" parent="Level_Items/Pickups/Tokens" unique_id=1319707023 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(160, 32)
 
-[node name="Token123" parent="Level_Items/Pickups/Tokens" unique_id=778826690 instance=ExtResource("20_mxjko")]
+[node name="Token123" parent="Level_Items/Pickups/Tokens" unique_id=778826690 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(144, 32)
 
-[node name="Token63" parent="Level_Items/Pickups/Tokens" unique_id=1742100728 instance=ExtResource("20_mxjko")]
+[node name="Token63" parent="Level_Items/Pickups/Tokens" unique_id=1742100728 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, 64)
 
-[node name="Token64" parent="Level_Items/Pickups/Tokens" unique_id=1888318518 instance=ExtResource("20_mxjko")]
+[node name="Token64" parent="Level_Items/Pickups/Tokens" unique_id=1888318518 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(96, 64)
 
-[node name="Token65" parent="Level_Items/Pickups/Tokens" unique_id=2055861076 instance=ExtResource("20_mxjko")]
+[node name="Token65" parent="Level_Items/Pickups/Tokens" unique_id=2055861076 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, 64)
 
-[node name="Token66" parent="Level_Items/Pickups/Tokens" unique_id=1310996647 instance=ExtResource("20_mxjko")]
+[node name="Token66" parent="Level_Items/Pickups/Tokens" unique_id=1310996647 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(128, 64)
 
-[node name="Token67" parent="Level_Items/Pickups/Tokens" unique_id=1085589696 instance=ExtResource("20_mxjko")]
+[node name="Token67" parent="Level_Items/Pickups/Tokens" unique_id=1085589696 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(144, 64)
 
-[node name="Token50" parent="Level_Items/Pickups/Tokens" unique_id=111416818 instance=ExtResource("20_mxjko")]
+[node name="Token50" parent="Level_Items/Pickups/Tokens" unique_id=111416818 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-112, -128)
 
-[node name="Token51" parent="Level_Items/Pickups/Tokens" unique_id=996970841 instance=ExtResource("20_mxjko")]
+[node name="Token51" parent="Level_Items/Pickups/Tokens" unique_id=996970841 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(176, 32)
 
-[node name="Token130" parent="Level_Items/Pickups/Tokens" unique_id=305497847 instance=ExtResource("20_mxjko")]
+[node name="Token130" parent="Level_Items/Pickups/Tokens" unique_id=305497847 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(192, -128)
 
-[node name="Token131" parent="Level_Items/Pickups/Tokens" unique_id=490961336 instance=ExtResource("20_mxjko")]
+[node name="Token131" parent="Level_Items/Pickups/Tokens" unique_id=490961336 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(208, -128)
 
-[node name="Token132" parent="Level_Items/Pickups/Tokens" unique_id=1874878602 instance=ExtResource("20_mxjko")]
+[node name="Token132" parent="Level_Items/Pickups/Tokens" unique_id=1874878602 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(224, -128)
 
-[node name="Token133" parent="Level_Items/Pickups/Tokens" unique_id=1819589816 instance=ExtResource("20_mxjko")]
+[node name="Token133" parent="Level_Items/Pickups/Tokens" unique_id=1819589816 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(240, -128)
 
-[node name="Token134" parent="Level_Items/Pickups/Tokens" unique_id=955152950 instance=ExtResource("20_mxjko")]
+[node name="Token134" parent="Level_Items/Pickups/Tokens" unique_id=955152950 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, -128)
 
-[node name="Token135" parent="Level_Items/Pickups/Tokens" unique_id=1385373118 instance=ExtResource("20_mxjko")]
+[node name="Token135" parent="Level_Items/Pickups/Tokens" unique_id=1385373118 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, -128)
 
-[node name="Token140" parent="Level_Items/Pickups/Tokens" unique_id=668095108 instance=ExtResource("20_mxjko")]
+[node name="Token140" parent="Level_Items/Pickups/Tokens" unique_id=668095108 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, -112)
 
-[node name="Token141" parent="Level_Items/Pickups/Tokens" unique_id=478739485 instance=ExtResource("20_mxjko")]
+[node name="Token141" parent="Level_Items/Pickups/Tokens" unique_id=478739485 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, -64)
 
-[node name="Token186" parent="Level_Items/Pickups/Tokens" unique_id=500467736 instance=ExtResource("20_mxjko")]
+[node name="Token186" parent="Level_Items/Pickups/Tokens" unique_id=500467736 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, -48)
 
-[node name="Token187" parent="Level_Items/Pickups/Tokens" unique_id=1523095483 instance=ExtResource("20_mxjko")]
+[node name="Token187" parent="Level_Items/Pickups/Tokens" unique_id=1523095483 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(112, -32)
 
-[node name="Token192" parent="Level_Items/Pickups/Tokens" unique_id=812390647 instance=ExtResource("20_mxjko")]
+[node name="Token192" parent="Level_Items/Pickups/Tokens" unique_id=812390647 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(128, -96)
 
-[node name="Token188" parent="Level_Items/Pickups/Tokens" unique_id=874387922 instance=ExtResource("20_mxjko")]
+[node name="Token188" parent="Level_Items/Pickups/Tokens" unique_id=874387922 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(128, -64)
 
-[node name="Token145" parent="Level_Items/Pickups/Tokens" unique_id=1558301742 instance=ExtResource("20_mxjko")]
+[node name="Token145" parent="Level_Items/Pickups/Tokens" unique_id=1558301742 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(144, -64)
 
-[node name="Token146" parent="Level_Items/Pickups/Tokens" unique_id=894681428 instance=ExtResource("20_mxjko")]
+[node name="Token146" parent="Level_Items/Pickups/Tokens" unique_id=894681428 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(160, -80)
 
-[node name="Token147" parent="Level_Items/Pickups/Tokens" unique_id=1550246289 instance=ExtResource("20_mxjko")]
+[node name="Token147" parent="Level_Items/Pickups/Tokens" unique_id=1550246289 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(208, -80)
 
-[node name="Token148" parent="Level_Items/Pickups/Tokens" unique_id=1029893635 instance=ExtResource("20_mxjko")]
+[node name="Token148" parent="Level_Items/Pickups/Tokens" unique_id=1029893635 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(224, -64)
 
-[node name="Token189" parent="Level_Items/Pickups/Tokens" unique_id=2038096849 instance=ExtResource("20_mxjko")]
+[node name="Token189" parent="Level_Items/Pickups/Tokens" unique_id=2038096849 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(240, -64)
 
-[node name="Token190" parent="Level_Items/Pickups/Tokens" unique_id=1508239547 instance=ExtResource("20_mxjko")]
+[node name="Token190" parent="Level_Items/Pickups/Tokens" unique_id=1508239547 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, -48)
 
-[node name="Token191" parent="Level_Items/Pickups/Tokens" unique_id=1627272354 instance=ExtResource("20_mxjko")]
+[node name="Token191" parent="Level_Items/Pickups/Tokens" unique_id=1627272354 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, -32)
 
-[node name="Token149" parent="Level_Items/Pickups/Tokens" unique_id=1384611270 instance=ExtResource("20_mxjko")]
+[node name="Token149" parent="Level_Items/Pickups/Tokens" unique_id=1384611270 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, -64)
 
-[node name="Token150" parent="Level_Items/Pickups/Tokens" unique_id=96918043 instance=ExtResource("20_mxjko")]
+[node name="Token150" parent="Level_Items/Pickups/Tokens" unique_id=96918043 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, -96)
 
-[node name="Token142" parent="Level_Items/Pickups/Tokens" unique_id=112611591 instance=ExtResource("20_mxjko")]
+[node name="Token142" parent="Level_Items/Pickups/Tokens" unique_id=112611591 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(240, -96)
 
-[node name="Token143" parent="Level_Items/Pickups/Tokens" unique_id=412812944 instance=ExtResource("20_mxjko")]
+[node name="Token143" parent="Level_Items/Pickups/Tokens" unique_id=412812944 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, -112)
 
-[node name="Token144" parent="Level_Items/Pickups/Tokens" unique_id=194415588 instance=ExtResource("20_mxjko")]
+[node name="Token144" parent="Level_Items/Pickups/Tokens" unique_id=194415588 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(256, -112)
 
-[node name="Token136" parent="Level_Items/Pickups/Tokens" unique_id=889408067 instance=ExtResource("20_mxjko")]
+[node name="Token136" parent="Level_Items/Pickups/Tokens" unique_id=889408067 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(128, -128)
 
-[node name="Token137" parent="Level_Items/Pickups/Tokens" unique_id=33989230 instance=ExtResource("20_mxjko")]
+[node name="Token137" parent="Level_Items/Pickups/Tokens" unique_id=33989230 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(160, -128)
 
-[node name="Token138" parent="Level_Items/Pickups/Tokens" unique_id=1993332746 instance=ExtResource("20_mxjko")]
+[node name="Token138" parent="Level_Items/Pickups/Tokens" unique_id=1993332746 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(144, -128)
 
-[node name="Token139" parent="Level_Items/Pickups/Tokens" unique_id=1791060554 instance=ExtResource("20_mxjko")]
+[node name="Token139" parent="Level_Items/Pickups/Tokens" unique_id=1791060554 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(176, -128)
 
-[node name="Token52" parent="Level_Items/Pickups/Tokens" unique_id=220465222 instance=ExtResource("20_mxjko")]
+[node name="Token52" parent="Level_Items/Pickups/Tokens" unique_id=220465222 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, 16)
 
-[node name="Token69" parent="Level_Items/Pickups/Tokens" unique_id=520695515 instance=ExtResource("20_mxjko")]
+[node name="Token69" parent="Level_Items/Pickups/Tokens" unique_id=520695515 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-240, 16)
 
-[node name="Token70" parent="Level_Items/Pickups/Tokens" unique_id=1519923920 instance=ExtResource("20_mxjko")]
+[node name="Token70" parent="Level_Items/Pickups/Tokens" unique_id=1519923920 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-256, 16)
 
-[node name="Token71" parent="Level_Items/Pickups/Tokens" unique_id=1100764966 instance=ExtResource("20_mxjko")]
+[node name="Token71" parent="Level_Items/Pickups/Tokens" unique_id=1100764966 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, 32)
 
-[node name="Token72" parent="Level_Items/Pickups/Tokens" unique_id=1893828241 instance=ExtResource("20_mxjko")]
+[node name="Token72" parent="Level_Items/Pickups/Tokens" unique_id=1893828241 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, 48)
 
-[node name="Token73" parent="Level_Items/Pickups/Tokens" unique_id=671406463 instance=ExtResource("20_mxjko")]
+[node name="Token73" parent="Level_Items/Pickups/Tokens" unique_id=671406463 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, 64)
 
-[node name="Token74" parent="Level_Items/Pickups/Tokens" unique_id=1470223548 instance=ExtResource("20_mxjko")]
+[node name="Token74" parent="Level_Items/Pickups/Tokens" unique_id=1470223548 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, 80)
 
-[node name="Token75" parent="Level_Items/Pickups/Tokens" unique_id=486008891 instance=ExtResource("20_mxjko")]
+[node name="Token75" parent="Level_Items/Pickups/Tokens" unique_id=486008891 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, 96)
 
-[node name="Token156" parent="Level_Items/Pickups/Tokens" unique_id=1396075170 instance=ExtResource("20_mxjko")]
+[node name="Token156" parent="Level_Items/Pickups/Tokens" unique_id=1396075170 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, -128)
 
-[node name="Token157" parent="Level_Items/Pickups/Tokens" unique_id=1548028103 instance=ExtResource("20_mxjko")]
+[node name="Token157" parent="Level_Items/Pickups/Tokens" unique_id=1548028103 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, -112)
 
-[node name="Token158" parent="Level_Items/Pickups/Tokens" unique_id=679849430 instance=ExtResource("20_mxjko")]
+[node name="Token158" parent="Level_Items/Pickups/Tokens" unique_id=679849430 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, -96)
 
-[node name="Token159" parent="Level_Items/Pickups/Tokens" unique_id=1864328811 instance=ExtResource("20_mxjko")]
+[node name="Token159" parent="Level_Items/Pickups/Tokens" unique_id=1864328811 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, -80)
 
-[node name="Token160" parent="Level_Items/Pickups/Tokens" unique_id=1720191487 instance=ExtResource("20_mxjko")]
+[node name="Token160" parent="Level_Items/Pickups/Tokens" unique_id=1720191487 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, -64)
 
-[node name="Token161" parent="Level_Items/Pickups/Tokens" unique_id=98503933 instance=ExtResource("20_mxjko")]
+[node name="Token161" parent="Level_Items/Pickups/Tokens" unique_id=98503933 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, -48)
 
-[node name="Token76" parent="Level_Items/Pickups/Tokens" unique_id=1448480782 instance=ExtResource("20_mxjko")]
+[node name="Token76" parent="Level_Items/Pickups/Tokens" unique_id=1448480782 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, 112)
 
-[node name="Token112" parent="Level_Items/Pickups/Tokens" unique_id=2071672419 instance=ExtResource("20_mxjko")]
+[node name="Token112" parent="Level_Items/Pickups/Tokens" unique_id=2071672419 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, 128)
 
-[node name="Token77" parent="Level_Items/Pickups/Tokens" unique_id=834779480 instance=ExtResource("20_mxjko")]
+[node name="Token77" parent="Level_Items/Pickups/Tokens" unique_id=834779480 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-256, 128)
 
-[node name="Token78" parent="Level_Items/Pickups/Tokens" unique_id=1646032120 instance=ExtResource("20_mxjko")]
+[node name="Token78" parent="Level_Items/Pickups/Tokens" unique_id=1646032120 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-256, 144)
 
-[node name="Token79" parent="Level_Items/Pickups/Tokens" unique_id=815175787 instance=ExtResource("20_mxjko")]
+[node name="Token79" parent="Level_Items/Pickups/Tokens" unique_id=815175787 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-240, 144)
 
-[node name="Token80" parent="Level_Items/Pickups/Tokens" unique_id=1638624986 instance=ExtResource("20_mxjko")]
+[node name="Token80" parent="Level_Items/Pickups/Tokens" unique_id=1638624986 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-224, 144)
 
-[node name="Token225" parent="Level_Items/Pickups/Tokens" unique_id=792917611 instance=ExtResource("20_mxjko")]
+[node name="Token225" parent="Level_Items/Pickups/Tokens" unique_id=792917611 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-224, 128)
 
-[node name="Token226" parent="Level_Items/Pickups/Tokens" unique_id=565330227 instance=ExtResource("20_mxjko")]
+[node name="Token226" parent="Level_Items/Pickups/Tokens" unique_id=565330227 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-256, 96)
 
-[node name="Token81" parent="Level_Items/Pickups/Tokens" unique_id=827525652 instance=ExtResource("20_mxjko")]
+[node name="Token81" parent="Level_Items/Pickups/Tokens" unique_id=827525652 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-208, 144)
 
-[node name="Token82" parent="Level_Items/Pickups/Tokens" unique_id=1286221972 instance=ExtResource("20_mxjko")]
+[node name="Token82" parent="Level_Items/Pickups/Tokens" unique_id=1286221972 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-208, 48)
 
-[node name="Token84" parent="Level_Items/Pickups/Tokens" unique_id=1190639164 instance=ExtResource("20_mxjko")]
+[node name="Token84" parent="Level_Items/Pickups/Tokens" unique_id=1190639164 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-208, 0)
 
-[node name="Token85" parent="Level_Items/Pickups/Tokens" unique_id=703205782 instance=ExtResource("20_mxjko")]
+[node name="Token85" parent="Level_Items/Pickups/Tokens" unique_id=703205782 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-208, -16)
 
-[node name="Token151" parent="Level_Items/Pickups/Tokens" unique_id=898790511 instance=ExtResource("20_mxjko")]
+[node name="Token151" parent="Level_Items/Pickups/Tokens" unique_id=898790511 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-240, -112)
 
-[node name="Token163" parent="Level_Items/Pickups/Tokens" unique_id=414311956 instance=ExtResource("20_mxjko")]
+[node name="Token163" parent="Level_Items/Pickups/Tokens" unique_id=414311956 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-224, -112)
 
-[node name="Token152" parent="Level_Items/Pickups/Tokens" unique_id=411767264 instance=ExtResource("20_mxjko")]
+[node name="Token152" parent="Level_Items/Pickups/Tokens" unique_id=411767264 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-240, -80)
 
-[node name="Token167" parent="Level_Items/Pickups/Tokens" unique_id=1812333983 instance=ExtResource("20_mxjko")]
+[node name="Token167" parent="Level_Items/Pickups/Tokens" unique_id=1812333983 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, -80)
 
-[node name="Token168" parent="Level_Items/Pickups/Tokens" unique_id=1519188430 instance=ExtResource("20_mxjko")]
+[node name="Token168" parent="Level_Items/Pickups/Tokens" unique_id=1519188430 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-192, -80)
 
-[node name="Token183" parent="Level_Items/Pickups/Tokens" unique_id=783866427 instance=ExtResource("20_mxjko")]
+[node name="Token183" parent="Level_Items/Pickups/Tokens" unique_id=783866427 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-192, -64)
 
-[node name="Token169" parent="Level_Items/Pickups/Tokens" unique_id=841926430 instance=ExtResource("20_mxjko")]
+[node name="Token169" parent="Level_Items/Pickups/Tokens" unique_id=841926430 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-112, -80)
 
-[node name="Token184" parent="Level_Items/Pickups/Tokens" unique_id=479379582 instance=ExtResource("20_mxjko")]
+[node name="Token184" parent="Level_Items/Pickups/Tokens" unique_id=479379582 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-112, -64)
 
-[node name="Token185" parent="Level_Items/Pickups/Tokens" unique_id=2049417055 instance=ExtResource("20_mxjko")]
+[node name="Token185" parent="Level_Items/Pickups/Tokens" unique_id=2049417055 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-80, -64)
 
-[node name="Token170" parent="Level_Items/Pickups/Tokens" unique_id=1091726416 instance=ExtResource("20_mxjko")]
+[node name="Token170" parent="Level_Items/Pickups/Tokens" unique_id=1091726416 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, -80)
 
-[node name="Token171" parent="Level_Items/Pickups/Tokens" unique_id=29900938 instance=ExtResource("20_mxjko")]
+[node name="Token171" parent="Level_Items/Pickups/Tokens" unique_id=29900938 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-64, -80)
 
-[node name="Token175" parent="Level_Items/Pickups/Tokens" unique_id=906722422 instance=ExtResource("20_mxjko")]
+[node name="Token175" parent="Level_Items/Pickups/Tokens" unique_id=906722422 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(16, -64)
 
-[node name="Token172" parent="Level_Items/Pickups/Tokens" unique_id=1141086177 instance=ExtResource("20_mxjko")]
+[node name="Token172" parent="Level_Items/Pickups/Tokens" unique_id=1141086177 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-80, -80)
 
-[node name="Token173" parent="Level_Items/Pickups/Tokens" unique_id=600233424 instance=ExtResource("20_mxjko")]
+[node name="Token173" parent="Level_Items/Pickups/Tokens" unique_id=600233424 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(0, -48)
 
-[node name="Token174" parent="Level_Items/Pickups/Tokens" unique_id=672730418 instance=ExtResource("20_mxjko")]
+[node name="Token174" parent="Level_Items/Pickups/Tokens" unique_id=672730418 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-16, -64)
 
-[node name="Token162" parent="Level_Items/Pickups/Tokens" unique_id=763482610 instance=ExtResource("20_mxjko")]
+[node name="Token162" parent="Level_Items/Pickups/Tokens" unique_id=763482610 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-272, -32)
 
-[node name="Token86" parent="Level_Items/Pickups/Tokens" unique_id=640990001 instance=ExtResource("20_mxjko")]
+[node name="Token86" parent="Level_Items/Pickups/Tokens" unique_id=640990001 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-208, 16)
 
-[node name="Token87" parent="Level_Items/Pickups/Tokens" unique_id=522914038 instance=ExtResource("20_mxjko")]
+[node name="Token87" parent="Level_Items/Pickups/Tokens" unique_id=522914038 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-208, 80)
 
-[node name="Token88" parent="Level_Items/Pickups/Tokens" unique_id=550430019 instance=ExtResource("20_mxjko")]
+[node name="Token88" parent="Level_Items/Pickups/Tokens" unique_id=550430019 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, 80)
 
-[node name="Token89" parent="Level_Items/Pickups/Tokens" unique_id=566060853 instance=ExtResource("20_mxjko")]
+[node name="Token89" parent="Level_Items/Pickups/Tokens" unique_id=566060853 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, 48)
 
-[node name="Token164" parent="Level_Items/Pickups/Tokens" unique_id=1284969053 instance=ExtResource("20_mxjko")]
+[node name="Token164" parent="Level_Items/Pickups/Tokens" unique_id=1284969053 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, 64)
 
-[node name="Token165" parent="Level_Items/Pickups/Tokens" unique_id=453613765 instance=ExtResource("20_mxjko")]
+[node name="Token165" parent="Level_Items/Pickups/Tokens" unique_id=453613765 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-96, 64)
 
-[node name="Token166" parent="Level_Items/Pickups/Tokens" unique_id=213966180 instance=ExtResource("20_mxjko")]
+[node name="Token166" parent="Level_Items/Pickups/Tokens" unique_id=213966180 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-96, 64)
 
-[node name="Token90" parent="Level_Items/Pickups/Tokens" unique_id=1130390459 instance=ExtResource("20_mxjko")]
+[node name="Token90" parent="Level_Items/Pickups/Tokens" unique_id=1130390459 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-112, 144)
 
-[node name="Token91" parent="Level_Items/Pickups/Tokens" unique_id=1901734521 instance=ExtResource("20_mxjko")]
+[node name="Token91" parent="Level_Items/Pickups/Tokens" unique_id=1901734521 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-96, 144)
 
-[node name="Token92" parent="Level_Items/Pickups/Tokens" unique_id=1876438698 instance=ExtResource("20_mxjko")]
+[node name="Token92" parent="Level_Items/Pickups/Tokens" unique_id=1876438698 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-80, 144)
 
-[node name="Token93" parent="Level_Items/Pickups/Tokens" unique_id=2053693121 instance=ExtResource("20_mxjko")]
+[node name="Token93" parent="Level_Items/Pickups/Tokens" unique_id=2053693121 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-64, 144)
 
-[node name="Token94" parent="Level_Items/Pickups/Tokens" unique_id=611092711 instance=ExtResource("20_mxjko")]
+[node name="Token94" parent="Level_Items/Pickups/Tokens" unique_id=611092711 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-48, 144)
 
-[node name="Token31" parent="Level_Items/Pickups/Tokens" unique_id=260106464 instance=ExtResource("20_mxjko")]
+[node name="Token31" parent="Level_Items/Pickups/Tokens" unique_id=260106464 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, 96)
 
-[node name="Token83" parent="Level_Items/Pickups/Tokens" unique_id=2065504387 instance=ExtResource("20_mxjko")]
+[node name="Token83" parent="Level_Items/Pickups/Tokens" unique_id=2065504387 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-144, 112)
 
-[node name="Token110" parent="Level_Items/Pickups/Tokens" unique_id=1906169761 instance=ExtResource("20_mxjko")]
+[node name="Token110" parent="Level_Items/Pickups/Tokens" unique_id=1906169761 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-176, 112)
 
-[node name="Token116" parent="Level_Items/Pickups/Tokens" unique_id=876065511 instance=ExtResource("20_mxjko")]
+[node name="Token116" parent="Level_Items/Pickups/Tokens" unique_id=876065511 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-128, 128)
 
-[node name="Token117" parent="Level_Items/Pickups/Tokens" unique_id=186388231 instance=ExtResource("20_mxjko")]
+[node name="Token117" parent="Level_Items/Pickups/Tokens" unique_id=186388231 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(96, 128)
 
-[node name="Token111" parent="Level_Items/Pickups/Tokens" unique_id=1481293800 instance=ExtResource("20_mxjko")]
+[node name="Token111" parent="Level_Items/Pickups/Tokens" unique_id=1481293800 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-96, 96)
 
-[node name="Token113" parent="Level_Items/Pickups/Tokens" unique_id=1165351183 instance=ExtResource("20_mxjko")]
+[node name="Token113" parent="Level_Items/Pickups/Tokens" unique_id=1165351183 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-64, 96)
 
-[node name="Token114" parent="Level_Items/Pickups/Tokens" unique_id=686898407 instance=ExtResource("20_mxjko")]
+[node name="Token114" parent="Level_Items/Pickups/Tokens" unique_id=686898407 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-112, 112)
 
-[node name="Token95" parent="Level_Items/Pickups/Tokens" unique_id=38688701 instance=ExtResource("20_mxjko")]
+[node name="Token95" parent="Level_Items/Pickups/Tokens" unique_id=38688701 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-16, 144)
 
-[node name="Token96" parent="Level_Items/Pickups/Tokens" unique_id=1858944280 instance=ExtResource("20_mxjko")]
+[node name="Token96" parent="Level_Items/Pickups/Tokens" unique_id=1858944280 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(0, 144)
 
-[node name="Token97" parent="Level_Items/Pickups/Tokens" unique_id=302976072 instance=ExtResource("20_mxjko")]
+[node name="Token97" parent="Level_Items/Pickups/Tokens" unique_id=302976072 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(16, 144)
 
-[node name="Token98" parent="Level_Items/Pickups/Tokens" unique_id=1952694687 instance=ExtResource("20_mxjko")]
+[node name="Token98" parent="Level_Items/Pickups/Tokens" unique_id=1952694687 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(32, 144)
 
-[node name="Token99" parent="Level_Items/Pickups/Tokens" unique_id=706282288 instance=ExtResource("20_mxjko")]
+[node name="Token99" parent="Level_Items/Pickups/Tokens" unique_id=706282288 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(48, 144)
 
-[node name="Token100" parent="Level_Items/Pickups/Tokens" unique_id=449268856 instance=ExtResource("20_mxjko")]
+[node name="Token100" parent="Level_Items/Pickups/Tokens" unique_id=449268856 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(64, 144)
 
-[node name="Token104" parent="Level_Items/Pickups/Tokens" unique_id=1108760072 instance=ExtResource("20_mxjko")]
+[node name="Token104" parent="Level_Items/Pickups/Tokens" unique_id=1108760072 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-48, 112)
 
-[node name="Token115" parent="Level_Items/Pickups/Tokens" unique_id=675529941 instance=ExtResource("20_mxjko")]
+[node name="Token115" parent="Level_Items/Pickups/Tokens" unique_id=675529941 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-80, 112)
 
-[node name="Token105" parent="Level_Items/Pickups/Tokens" unique_id=78283647 instance=ExtResource("20_mxjko")]
+[node name="Token105" parent="Level_Items/Pickups/Tokens" unique_id=78283647 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(-16, 112)
 
-[node name="Token106" parent="Level_Items/Pickups/Tokens" unique_id=1429386629 instance=ExtResource("20_mxjko")]
+[node name="Token106" parent="Level_Items/Pickups/Tokens" unique_id=1429386629 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(16, 112)
 
-[node name="Token107" parent="Level_Items/Pickups/Tokens" unique_id=742483790 instance=ExtResource("20_mxjko")]
+[node name="Token107" parent="Level_Items/Pickups/Tokens" unique_id=742483790 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(0, 96)
 
-[node name="Token108" parent="Level_Items/Pickups/Tokens" unique_id=1923500652 instance=ExtResource("20_mxjko")]
+[node name="Token108" parent="Level_Items/Pickups/Tokens" unique_id=1923500652 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(48, 112)
 
-[node name="Token109" parent="Level_Items/Pickups/Tokens" unique_id=1971292459 instance=ExtResource("20_mxjko")]
+[node name="Token109" parent="Level_Items/Pickups/Tokens" unique_id=1971292459 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(192, 128)
 
-[node name="Token101" parent="Level_Items/Pickups/Tokens" unique_id=1842068174 instance=ExtResource("20_mxjko")]
+[node name="Token101" parent="Level_Items/Pickups/Tokens" unique_id=1842068174 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(80, 144)
 
-[node name="Token102" parent="Level_Items/Pickups/Tokens" unique_id=493940891 instance=ExtResource("20_mxjko")]
+[node name="Token102" parent="Level_Items/Pickups/Tokens" unique_id=493940891 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(96, 112)
 
-[node name="Token103" parent="Level_Items/Pickups/Tokens" unique_id=74827058 instance=ExtResource("20_mxjko")]
+[node name="Token103" parent="Level_Items/Pickups/Tokens" unique_id=74827058 groups=["Token"] instance=ExtResource("20_mxjko")]
 position = Vector2(192, 112)
 
 [node name="K Tokes" type="Node2D" parent="Level_Items/Pickups" unique_id=1208528872]
 
-[node name="Kill Token5" parent="Level_Items/Pickups/K Tokes" unique_id=20056252 instance=ExtResource("21_5njhm")]
+[node name="Kill Token5" parent="Level_Items/Pickups/K Tokes" unique_id=20056252 groups=["K-Tokens"] instance=ExtResource("21_5njhm")]
 position = Vector2(112, -96)
 
-[node name="Kill Token4" parent="Level_Items/Pickups/K Tokes" unique_id=1501428099 instance=ExtResource("21_5njhm")]
+[node name="Kill Token4" parent="Level_Items/Pickups/K Tokes" unique_id=1501428099 groups=["K-Tokens"] instance=ExtResource("21_5njhm")]
 position = Vector2(256, 32)
 
-[node name="Kill Token2" parent="Level_Items/Pickups/K Tokes" unique_id=1407354938 instance=ExtResource("21_5njhm")]
+[node name="Kill Token2" parent="Level_Items/Pickups/K Tokes" unique_id=1407354938 groups=["K-Tokens"] instance=ExtResource("21_5njhm")]
 position = Vector2(-192, -112)
 
-[node name="Kill Token" parent="Level_Items/Pickups/K Tokes" unique_id=315071165 instance=ExtResource("21_5njhm")]
+[node name="Kill Token" parent="Level_Items/Pickups/K Tokes" unique_id=315071165 groups=["K-Tokens"] instance=ExtResource("21_5njhm")]
 position = Vector2(-272, 144)
 
-[node name="Kill Token8" parent="Level_Items/Pickups/K Tokes" unique_id=1357686523 instance=ExtResource("21_5njhm")]
+[node name="Kill Token8" parent="Level_Items/Pickups/K Tokes" unique_id=1357686523 groups=["K-Tokens"] instance=ExtResource("21_5njhm")]
 position = Vector2(-32, 144)
 
-[node name="Kill Token3" parent="Level_Items/Pickups/K Tokes" unique_id=230184106 instance=ExtResource("21_5njhm")]
+[node name="Kill Token3" parent="Level_Items/Pickups/K Tokes" unique_id=230184106 groups=["K-Tokens"] instance=ExtResource("21_5njhm")]
 position = Vector2(224, 144)
 
-[node name="Kill Token6" parent="Level_Items/Pickups/K Tokes" unique_id=1891307776 instance=ExtResource("21_5njhm")]
+[node name="Kill Token6" parent="Level_Items/Pickups/K Tokes" unique_id=1891307776 groups=["K-Tokens"] instance=ExtResource("21_5njhm")]
 position = Vector2(48, -128)
 
 [node name="Fruits" type="Node2D" parent="Level_Items/Pickups" unique_id=273715163]
@@ -1081,3 +1084,4 @@ position = Vector2(-1, -2)
 [connection signal="timeout" from="GameManager/ReadyTimer" to="GameManager" method="_on_ready_timer_timeout"]
 [connection signal="timeout" from="GameManager/SwitchTimer" to="GameManager" method="_on_switch_timer_timeout"]
 [connection signal="timeout" from="GameManager/GoTimer" to="GameManager" method="_on_go_timer_timeout"]
+[connection signal="timeout" from="GameManager/ResetTimer" to="GameManager" method="_on_reset_timer_timeout"]

@@ -31,12 +31,14 @@ var game_mode: ModeOfGame = ModeOfGame.NORM
 @onready var chase_timer: Timer = get_tree().get_first_node_in_group("ChaseTimer")
 @onready var switch_timer: Timer = get_tree().get_first_node_in_group("SwitchTimer")
 @onready var go_timer: Timer = get_tree().get_first_node_in_group("GoTimer")
+@onready var reset_timer: Timer = get_tree().get_first_node_in_group("ResetTimer")
 
 
 #-----------------------Characters Ref------------------------------------------
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemies = get_tree().get_nodes_in_group("Element")
-@onready var token = get_tree().get_nodes_in_group("Token")
+@onready var tokens = get_tree().get_nodes_in_group("Token")
+@onready var Ktokens = get_tree().get_nodes_in_group("K-Tokens")
 
 #-----------------------Base Variables------------------------------------------
 var player_start_position: Vector2
@@ -44,6 +46,7 @@ var enemy_start_position = {}
 var GRID_SIZE = 16
 var run_combo := 0
 
+var game_reset := false
 #----------------------------Start Code-----------------------------------------
 func _ready() -> void:
 	_update_score_label()
@@ -62,13 +65,21 @@ func _ready() -> void:
 		enemy.connect("player_caught", Callable(self, "_on_player_caught"))
 		enemy.connect("Start_Position", Callable(self, "_on_Start_Position"))
 		enemy.connect("element_fight", Callable(self, "_on_element_fight"))
-
+	
+	for toke in tokens:
+		print("Connecting tokens")
+		toke.connect("token_deactivated", Callable(self, "_on_token_deactivation"))
+	
+	for ktoke in Ktokens:
+		print("Connecting tokens")
+		ktoke.connect("token_deactivated", Callable(self, "_on_token_deactivation"))
 	
 	game_state.connect("all_items_collected", Callable(self, "_on_level_complete"))
 	
 	current_state = StateOfGame.RUNNING
 	
  
+#function supposed to help with enemy mode transition *not being used as of now*
 func _on_mode_change(new_mode):
 	for enemy in enemies:
 		enemy.nextmode = new_mode
@@ -78,7 +89,15 @@ func _on_element_fight():
 	if game_mode == ModeOfGame.CHASE:
 		fighting.stop()
 		return
+	#Line Below Should Keep Enemies From fighting after player death and level reset. 
+	if current_state == StateOfGame.DEAD or StateOfGame.RESETTING:
+		fighting.stop()
 	fighting.play()
+
+func _on_token_deactivation():
+	set_game_reset()
+	print("game_reset: " ,game_reset)
+	return
 
 
 #No longer should be used
@@ -246,11 +265,14 @@ func stop_fight_timers():
 func _on_player_caught():
 	if current_state != StateOfGame.RUNNING:
 		return
-	
 	print("player caught!")
+	
 	current_state = StateOfGame.DEAD
 	if current_state == StateOfGame.DEAD:
-		
+		set_game_reset()
+		print("game_reset: " ,game_reset)
+		reset_timer.start(5.6)
+		print("reset_timer started!")
 		get_tree().paused = true
 		player_death.play()
 		update_lives()
@@ -301,6 +323,18 @@ func reset_round():
 		print("Positions reset!")
 		start_game()
 
+func set_game_reset():
+	if game_reset:
+		game_reset = false
+	else: game_reset = true
+
+func _on_reset_timer_timeout() -> void:
+	game_reset = false
+	print("game_reset: " ,game_reset)
+	return
+
+
+
 #For anything time the game goes through a stoppage to then continue
 func start_game():
 	current_state = StateOfGame.READY
@@ -330,6 +364,7 @@ func _on_go_timer_timeout() -> void:
 	print("Go!")
 	deathscreen.visible = false
 	current_state = StateOfGame.RUNNING
+
 
 #Chase Mode Function 
 func _on_chase_mode_activated():
