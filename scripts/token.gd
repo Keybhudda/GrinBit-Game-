@@ -37,6 +37,10 @@ func _on_body_entered(_body) -> void:
 	#if function should prevent token activation when player collects and his caught by enemy.
 	if game_manager.game_reset == true:
 		print("No Token Use!")
+		print("Token Still Collected!")
+		collected = true
+		game_manager.add_point() #add score
+		game_state.collect_item(token_id, "token") # register collection
 		emit_signal("token_deactivated")
 		print(name, " is deactivated!")
 		queue_free()

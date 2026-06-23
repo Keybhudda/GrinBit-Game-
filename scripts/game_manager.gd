@@ -136,6 +136,7 @@ func update_lives():
 #A timer to give time to play game beat music and then send to game over screen for now until we make more levels
 func _on_switch_timer_timeout() -> void:
 	get_tree().paused = false
+	#HERES What Causes THat Fade When Moving to the next level
 	call_deferred("go_next_level")
 #where when a level is complete it send you to the next level. 
 func _on_level_complete():
@@ -147,10 +148,8 @@ func _on_level_complete():
 
 
 
-#beginning varaible for level system -Temp
 
-
-#Sends Player to Game won screen for now Will send them to next level later
+#Sends Player to level Until all levels are comepleted then 
 func go_next_level():
 	GlobalData.levels[GlobalData.current_level_index]["completed"] = true
 	GlobalData.current_level_index += 1
@@ -161,6 +160,7 @@ func go_next_level():
 	if GlobalData.current_level_index < GlobalData.levels.size():
 		get_tree().change_scene_to_file("res://scenes/Level_%d.tscn" %
 	(GlobalData.current_level_index + 1))
+		FadeScreen.transition()
 	
 	if GlobalData.current_level_index >= GlobalData.levels.size():
 		game_won()
@@ -170,6 +170,7 @@ func go_next_level():
 #normal way of switching levels -OlD Tho want to use whats above
 func game_won():
 	get_tree().change_scene_to_file("res://scenes/Menus & Pop Ups/game_won_screen.tscn")
+	FadeScreen.transition()
 #Gets the starting points for all characters to use later for reload.
 func _on_Start_Position(entity_name: String, position: Vector2):
 	if entity_name == "Grinbit":

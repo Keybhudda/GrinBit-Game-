@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://qojtnvgumkc"]
 
 [ext_resource type="Script" uid="uid://df0dxq33d0pmf" path="res://scripts/startmenu.gd" id="1_ag814"]
-[ext_resource type="VideoStream" uid="uid://cfqte8n5qy4px" path="res://assets/Videos/gameplaytestvideo.ogv" id="2_2rde4"]
 [ext_resource type="Texture2D" uid="uid://c5l1pg4q83x1i" path="res://assets/menu 1SC.png" id="2_fndww"]
 [ext_resource type="Texture2D" uid="uid://2gc2glx6uye4" path="res://assets/characters/Grin Bit (Simple Game).png" id="2_poymh"]
 [ext_resource type="Texture2D" uid="uid://cf54uj8l1m3x4" path="res://assets/characters/Fire Enemy (Simple Game).png" id="3_cy0qo"]
 [ext_resource type="FontFile" uid="uid://nrsfev000csj" path="res://assets/RETRO_SPACE_INV.ttf" id="3_fndww"]
 [ext_resource type="Script" uid="uid://cwh2e4alsblcm" path="res://scripts/startbutton.gd" id="3_poymh"]
+[ext_resource type="VideoStream" uid="uid://dxjskdjrllu17" path="res://assets/Videos/grinbitgameplay23.ogv" id="4_2rde4"]
 [ext_resource type="Script" uid="uid://b81ntg3blrhfa" path="res://scripts/quitbutton.gd" id="5_cy0qo"]
 [ext_resource type="Texture2D" uid="uid://c52p61pny4aa0" path="res://assets/characters/Water Enemy (Simple Game).png" id="6_2qj7i"]
 [ext_resource type="StyleBox" uid="uid://comoppuhyyouh" path="res://scenes/Menus & Pop Ups/Themes&Styles/new_style_box_flat_focused.tres" id="6_mq1nj"]
@@ -249,13 +249,15 @@ region_rect = Rect2(128, 224, 16, 16)
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1212791509]
 z_index = -1
 layout_mode = 0
-offset_left = -60.342148
-offset_top = -41.456207
-offset_right = 3779.658
-offset_bottom = 2118.5437
+offset_left = 3.9655228
+offset_top = -8.327976
+offset_right = 3425.5645
+offset_bottom = 1928.1427
 scale = Vector2(0.34, 0.34)
-stream = ExtResource("2_2rde4")
+stream = ExtResource("4_2rde4")
+volume_db = -55.299995
 autoplay = true
+expand = true
 loop = true
 
 [node name="Info" type="RichTextLabel" parent="." unique_id=842326433]

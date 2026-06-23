@@ -8,10 +8,14 @@ extends Area2D
 
 #--------------------------Timers-----------------------------------------------
 @onready var available_timer: Timer = $AvailableTimer
+@onready var pop_up_timer: Timer = $PopUpTimer
 
 #----------------------Based Variables------------------------------------------
 @export var food_id: String = ""
 var collected := false
+const GRID_SIZE = 16
+
+var pop_spawned := false
 #----------------------Start Code ----------------------------------------------
 func _ready() -> void:
 	#Assign a consistent ID if not set manually
@@ -41,13 +45,34 @@ func _on_body_entered(_body) -> void:
 	
 	game_manager.add_pointf1()
 	
+	spawn_score_popup()
+	
 	if game_manager.current_state == game_manager.StateOfGame.DEAD:
 		pickupsound.stop()
 		print("Stopping Sound")
 		return
 	animation_player.play("pickup")
+	
 #used to pop up score of collect item.
 var popup = preload("res://scenes/Menus & Pop Ups/UI-Assets/Score_popup.tscn").instantiate()
+
+func display_points():
+	var points = 300
+	popup.visible = true
+	@warning_ignore("integer_division")
+	popup.position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	popup.set_score(points)
+	pop_up_timer.start(2)
+
+func spawn_score_popup():
+	var points = 300
+	get_tree().current_scene.add_child(popup)
+	popup.visible = true
+	@warning_ignore("integer_division")
+	popup.position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
+	popup.set_score(points)
+	pop_spawned = true
+	pop_up_timer.start(2)
 
 func _on_available_timer_timeout() -> void:
 	if visible == false and collision_shape_2d.disabled == true:
@@ -59,3 +84,8 @@ func _on_available_timer_timeout() -> void:
 			visible = false
 			collision_shape_2d.disabled = true
 		
+
+
+func _on_pop_up_timer_timeout() -> void:
+	if popup:
+		popup.visible = false

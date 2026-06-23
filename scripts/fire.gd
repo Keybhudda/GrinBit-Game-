@@ -231,6 +231,7 @@ var  has_printed_mode_DEAD := false
 func _dead(_delta: float) -> void:
 #checks if conditions are met then sets character to shuffle for a bit and sets a timer to prevent auto player chase.
 	if game_manager.game_mode != game_manager.ModeOfGame.CHASE and (recovering == true and position == start_pos):
+		call_deferred("disable_collision")
 		set_mode(Mode.SHUFFLE)
 		recover_timer.start(3)
 		return

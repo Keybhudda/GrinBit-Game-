@@ -6,3 +6,5 @@ extends Node2D
 func set_score(points):
 	label.text = "+" + str(points)
 	
+func fade_score():
+	FadeScreen.transition()

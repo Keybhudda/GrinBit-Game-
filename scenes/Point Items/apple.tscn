@@ -110,5 +110,9 @@ libraries/ = SubResource("AnimationLibrary_s7hjn")
 [node name="AvailableTimer" type="Timer" parent="." unique_id=106423456]
 one_shot = true
 
+[node name="PopUpTimer" type="Timer" parent="." unique_id=847149313]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="AvailableTimer" to="." method="_on_available_timer_timeout"]
+[connection signal="timeout" from="PopUpTimer" to="." method="_on_pop_up_timer_timeout"]

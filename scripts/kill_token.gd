@@ -39,6 +39,10 @@ func _on_body_entered(_body) -> void:
 	#if function should prevent k-token activation when player collects and his caught by enemy.
 	if game_manager.game_reset == true:
 		print("No K-Token Use!")
+		collected = true
+		game_manager.add_point1()
+		game_state.collect_item(ktoken_id, "ktoken")# register collection
+		print("K-Token Still Collected!")
 		emit_signal("token_deactivated")
 		print(name, " is deactivated!")
 		queue_free()
