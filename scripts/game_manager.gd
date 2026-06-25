@@ -160,7 +160,7 @@ func go_next_level():
 	if GlobalData.current_level_index < GlobalData.levels.size():
 		get_tree().change_scene_to_file("res://scenes/Level_%d.tscn" %
 	(GlobalData.current_level_index + 1))
-		FadeScreen.transition()
+		
 	
 	if GlobalData.current_level_index >= GlobalData.levels.size():
 		game_won()
@@ -170,7 +170,6 @@ func go_next_level():
 #normal way of switching levels -OlD Tho want to use whats above
 func game_won():
 	get_tree().change_scene_to_file("res://scenes/Menus & Pop Ups/game_won_screen.tscn")
-	FadeScreen.transition()
 #Gets the starting points for all characters to use later for reload.
 func _on_Start_Position(entity_name: String, position: Vector2):
 	if entity_name == "Grinbit":
