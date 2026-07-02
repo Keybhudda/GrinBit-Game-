@@ -15,3 +15,6 @@ func start():
 
 func level_complete():
 	%youdied.text = "\n Level \n Completed!"
+
+func game_won():
+	%youdied.text = "\n Game \n Won!"

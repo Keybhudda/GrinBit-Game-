@@ -67,11 +67,9 @@ func _ready() -> void:
 		enemy.connect("element_fight", Callable(self, "_on_element_fight"))
 	
 	for toke in tokens:
-		print("Connecting tokens")
 		toke.connect("token_deactivated", Callable(self, "_on_token_deactivation"))
 	
 	for ktoke in Ktokens:
-		print("Connecting tokens")
 		ktoke.connect("token_deactivated", Callable(self, "_on_token_deactivation"))
 	
 	game_state.connect("all_items_collected", Callable(self, "_on_level_complete"))
@@ -291,6 +289,7 @@ func _on_player_caught():
 #Function for when the player runs out of lives
 func out_of_lives():
 	GlobalData.is_game_over = true
+	print("Game Over!")
 	get_tree().change_scene_to_file("res://scenes/Menus & Pop Ups/gameover.tscn")
 
 

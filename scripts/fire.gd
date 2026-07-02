@@ -264,6 +264,9 @@ func _dead(_delta: float) -> void:
 #FightMode Functions Where Two Elements/enemies stop movement and fight eachother
 var fighting := false
 func fight(_delta: float) -> void:
+	if game_manager.current_state == game_manager.StateOfGame.DEAD:
+		return
+	
 	path.clear()
 	@warning_ignore("integer_division")
 	position = position.snapped(Vector2(GRID_SIZE/2, GRID_SIZE/2))
@@ -410,6 +413,8 @@ func _on_parry_timer_timeout() -> void:
 		update_look(current_mode)
 #--------- Helper Functions --------------#
 func start_fight():
+	if game_manager.current_state == game_manager.StateOfGame.DEAD:
+		return
 	print("Someone Is Fighting ", name)
 	on_enter_fight_mode()
 
@@ -445,6 +450,9 @@ func on_enter_fight_mode():
 	if game_manager.game_mode == game_manager.ModeOfGame.CHASE:
 		call_deferred("enable_collision")
 		return
+	if game_manager.current_state == game_manager.StateOfGame.DEAD:
+		return
+	
 	fighting = true
 	path.clear()
 	if fight_timer.is_stopped():

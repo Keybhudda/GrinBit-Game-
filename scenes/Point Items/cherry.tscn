@@ -110,6 +110,7 @@ libraries/ = SubResource("AnimationLibrary_n2q2n")
 one_shot = true
 
 [node name="PopUpTimer" type="Timer" parent="." unique_id=1640641029]
+process_mode = 3
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
