@@ -51,4 +51,5 @@ func start_new_game():
 	if GlobalData.is_game_over:
 		GlobalData.total_score = 0
 		Player_Lives.reset()
+		current_level_index = 0
 		GlobalData.is_game_over = false

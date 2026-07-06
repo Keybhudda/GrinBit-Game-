@@ -309,7 +309,9 @@ func fight(_delta: float) -> void:
 #function that sets mode of character
 func set_mode(new_mode: Mode):
 	if current_mode != new_mode:
-		
+		path.clear()
+		path_index = 0
+		target_pos = position
 		current_mode = new_mode
 		print(name, "mode switched to:", new_mode)
 		update_look(new_mode)

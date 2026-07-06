@@ -210,7 +210,7 @@ func intercept_player(_delta: float) -> void:
 
 
 
-#Old Tries of making cut off code work better
+#Old Tries of making cut off code work better *Not In Use*
 func get_intercept_tile(tiles_ahead: int ) -> Vector2:
 	var place = player._last_direction
 	if place == Vector2.ZERO:
@@ -233,7 +233,7 @@ func to_vector2_array(arr: Array) -> Array[Vector2]:
 	for p in arr:
 		result.append(p)
 	return result
-
+#-----------------------------------------------------------------------------#
 
 #This Function Makes the character Chase the player. - This character doesn't use this
 func chase_player(_delta: float) -> void:
@@ -281,7 +281,7 @@ func wander_around(_delta: float) -> void:
 	if current_mode == Mode.FIGHT:
 		set_mode(Mode.FIGHT)
 
-#This Functions Makes this character Killable How They Should While In This State
+#This Functions Makes this character Killable, Shows how They Should behave While In This State
 func killable(_delta: float) -> void:
 	if not has_printed_mode_killable:
 		print(name, " is Killable!")
@@ -305,8 +305,6 @@ func killable(_delta: float) -> void:
 		
 	if position.distance_to(target_pos) < 0.5:
 		path_index += 1
-		
-
 
 #Function for when the charcter is cauptured by the player while in RUN Mode
 var  has_printed_mode_DEAD := false
@@ -366,8 +364,10 @@ var freeze_path_recalc := false
 var nextmode = Mode.BASE
 #function that sets mode of character
 func set_mode(new_mode: Mode):
-	
 	if current_mode != new_mode:
+		path.clear()
+		path_index = 0
+		target_pos = position
 		current_mode = new_mode
 		print(name, "mode switched to:", new_mode)
 		update_look(new_mode)
